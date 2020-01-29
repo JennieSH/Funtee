@@ -90,3 +90,8 @@ Redux **
 ------------------------------------------
 1.npm install --save react-redux
 2.npm install --save react-redux
+
+
+
+
+npm install url-loader file-loader --save-dev

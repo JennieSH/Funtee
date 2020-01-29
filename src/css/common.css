@@ -1,13 +1,13 @@
 body{
     margin: 0;
     background-color: rgb(253, 253, 253);
-    font-family: "微軟正黑體";
+    font-family: "微軟正黑體"
 }
 
 header{
     height: 50px;
     width: 100%;
-    background-color:rgba(0, 0, 0, 0.739);
+    background-color:rgba(0, 0, 0, 0.75);
     color: #ffffff;
     position: relative;
     display: flex;
@@ -21,13 +21,14 @@ header>div{
 
 /* nav */
 nav{
-    width: 70%;
+    width: 65%;
     color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.739);
+    background-color: rgba(0, 0, 0, 0.88);
     position: absolute;
     top:50px;
     display: none;
     right: 0;
+    z-index: 99;
 }
 
 nav>div{
@@ -86,15 +87,25 @@ nav>div{
     transition: all 0.5s;
     width: 50%;
     transform: rotate(-45deg);
-    top: 5px;
+    top: 3.5px;
     left: -1px;
 }
 #menu_control:checked ~ label div .line-third{
     transition: all 0.5s;
     width: 50%;
     transform: rotate(45deg);
-    bottom: 5px;
+    bottom: 3.5px;
     left: -1px;
+}
+
+.bgImg{
+    position: absolute;
+    top:-50px;
+    z-index: -1;
+    width: 100vw;
+    overflow: hidden;
+    opacity: 0.5;
+    height: 1200px;
 }
 
 @media screen and (min-width:1000px){
@@ -122,4 +133,22 @@ nav>div{
             display: none;
         }
 
+    .bgImg{
+        height: auto;
+    }
+
+}
+@media screen and (min-width:1200px){
+    .bgImg{
+        height: 1000px;
+    }
+}
+
+@media screen and (min-width:1900px){
+    .bgImg{
+        height: 1500px;
+    }
+    .bgImg>img{
+        width: 100%;
+    }
 }

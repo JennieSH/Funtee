@@ -4,8 +4,9 @@ import {BrowserRouter, Route, Link} from 'react-router-dom';
 // import { createStore, combineReducers } from 'redux';
 // import { connect, Provider } from 'react-redux';
 import Header from "./component/header"
+import Homepage from "./component/homepage"
 import "./css/common.css";
-
+import "./css/homepage.css";
 class App extends React.Component{
 
     constructor(props){
@@ -21,6 +22,7 @@ class App extends React.Component{
                 // <Provider store={store}>
                     <BrowserRouter>                      
                         <Header/>
+                        <Homepage/>
                     </BrowserRouter>
                 // </Provider>
             )
@@ -29,6 +31,42 @@ class App extends React.Component{
 }
 
 ReactDOM.render(<App/>, document.querySelector("#root"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // click >> change Link to {new url} >> Route renders the component according to the path 
 // HashRouter : # 後的所有字串都不會發GET請求到server端 ( Link 組件中的 to 會改變網址，但不會刷新頁面 )
