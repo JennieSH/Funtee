@@ -1,0 +1,92 @@
+1. package.json
+2. webpack.config.js
+3. npm install 
+4. dist => index.html
+5. src => index.js style.css
+
+6.npm install --save-dev webpack-dev-server
+7.npm i react-router-dom
+
+
+-----------------------------------------------
+Webpack 基本安裝與使用
+-----------------------------------------------
+
+1. 安裝 Node.js
+2. 建立專案資料夾
+3. 使用命令介面操作，以 VScode 為例
+4. 初始化專案:
+    npm init -y
+
+
+5. 使用 NPM 安裝 webpack, webpack-cli: ( for 開發)
+    npm install webpack webpack-cli --save-dev
+
+6. 設置 package-json 用來執行 webpack
+    "build":"webpack"
+    
+7. 基本專案資料夾結構與運作概念:
+    /src/原始碼檔案 => webpack => /dist/可執行檔案
+
+8. 測試基本的 webpack 使用
+    npm run build
+
+
+
+-------------------------------------------------
+webpack-dev-server **
+-------------------------------------------------
+
+1. webpack.config.js 修改
+2. package.json 修改
+3. npm install --save-dev webpack-dev-server
+
+
+-------------------------------------------------
+Router **
+-------------------------------------------------
+1. npm install --save react-router
+   npm i react-router-dom
+2. import { Router, Route, Link } from 'react-router'
+3. import { HashRouter, Route, Link } from "react-router-dom";
+
+-------------------------------------------------
+搭配 React JSX 使用，設置 Babel
+-------------------------------------------------
+
+1. 使用 NPM 安裝 babel ( loader / preset-env  webpack / preset-react  / core )
+    npm install -D babel-loader @babel/core @babel/preset-env webpack @babel/preset-react 
+
+2. 設置 babel-react
+    https://babeljs.io/setup#installation
+
+3. 再專案描述檔(  package.json )中設置 babel
+    "babel":{
+        "presets":["env", "react"]
+    }
+
+4. 在專案描述檔中重設 babel-loader 的版本到 7.1.5, 然後在安裝一次 
+    npm install babel-loader --save-dev
+
+5. 建立基本 webpack 基本設定檔: webpack.config.js
+    https://webpack.js.org/guides/getting-started/#using-a-configuration
+
+6. 在 webpack 設定檔 ( webpack.config.js ) 中加入 babel-loader 設定，以支援 JSX 語法
+    https://webpack.js.org/loaders/babel-loader/
+
+7. 測試，並完成所有建置工作
+
+
+------------------------------------------
+ESlint **
+------------------------------------------
+1. npm install -g eslint
+2. npx eslint --init
+
+
+
+------------------------------------------
+Redux **
+------------------------------------------
+1.npm install --save react-redux
+2.npm install --save react-redux
