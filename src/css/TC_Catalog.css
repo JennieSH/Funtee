@@ -1,0 +1,98 @@
+.TC_CatalogContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.TC_CatalogContainer>div{
+    height: 370px;
+    width: 300px;
+    background-color: rgb(250, 248, 248);
+    margin-bottom: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.15);
+}
+
+
+.TC_CatalogBox{
+    width: 280px;
+    height: 350px;
+    border: 2px solid #6d6d6d;
+    border-radius: 14px;
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.TC_CatalogBox>img{
+    height: 120px;
+    width: 120px;
+    background-color: wheat;
+    border-radius: 50%;
+    margin: 50px 0 30px 0;
+}
+
+.TC_CatalogBox>span{
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 32px;
+    font-weight: bold;
+}
+
+.TC_CatalogBox>button{
+    margin-top: 20px;
+    height: 38px;
+    width: 150px;
+    color: white;
+    border-radius: 30px;
+    background: #BBD2C5;
+    background: -webkit-linear-gradient(to right, #292E49, #536976, rgb(76, 87, 81));
+    background: linear-gradient(to right, rgb(51, 57, 87), #536976, rgb(76, 85, 80));
+    border: none;
+    letter-spacing: 1px;
+}
+
+
+.TC_CatalogBox>button:hover{
+    width: 180px;
+    transition: .8s;  
+}
+
+
+@media screen and (min-width:500px){
+    .TC_CatalogContainer>div{
+        width: 55%;
+    }
+    .TC_CatalogBox{
+        width: 95%;
+    }
+}
+@media screen and (min-width:1000px){
+    .TC_CatalogBox{
+        width: 96.5%;
+    }
+}
+
+
+
+@media screen and (min-width:1200px){
+
+    .TC_CatalogContainer{
+        flex-direction: row;
+    }
+
+    .TC_CatalogContainer>div{
+        width: 320px;
+        margin: 20px;
+        height: 400px;
+    }
+    .TC_CatalogBox{
+        width: 300px;
+        height: 380px;
+    }
+}

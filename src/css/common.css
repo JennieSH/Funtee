@@ -105,7 +105,7 @@ nav>div{
     width: 100vw;
     overflow: hidden;
     opacity: 0.5;
-    height: 1200px;
+    height: auto;
 }
 
 @media screen and (min-width:1000px){
@@ -140,7 +140,7 @@ nav>div{
 }
 @media screen and (min-width:1200px){
     .bgImg{
-        height: 1000px;
+        height: 800px;
     }
 }
 

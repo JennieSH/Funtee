@@ -3,10 +3,18 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
 // import { createStore, combineReducers } from 'redux';
 // import { connect, Provider } from 'react-redux';
-import Header from "./component/header"
-import Homepage from "./component/homepage"
-import "./css/common.css";
-import "./css/homepage.css";
+// import Homepage from "./component/homepage"
+// import "./css/homepage.css";
+
+
+
+import TC_Catalog from "./component/TC_Catalog"
+import "./css/TC_Catalog.css";
+
+
+
+
+
 class App extends React.Component{
 
     constructor(props){
@@ -21,8 +29,8 @@ class App extends React.Component{
             return(
                 // <Provider store={store}>
                     <BrowserRouter>                      
-                        <Header/>
-                        <Homepage/>
+                        {/* <Homepage/> */}
+                        <TC_Catalog/>
                     </BrowserRouter>
                 // </Provider>
             )
