@@ -8,8 +8,8 @@ import {BrowserRouter, Route, Link} from 'react-router-dom';
 
 
 
-import TC_Catalog from "./component/TC_Catalog"
-import "./css/TC_Catalog.css";
+import TC_UnitCatalog from "./component/TC_UnitCatalog"
+import "./css/TC_UnitCatalog.css";
 
 
 
@@ -30,7 +30,7 @@ class App extends React.Component{
                 // <Provider store={store}>
                     <BrowserRouter>                      
                         {/* <Homepage/> */}
-                        <TC_Catalog/>
+                        <TC_UnitCatalog/>
                     </BrowserRouter>
                 // </Provider>
             )

@@ -2,7 +2,6 @@ import React from "react";
 import {Route, Link} from 'react-router-dom';
 import Header from "./header"
 import "../css/common.css";
-// import Banner from '../imgs/banner.jpg';
 
 
 class TC_Catalog extends React.Component{
@@ -35,7 +34,6 @@ class TC_Catalog extends React.Component{
                             <button>Learn More</button>
                         </div>
                     </div>
-
                 </div>
             </>
             
