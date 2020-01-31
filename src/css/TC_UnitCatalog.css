@@ -1,5 +1,4 @@
-
-h2{
+.UnitCatalogContainer h2{
     text-align: center;
     letter-spacing: 1px;
     line-height: 50px;
@@ -11,7 +10,7 @@ h2{
     margin: 0;
 }
 
-ul{
+.UnitCatalogContainer ul{
     list-style-type:none;
     width:100%;
     display: flex;
@@ -20,7 +19,7 @@ ul{
     justify-content: center;
 }
 
-li{
+.UnitCatalogContainer li{
     width: 150px;
     height: 150px;
     text-align: center;
@@ -51,14 +50,19 @@ li{
     background-color:#ffa55e
 }
 
-li:hover{
+
+.UnitCatalogContainer a{
+    text-decoration: none;
+    color: black;
+}
+.UnitCatalogContainer ul li:hover{
     color: #fff;
     background-color: #000;
 }
 
 
-@media screen and (min-width:500px){
-    li{
+@media screen and (min-width:768px){
+    .UnitCatalogContainer li{
         height: 200px;
         width: 200px;
         font-size: 24px;
@@ -66,20 +70,21 @@ li:hover{
     }
   
 }
-
-
-@media screen and (min-width:1000px){
-    ul{
+@media screen and (min-width:1024px){
+    .UnitCatalogContainer ul{
         width: 960px;
         position: relative;
-        left: -40px;
+        left: -20px;
         padding:60px 0;
+        margin-top: 150px;
     }
 
-    li{
+
+    .UnitCatalogContainer li{
         font-size: 24px;
         line-height: 200px;
         position: relative;
+        /* margin: 0 61px -40px; */
         margin: 0 61px -40px;
     }
 
@@ -91,19 +96,23 @@ li:hover{
     }
     .box3{
         background-color: transparent;
+        left: 160px;
     }
     .box4{
         background-color: transparent;
+        left: 160px;
     }
     .box5{
         background-color: transparent;
+        left: 0px;
     }
     .box6{
         background-color: transparent;
+        left: 0px;
     }
 
 
-    li::before{
+    .UnitCatalogContainer li::before{
         width: 100%;
         height: 100%;
         top:0;
@@ -113,14 +122,6 @@ li:hover{
         transform: rotate(45deg);
     }
 
-    li:nth-child(n+3){
-        left: 160px;
-    }
-
-    li:nth-child(n+5){
-        left: 0px;
-    }
-  
     .box1::before{
         background-color:#3ed0cd;
         z-index: -1;
@@ -146,56 +147,67 @@ li:hover{
         z-index: -1;
     }
 
-    li:hover{
+    .UnitCatalogContainer ul li:hover{
         background-color: transparent;
     }
-
-    li:hover::before{
+    .UnitCatalogContainer li:hover::before{
         background-color: #000;
     }
 
 }
 
-
-
-@media screen and (min-width:1200px){
+@media screen and (min-width:1280px){
     .UnitCatalogContainer{
         display: flex;
+        flex-direction: row;
     }
-    h2{
-        width: 350px;
-        padding-top: 200px;
+    .UnitCatalogContainer h2{
+        width: 450px;
+        margin-top: 330px;
+        height: 100%;
+        padding: 30px 0;
     }
-
-    ul{
-        width: 960px;
+    .UnitCatalogContainer ul{
+        width: 860px;
         position: relative;
-        left: 0;
-        top: -50px;
+        left: -50px;
+        margin-top: 0;
+    }
+    .UnitCatalogContainer li{
+        height: 150px;
+        width: 150px;
+        margin: 0 82px -13px;
+        line-height: 140px;
     }
 
 }
 
-
-@media screen and (min-width:1900px){
+@media screen and (min-width:1920px){
     .UnitCatalogContainer{
         display: flex;
-        height: 100vh;
+      
     }
-    h2{
-        width: 450px;
-        padding-top: 500px;
+    .UnitCatalogContainer h2{
+        margin-top: 500px;
+        width: 600px;
+        padding: 50px 0;
     }
 
-    ul{
+    .UnitCatalogContainer ul{
         height: 50%;
         position: relative;
-        left: 400px;
-        top: 150px;
+        left: 150px;
+        top: 50px;
+    }
+
+    .UnitCatalogContainer li{
+        height: 200px;
+        width: 200px;
+        margin: 0 61px -40px;
+        line-height: 200px;
     }
 
 }
-
 
 
 

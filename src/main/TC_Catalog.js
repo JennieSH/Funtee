@@ -1,7 +1,7 @@
 import React from "react";
-import {Route, Link} from 'react-router-dom';
-import Header from "./header"
-import "../css/common.css";
+import { Link } from 'react-router-dom';
+import Header from "../components/header";
+import "../css/TC_Catalog.css";
 
 
 class TC_Catalog extends React.Component{
@@ -10,12 +10,11 @@ class TC_Catalog extends React.Component{
             <>
                 <Header/>
                 <div className="TC_CatalogContainer">
-                    {/* <span> A pin a day is a groat a year</span> */}
                     <div>
                         <div className="TC_CatalogBox">
                             <img/>                       
                             <span>Taiwanese<br/>Phonetic Symbol</span>
-                            <button>Learn More</button>
+                            <button><Link to="/symobol">Learn More</Link></button>
                         </div>
                     </div>
                    
@@ -23,7 +22,7 @@ class TC_Catalog extends React.Component{
                         <div className="TC_CatalogBox">
                             <img/>                       
                             <span>Common<br/>Mandarin Vocabulary</span>
-                            <button>Learn More</button>
+                            <button><Link to="/units">Learn More</Link></button>
                         </div>
                     </div>
 
@@ -31,12 +30,11 @@ class TC_Catalog extends React.Component{
                         <div className="TC_CatalogBox">
                             <img/>                       
                             <span>Taiwanese<br/>Mandarin Vocabulary</span>
-                            <button>Learn More</button>
+                            <button><Link to="/units">Learn More</Link></button>
                         </div>
                     </div>
                 </div>
-            </>
-            
+            </>        
         )
     }
 }

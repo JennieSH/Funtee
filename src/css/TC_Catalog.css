@@ -63,7 +63,10 @@
     transition: .8s;  
 }
 
-
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
 @media screen and (min-width:500px){
     .TC_CatalogContainer>div{
         width: 55%;

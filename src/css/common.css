@@ -1,7 +1,9 @@
 body{
     margin: 0;
     background-color: rgb(253, 253, 253);
-    font-family: "微軟正黑體"
+    font-family: "微軟正黑體";
+    background-image: url(../imgs/banner.jpg);
+    
 }
 
 header{
@@ -18,7 +20,10 @@ header{
 header>div{
     font-size: 20px;
 }
-
+header>div a{
+    text-decoration: none;
+    color: white;
+}
 /* nav */
 nav{
     width: 65%;
@@ -31,9 +36,18 @@ nav{
     z-index: 99;
 }
 
-nav>div{
+nav div{
     padding: 10px 20px;
     border-bottom: 1px solid #ffffff;
+}
+
+nav div:hover{
+    background-color: rgba(92, 91, 91, 0.8);
+    font-weight: bold;
+}
+nav>div a{
+    text-decoration: none;
+    color: white;
 }
 
 #menu_control:checked ~ nav{
@@ -98,17 +112,10 @@ nav>div{
     left: -1px;
 }
 
-.bgImg{
-    position: absolute;
-    top:-50px;
-    z-index: -1;
-    width: 100vw;
-    overflow: hidden;
-    opacity: 0.5;
-    height: auto;
-}
 
-@media screen and (min-width:1000px){
+
+
+@media screen and (min-width:1024px){
     header{
        
         justify-content: space-between;
@@ -133,22 +140,6 @@ nav>div{
             display: none;
         }
 
-    .bgImg{
-        height: auto;
-    }
+ 
 
-}
-@media screen and (min-width:1200px){
-    .bgImg{
-        height: 800px;
-    }
-}
-
-@media screen and (min-width:1900px){
-    .bgImg{
-        height: 1500px;
-    }
-    .bgImg>img{
-        width: 100%;
-    }
 }

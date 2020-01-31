@@ -1,42 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./main/App";
+
+
+
 // import { createStore, combineReducers } from 'redux';
 // import { connect, Provider } from 'react-redux';
 // import Homepage from "./component/homepage"
-// import "./css/homepage.css";
-
-
-
-import TC_UnitCatalog from "./component/TC_UnitCatalog"
-import "./css/TC_UnitCatalog.css";
 
 
 
 
 
-class App extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.state = {isLoading:true};
-    }
 
-    render(){
-        if (this.state.isLoading === false){
-            return <div>loading</div>
-        }else{
-            return(
-                // <Provider store={store}>
-                    <BrowserRouter>                      
-                        {/* <Homepage/> */}
-                        <TC_UnitCatalog/>
-                    </BrowserRouter>
-                // </Provider>
-            )
-        }     
-    }
-}
+// class App extends React.Component{
+
+//     constructor(props){
+//         super(props);
+//         this.state = {isLoading:true};
+//     }
+
+//     render(){
+//         if (this.state.isLoading === false){
+//             return <div>loading</div>
+//         }else{
+//             return(
+//                 // <Provider store={store}>
+//                     <BrowserRouter>                      
+//                         {/* <Homepage/> */}
+//                         <TC_Unit/>
+//                     </BrowserRouter>
+//                 // </Provider>
+//             )
+//         }     
+//     }
+// }
 
 ReactDOM.render(<App/>, document.querySelector("#root"));
 
