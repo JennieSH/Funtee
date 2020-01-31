@@ -21,9 +21,7 @@ class TC_Unit extends React.Component{
                         <span>＜</span>
                         <span>＞</span>
                     </div> 
-
-                 
-                       
+  
                     <div className="controlMenu">                 
                         <div>撥放</div>
                         <div>錄音</div>

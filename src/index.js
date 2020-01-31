@@ -1,40 +1,38 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./main/App";
-
+// import firebase from "firebase";
+// import "./components/firebase/firebaseConfig";
 
 
 // import { createStore, combineReducers } from 'redux';
 // import { connect, Provider } from 'react-redux';
-// import Homepage from "./component/homepage"
-
-
-
-
 
 
 
 // class App extends React.Component{
 
-//     constructor(props){
-//         super(props);
-//         this.state = {isLoading:true};
-//     }
+//     // constructor(props){
+//     //     super(props);
+//     //     this.state = {isLoading:true};
+//     // }
 
-//     render(){
-//         if (this.state.isLoading === false){
-//             return <div>loading</div>
-//         }else{
-//             return(
-//                 // <Provider store={store}>
-//                     <BrowserRouter>                      
-//                         {/* <Homepage/> */}
-//                         <TC_Unit/>
-//                     </BrowserRouter>
-//                 // </Provider>
-//             )
-//         }     
-//     }
+
+
+//     // render(){
+//     //     if (this.state.isLoading === false){
+//     //         return <div>loading</div>
+//     //     }else{
+//     //         return(
+//     //             // <Provider store={store}>
+//     //                 <BrowserRouter>                      
+//     //                     {/* <Homepage/> */}
+//     //                     <TC_Unit/>
+//     //                 </BrowserRouter>
+//     //             // </Provider>
+//     //         )
+//     //     }     
+//     // }
 // }
 
 ReactDOM.render(<App/>, document.querySelector("#root"));

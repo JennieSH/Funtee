@@ -11,6 +11,17 @@ import FC_Card from "./FC_Card";
 import FC_Catalog from "./FC_Catalog";
 import FC_Spelling from "./FC_Spelling";
 
+import firebase from "firebase";
+import "../components/firebase/firebaseConfig";
+
+let db = firebase.firestore();
+
+let ref = db.collection('fruit').doc('apple'); //如果直接指定文件的名稱，就可直接取得文件的內容
+
+ref.get().then(doc => {
+  console.log(doc.data());
+});
+
 
 
 class App extends React.Component{
@@ -18,7 +29,7 @@ class App extends React.Component{
         return(              
             <HashRouter>                      
                <Route exact path="/" component={Homepage}/>
-
+               
                <Route path="/learning" component={TC_Catalog}/>
                <Route path="/symobol" component={TC_Symobol}/>            
                <Route path="/units" component={TC_UnitCatalog}/>
