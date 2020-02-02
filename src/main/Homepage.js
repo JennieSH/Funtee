@@ -16,7 +16,7 @@ class Homepage extends React.Component{
                         <Link to="/learning">
                             <img src={TC_img} alt="TC-learning"/> 
                             <div >
-                                <span>Learning Mandarin</span>
+                                <span>Learning Chinese</span>
                             </div>                   
                          </Link>                                
                     </div>

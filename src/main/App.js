@@ -6,26 +6,22 @@ import TC_Catalog from "./TC_Catalog";
 import TC_Symobol from "./TC_Symbol";
 import TC_Unit from "./TC_Unit";
 import TC_UnitCatalog from "./TC_UnitCatalog";
-import FC_Book from "./FC_Book";
+import FC_Collection from "./FC_Collection";
 import FC_Card from "./FC_Card";
 import FC_Catalog from "./FC_Catalog";
 import FC_Spelling from "./FC_Spelling";
+// Firebase
+import firebase from "firebase/app";
+import firebaseConfig from "../components/firebase/firebaseConfig";
 
-import firebase from "firebase";
-import "../components/firebase/firebaseConfig";
-
-let db = firebase.firestore();
-
-let ref = db.collection('fruit').doc('apple'); //如果直接指定文件的名稱，就可直接取得文件的內容
-
-ref.get().then(doc => {
-  console.log(doc.data());
-});
+import TC_Symbol_test from "./TC_Symbol_test";
 
 
 
 class App extends React.Component{
+
     render(){
+       
         return(              
             <HashRouter>                      
                <Route exact path="/" component={Homepage}/>
@@ -35,8 +31,8 @@ class App extends React.Component{
                <Route path="/units" component={TC_UnitCatalog}/>
                <Route path="/vocabulary" component={TC_Unit}/>
 
-               <Route path="/flashcard" component={FC_Catalog}/>
-               <Route path="/flashcard/book" component={FC_Book}/>
+               <Route path="/flashcard" component={TC_Symbol_test}/>
+               <Route path="/flashcard/Collection" component={FC_Collection}/>
                <Route path="/flashcard/card" component={FC_Card}/>       
                <Route path="/flashcard/spelling" component={FC_Spelling}/>
             </HashRouter>
@@ -45,5 +41,3 @@ class App extends React.Component{
 }
 
 export default App;
-
-

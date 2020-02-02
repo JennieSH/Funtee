@@ -1,20 +1,32 @@
 import React from "react";
+import Header from "../components/header";
+import "../css/TC_Symobol.css";
+import WritingBoard from "../components/symobol/writingBoard";
+import TC_SymobolContent from "../components/symobol/Content";
+class TC_Symobol extends React.Component{
 
 
+    
 
-
-class Symobol extends React.Component{
     render(){
+       
         return(
             <>
-               
-                <div className="UnitCatalogContainer">
-                  Symobol Page
+                <Header/>
+                <div className="TC_SymobolContainer">
+
+                    <TC_SymobolContent/>
+                    <div className="TC_SymobolExample_W"/>
+                    <WritingBoard/>
+                    <div className="controlPage_M">
+                            <span>＜</span>
+                            <span>＞</span>
+                    </div> 
                 </div>
             </>
-            
         )
     }
 }
 
-export default Symobol
+
+export default TC_Symobol

@@ -1,0 +1,92 @@
+.TC_SymobolContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.TC_SymobolContent{
+    margin-top: 40px;
+    height: 320px;
+    width: 270px;
+    background-color: rgb(214, 199, 178);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.TC_SymobolContent>.ContentImg{
+    height: 250px;
+    width: 120px;
+    background-color: rgba(122, 99, 66, 0.418);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.TC_SymobolContent>.ContentImg>div{
+    background-color: cadetblue;
+    height: 110px;
+    width: 105px;
+
+    font-size: 22px;
+    text-align: center;
+} 
+
+
+.TC_SymobolContent>.ContentImgDetail{
+    height: 250px;
+    width: 150px;
+    background-color: rgba(108, 190, 201, 0.473);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 22px;
+   
+}
+
+.TC_SymobolContent>.ContentImgDetail span{
+    background-color: rgba(122, 142, 179, 0.322);
+    width: 100%;
+    text-align: center;
+}
+
+
+.TC_SymobolContent>.TC_SymobolMenu{
+    height: 70px;
+    width: 100%;
+    background-color: rgba(201, 164, 108, 0.3);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.TC_SymobolContent>.TC_SymobolMenu img{
+    height: 60px;
+    width: 60px;
+    background-color: rgba(169, 169, 169, 0.329);
+}
+
+
+
+
+.TC_SymobolExample_W{
+  
+    margin-top: 30px;
+    height: 200px;
+    width: 260px;
+    background-color: rgb(235, 179, 106);
+    display: none;
+}
+.TC_SymobolContainer canvas{
+    margin-top: 20px;
+    height: 280px;
+    width: 280px;
+    background-color: rgb(254, 255, 255);
+}
+.TC_SymobolContainer button{
+    margin-top: 20px;
+    width: 150px;
+
+}

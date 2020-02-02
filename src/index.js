@@ -1,93 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./main/App";
-// import firebase from "firebase";
-// import "./components/firebase/firebaseConfig";
+// redux
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from 'react-redux';
+import rootReducer from "./store/reducers/rootReducer";
+import thunk from "redux-thunk";
+// redux-firease
+import { createFirestoreInstance, reduxFirestore, getFirestore } from "redux-firestore";
+import { ReactReduxFirebaseProvider, getFirebase } from "react-redux-firebase";
+import firebase from 'firebase/app';
+import firebaseConfig from "./components/firebase/firebaseConfig";
+
+const store = createStore(
+    rootReducer,
+    compose(
+        applyMiddleware(thunk.withExtraArgument({getFirestore, getFirebase})),
+        reduxFirestore(firebaseConfig)
+    )
+);     
+const rrfProps = {
+    firebase,
+    config: firebaseConfig,
+    dispatch: store.dispatch,
+    createFirestoreInstance // needed if using firestore
+}
 
 
-// import { createStore, combineReducers } from 'redux';
-// import { connect, Provider } from 'react-redux';
-
-
-
-// class App extends React.Component{
-
-//     // constructor(props){
-//     //     super(props);
-//     //     this.state = {isLoading:true};
-//     // }
-
-
-
-//     // render(){
-//     //     if (this.state.isLoading === false){
-//     //         return <div>loading</div>
-//     //     }else{
-//     //         return(
-//     //             // <Provider store={store}>
-//     //                 <BrowserRouter>                      
-//     //                     {/* <Homepage/> */}
-//     //                     <TC_Unit/>
-//     //                 </BrowserRouter>
-//     //             // </Provider>
-//     //         )
-//     //     }     
-//     // }
-// }
-
-ReactDOM.render(<App/>, document.querySelector("#root"));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// click >> change Link to {new url} >> Route renders the component according to the path 
-// HashRouter : # 後的所有字串都不會發GET請求到server端 ( Link 組件中的 to 會改變網址，但不會刷新頁面 )
-
-// <Route exact path="/" component={Content}/> : 一般寫法 ( 加入 exact 就會進行嚴格比對 path )
-// <Route exact path="/" render={(props) => <Content {...this.props} isAuthed={true} path="/"/>}/> : pass props via <Route>
-
-
-
-
-// // Redux
-// let store;
-// let reducer = function(state,action){
-//     switch(action.type){
-//         default:
-//             return state;
-//     }
-// }
-// store=Redux.createStore(reducer, {isLoading:false});
+ReactDOM.render( 
+    <Provider store={store}>
+        <ReactReduxFirebaseProvider {...rrfProps}>                           
+            <App/> 
+        </ReactReduxFirebaseProvider>
+    </Provider>,
+    document.querySelector("#root")
+);

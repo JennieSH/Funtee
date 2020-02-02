@@ -1,6 +1,8 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/firestore";
+// import "firebase/auth";
 
-let firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyC6raKxhs64GktqMem1XS7UWlYAZfRsTww",
     authDomain: "dawan-bfa08.firebaseapp.com",
     databaseURL: "https://dawan-bfa08.firebaseio.com",
@@ -10,9 +12,10 @@ let firebaseConfig = {
     appId: "1:747978560517:web:cb48adbed402da10e5b86c",
     measurementId: "G-JV66YR0BZ7"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+// firebase.analytics(); // import firebase from "firebase"; 
 
 
 export default firebaseConfig;
