@@ -10,9 +10,7 @@ import FC_Collection from "./FC_Collection";
 import FC_Card from "./FC_Card";
 import FC_Catalog from "./FC_Catalog";
 import FC_Spelling from "./FC_Spelling";
-// Firebase
-import firebase from "firebase/app";
-import firebaseConfig from "../components/firebase/firebaseConfig";
+
 
 import TC_Symbol_test from "./TC_Symbol_test";
 

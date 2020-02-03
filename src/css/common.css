@@ -111,9 +111,6 @@ nav>div a{
     left: -1px;
 }
 
-
-
-
 @media screen and (min-width:1024px){
     header{
        
@@ -138,7 +135,67 @@ nav>div a{
     .menuBtn{
             display: none;
         }
+}
 
- 
 
+/* PageController */
+
+.pageController{
+    position: absolute;
+    font-size: 40px;
+    color: seashell;
+    top:337px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.pageController span{
+    background-color: rgba(49, 46, 42, 0.185);
+}
+.pageController span:hover{
+    background-color: rgba(49, 46, 42, 0.568);
+}
+@media screen and (min-width:768px){
+  
+    .pageController{
+        font-size: 55px;
+        top: 417px;
+    }
+   
+}
+@media screen and (min-width:1024px){
+    .pageController{
+        font-size: 60px;
+        top: 527px;
+    }  
+}
+@media screen and (min-width:1280px){
+    .pageController{
+        top: 280px;
+        font-size: 48px;
+        display: none;
+    }  
+}
+@media screen and (min-width:1920px){
+    .pageController{
+        top: 450px;
+        font-size: 60px;
+    }  
+}
+
+
+/* BkImg */
+
+.bkImg{
+    background-image: url(../imgs/BI.png);
+    height: 120%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+@media screen and (min-width:768px){  
+    .bkImg{    
+        height: 100%;    
+    }
 }

@@ -5,8 +5,8 @@
     align-items: center;
 }
 .TC_SymobolContent{
-    margin-top: 40px;
-    height: 320px;
+    margin-top: 30px;
+    height: 300px;
     width: 270px;
     background-color: rgb(214, 199, 178);
     padding: 10px;
@@ -28,7 +28,6 @@
     background-color: cadetblue;
     height: 110px;
     width: 105px;
-
     font-size: 22px;
     text-align: center;
 } 
@@ -43,7 +42,6 @@
     justify-content: space-around;
     align-items: center;
     font-size: 22px;
-   
 }
 
 .TC_SymobolContent>.ContentImgDetail span{
@@ -54,39 +52,136 @@
 
 
 .TC_SymobolContent>.TC_SymobolMenu{
-    height: 70px;
+    height: 50px;
     width: 100%;
-    background-color: rgba(201, 164, 108, 0.3);
+    background-color: rgba(75, 165, 116, 0.842);
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
 .TC_SymobolContent>.TC_SymobolMenu img{
-    height: 60px;
-    width: 60px;
-    background-color: rgba(169, 169, 169, 0.329);
+    height: 40px;
+    width: 40px;
+    background-color: rgba(169, 169, 169, 0.5);
 }
 
-
-
-
-.TC_SymobolExample_W{
-  
-    margin-top: 30px;
-    height: 200px;
-    width: 260px;
-    background-color: rgb(235, 179, 106);
-    display: none;
-}
 .TC_SymobolContainer canvas{
     margin-top: 20px;
-    height: 280px;
-    width: 280px;
+    cursor: url(../imgs/pencil.png) 4 12, auto;
     background-color: rgb(254, 255, 255);
 }
 .TC_SymobolContainer button{
     margin-top: 20px;
     width: 150px;
+}
 
+@media screen and (min-width:768px){
+    .TC_SymobolContainer{
+        flex-direction: column;
+    }
+    .TC_SymobolContent{
+        margin-top: 30px;
+        height: 390px;
+        width: 500px;   
+        padding: 20px;
+        position: relative;
+    }
+    .TC_SymobolContent>.ContentImg{
+        height: 100%;
+        width: 200px;
+    }
+    .TC_SymobolContent>.ContentImg>div{
+        height: 170px;
+        width: 170px;
+    } 
+    .TC_SymobolContent>.ContentImgDetail{
+        height: 280px;
+        width: 300px;  
+    }
+    .TC_SymobolContent>.TC_SymobolMenu{
+        height: 110px;
+        width: 300px;
+        position: absolute;
+        bottom: 20px;
+        right:20px;
+    }    
+    .TC_SymobolContent>.TC_SymobolMenu img{
+        height: 70px;
+        width: 70px;
+    }
+    .TC_SymobolContainer canvas{
+        margin-top: 25px;
+
+    }
+}
+
+@media screen and (min-width:1024px){
+    .TC_SymobolContainer{
+        margin-top: 80px;
+    }
+    .TC_SymobolContainer canvas{
+        margin-top: 70px;
+    }
+    .TC_SymobolContainer button{
+        margin-top: 80px;
+
+    }
+}
+
+@media screen and (min-width:1280px){
+    .TC_SymobolContainer{
+       flex-direction: row;
+       margin-top: 70px;
+    }
+    .TC_SymobolContent{
+        height: 340px;
+        width: 500px;
+        margin-top: 0px;
+    }
+    .TC_SymobolContent>.ContentImg{
+        height: 340px;
+        width: 230px;
+    }
+
+    .TC_SymobolContent>.ContentImg>div{
+        height: 150px;
+        width: 180px;
+    } 
+    .TC_SymobolContent>.ContentImgDetail{
+        height: 230px;
+        width: 270px;
+      
+    }   
+    .TC_SymobolContainer canvas{
+        margin-left: 40px;
+        margin-top: 0px;
+    }
+    .TC_SymobolContent>.TC_SymobolMenu{
+        height: 110px;
+        width: 270px;
+        
+    }
+    .TC_SymobolContainer button{
+        width: 200px;
+        height: 30px;
+        margin-top: 35px;
+    }
+
+}
+
+@media screen and (min-width:1920px){
+    .TC_SymobolContainer{
+       
+        margin-top: 150px;
+     }
+    .TC_SymobolContainer button{
+        position: fixed;
+        top:700px
+    }
+    .TC_SymobolContainer canvas{
+        margin-left: 130px;
+    }
+ 
+    
 }

@@ -5,7 +5,7 @@ class TC_SymobolContent extends React.Component{
 
     render(){     
         return(
-            <div className="TC_SymobolContent">
+            <div className="TC_SymobolContent" id="TC_SymobolContent">
                 <div className="ContentImg">
                     <div>img</div>
                     <div className="TC_SymobolExample_M">ㄅ</div>

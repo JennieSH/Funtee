@@ -84,7 +84,6 @@
         font-size: 24px;
         line-height: 200px;
         position: relative;
-        /* margin: 0 61px -40px; */
         margin: 0 61px -40px;
     }
 
@@ -166,6 +165,7 @@
         margin-top: 330px;
         height: 100%;
         padding: 30px 0;
+        background-color: #414141e8;
     }
     .UnitCatalogContainer ul{
         width: 860px;

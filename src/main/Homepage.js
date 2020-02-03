@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import Header from "../components/header"
+import Header from "../components/common/header"
 import "../css/homepage.css";
 import TC_img from "../imgs/TC_catalog.jpg";
 import FC_img from "../imgs/FC_catalog.jpg";
+import BkImg from "../components/common/bkImg";
 
 
 class Homepage extends React.Component{
     render(){
         return(
             <>
+                <BkImg/>
                 <Header/>
                 <div className="homepageContainer">             
                     <div className="description">
@@ -27,7 +29,7 @@ class Homepage extends React.Component{
                                 <span>Flash Card</span>
                             </div>                   
                         </Link>
-                    </div>                      
+                    </div>                    
                 </div>
             </>
             

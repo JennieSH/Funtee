@@ -1,6 +1,8 @@
 import React from "react";
-import Header from "../components/header"
+import Header from "../components/common/header";
 import "../css/TC_Unit.css";
+import PageController from "../components/common/pageController";
+
 
 
 class TC_Unit extends React.Component{
@@ -16,11 +18,7 @@ class TC_Unit extends React.Component{
                         <li>藍色</li>
                         <li>Blue</li>
                     </ul>
-                    <div className="controlPage_M">
-                        <span>＜</span>
-                        <span>＞</span>
-                    </div> 
-  
+                    <PageController/>
                     <div className="controlMenu">                 
                         <div>撥放</div>
                         <div>錄音</div>

@@ -52,24 +52,9 @@
     color: #1b79ac;
 }
 .TC_UnitContainer li:nth-child(n+4){
-    /* color: rgb(211, 99, 71); */
     color: #F37101;
 }
-.controlPage_M{
-    position: absolute;
-    font-size: 40px;
-    color: seashell;
-    top:337px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-.controlPage_M span{
-    background-color: rgba(49, 46, 42, 0.185);
-}
-.controlPage_M span:hover{
-    background-color: rgba(49, 46, 42, 0.568);
-}
+
 .controlMenu{
     width: 100%;
     display: flex;
@@ -110,10 +95,6 @@
     .TC_UnitContainer li{
         font-size: 30px;
     }
-    .controlPage_M{
-        font-size: 55px;
-        top: 417px;
-    }
     .controlMenu{
         margin-top: 50px;
     }
@@ -128,10 +109,6 @@
     }
     .TC_UnitContainer ul{
         margin-top: 100px;
-    }
-    .controlPage_M{
-        font-size: 60px;
-        top: 527px;
     }
     .controlMenu{
         margin-top: 140px;
@@ -160,9 +137,6 @@
     .controlMenu div{
         height: 100px;
         width: 100px;
-    }
-    .controlPage_M{
-        display: none;
     }
     .controlPage_W{
         display: flex;
