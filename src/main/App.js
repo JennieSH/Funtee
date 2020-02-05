@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, HashRouter} from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 // Router
 import Homepage from "./Homepage";
 import TC_Catalog from "./TC_Catalog";
@@ -21,7 +21,7 @@ class App extends React.Component{
     render(){
        
         return(              
-            <HashRouter>                      
+            <BrowserRouter>                      
                <Route exact path="/" component={Homepage}/>
                
                <Route path="/learning" component={TC_Catalog}/>
@@ -33,7 +33,7 @@ class App extends React.Component{
                <Route path="/flashcard/Collection" component={FC_Collection}/>
                <Route path="/flashcard/card" component={FC_Card}/>       
                <Route path="/flashcard/spelling" component={FC_Spelling}/>
-            </HashRouter>
+            </BrowserRouter>
         )    
     }
 }

@@ -22,7 +22,7 @@ class TC_Catalog extends React.Component{
                     <div>
                         <div className="TC_CatalogBox">
                             <img/>                       
-                            <span>Common<br/>Mandarin Vocabulary</span>
+                            <span>Common<br/> Vocabulary</span>
                             <button><Link to="/units">Learn More</Link></button>
                         </div>
                     </div>
@@ -30,7 +30,7 @@ class TC_Catalog extends React.Component{
                     <div>
                         <div className="TC_CatalogBox">
                             <img/>                       
-                            <span>Taiwanese<br/>Mandarin Vocabulary</span>
+                            <span>Common Vocabulary<br/>In Taiwan</span>
                             <button><Link to="/units">Learn More</Link></button>
                         </div>
                     </div>

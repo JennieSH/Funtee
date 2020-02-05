@@ -92,6 +92,9 @@ Redux **
 2.npm install --save react-redux
 
 
-
+------------------------------------------
+Dotenv **
+------------------------------------------
+npm install dotenv --save
 
 npm install url-loader file-loader --save-dev
