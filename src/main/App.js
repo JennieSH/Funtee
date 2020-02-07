@@ -1,7 +1,8 @@
-import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 // Router
 import Homepage from "./Homepage";
+import Category from "./Category";
 import TC_Catalog from "./TC_Catalog";
 import TC_Symobol from "./TC_Symbol";
 import TC_Unit from "./TC_Unit";
@@ -10,7 +11,8 @@ import FC_Collection from "./FC_Collection";
 import FC_Card from "./FC_Card";
 import FC_Catalog from "./FC_Catalog";
 import FC_Spelling from "./FC_Spelling";
-
+import SignIn from "../components/common/auth/signIn";
+import SignUp from "../components/common/auth/signUp";
 
 import TC_Symbol_test from "./TC_Symbol_test";
 
@@ -21,9 +23,11 @@ class App extends React.Component{
     render(){
        
         return(              
-            <BrowserRouter>                      
+            <BrowserRouter>       
                <Route exact path="/" component={Homepage}/>
-               
+               <Route path="/signin" component={SignIn}/> 
+               <Route path="/signup" component={SignUp}/>      
+               <Route path="/category" component={Category}/>                                       
                <Route path="/learning" component={TC_Catalog}/>
                <Route path="/symobol" component={TC_Symobol}/>            
                <Route path="/units" component={TC_UnitCatalog}/>
@@ -38,4 +42,6 @@ class App extends React.Component{
     }
 }
 
-export default App;
+
+
+export default App

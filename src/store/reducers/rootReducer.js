@@ -4,7 +4,7 @@ import authReducer from "./authReducer";
 import testReducer from "./testReducer";
 import { firebaseReducer } from 'react-redux-firebase'
 import { firestoreReducer } from 'redux-firestore'
-
+// stateName : stateData
 const rootReducer = combineReducers({
     auth: authReducer,
     test: testReducer,
