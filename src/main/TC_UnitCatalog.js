@@ -2,14 +2,12 @@ import React from "react";
 import {Route, Link} from 'react-router-dom';
 import Header from "../components/common/header";
 import "../css/TC_UnitCatalog.css";
-import BkImg from "../components/common/bkImg";
 
 
 class TC_UnitCatalog extends React.Component{
     render(){
         return(
             <>
-                <BkImg/>
                 <Header/>
                 <div className="UnitCatalogContainer">
                     <h2>Common <br/>Mandarin Vocabulary</h2>

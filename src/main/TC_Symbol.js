@@ -9,11 +9,31 @@ import PageController from "../components/common/pageController";
 class TC_Symobol extends React.Component{
 
     componentDidMount(){
+
         const cvs = document.getElementById("cvs");
         const TC_SymobolContent = document.getElementById("TC_SymobolContent");  
         cvs.height = TC_SymobolContent.offsetHeight;
         cvs.width = TC_SymobolContent.offsetWidth;
         this.screenChange();
+
+
+        
+
+        fetch("https://www.moedict.tw/a/番茄.json",{
+            method: 'GET',
+        }).then(function(response) {
+            if (response.status >= 200 && response.status < 300) {
+                return response.json()
+            } else {
+                let error = new Error(response.statusText)
+                error.response = response
+                throw error
+            }
+        }).then((res)=>{
+            console.log(res)
+        })
+
+     
     }
 
     screenChange(){
@@ -23,11 +43,6 @@ class TC_Symobol extends React.Component{
     resize(){
         location.reload()
     }
-
-    // componentWillUnmount(){
-    //     window.removeEventListener("resize",this.resize);
-
-    // }
 
     render(){ 
         return(

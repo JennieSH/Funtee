@@ -1,3 +1,7 @@
-node_modules/
+# dependencies
+
+/node_modules
 step.txt
 .vscode/
+
+.env

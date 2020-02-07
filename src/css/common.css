@@ -1,8 +1,7 @@
 body{
     margin: 0;
-    background-color: rgb(253, 253, 253);
+    /* background-color: #F8F8F8; */
     font-family: "微軟正黑體";
-    background-image: url(../imgs/BI2.png);
 }
 
 header{
@@ -184,18 +183,81 @@ nav>div a{
 }
 
 
-/* BkImg */
 
-.bkImg{
-    background-image: url(../imgs/BI.png);
-    height: 120%;
-    width: 100%;
+
+/* Login */
+.AuthContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(68, 70, 70, 0.062);
+}
+
+.AuthContainer .authForm{
+    display: flex;
+    flex-direction: column;
+}
+.AuthContainer .authForm input{
+   margin-bottom: 20px;
+   height: 50px;
+   width: 250px;
+   border: none;
+   border-bottom: 2px solid  rgb(0, 0, 0);
+   font-size: 20px;
+   padding: 0 10px;
+   outline:none;
+   background-color: transparent;
+}
+
+
+
+
+.AuthContainer .authForm input:focus{
+    border-bottom: 2px solid pink;
+
+}
+
+
+.AuthContainer .authForm h5{
+    text-align: end;
+    margin-bottom: 0;
+}
+
+.AuthContainer .authForm button{
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    margin: 30px 0 22px 0;
+}
+
+.AuthContainer>a>button{
+    height: 50px;
+    width: 270px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    background-color: pink;
+}
+
+
+
+
+/* Banner */
+.banner{
+    /* width: 200px;
     position: absolute;
-    z-index: -1;
+    top: 30vh; */
+   
+    position: absolute;
+    height: 100vh;
+    top:-50px;
+    z-index: -1;   
 }
 
-@media screen and (min-width:768px){  
-    .bkImg{    
-        height: 100%;    
-    }
-}

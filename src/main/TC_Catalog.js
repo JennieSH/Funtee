@@ -2,13 +2,11 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import Header from "../components/common/header";
 import "../css/TC_Catalog.css";
-import BkImg from "../components/common/bkImg";
 
 class TC_Catalog extends React.Component{
     render(){
         return(
             <>
-                <BkImg/>
                 <Header/>
                 <div className="TC_CatalogContainer">
                     <div>
@@ -22,7 +20,7 @@ class TC_Catalog extends React.Component{
                     <div>
                         <div className="TC_CatalogBox">
                             <img/>                       
-                            <span>Common<br/>Mandarin Vocabulary</span>
+                            <span>Common<br/> Vocabulary</span>
                             <button><Link to="/units">Learn More</Link></button>
                         </div>
                     </div>
@@ -30,7 +28,7 @@ class TC_Catalog extends React.Component{
                     <div>
                         <div className="TC_CatalogBox">
                             <img/>                       
-                            <span>Taiwanese<br/>Mandarin Vocabulary</span>
+                            <span>Common Vocabulary<br/>In Taiwan</span>
                             <button><Link to="/units">Learn More</Link></button>
                         </div>
                     </div>
