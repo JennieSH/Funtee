@@ -40,6 +40,7 @@ class SignIn extends React.Component{
         }
     }
 
+   
   
     FB_Redirect(){
         let providerF = new firebase.auth.FacebookAuthProvider();
@@ -72,7 +73,7 @@ class SignIn extends React.Component{
                                
                         <input onChange={ this.handleChange.bind(this) } type="password" placeholder="Password" id="password"/>
                         { authError ? <h4>{ authError }</h4> : null }
-                        <h5>FORGOT  PASSWORD ></h5>
+                        <Link to="/resetpassword"><h5>FORGOT  PASSWORD ></h5></Link>
                         <button> SIGN IN</button>
                     </form>
                

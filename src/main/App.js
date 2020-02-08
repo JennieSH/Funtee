@@ -13,6 +13,7 @@ import FC_Catalog from "./FC_Catalog";
 import FC_Spelling from "./FC_Spelling";
 import SignIn from "../components/common/auth/signIn";
 import SignUp from "../components/common/auth/signUp";
+import ResetPassword from "../components/common/auth/resetPassword";
 
 import TC_Symbol_test from "./TC_Symbol_test";
 
@@ -26,7 +27,9 @@ class App extends React.Component{
             <BrowserRouter>       
                <Route exact path="/" component={Homepage}/>
                <Route path="/signin" component={SignIn}/> 
-               <Route path="/signup" component={SignUp}/>      
+               <Route path="/signup" component={SignUp}/>
+               <Route path="/resetpassword" component={ResetPassword}/>   
+                 
                <Route path="/category" component={Category}/>                                       
                <Route path="/learning" component={TC_Catalog}/>
                <Route path="/symobol" component={TC_Symobol}/>            

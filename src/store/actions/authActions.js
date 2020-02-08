@@ -1,4 +1,5 @@
 import firebase from "firebase/app";
+
 export const signIn = ( credentials ) => {
     return ( dispatch) =>{
         // const firebase = getFirebase(); // no longer available 
@@ -41,4 +42,15 @@ export const signUp = ( userInfo ) =>{
             dispatch({ type: "SIGNUP_ERROR", error })
         })
     }) 
+}
+
+export const resetPassword = ( emailAddress ) =>{
+    return(( dispatch, getState)=>{
+        firebase.auth().sendPasswordResetEmail( emailAddress )
+        .then(()=>{
+            dispatch({ type: "RESET_PASSWORD_SUCCESS" })
+        }).catch((error)=>{
+            dispatch({ type: "RESET_PASSWORD_ERROR", error })
+        });
+    })
 }
