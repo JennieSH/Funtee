@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {  signUp } from "../../../store/actions/authActions";
 import "../../../css/common.css";
 import Header from "../header";
-import banner from "../../../imgs/banner.jpg";
+import  "../../../css/auth.css";
 
 
 
@@ -53,8 +53,8 @@ class SignUp extends React.Component{
                 <Header/>  
                 {/* <img src={BB} className="banner"/> */}
                 <div className="AuthContainer">
-                    
-                    <form onSubmit={ this.handleSubmit.bind(this) } className="authForm">
+                <div className="container">
+                    <form onSubmit={ this.handleSubmit.bind(this) } className="authForm up">
                         <div className="input-field">
                             <label htmlFor="name">Name</label>  
                             <input onChange={ this.handleChange.bind(this) } type="text" id="name"/>  
@@ -71,12 +71,17 @@ class SignUp extends React.Component{
                             <label htmlFor="confirmPassword">Confirm Password</label>  
                             <input onChange={ this.handleChange.bind(this) } type="password" id="confirmPassword"/>
                         </div>
-                       { authError ? <h5>{authError}</h5> : null }
-                        <button> SIGN UP </button>
+                       { authError ? <h4  className="red-text center">{authError}</h4> : null }
+                       <div className="authSignBtn"> 
+                            <Link to="/signin"><button className="waves-effect">SIGN IN</button></Link>             
+                            <button className="waves-effect"> SIGN UP</button>
+                           
+                        </div>
+                   
                     </form>
 
-               
-                    <Link to="/signin"><button>SIGN IN</button></Link> 
+                </div>    
+                   
                    
                 </div>
             </> 

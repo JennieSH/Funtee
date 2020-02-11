@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import { signIn } from "../../../store/actions/authActions";
 import firebase from 'firebase/app';
 import Header from "../header";
+import  "../../../css/auth.css";
+import facebook from "../../../imgs/facebook.jpg";
+import google from "../../../imgs/google.jpg";
 
 
 
@@ -65,23 +68,35 @@ class SignIn extends React.Component{
             <>
                 <Header/>  
                 <div className="AuthContainer">            
-                    <form onSubmit={ this.handleSubmit.bind(this) } className="authForm"> 
+                    <form onSubmit={ this.handleSubmit.bind(this) } className="authForm" id="authFormIn"> 
+
                         <div className="input-field">
                             <label htmlFor="email">Email</label>        
                             <input onChange={ this.handleChange.bind(this) } type="email"id="email" />
                         </div>
+
                         <div className="input-field">
                             <label htmlFor="password">Password</label>        
                             <input onChange={ this.handleChange.bind(this) } type="password" id="password" />
                         </div>
-                            { authError ? <h4 className="red-text center">{ authError }</h4> : null }
+
+                        { authError ? <h4 className="red-text center">{ authError }</h4> : null }
+                        
+                        
+                        <div className="authSignBtn">                     
+                            <button className="waves-effect"> SIGN IN</button>
+                            <Link to="/signup"><button className="waves-effect">SIGN UP</button></Link>
+                        </div>
+                        <div className="authMethod">                
+                            <img src={ facebook }  onClick={ this.FB_Redirect.bind(this) }/>     
+                            <img src={ google } onClick={ this.GO_Redirect.bind(this) }/>
                             <Link to="/resetpassword"><h5 className="right-align grey-text">FORGOT  PASSWORD ></h5></Link>
-                            <button> SIGN IN</button>
+                        </div>
+
                     </form>
                
-                    <Link to="/signup"><button>SIGN UP</button></Link>                 
-                    <button onClick={ this.FB_Redirect.bind(this) }>Facebook</button>       
-                    <button onClick={ this.GO_Redirect.bind(this) } className="google">Google</button>
+                    
+                  
                 </div>
             </> 
         )
