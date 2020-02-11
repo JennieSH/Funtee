@@ -1,12 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signIn } from "../../../store/actions/authActions";
 import firebase from 'firebase/app';
-
-import "../../../css/common.css";
 import Header from "../header";
-import BB from "../../../imgs/BB.jpg";
+
 
 
 class SignIn extends React.Component{
@@ -61,26 +59,29 @@ class SignIn extends React.Component{
 
 
     render(){
-        const { authError } = this.props;      
+        const { authError } = this.props;
+        if( this.props.auth.uid )return <Redirect to="/"/>
         return(
             <>
                 <Header/>  
-                {/* <img src={BB} className="banner"/> */}
-                <div className="AuthContainer">
-                    
-                    <form onSubmit={ this.handleSubmit.bind(this) } className="authForm">         
-                        <input onChange={ this.handleChange.bind(this) } type="email" placeholder="Email" id="email"/> 
-                               
-                        <input onChange={ this.handleChange.bind(this) } type="password" placeholder="Password" id="password"/>
-                        { authError ? <h4>{ authError }</h4> : null }
-                        <Link to="/resetpassword"><h5>FORGOT  PASSWORD ></h5></Link>
-                        <button> SIGN IN</button>
+                <div className="AuthContainer">            
+                    <form onSubmit={ this.handleSubmit.bind(this) } className="authForm"> 
+                        <div className="input-field">
+                            <label htmlFor="email">Email</label>        
+                            <input onChange={ this.handleChange.bind(this) } type="email"id="email" />
+                        </div>
+                        <div className="input-field">
+                            <label htmlFor="password">Password</label>        
+                            <input onChange={ this.handleChange.bind(this) } type="password" id="password" />
+                        </div>
+                            { authError ? <h4 className="red-text center">{ authError }</h4> : null }
+                            <Link to="/resetpassword"><h5 className="right-align grey-text">FORGOT  PASSWORD ></h5></Link>
+                            <button> SIGN IN</button>
                     </form>
                
                     <Link to="/signup"><button>SIGN UP</button></Link>                 
-                    <button onClick={ this.FB_Redirect.bind(this) }>Facebook Log in</button>       
-                    <button onClick={ this.GO_Redirect.bind(this) }>Google Log in</button>
-
+                    <button onClick={ this.FB_Redirect.bind(this) }>Facebook</button>       
+                    <button onClick={ this.GO_Redirect.bind(this) } className="google">Google</button>
                 </div>
             </> 
         )
@@ -89,7 +90,8 @@ class SignIn extends React.Component{
 
 const mapStateToProps = ( state ) => {
     return{
-       authError : state.auth.authError
+       authError : state.auth.authError,
+       auth : state.firebase.auth
     }
 }
 

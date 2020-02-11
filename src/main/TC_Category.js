@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import Header from "../components/common/header";
-import "../css/TC_Catalog.css";
+import "../css/TC_Category.css";
 
-class TC_Catalog extends React.Component{
+class TC_Category extends React.Component{
     render(){
         return(
             <>
@@ -38,4 +38,4 @@ class TC_Catalog extends React.Component{
     }
 }
 
-export default TC_Catalog
+export default TC_Category

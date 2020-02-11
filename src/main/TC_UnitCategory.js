@@ -1,16 +1,16 @@
 import React from "react";
 import {Route, Link} from 'react-router-dom';
 import Header from "../components/common/header";
-import "../css/TC_UnitCatalog.css";
+import "../css/TC_UnitCategory.css";
 
 
-class TC_UnitCatalog extends React.Component{
+class TC_UnitCategory extends React.Component{
     render(){
         return(
             <>
                 <Header/>
                 <div className="UnitCatalogContainer">
-                    <h2>Common <br/>Mandarin Vocabulary</h2>
+                    <h2>Common <br/>Chinese Vocabulary</h2>
                     <ul>
                         <Link to="/vocabulary"><li className="box1">Number</li></Link>
                         <Link to="/vocabulary"><li className="box2">Transportation</li></Link>
@@ -26,4 +26,4 @@ class TC_UnitCatalog extends React.Component{
     }
 }
 
-export default TC_UnitCatalog
+export default TC_UnitCategory

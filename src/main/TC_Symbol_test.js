@@ -23,6 +23,7 @@ class TC_Symbol_test extends React.Component{
         this.setState({
             title: e.currentTarget.value
         })
+        
     }
 
     handleSubmit(e){
@@ -97,7 +98,7 @@ class TC_Symbol_test extends React.Component{
                         <input type="submit" value="Submit"/>
                 </form>  
                 <TC_Symobol_child data={ test }/>
-                       
+                
             </> 
         )
     }

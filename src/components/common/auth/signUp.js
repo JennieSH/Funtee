@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import {  signUp } from "../../../store/actions/authActions";
 import "../../../css/common.css";
 import Header from "../header";
-import BB from "../../../imgs/BB.jpg";
+import banner from "../../../imgs/banner.jpg";
 
 
 
@@ -46,18 +46,31 @@ class SignUp extends React.Component{
     
 
     render(){  
-        const { authError } = this.props       
+        const { authError, auth } = this.props;
+        if( auth.uid )return <Redirect to="/"/>       
         return(
             <>
                 <Header/>  
                 {/* <img src={BB} className="banner"/> */}
                 <div className="AuthContainer">
                     
-                    <form onSubmit={ this.handleSubmit.bind(this) } className="authForm">       
-                        <input onChange={ this.handleChange.bind(this) } type="text" placeholder="Name" id="name"/>  
-                        <input onChange={ this.handleChange.bind(this) } type="email" placeholder="Email"id="email"/>                            
-                        <input onChange={ this.handleChange.bind(this) } type="password" placeholder="Password" id="password"/>
-                        <input onChange={ this.handleChange.bind(this) } type="password" placeholder="Confirm Password" id="confirmPassword"/>
+                    <form onSubmit={ this.handleSubmit.bind(this) } className="authForm">
+                        <div className="input-field">
+                            <label htmlFor="name">Name</label>  
+                            <input onChange={ this.handleChange.bind(this) } type="text" id="name"/>  
+                        </div> 
+                        <div className="input-field">
+                            <label htmlFor="email">Email</label>  
+                            <input onChange={ this.handleChange.bind(this) } type="email" id="email"/> 
+                        </div>
+                        <div className="input-field">
+                            <label htmlFor="password">Password</label>  
+                            <input onChange={ this.handleChange.bind(this) } type="password" id="password"/>
+                        </div>
+                        <div className="input-field">
+                            <label htmlFor="confirmPassword">Confirm Password</label>  
+                            <input onChange={ this.handleChange.bind(this) } type="password" id="confirmPassword"/>
+                        </div>
                        { authError ? <h5>{authError}</h5> : null }
                         <button> SIGN UP </button>
                     </form>
@@ -74,7 +87,8 @@ class SignUp extends React.Component{
 const mapStateToProps = ( state ) =>{
     console.log(state)  
     return{
-        authError: state.auth.authError
+        authError: state.auth.authError,
+        auth : state.firebase.auth
     }
 }
 

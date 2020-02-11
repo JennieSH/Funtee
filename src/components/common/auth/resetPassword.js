@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 import { resetPassword } from "../../../store/actions/authActions";
 import "../../../css/common.css";
 import Header from "../header";
-import BB from "../../../imgs/BB.jpg";
 import firebase from "firebase/app";
 
 
@@ -33,15 +33,22 @@ class ResetPassword extends React.Component{
  
 
     render(){
-        const { authError } = this.props;      
+        const { authError, auth } = this.props;
+        if( auth.uid )return <Redirect to="/"/>         
         return(
             <>
                 <Header/>  
-                {/* <img src={BB} className="banner"/> */}
-                <div className="AuthContainer">                   
-                <input onChange={ this.handleChange.bind(this) } type="email" placeholder="Email" id="email"/> 
-                { authError ? <h4>{authError}</h4> : null }
-                <button onClick={ this.handlePasswordReset.bind(this) }>Send Email</button>
+                <div className="AuthContainer">
+                    <div className="container">
+
+                      
+                        <div className="input-field">
+                            <label htmlFor="email">Email</label>        
+                            <input onChange={ this.handleChange.bind(this) } type="email"id="email" />
+                        </div>
+                        { authError ? <h4>{authError}</h4> : null }
+                        <button onClick={ this.handlePasswordReset.bind(this) } className="waves-effect waves-light btn">Send Email</button>
+                    </div>
                 </div>
             </> 
         )
@@ -50,7 +57,8 @@ class ResetPassword extends React.Component{
 
 const mapStateToProps = ( state ) =>{
     return{
-        authError : state.auth.authError
+        authError : state.auth.authError,
+        auth : state.firebase.auth
     }
 }
 

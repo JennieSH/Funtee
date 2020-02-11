@@ -3,13 +3,13 @@ import { BrowserRouter, Route } from "react-router-dom";
 // Router
 import Homepage from "./Homepage";
 import Category from "./Category";
-import TC_Catalog from "./TC_Catalog";
+import TC_Category from "./TC_Category";
 import TC_Symobol from "./TC_Symbol";
 import TC_Unit from "./TC_Unit";
-import TC_UnitCatalog from "./TC_UnitCatalog";
+import TC_UnitCategory from "./TC_UnitCategory";
 import FC_Collection from "./FC_Collection";
 import FC_Card from "./FC_Card";
-import FC_Catalog from "./FC_Catalog";
+import FC_Category from "./FC_Category";
 import FC_Spelling from "./FC_Spelling";
 import SignIn from "../components/common/auth/signIn";
 import SignUp from "../components/common/auth/signUp";
@@ -31,9 +31,9 @@ class App extends React.Component{
                <Route path="/resetpassword" component={ResetPassword}/>   
                  
                <Route path="/category" component={Category}/>                                       
-               <Route path="/learning" component={TC_Catalog}/>
+               <Route path="/learning" component={TC_Category}/>
                <Route path="/symobol" component={TC_Symobol}/>            
-               <Route path="/units" component={TC_UnitCatalog}/>
+               <Route path="/units" component={TC_UnitCategory}/>
                <Route path="/vocabulary" component={TC_Unit}/>
 
                <Route path="/flashcard" component={TC_Symbol_test}/>

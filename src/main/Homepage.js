@@ -1,29 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "../css/homepage.css";
 import Header from "../components/common/header";
-import Banner from "../imgs/Banner.png";
-import BB from "../imgs/BB.jpg";
+import BT from "../imgs/BT.png";
 
 
 class Homepage extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.state={
-            auth:null
-        }
-    }
-
     render(){   
-        if (this.state.auth === null){
+        if (this.props.auth.uid === undefined){
             return(
                 <>
                     <Header/>
                     <div className="homepageContainer">
-                        {/* <img src={BB} className="banner"/> */}
-                        <Link to="/signin"><button>SIGNIN</button></Link>
-                        <Link to="/category"><button>Guest</button></Link>
+                       <div className="container">
+                            <h1>Welcome</h1>
+                            <Link to="/signin"><button className="waves-effect waves-light btn">SIGN IN</button></Link>
+                            <Link to="/category"><button className="waves-effect waves-light btn">Guest</button></Link>
+                        </div>
                     </div>          
                 </>
             )
@@ -32,9 +27,12 @@ class Homepage extends React.Component{
                 <>
                     <Header/>
                     <div className="homepageContainer">
-                        {/* <img src={BB}  className="banner"/>  */}
-                        <div>hello</div>
-                        <Link to="/category"><button>Start now</button></Link>
+                        <div className="container">
+                                <h1>Hello !</h1>
+                                <div><img src={BT}/></div>
+                                <Link to="/category"><button className="waves-effect waves-light btn">Start</button></Link>          
+                        </div>
+                       
                     </div>               
                 </>               
             )
@@ -42,4 +40,10 @@ class Homepage extends React.Component{
     }
 }
 
-export default Homepage
+const mapStateToProps = ( state ) =>{
+    return{
+        auth : state.firebase.auth
+    }
+}
+
+export default connect(mapStateToProps)(Homepage)
