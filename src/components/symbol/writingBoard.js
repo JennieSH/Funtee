@@ -90,7 +90,7 @@ class WritingBoard extends React.Component{
         return(
             <>
               <canvas id="cvs"/>
-              <button id="undoBtn">undo</button>
+              <i className="material-icons waves-effect" id="undoBtn">replay</i>
             </>
         )
     }

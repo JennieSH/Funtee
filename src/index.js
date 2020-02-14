@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./main/App";
+import Loading from "./components/common/loading";
 // redux
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider, useSelector } from 'react-redux';
@@ -34,7 +35,7 @@ const rrfProps = {
 
 function AuthIsLoaded({ children }) {
     const auth = useSelector(state => state.firebase.auth)
-    if (!isLoaded(auth)) return <div>Loading Screen...</div>;
+    if (!isLoaded(auth)) return <Loading/>
         return children
 }
 

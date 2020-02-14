@@ -3,12 +3,17 @@ import "../../css/common.css";
 
 
 class PageController extends React.Component{
+
+    handleRecord(){
+        console.log("last")
+    }
+   
     render(){      
         return(
             <>
               <div className="pageController">
-                            <span>＜</span>
-                            <span>＞</span>
+                            <span onClick={ this.handleRecord.bind(this)}>＜</span>
+                            {/* <span>＞</span> */}
                     </div>
             </>
         )

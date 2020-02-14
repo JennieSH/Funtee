@@ -5,38 +5,57 @@
     align-items: center;
 }
 .TC_SymobolContent{
-    margin-top: 30px;
-    height: 300px;
+    margin-top: 80px;
+    height: 320px;
     width: 270px;
-    background-color: rgb(214, 199, 178);
-    padding: 10px;
+    background-color: rgba(223, 210, 193, 0.705);
+    padding: 8px;
     display: flex;
     flex-wrap: wrap;
+    border: 1px solid #eceaea;
+   
 }
 .TC_SymobolContent>.ContentImg{
     height: 250px;
     width: 120px;
-    background-color: rgba(122, 99, 66, 0.418);
+
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 
 }
-
 .TC_SymobolContent>.ContentImg>div{
-    background-color: cadetblue;
-    height: 110px;
-    width: 105px;
+   
+    height: 130px;
+    width: 120px;
     font-size: 22px;
     text-align: center;
+    overflow: hidden;
+    border-radius: 3px;
 } 
+.TC_SymobolContent>.ContentImg>div>img{    
+    position: relative;
+    
+    height: 100%;
+    border-bottom: 1px solid #b19269;
+}
+.TC_SymobolContent>.ContentImg>.TC_SymobolExample{
+    background-color: rgba(255, 255, 255, 0.212);
+}
+.TC_SymobolContent>.ContentImg>.TC_SymobolExample>img{    
+    border: none;
+    left: 0px;
+    top: 20px;
+    height: 70%;
+}
+
 
 
 .TC_SymobolContent>.ContentImgDetail{
     height: 250px;
-    width: 150px;
-    background-color: rgba(108, 190, 201, 0.473);
+    width: 130px;
+    /* background-color: rgba(108, 190, 201, 0.473); */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -45,35 +64,106 @@
 }
 
 .TC_SymobolContent>.ContentImgDetail span{
-    background-color: rgba(122, 142, 179, 0.322);
+    /* background-color: rgba(122, 142, 179, 0.322); */
     width: 100%;
     text-align: center;
+    
+    padding-left: 3px;
+    font-weight: bold;
+
 }
-
-
+.TC_SymobolContent>.ContentImgDetail span:nth-child(n+1){
+    font-size: 18px;
+}
+.TC_SymobolContent>.ContentImgDetail span:nth-child(n+2){
+    font-size: 20px;
+}
 .TC_SymobolContent>.TC_SymobolMenu{
     height: 50px;
     width: 100%;
-    background-color: rgba(75, 165, 116, 0.842);
+    /* background-color: rgba(75, 165, 116, 0.425); */
     display: flex;
     justify-content: space-around;
     align-items: center;
+    align-items: flex-end;
 }
-
-.TC_SymobolContent>.TC_SymobolMenu img{
-    height: 40px;
-    width: 40px;
+.TC_SymobolContent>.TC_SymobolMenu i{
+    font-size: 35px;
+    /* background-color: rgba(169, 169, 169, 0.5); */
+}
+.TC_SymobolContent>.TC_SymobolMenu i:hover{
     background-color: rgba(169, 169, 169, 0.5);
+    border-radius: 50%;
 }
-
+.TC_SymobolContent>.TC_SymobolMenu .socket{
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: 2px solid #eceaea;
+    position: relative;  
+}
+.TC_SymobolContent>.TC_SymobolMenu .socket .record{
+    width: 90%;
+    height: 90%;
+    background: red;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 2px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    transition-timing-function: cubic-bezier(.05,.58,.32,1.35);
+    -webkit-transition-timing-function: cubic-bezier(.05,.58,.32,1.35); 
+    cursor: pointer
+}
+.TC_SymobolContent>.TC_SymobolMenu .socket .record:active{
+    width: 60%;
+    height: 60%;
+    border-radius: 4px;
+    top: 6px;
+}
 .TC_SymobolContainer canvas{
     margin-top: 20px;
     cursor: url(../imgs/pencil.png) 4 12, auto;
     background-color: rgb(254, 255, 255);
+    border: 1px solid #eceaea;
 }
-.TC_SymobolContainer button{
+/* .TC_SymobolContainer button{
     margin-top: 20px;
     width: 150px;
+} */
+
+.TC_SymobolContainer #undoBtn{
+    position: absolute;
+    font-size: 30px;
+    border-radius: 50%;
+    right: 55px;
+    top:705px;
+    z-index: 3;
+    text-align: center;
+    color: rgb(131, 133, 132);
+ }
+#lastPageBtn,#nextPageBtn{
+    position: absolute;
+    top:390px;
+    font-size: 40px;
+    color: seashell;
+    background-color: rgba(49, 46, 42, 0.185);
+}
+#nextPageBtn{
+    left: calc(100vw - 40px);
+}
+#lastPageBtn,#nextPageBtn:hover{
+    background-color: rgba(49, 46, 42, 0.568);
+}
+.TC_SymobolContainer>.page{
+    width: 100%;
+    text-align: center;
+    color: rgb(119, 118, 118);
+    margin-top: 15px;
+    font-size:14px
 }
 
 @media screen and (min-width:768px){
@@ -81,107 +171,236 @@
         flex-direction: column;
     }
     .TC_SymobolContent{
-        margin-top: 30px;
+        margin-top: 120px;
         height: 390px;
         width: 500px;   
-        padding: 20px;
+        padding: 10px;
         position: relative;
     }
     .TC_SymobolContent>.ContentImg{
         height: 100%;
-        width: 200px;
+        width: 250px;
+        justify-content: space-between;
+     
     }
     .TC_SymobolContent>.ContentImg>div{
-        height: 170px;
-        width: 170px;
-    } 
-    .TC_SymobolContent>.ContentImgDetail{
-        height: 280px;
-        width: 300px;  
+        height: 220px;
+        width: 250px;
+        
     }
+    .TC_SymobolContent>.ContentImg svg{
+        padding-bottom: 30px;
+        
+    }
+    .TC_SymobolContent>.ContentImg>div>img{
+        left: 0;
+    }
+    .TC_SymobolContent>.ContentImgDetail{
+        height: 260px;
+        width: 225px;
+       
+    }
+   
     .TC_SymobolContent>.TC_SymobolMenu{
-        height: 110px;
-        width: 300px;
+        height: 90px;
+        width: 215px;
         position: absolute;
         bottom: 20px;
         right:20px;
     }    
-    .TC_SymobolContent>.TC_SymobolMenu img{
-        height: 70px;
-        width: 70px;
+    .TC_SymobolContent>.ContentImgDetail span:nth-child(n+1){
+        font-size: 30px;
+        margin-left: 8px;
     }
+    .TC_SymobolContent>.ContentImgDetail span:nth-child(n+2){
+        font-size: 30px;
+       
+    }
+    .TC_SymobolContent>.TC_SymobolMenu i{
+        font-size: 50px;
+        margin-bottom: 20px;
+        margin-left: 25px;
+    }
+    .TC_SymobolContent>.TC_SymobolMenu .socket{
+        width: 50px;
+        height: 50px;
+        left: 5px;   
+    }
+   
+    .TC_SymobolContent>.TC_SymobolMenu .socket .record:active{
+        top: 10px;
+       
+    }
+
     .TC_SymobolContainer canvas{
         margin-top: 25px;
 
     }
+    .TC_SymobolContainer #undoBtn{      
+        font-size: 50px;
+        right: 140px;
+        top:870px;   
+     }
+    #lastPageBtn,#nextPageBtn{
+        top:500px;
+        font-size: 50px;
+    }
+    #nextPageBtn{
+        left: calc(100vw - 50px);
+    }
+    .TC_SymobolContainer>.page{
+        margin-top: 20px;
+    }
 }
 
 @media screen and (min-width:1024px){
-    .TC_SymobolContainer{
-        margin-top: 80px;
+    .TC_SymobolContent{
+        margin-top: 200px;
     }
     .TC_SymobolContainer canvas{
         margin-top: 70px;
     }
-    .TC_SymobolContainer button{
+    /* .TC_SymobolContainer button{
         margin-top: 80px;
 
+    } */
+    .TC_SymobolContainer #undoBtn{      
+        font-size: 50px;
+        right: 260px;
+        top:1000px;   
+     }
+    #lastPageBtn,#nextPageBtn{
+        top:580px;
+        font-size: 70px;
+    }
+    #nextPageBtn{
+        left: calc(100vw - 70px);
+    }
+    .TC_SymobolContainer>.page{
+        margin-top: 40px;
+        font-size: 16px;
     }
 }
 
 @media screen and (min-width:1280px){
     .TC_SymobolContainer{
        flex-direction: row;
-       margin-top: 70px;
     }
     .TC_SymobolContent{
         height: 340px;
         width: 500px;
-        margin-top: 0px;
+        margin-top: 150px;
     }
     .TC_SymobolContent>.ContentImg{
-        height: 340px;
+        height: 320px;
         width: 230px;
     }
-
+  
     .TC_SymobolContent>.ContentImg>div{
-        height: 150px;
-        width: 180px;
+        height: 200px;
+        width: 230px;
     } 
+    .TC_SymobolContent>.ContentImg>div>img{    
+        position: relative;
+        left: 0px;
+        height: 100%;
+    }
+    .TC_SymobolContent>.ContentImg svg{
+        padding-bottom: 15px;
+    }
     .TC_SymobolContent>.ContentImgDetail{
         height: 230px;
-        width: 270px;
+        width: 230px;
       
-    }   
+    }
+    .TC_SymobolContent>.TC_SymobolMenu i{
+        font-size: 40px;
+        /* background-color: rgba(169, 169, 169, 0.5); */
+    }
+    .TC_SymobolContent>.TC_SymobolMenu .socket{
+        width: 40px;
+        height: 40px;    
+    }
+    .TC_SymobolContent>.TC_SymobolMenu .socket .record{
+        width: 85%;
+        height: 85%;
+        top:3px;
+        left: 1px;
+    }
+    .TC_SymobolContent>.TC_SymobolMenu .socket .record:active{
+     
+        top: 8px;
+    }
+    
     .TC_SymobolContainer canvas{
         margin-left: 40px;
-        margin-top: 0px;
+        margin-top: 150px;
     }
     .TC_SymobolContent>.TC_SymobolMenu{
-        height: 110px;
-        width: 270px;
+        height: 100px;
+        width: 230px;
         
     }
-    .TC_SymobolContainer button{
-        width: 300px;
-        height: 30px;
-        margin-top: 35px;
+    .TC_SymobolContent>.TC_SymobolMenu i{
+        padding-bottom: 0px;
     }
+    .TC_SymobolContent>.TC_SymobolMenu .socket{
+        bottom: 0px;
+    }
+   
+    .TC_SymobolContent>.TC_SymobolMenu .socket .record:active{
+        top: 8px;     
+    }
+    .TC_SymobolContent>.TC_SymobolMenu .socket .record{
 
+        left: 0.5px;
+    }
+    
+    .TC_SymobolContainer #undoBtn{      
+        font-size: 50px;
+        right: 120px;
+        top:435px;   
+     }
+    #lastPageBtn,#nextPageBtn{
+        top:300px;
+        font-size: 50px;
+    }
+    #nextPageBtn{
+        left: calc(100vw - 50px);
+    }
 }
 
 @media screen and (min-width:1920px){
-    .TC_SymobolContainer{
-       
-        margin-top: 150px;
-     }
-    .TC_SymobolContainer button{
-        position: fixed;
-        top:700px
+
+    .TC_SymobolContent{      
+        margin-top: 350px;
     }
+    .TC_SymobolContent>.TC_SymobolMenu .socket .record{
+        width: 85%;
+        height: 85%;
+        top:2.5px;
+        left: 0px;
+    }
+    .TC_SymobolContent>.TC_SymobolMenu .socket .record:active{
+     
+        top: 8px;
+    }
+  
     .TC_SymobolContainer canvas{
         margin-left: 130px;
+        margin-top: 350px;
     }
- 
+    .TC_SymobolContainer #undoBtn{      
+        font-size: 50px;
+        right: 400px;
+        top:635px;   
+    }
+    #lastPageBtn,#nextPageBtn{
+        top:500px;
+        font-size: 60px;
+    }
+    #nextPageBtn{
+        left: calc(100vw - 60px);
+    }
     
 }

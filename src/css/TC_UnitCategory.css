@@ -13,6 +13,7 @@
 
 .UnitCatalogContainer ul{
     list-style-type:none;
+    margin-top: 60px;
     width:100%;
     display: flex;
     flex-wrap: wrap;
@@ -29,7 +30,8 @@
     font-weight: bold;
     color:#000;
     font-size: 20px;
-    
+    margin-top: 20px;
+
 }
 
 .box1{
@@ -72,12 +74,15 @@
   
 }
 @media screen and (min-width:1024px){
+    .UnitCatalogContainer h2{
+        margin-top: 50px;
+    }
     .UnitCatalogContainer ul{
         width: 960px;
         position: relative;
         left: -20px;
         padding:60px 0;
-        margin-top: 150px;
+        margin-top: 130px;
     }
 
 
@@ -172,7 +177,7 @@
         width: 860px;
         position: relative;
         left: -50px;
-        margin-top: 0;
+        margin-top: 70px;
     }
     .UnitCatalogContainer li{
         height: 150px;

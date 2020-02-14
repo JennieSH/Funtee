@@ -183,18 +183,21 @@ header .usrImgs{
 }
 
 /* PageController */
-
+/* 
 .pageController{
-    position: absolute;
+    position: relative;
     font-size: 40px;
     color: seashell;
-    top:337px;
+    top:-137px;
     display: flex;
     justify-content: space-between;
     width: 100%;
+    
 }
 .pageController span{
     background-color: rgba(49, 46, 42, 0.185);
+    position: relative;
+   
 }
 .pageController span:hover{
     background-color: rgba(49, 46, 42, 0.568);
@@ -225,11 +228,127 @@ header .usrImgs{
         top: 450px;
         font-size: 60px;
     }  
+} */
+/* loading */
+.loadingContainer{
+    
+    box-sizing:none;
+    position: relative;
+    z-index: 9;
+    width: 100vw;
+    height: 100vh;
+   
 }
+.loadingContainer .loading {
+   
+    position: absolute;
+    top: 50%;
+    left : 50%;
+    
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    -moz-transform: translateY(-50%) translateX(-50%);
+    -o-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+  }
+  
+.loadingContainer .loading .binding {
+    content : '';
+    width : 50px;
+    height : 10px;
+    border : 2px solid #E15958;
+    margin : 0 auto;
+  }
+  
+.loadingContainer .loading .pad {
+    width : 50px;
+    height : 50px;
+    border : 2px solid #E15958;
+    border-top : 0;
+    padding : 6px;
+    padding-top: 10px;
+    margin : 0 auto;
+  }
+  
+.loadingContainer .line {
+    width : 15px;
+    margin-top : 10px;
+    border-top : 2px solid #E15958;
+    opacity : 0;
+    -webkit-animation : writeline 3s infinite ease-in;
+    -moz-animation : writeline 3s infinite ease-in;
+    -o-animation : writeline 3s infinite ease-in;
+    animation : writeline 3s infinite ease-in;
+  }
+  
+.loadingContainer  .loading .line:first-child {
+    margin-top : 0;
+  }
+  
+.loadingContainer .loading .line.line1 {
+    -webkit-animation-delay: 0s;
+    -moz-animation-delay: 0s;
+    -o-animation-delay: 0s;
+    animation-delay: 0s;
+  }
+  
+.loadingContainer .loading .line.line2 {
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+  
+.loadingContainer .loading .line.line3 {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    -o-animation-delay: 1s;
+    animation-delay : 1s;
+  }
+  
+.loadingContainer .loading .text {
+    text-align : center;
+    margin-top : 10px;
+    font-size : 14px;
+    color : #E15958;
 
-
-
-
+    -webkit-animation : writeline 3s infinite ease-in;
+    -moz-animation : writeline 3s infinite ease-in;
+    -o-animation : writeline 3s infinite ease-in;
+    animation : writeline 5s infinite ease-in;
+    
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+  
+  @-webkit-keyframes writeline {
+    0% { width : 0px; opacity: 0; }
+    33% { width : 15px; opacity : 1; }
+    70% { opacity : 1; }
+    100% {opacity : 0; }
+  }
+  
+  @-moz-keyframes writeline {
+    0% { width : 0px; opacity: 0; }
+    33% { width : 15px; opacity : 1; }
+    70% { opacity : 1; }
+    100% {opacity : 0; }
+  }
+  
+  @-o-keyframes writeline {
+    0% { width : 0px; opacity: 0; }
+    33% { width : 15px; opacity : 1; }
+    70% { opacity : 1; }
+    100% {opacity : 0; }
+  }
+  
+  @keyframes writeline {
+    0% { width : 0px; opacity: 0; }
+    33% { width : 15px; opacity : 1; }
+    70% { opacity : 1; }
+    100% {opacity : 0; }
+  }
 /* Login */
 /* .AuthContainer{
     display: flex;

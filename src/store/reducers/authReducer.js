@@ -6,17 +6,16 @@ const authReducer = ( state = initState, action) =>{
         // sign in
         case "SIGNIN_ERROR":
             console.log( "sign in error" )
-        return {
-            ...state, // need to copy before change one of items
-            authError : "Please check those details and try again." 
-        }
+            return {
+                ...state, // need to copy before change one of items
+                authError : "Please check those details and try again." 
+            }
         case "SIGNIN_SUCCESS":
             console.log("sign in success")
             return {
                 ...state,
                 authError:null,
             }
-
         // sign out
         case "SIGNOUT_SUCCESS":
             alert("sign out success")

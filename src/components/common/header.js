@@ -238,7 +238,11 @@ class Header extends React.Component{
                         </ul>
 
                         <ul className="sidenav grey lighten-3 right" id="mobile-menu">
-                            <li><Link to="/" className="btn btn-floating teal"><img className="usrImgs" src={ BT }/></Link></li>
+                            <li>
+                                <Link to="/" className="btn btn-floating teal">
+                                    <img className="usrImgs" src={ BT }/>
+                                </Link>
+                            </li>
                             <hr/>
                             <li><Link to="/learning"><img src={ languageNav } className="navImgs"/>Learning Chinese</Link></li>
                             <li><Link to="/flashcard"><img src={ flashcard } className="navImgs"/>Flash Card</Link></li>

@@ -2,11 +2,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 110px;
 
 }
 .unitImg{
-   
     background-color: #F4EFE7;
     position: relative;
     border: 5px dashed #E1D7C9;
