@@ -53,14 +53,14 @@ class TC_SymbolContent extends React.Component{
 
 
                 <div className="TC_SymobolMenu">
-                <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>
-                    volume_up
-                    <audio src={symbol.audio[index]} id="audio"/>
-                </i>                                          
-                <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
-                    <div className="record" ></div>
-                </i>
-                <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow</i>             
+                    <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>
+                        volume_up
+                        <audio src={symbol.audio[index]} id="audio"/>
+                    </i>                                          
+                    <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
+                        <div className="record" ></div>
+                    </i>
+                    <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow</i>             
                 </div>                        
             </div>
         )       

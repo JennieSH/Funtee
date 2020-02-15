@@ -11,18 +11,20 @@
     border: 5px dashed #E1D7C9;
     border-radius: 5px;
     box-shadow: 1px 1px 5px rgb(49, 46, 42);
+    margin-top: 30px;
 }
 .unitImg img{
-    height: 180px;
-    width: 180px;
-    background-color: rgb(101, 188, 247);
+    height: 190px;
+    width: 190px;
+
     margin: 30px;
     border-radius: 3px;
     box-shadow: 1px 1px 3px rgb(49, 46, 42)
 }
 .TC_UnitContainer ul{
-    height: 210px;
-    width: 250px;
+    margin-top: 40px;
+    height: 230px;
+    width: 260px;
     background-color: #E1D7C9;
     list-style-type:none;
     padding: 0;
@@ -50,24 +52,6 @@
     color: #F37101;
 }
 
-.controlMenu{
-    width: 80%;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-}
-
-.controlMenu div{
-    background-color: rgb(221, 162, 162);
-    height: 60px;
-    width: 60px;
-
-    text-align: center;
-}
-
-.controlPage_W{
-    display: none;
-}
 
 
 
@@ -78,25 +62,23 @@
         align-items: center;    
     }   
     .unitImg{
-        height: 330px;
-        width: 330px;
+        height: 400px;
+        width: 400px;
     }
     .unitImg img{
-        height: 250px;
-        width: 250px;
+        height: 320px;
+        width: 320px;
         margin: 35px;
     }
     .TC_UnitContainer ul{
         height: 290px;
-        width: 330px;
-        margin-top: 30px;
+        width: 400px;
+        margin-top: 50px;
     }
     .TC_UnitContainer li{
         font-size: 30px;
     }
-    .controlMenu{
-        margin-top: 50px;
-    }
+    
 }
 
 
@@ -106,15 +88,19 @@
         margin-top: 130px;
 
     }
+    .unitImg{
+        height: 500px;
+        width: 500px;
+    }
+    .unitImg img{
+        height: 400px;
+        width: 400px;
+        margin: 45px;
+    }
     .TC_UnitContainer ul{
-        margin-top: 100px;
-    }
-    .controlMenu{
-        margin-top: 140px;
-    }
-    .controlMenu div{
-        height: 100px;
-        width: 100px;
+        height: 350px;
+        width: 500px;
+        margin-top: 80px;
     }
 }
 
@@ -124,36 +110,25 @@
     .TC_UnitContainer{
         margin-top: 40px;
         flex-direction: row;
-
     }
 
     .unitImg{
-        height: 290px;
-        width: 290px;
+        height: 350px;
+        width: 350px;
+        margin-top: 80px;
     }
-    
     .unitImg img{
-        height: 230px;
-        width: 230px;
-        margin: 25px;
+        height: 270px;
+        width: 270px;
+        margin: 35px;
     }
     .TC_UnitContainer ul{
-        margin: 0 0 0 120px;  
+        height: 350px;
+        width: 350px;
+        margin: 80px 0 0 100px;
+       
     }
-    .controlMenu{
-        margin-top: 40px;
-        padding: 0 120px;
-    }
-    .controlMenu div{
-        height: 100px;
-        width: 100px;
-    }
-    .controlPage_W{
-        display: flex;
-    }
-    .controlMenu div:nth-child(n+5){
-        background-color: #FFD134;    
-    }
+  
 }
 
 @media screen and (min-width:1920px){
@@ -163,29 +138,203 @@
     }
 
     .unitImg{
-        height: 450px;
-        width: 450px;
+        height: 500px;
+        width: 500px;
+        margin-top: 60px;
     }
     .unitImg img{
-        height: 350px;
-        width: 350px;
-        margin: 50px;
+        height: 400px;
+        width: 400px;
+        margin: 45px;
     }
     .TC_UnitContainer ul{
-        margin: 0 0 0 250px;
-        height: 410px;
-        width: 450px;
+        height: 500px;
+        width: 500px;
+        margin: 60px 0 0 150px;
+       
     }
     .TC_UnitContainer li{
         font-size: 40px;
     }
-    .controlMenu{
-        margin-top: 150px;
-    }
-    .controlMenu div{
-        height: 130px;
-        width: 130px;
-    }
+
+}
 
 
+
+
+/* page */
+#lastPageBtn_U,#nextPageBtn_U{
+    position: absolute;
+    top:290px;
+    font-size: 40px;
+    color: seashell;
+    background-color: rgba(49, 46, 42, 0.185);
+}
+#nextPageBtn_U{
+    left: calc(100vw - 40px);
+}
+#lastPageBtn_U,#nextPageBtn_U:hover{
+    background-color: rgba(49, 46, 42, 0.568);
+}
+
+@media screen and (min-width:768px){  
+        #lastPageBtn_U,#nextPageBtn_U{
+        top:430px;
+        font-size: 50px;
+    }
+    #nextPageBtn_U{
+        left: calc(100vw - 50px);
+    }
+}
+@media screen and (min-width:1024px){
+    #lastPageBtn_U,#nextPageBtn_U{
+        top:530px;
+        font-size: 70px;
+    }
+    #nextPageBtn_U{
+        left: calc(100vw - 70px);
+    }
+}
+@media screen and (min-width:1280px){
+    #lastPageBtn_U,#nextPageBtn_U{
+        top:250px;
+        font-size: 60px;
+    }
+    #nextPageBtn_U{
+        left: calc(100vw - 60px);
+    }
+}
+
+@media screen and (min-width:1920px){
+    #lastPageBtn_U,#nextPageBtn_U{
+        top:320px;
+        font-size: 80px;
+    }
+    #nextPageBtn_U{
+        left: calc(100vw - 80px);
+    }
+}
+
+
+
+/* Menu */
+.TC_UnitlMenu{
+    height: 50px;
+    width: 270px;
+    /* background-color: rgba(75, 165, 116, 0.425); */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+.TC_UnitlMenu i{
+    font-size: 35px;
+    /* background-color: rgba(169, 169, 169, 0.5); */
+}
+.TC_UnitlMenu i:hover{
+    background-color: rgba(169, 169, 169, 0.5);
+    border-radius: 50%;
+}
+.TC_UnitlMenu .socket{
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: 2px solid #eceaea;
+    position: relative;  
+}
+.TC_UnitlMenu .socket .record{
+    width: 90%;
+    height: 90%;
+    background: red;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 2px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    transition-timing-function: cubic-bezier(.05,.58,.32,1.35);
+    -webkit-transition-timing-function: cubic-bezier(.05,.58,.32,1.35); 
+    cursor: pointer
+}
+.TC_UnitlMenu .socket .record:active{
+    width: 60%;
+    height: 60%;
+    border-radius: 4px;
+    top: 6px;
+}
+
+@media screen and (min-width:768px){
+    .TC_UnitlMenu{
+        height: 90px;
+        width: 400px;
+        
+    }    
+    .TC_UnitlMenu span:nth-child(n+1){
+        font-size: 30px;
+        
+    }
+    .TC_UnitlMenu span:nth-child(n+2){
+        font-size: 30px;
+       
+    }
+    .TC_UnitlMenu i{
+        font-size: 50px;
+     
+    }
+    .TC_UnitlMenu .socket{
+        width: 50px;
+        height: 50px;
+        
+    }
+   
+    .TC_UnitlMenu .socket .record:active{
+        top: 10px;
+       
+    }
+}
+@media screen and (min-width:1024px){
+    .TC_UnitlMenu{
+        margin-top: 50px;
+        width: 500px;
+    }
+}
+@media screen and (min-width:1280px){
+    .TC_UnitlMenu{
+        width: 800px;
+        margin-top: 30px;      
+    }
+    .TC_UnitlMenu i{
+        padding-bottom: 0px;
+    }
+    .TC_UnitlMenu .socket{
+        bottom: 0px;
+    }
+   
+    .TC_UnitlMenu .socket .record:active{
+        top: 10px;     
+    }
+    .TC_UnitlMenu .socket .record{
+
+        left: 0.5px;
+    }
+}
+
+@media screen and (min-width:1920px){
+
+    .TC_UnitlMenu{
+        margin-top: 80px;
+        width: 900px;
+    }
+    .TC_UnitlMenu .socket .record{
+        width: 85%;
+        height: 85%;
+        top:2.5px;
+        left: 0px;
+    }
+    .TC_UnitlMenu.socket .record:active{
+     
+        top: 8px;
+    }
 }

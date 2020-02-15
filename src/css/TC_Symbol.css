@@ -5,7 +5,7 @@
     align-items: center;
 }
 .TC_SymobolContent{
-    margin-top: 80px;
+    margin-top: 90px;
     height: 320px;
     width: 270px;
     background-color: rgba(223, 210, 193, 0.705);
@@ -130,10 +130,7 @@
     background-color: rgb(254, 255, 255);
     border: 1px solid #eceaea;
 }
-/* .TC_SymobolContainer button{
-    margin-top: 20px;
-    width: 150px;
-} */
+
 
 .TC_SymobolContainer #undoBtn{
     position: absolute;
@@ -145,17 +142,17 @@
     text-align: center;
     color: rgb(131, 133, 132);
  }
-#lastPageBtn,#nextPageBtn{
+#lastPageBtn_S,#nextPageBtn_S{
     position: absolute;
-    top:390px;
+    top:400px;
     font-size: 40px;
     color: seashell;
     background-color: rgba(49, 46, 42, 0.185);
 }
-#nextPageBtn{
+#nextPageBtn_S{
     left: calc(100vw - 40px);
 }
-#lastPageBtn,#nextPageBtn:hover{
+#lastPageBtn_S,#nextPageBtn_S:hover{
     background-color: rgba(49, 46, 42, 0.568);
 }
 .TC_SymobolContainer>.page{
@@ -241,11 +238,11 @@
         right: 140px;
         top:870px;   
      }
-    #lastPageBtn,#nextPageBtn{
+    #lastPageBtn_S,#nextPageBtn_S{
         top:500px;
         font-size: 50px;
     }
-    #nextPageBtn{
+    #nextPageBtn_S{
         left: calc(100vw - 50px);
     }
     .TC_SymobolContainer>.page{
@@ -269,11 +266,11 @@
         right: 260px;
         top:1000px;   
      }
-    #lastPageBtn,#nextPageBtn{
+    #lastPageBtn_S,#nextPageBtn_S{
         top:580px;
         font-size: 70px;
     }
-    #nextPageBtn{
+    #nextPageBtn_S{
         left: calc(100vw - 70px);
     }
     .TC_SymobolContainer>.page{
@@ -313,9 +310,8 @@
         width: 230px;
       
     }
-    .TC_SymobolContent>.TC_SymobolMenu i{
+    /* .TC_SymobolContent>.TC_SymobolMenu i{
         font-size: 40px;
-        /* background-color: rgba(169, 169, 169, 0.5); */
     }
     .TC_SymobolContent>.TC_SymobolMenu .socket{
         width: 40px;
@@ -330,7 +326,7 @@
     .TC_SymobolContent>.TC_SymobolMenu .socket .record:active{
      
         top: 8px;
-    }
+    } */
     
     .TC_SymobolContainer canvas{
         margin-left: 40px;
@@ -361,11 +357,11 @@
         right: 120px;
         top:435px;   
      }
-    #lastPageBtn,#nextPageBtn{
+    #lastPageBtn_S,#nextPageBtn_S{
         top:300px;
         font-size: 50px;
     }
-    #nextPageBtn{
+    #nextPageBtn_S{
         left: calc(100vw - 50px);
     }
 }
@@ -395,11 +391,11 @@
         right: 400px;
         top:635px;   
     }
-    #lastPageBtn,#nextPageBtn{
+    #lastPageBtn_S,#nextPageBtn_S{
         top:500px;
         font-size: 60px;
     }
-    #nextPageBtn{
+    #nextPageBtn_S{
         left: calc(100vw - 60px);
     }
     

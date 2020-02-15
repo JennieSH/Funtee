@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/common/header";
-import "../css/TC_Symobol.css";
+import "../css/TC_Symbol.css";
 import WritingBoard from "../components/symbol/writingBoard";
 import TC_SymbolContent from "../components/symbol/content";
 import { connect } from "react-redux";
@@ -50,8 +50,8 @@ class TC_Symbol extends React.Component{
             return(
                 <>
                     <Header/>     
-                    <i className="material-icons waves-effect" id="lastPageBtn" onClick={ this.handleLastPage.bind(this) }>navigate_before</i>
-                    <i className="material-icons waves-effect" id="nextPageBtn" onClick={ this.handleNextPage.bind(this) }>navigate_next</i>           
+                    <i className="material-icons waves-effect" id="lastPageBtn_S" onClick={ this.handleLastPage.bind(this) }>navigate_before</i>
+                    <i className="material-icons waves-effect" id="nextPageBtn_S" onClick={ this.handleNextPage.bind(this) }>navigate_next</i>           
                     <div className="TC_SymobolContainer">                  
                         <TC_SymbolContent symbol={this.props.symbol.symbol}/>
                         <WritingBoard/>  

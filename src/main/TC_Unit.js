@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/common/header";
 import "../css/TC_Unit.css";
-import PageController from "../components/common/pageController";
+import UnitlMenu from "../components/Unit/menu";
 
 
 
@@ -18,6 +18,15 @@ class TC_Unit extends React.Component{
         }
        
     }
+
+    handleLastPage(){
+      
+     }
+ 
+     handleNextPage(){
+     
+     }
+ 
 
     componentDidMount(){
 
@@ -120,27 +129,19 @@ class TC_Unit extends React.Component{
                 return(
                     <>
                         <Header/>
+                        <i className="material-icons waves-effect" id="lastPageBtn_U" onClick={ this.handleLastPage.bind(this) }>navigate_before</i>
+                        <i className="material-icons waves-effect" id="nextPageBtn_U" onClick={ this.handleNextPage.bind(this) }>navigate_next</i> 
                         <div className="TC_UnitContainer">
-                        <div className="unitImg"><img src={url}/></div>
-                        {/* { url ? null:<img src={url}/> } */}
-                            <ul>
-                                <li>{this.state.dic.h[0].b}</li>
-                                <li>{this.state.dic.h[0].p}</li>
-                                <li>香蕉</li>
-                                <li>{this.state.dic.English}</li>
-                            
-                            </ul>
-                            <PageController/>
-                        
-                            
-                            <div className="controlMenu">                 
-                                <div onClick={ this.play.bind(this)}>撥放</div>
-                                {/* <div >錄音</div>
-                                <div>play</div> */}
-                                {/* <div>複製</div> */}
-                                <div className="controlPage_W">←</div>
-                                <div className="controlPage_W">→</div>
-                            </div>                                    
+                            <div className="unitImg"><img src={url}/></div>
+                            {/* { url ? null:<img src={url}/> } */}
+                                <ul>
+                                    <li>{this.state.dic.h[0].b}</li>
+                                    <li>{this.state.dic.h[0].p}</li>
+                                    <li>香蕉</li>
+                                    <li>{this.state.dic.English}</li>
+                                
+                                </ul>
+                            <UnitlMenu/>                                            
                         </div>
                     
                     </>        
