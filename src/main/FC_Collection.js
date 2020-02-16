@@ -16,7 +16,7 @@ class FC_Collection extends React.Component{
                 <div className="FC_Collection container"> 
                     <div className="stickyCard">
                         
-                        <Link to="/card">
+                        <Link to="/spelling">
                             <div className="FC_card card">
                                 <div className="card-content">                                
                                     <span className="card-title center-align"> 

@@ -118,7 +118,7 @@
     -webkit-transition-timing-function: cubic-bezier(.05,.58,.32,1.35); 
     cursor: pointer
 }
-.TC_SymobolContent>.TC_SymobolMenu .socket .record:active{
+.TC_SymobolContent>.TC_SymobolMenu .socket .record.active{
     width: 60%;
     height: 60%;
     border-radius: 4px;
@@ -224,7 +224,7 @@
         left: 5px;   
     }
    
-    .TC_SymobolContent>.TC_SymobolMenu .socket .record:active{
+    .TC_SymobolContent>.TC_SymobolMenu .socket .record.active{
         top: 10px;
        
     }
@@ -310,23 +310,23 @@
         width: 230px;
       
     }
-    /* .TC_SymobolContent>.TC_SymobolMenu i{
-        font-size: 40px;
+    .TC_SymobolContent>.TC_SymobolMenu i{
+        font-size: 35px;
+        margin-bottom: 6px;
     }
     .TC_SymobolContent>.TC_SymobolMenu .socket{
-        width: 40px;
-        height: 40px;    
+        width: 35px;
+        height: 35px;    
+        
     }
     .TC_SymobolContent>.TC_SymobolMenu .socket .record{
-        width: 85%;
-        height: 85%;
-        top:3px;
-        left: 1px;
+        width: 86%;
+        height: 86%;
+        margin-top: 0.2px;      
     }
-    .TC_SymobolContent>.TC_SymobolMenu .socket .record:active{
-     
-        top: 8px;
-    } */
+    .TC_SymobolContent>.TC_SymobolMenu .socket .record.active{ 
+        top: 6px;
+    }
     
     .TC_SymobolContainer canvas{
         margin-left: 40px;
@@ -337,19 +337,10 @@
         width: 230px;
         
     }
-    .TC_SymobolContent>.TC_SymobolMenu i{
-        padding-bottom: 0px;
-    }
-    .TC_SymobolContent>.TC_SymobolMenu .socket{
-        bottom: 0px;
-    }
-   
-    .TC_SymobolContent>.TC_SymobolMenu .socket .record:active{
-        top: 8px;     
-    }
+  
     .TC_SymobolContent>.TC_SymobolMenu .socket .record{
-
-        left: 0.5px;
+        top:2.3px;
+        left: -0.3px;
     }
     
     .TC_SymobolContainer #undoBtn{      
@@ -377,9 +368,9 @@
         top:2.5px;
         left: 0px;
     }
-    .TC_SymobolContent>.TC_SymobolMenu .socket .record:active{
+    .TC_SymobolContent>.TC_SymobolMenu .socket .record.active{
      
-        top: 8px;
+        top: 6px;
     }
   
     .TC_SymobolContainer canvas{

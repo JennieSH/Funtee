@@ -1,36 +1,70 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getSymbolAudio, getSymbolAudioEach } from "../../store/actions/symbolAction";
+import MicRecorder from 'mic-recorder-to-mp3';
 
-
+const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 class TC_SymbolContent extends React.Component{
 
-    
+    constructor(props){
+        super(props)
+        this.state = {
+            isRecording: false,
+            blobURL: "",
+            isBlocked: false,
+          }
+    }
 
-
-    handleRead (e){
-
+    componentDidMount(){      
+        navigator.getUserMedia({ audio: true },
+            () => {
+              console.log('Permission Granted');
+              this.setState({ isBlocked: false });
+            },
+            () => {
+              console.log('Permission Denied');
+              this.setState({ isBlocked: true })
+            },
+          );
+    }
+    handleRead(){
         document.getElementById("audio").play()
     }  
 
-
-    
-
-
-
-
-
     handleRecord (){
-        console.log("2")
-     }
+        if( this.state.isRecording === false){
+            if (this.state.isBlocked) {
+                console.log('Permission Denied');
+              } else {
+                Mp3Recorder
+                  .start()
+                  .then(() => {
+                    this.setState({ isRecording: true });
+                  
+                  }).catch((e) => console.error(e));
+              }
+        }else{
+            Mp3Recorder
+            .stop()
+            .getMp3()
+            .then(([buffer, blob]) => {
+              const blobURL = URL.createObjectURL(blob)
+             
+              this.setState({ blobURL, isRecording: false });
+            }).catch((e) => console.log(e));
+        }
+    }
+
     handlePlay (){
-        console.log("3")
+        document.getElementById("audioRecord").play()
     }  
+
+
 
     render(){
         let index = this.props.indexPage-1;
         let symbol = this.props.symbol;
-        console.log(symbol.svg[index])
+        console.log(this.state.isRecording)
         return(
             <div className="TC_SymobolContent" id="TC_SymbolContent">           
                 <div className="ContentImg">
@@ -50,18 +84,18 @@ class TC_SymbolContent extends React.Component{
                     <span className="blue-text text-darken-2">{ symbol.english[index] }</span>
                 </div>
 
-
-
                 <div className="TC_SymobolMenu">
                     <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>
                         volume_up
                         <audio src={symbol.audio[index]} id="audio"/>
                     </i>                                          
                     <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
-                        <div className="record" ></div>
+                        <div className={`record ${ this.state.isRecording? "active":null}`}></div>                      
                     </i>
-                    <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow</i>             
-                </div>                        
+                    <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
+                        <audio src={this.state.blobURL} id="audioRecord"/>
+                    </i>             
+                </div> 
             </div>
         )       
     }
