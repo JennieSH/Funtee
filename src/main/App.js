@@ -40,9 +40,9 @@ class App extends React.Component{
                <Route path="/vocabulary" component={TC_Unit}/>
 
                <Route path="/flashcard" component={FC_Category}/>
-               <Route path="/flashcard/Collection" component={FC_Collection}/>
-               <Route path="/flashcard/card" component={FC_Card}/>       
-               <Route path="/flashcard/spelling" component={FC_Spelling}/>
+               <Route path="/collection" component={FC_Collection}/>
+               <Route path="/card" component={FC_Card}/>       
+               <Route path="/spelling" component={FC_Spelling}/>
             </BrowserRouter>
         )    
     }

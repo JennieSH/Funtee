@@ -10,14 +10,14 @@ import "../css/FC_Category.css";
 class FC_Category extends React.Component{ 
 
     render(){
-       if(!this.props.auth.uid)return <Redirect to="/signin"/>
+    if( !this.props.auth.uid ){ return <Redirect to="/signin"/> }
         return(
             <>
                 <Header/>
                 <div className="FC_Category container"> 
                     <div className="stickyCard">
                         
-                        <a href="">
+                        <Link to="/collection">
                             <div className="FC_book card">
                                 <div className="card-content">
                                     <div className="card-description">                               
@@ -29,14 +29,17 @@ class FC_Category extends React.Component{
                                     </span>
                                 </div>                 
                             </div>
-                        </a>
+                        </Link>
 
                         <div className="FC_book card plus">                              
-                            <i className="material-icons white-text ">add</i>                          
+                            <i className="material-icons white-text material-icons waves-effect">add</i>                          
                         </div>                   
                     
                     </div>               
-                    <FCBook/>              
+                    <FCBook/>  
+                    <FCBook/> 
+                    <FCBook/> 
+                      
                 </div>               
             </>
             

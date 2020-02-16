@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class FCBook extends React.Component{
     render(){
         return(
-            <>
-            
-                <a href="">
+            <div className="FCBook">
+                <i className="delete material-icons red-text">cancel</i>              
+                <Link to="/collection">
                         <div className="FC_book card">
                             <div className="card-content">
                                 <div className="card-description">
@@ -15,55 +16,8 @@ class FCBook extends React.Component{
                                 <span className="card-title center-align">Speaking</span>
                             </div>  
                         </div>
-                    </a> 
-                    <a href="">
-                        <div className="FC_book card">
-                            <div className="card-content">                         
-                                <span className="card-title center-align">
-                                    
-                                </span>
-                            </div>  
-                        </div>
-                    </a> 
-                    <a href="">
-                        <div className="FC_book card">
-                            <div className="card-content">                         
-                                <span className="card-title center-align">
-                                    
-                                </span>
-                            </div>  
-                        </div>
-                    </a> 
-                    <a href="">
-                        <div className="FC_book card">
-                            <div className="card-content">                         
-                                <span className="card-title center-align">
-                                    
-                                </span>
-                            </div>  
-                        </div>
-                    </a> 
-                    <a href="">
-                        <div className="FC_book card">
-                            <div className="card-content">                         
-                                <span className="card-title center-align">
-                                    
-                                </span>
-                            </div>  
-                        </div>
-                    </a> 
-                    <a href="">
-                        <div className="FC_book card">
-                            <div className="card-content">                         
-                                <span className="card-title center-align">
-                                    
-                                </span>
-                            </div>  
-                        </div>
-                    </a> 
-               
-            </>
-          
+                </Link>
+            </div>          
         )
     }
 }
