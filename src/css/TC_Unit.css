@@ -258,7 +258,7 @@
     -webkit-transition-timing-function: cubic-bezier(.05,.58,.32,1.35); 
     cursor: pointer
 }
-.TC_UnitlMenu .socket .record:active{
+.TC_UnitlMenu .socket .record.active{
     width: 60%;
     height: 60%;
     border-radius: 4px;
@@ -289,7 +289,7 @@
         
     }
    
-    .TC_UnitlMenu .socket .record:active{
+    .TC_UnitlMenu .socket .record.active{
         top: 10px;
        
     }
@@ -312,7 +312,7 @@
         bottom: 0px;
     }
    
-    .TC_UnitlMenu .socket .record:active{
+    .TC_UnitlMenu .socket .record.active{
         top: 10px;     
     }
     .TC_UnitlMenu .socket .record{
@@ -333,7 +333,7 @@
         top:2.5px;
         left: 0px;
     }
-    .TC_UnitlMenu.socket .record:active{
+    .TC_UnitlMenu.socket .record.active{
      
         top: 8px;
     }

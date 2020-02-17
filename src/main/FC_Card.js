@@ -55,35 +55,43 @@ class FC_Card extends React.Component{
         return(
             <>
                
-               <Header/>
+                <Header/>    
                 <div className="FC_CardEach container">
-                    <i className="material-icons waves-effect" id="lastPageBtn_S" onClick={ this.handleLastPage.bind(this) }>navigate_before</i>
-                    <i className="material-icons waves-effect" id="nextPageBtn_S" onClick={ this.handleNextPage.bind(this) }>navigate_next</i>    
+                  
                      <div className="FC_cardEach card">
 
-                        <div className="front" style={frontStyle}>
-                            <h1 >apple</h1>
+                        <div className="frontSide" style={frontStyle}>
+                            <i className="material-icons waves-effect blue-text" >edit</i> 
+                            <span>apple</span>
                         </div>
 
-                        <div className="back" style={backStyle}>
-                            <h1 >蘋果</h1>                               
+                        <div className="backSide" style={backStyle}>
+                            <i className="material-icons waves-effect blue-text" >edit</i> 
+                            <span className="grey-text">蘋果</span>                               
                         </div>
                        
                     </div>
+
+                    <span className="page">1/100</span>
+
                     <div className="controlMenu">
-                        <button onClick={ this.handleFlip.bind(this)}>Turn</button>
-                       
-                    <i className="material-icons waves-effect">
-                        volume_up
-                        <audio id="audio"/>
-                    </i>                                          
-                    <i className="socket waves-effect" >
-                        <div className="record"></div>
-                    </i>
-                    <i className="material-icons waves-effect" >play_arrow</i>             
-                
-                       
+                        
+                        <i className="material-icons waves-effect"  onClick={ this.handleFlip.bind(this) }>flip_camera_android</i>                  
+                        <i className="material-icons waves-effect">
+                            volume_up
+                            <audio id="audio"/>
+                        </i>                                          
+                        <i className="socket waves-effect" >
+                            <div className="record"></div>
+                        </i>
+                        <i className="material-icons waves-effect" >play_arrow</i>
+                                       
                     </div>
+                    <div className="pageControl">
+                        <i className="material-icons waves-effect " onClick={ this.handleLastPage.bind(this) }>navigate_before</i>
+                        <i className="material-icons waves-effect " id="nextPageBtn_F" onClick={ this.handleNextPage.bind(this) }>navigate_next</i>                       
+                    </div>
+                   
                 </div>          
             </>
             

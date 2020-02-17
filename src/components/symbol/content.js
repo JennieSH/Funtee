@@ -80,7 +80,7 @@ class TC_SymbolContent extends React.Component{
                 <div className="ContentImgDetail">
                     <span className="pink-text text-darken-3">{ symbol.zhuyin[index] }</span>
                     <span className="grey-text text-darken-2">{ symbol.pinyin[index] }</span>
-                    <span className=" teal-text text-lighten-">{ symbol.chinese[index] }</span>
+                    <span className="teal-text text-lighten-">{ symbol.chinese[index] }</span>
                     <span className="blue-text text-darken-2">{ symbol.english[index] }</span>
                 </div>
 
