@@ -145,7 +145,7 @@
     -webkit-transition-timing-function: cubic-bezier(.05,.58,.32,1.35); 
     cursor: pointer
 }
-.FC_CardEach>.controlMenu .socket .record:active{
+.FC_CardEach>.controlMenu .socket .record .active{
     width: 60%;
     height: 60%;
     border-radius: 4px;
@@ -191,7 +191,7 @@
         top:3px;
         right: 1px;
     }
-    .FC_CardEach>.controlMenu .socket .record:active{
+    .FC_CardEach>.controlMenu .socket .record .active{
         top: 12px;
        
     }
@@ -230,7 +230,7 @@
         left: 1.65px;
         top: 1.5px;
     }
-    .FC_CardEach>.controlMenu .socket .record:active{
+    .FC_CardEach>.controlMenu .socket .record .active{
         top: 6px;
         left: 1px;
        

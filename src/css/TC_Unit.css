@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 110px;
+    margin-top: 90px;
 
 }
 .unitImg{
@@ -13,13 +13,16 @@
     box-shadow: 1px 1px 5px rgb(49, 46, 42);
     margin-top: 30px;
 }
-.unitImg img{
+.unitImg>div{
     height: 190px;
     width: 190px;
-
+    overflow: hidden;
     margin: 30px;
     border-radius: 3px;
     box-shadow: 1px 1px 3px rgb(49, 46, 42)
+}
+.unitImg img{
+    height: 100%;
 }
 .TC_UnitContainer ul{
     margin-top: 40px;
@@ -52,8 +55,13 @@
     color: #F37101;
 }
 
-
-
+.TC_UnitContainer>.page{
+    width: 100%;
+    text-align: center;
+    color: rgb(119, 118, 118);
+    margin-top: 10px;
+    font-size:18px
+}
 
 
 @media screen and (min-width:768px){
@@ -65,7 +73,7 @@
         height: 400px;
         width: 400px;
     }
-    .unitImg img{
+    .unitImg>div{
         height: 320px;
         width: 320px;
         margin: 35px;
@@ -77,6 +85,10 @@
     }
     .TC_UnitContainer li{
         font-size: 30px;
+    }
+    .TC_UnitContainer>.page{
+        margin-top: 0px;
+        font-size:20px
     }
     
 }
@@ -92,7 +104,7 @@
         height: 500px;
         width: 500px;
     }
-    .unitImg img{
+    .unitImg>div{
         height: 400px;
         width: 400px;
         margin: 45px;
@@ -102,13 +114,17 @@
         width: 500px;
         margin-top: 80px;
     }
+    .TC_UnitContainer>.page{
+        margin-top: 40px;
+       font-size: 28px;
+    }
 }
 
 
 @media screen and (min-width:1280px){
      
     .TC_UnitContainer{
-        margin-top: 40px;
+        margin-top: 60px;
         flex-direction: row;
     }
 
@@ -117,7 +133,7 @@
         width: 350px;
         margin-top: 80px;
     }
-    .unitImg img{
+    .unitImg>div{
         height: 270px;
         width: 270px;
         margin: 35px;
@@ -128,7 +144,11 @@
         margin: 80px 0 0 100px;
        
     }
-  
+    .TC_UnitContainer>.page{
+       font-size: 22px;
+       position: absolute;
+       margin-top: -220px;
+    }
 }
 
 @media screen and (min-width:1920px){
@@ -142,7 +162,7 @@
         width: 500px;
         margin-top: 60px;
     }
-    .unitImg img{
+    .unitImg>div{
         height: 400px;
         width: 400px;
         margin: 45px;
@@ -156,6 +176,11 @@
     .TC_UnitContainer li{
         font-size: 40px;
     }
+    .TC_UnitContainer>.page{
+        font-size: 28px;
+        position: absolute;
+        margin-top: -360px;
+     }
 
 }
 
@@ -302,8 +327,8 @@
 }
 @media screen and (min-width:1280px){
     .TC_UnitlMenu{
-        width: 800px;
-        margin-top: 30px;      
+        width: 500px;
+        margin-top: 10px;    
     }
     .TC_UnitlMenu i{
         padding-bottom: 0px;

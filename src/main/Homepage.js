@@ -17,7 +17,7 @@ class Homepage extends React.Component{
                        <div className="container">
                             <h1>Welcome</h1>
                             <Link to="/signin"><button className="waves-effect waves-light btn">SIGN IN</button></Link>
-                            <Link to="/category"><button className="waves-effect waves-light btn">Guest</button></Link>
+                            <Link to="/topics"><button className="waves-effect waves-light btn">Guest</button></Link>
                         </div>
                     </div>          
                 </>

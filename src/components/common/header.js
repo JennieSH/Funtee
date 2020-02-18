@@ -230,7 +230,7 @@ class Header extends React.Component{
                         </label>
 
                         <ul className="right hide-on-med-and-down">
-                            <li><Link to="/learning">Learning Chinese</Link></li>
+                            <li><Link to="/topics">Learning Chinese</Link></li>
                             <li><Link to="/flashcard">Flash Card</Link></li>
                             <li>{ authSignAction }</li>
                             <li><a>Language</a></li>
@@ -244,7 +244,7 @@ class Header extends React.Component{
                                 </Link>
                             </li>
                             <hr/>
-                            <li><Link to="/learning"><img src={ languageNav } className="navImgs"/>Learning Chinese</Link></li>
+                            <li><Link to="/topics"><img src={ languageNav } className="navImgs"/>Learning Chinese</Link></li>
                             <li><Link to="/flashcard"><img src={ flashcard } className="navImgs"/>Flash Card</Link></li>
                             <li>{ authSignAction }</li>
                             <li><a><img src={ language } className="navImgs"/>Language</a>

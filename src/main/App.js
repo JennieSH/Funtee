@@ -7,6 +7,7 @@ import TC_Category from "./TC_Category";
 import TC_Symbol from "./TC_Symbol";
 import TC_Unit from "./TC_Unit";
 import TC_UnitCategory from "./TC_UnitCategory";
+import TC_UnitCategory_TW from "./TC_UnitCategory_Tw"
 
 import FC_Category from "./FC_Category";
 import FC_Collection from "./FC_Collection";
@@ -19,7 +20,7 @@ import ResetPassword from "../components/common/auth/resetPassword";
 import TC_Symbol_test from "./TC_Symbol_test";
 import AudioData from "../components/data/audioData";
 import SymbolData from "../components/data/symbolData";
-
+import  Dictionary from "../components/common/dictionary"
 
 
 class App extends React.Component{
@@ -34,9 +35,10 @@ class App extends React.Component{
                <Route path="/resetpassword" component={ResetPassword}/>   
                  
                <Route path="/category" component={Category}/>                                       
-               <Route path="/learning" component={TC_Category}/>
+               <Route path="/topics" component={TC_Category}/>
                <Route path="/symbol" component={TC_Symbol}/>            
-               <Route path="/units" component={TC_UnitCategory}/>
+               <Route path="/lessons" component={TC_UnitCategory}/>
+               <Route path="/lessonstw" component={TC_UnitCategory_TW}/>
                <Route path="/vocabulary" component={TC_Unit}/>
 
                <Route path="/flashcard" component={FC_Category}/>

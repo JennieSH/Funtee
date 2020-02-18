@@ -1,0 +1,212 @@
+.UnitCatalogTW{
+    margin-top: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.UnitCatalogTW .twTitle{
+    font-size: 32px;
+    position: absolute;
+    top:-32px;
+    z-index: -1;
+    font-weight: bold;
+}
+.UnitCatalogTW .twMap{
+    height: 650px;
+    width: 360px;
+    background-color: rgba(158, 134, 88, 0);
+    overflow: hidden;
+    cursor: url(../imgs/map.png) 12 40, auto;
+
+}
+
+.land{
+    fill: #CCCCCC;
+    fill-opacity: 1;
+    stroke:white;
+    stroke-opacity: 1;
+    stroke-width:0.5;
+}
+.land.active{
+    fill: #009688; 
+}
+
+
+@media screen and (min-width:768px){
+
+    .UnitCatalogTW{
+        margin-top: 130px;
+    }
+    .UnitCatalogTW .twMap{
+      height: 900px;
+        width: 480px;
+        
+    }
+    .UnitCatalogTW .twTitle{
+        font-size: 46px;
+        letter-spacing: 0.5px;
+        right:  400px;
+    }
+
+    
+}
+
+@media screen and (min-width:1024px){
+    .UnitCatalogTW .twTitle{
+        font-size: 50px;
+        right:  540px;
+        top:25px
+    }
+    .UnitCatalogTW{
+        margin-top: 130px;
+    }
+    .UnitCatalogTW .twMap{
+        height: 1100px;
+        width: 615px;
+        
+    }  
+}
+
+@media screen and (min-width:1280px){
+
+    .UnitCatalogTW{
+        margin-top: 70px;
+        justify-content: space-between;
+        align-items: flex-end;
+       
+    }
+    .UnitCatalogTW .twTitle{
+        position: relative;
+        top:65px;
+        right: 0;
+        font-size: 35px;
+    }
+    .UnitCatalogTW .twMap{
+       margin-top: 0px;
+       position: absolute;
+       height: 540px;
+       width: 300px;
+       left: 78px;
+    }
+
+}
+@media screen and (min-width:1920px){
+
+    
+    .UnitCatalogTW .twTitle{
+        top:185px;
+        font-size: 50px;
+    }
+    .UnitCatalogTW .twMap{
+
+       height: 935px;
+       width: 517px;
+       left: 78px;
+    }
+
+}
+
+/* card */
+
+
+
+.UnitCatalogTW>.twCard{
+    width: 300px;
+    position: absolute;
+    z-index: 1;
+    /* display: none; */
+}
+
+.UnitCatalogTW>.twCard>.card-content{
+    padding: 30px 50px 10px 50px;
+   
+}
+.UnitCatalogTW>.twCard>.card-content>.card-title{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.UnitCatalogTW>.twCard>.card-content>.card-action{
+    padding: 30px 50px 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+
+@media screen and (min-width:768px){
+
+    .UnitCatalogTW>.twCard{
+        width: 500px;
+    }
+    .UnitCatalogTW>.twCard>.card-content{
+        padding: 40px 50px 10px 50px;
+    }
+    .UnitCatalogTW>.twCard>.card-content>.card-title{
+        font-size: 30px;
+        padding-bottom: 10px;
+    }
+    .UnitCatalogTW>.twCard>.card-content>.card-action{
+        font-size: 22px;
+        padding: 20px 70px 10px 70px;
+    }
+
+}
+
+@media screen and (min-width:1024px){
+    .UnitCatalogTW>.twCard{
+        width: 675px;
+    }
+    .UnitCatalogTW>.twCard>.card-content{
+        padding: 40px 50px 30px 50px;
+    }
+    .UnitCatalogTW>.twCard>.card-content>.card-title{
+        font-size: 40px;
+        padding-bottom: 20px;
+    }
+    .UnitCatalogTW>.twCard>.card-content>.card-action{
+        font-size: 35px;
+        padding: 20px 91px 10px 120px;
+    }
+}
+
+@media screen and (min-width:1280px){
+    .UnitCatalogTW>.twCard{
+        position: relative;
+        width: 380px;
+        top: 100px;
+    }
+    .UnitCatalogTW>.twCard>.card-content{
+        padding: 10px
+    }
+    .UnitCatalogTW>.twCard>.card-content>.card-title{
+        font-size: 18px;
+        padding-bottom: 0px;
+    }
+    .UnitCatalogTW>.twCard>.card-content>.card-action{
+        font-size: 16px;
+        padding: 10px 65px 0px 85px;
+    }
+}
+
+
+@media screen and (min-width:1920px){
+    .UnitCatalogTW>.twCard{
+        position: relative;
+        width: 570px;
+        top: 300px;
+    }
+    .UnitCatalogTW>.twCard>.card-content{
+        padding: 20px
+    }
+    .UnitCatalogTW>.twCard>.card-content>.card-title{
+        font-size: 30px;
+        padding-bottom: 20px;
+    }
+    .UnitCatalogTW>.twCard>.card-content>.card-action{
+        font-size: 22px;
+        padding: 10px 95px 0px 115px;
+    }
+}

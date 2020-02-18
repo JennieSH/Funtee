@@ -4,6 +4,7 @@ import Header from "../components/common/header";
 import "../css/TC_Category.css";
 
 class TC_Category extends React.Component{
+
     render(){
         return(
             <>
@@ -21,7 +22,7 @@ class TC_Category extends React.Component{
                         <div className="TC_CatalogBox">
                             <img/>                       
                             <span>Common<br/> Vocabulary</span>
-                            <button><Link to="/units">Learn More</Link></button>
+                            <button><Link to="/lessons">Learn More</Link></button>
                         </div>
                     </div>
 
@@ -29,7 +30,7 @@ class TC_Category extends React.Component{
                         <div className="TC_CatalogBox">
                             <img/>                       
                             <span>Common Vocabulary<br/>In Taiwan</span>
-                            <button><Link to="/units">Learn More</Link></button>
+                            <button><Link to="/lessonstw">Learn More</Link></button>
                         </div>
                     </div>
                 </div>
@@ -37,5 +38,6 @@ class TC_Category extends React.Component{
         )
     }
 }
+export default TC_Category 
 
-export default TC_Category
+
