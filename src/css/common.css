@@ -156,7 +156,7 @@ header .usrImgs{
         left: calc(100vw - 110px); 
     }  
 }
-@media screen and (min-width:1024px){
+@media screen and (min-width:900px){
     header a.btn.btn-floating{
         height: 40px;
         width: 40px;

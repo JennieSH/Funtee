@@ -13,12 +13,29 @@ export const lastPage = ( indexPage )=> {
 
 
 export const nextPage = ( indexPage, maxPage ) => {
-    return ( dispatch) =>{
+    return ( dispatch ) =>{
         if( indexPage < maxPage ){
             dispatch({ type: "TO_NEXT_PAGE" });
         }else{
             dispatch({ type: "TO_NEXT_PAGE_ERR" });
         }    
+    }
+}
+
+export const changeCity = ( id, zh, en ) => {
+    return ( dispatch ) =>{
+        dispatch({ type: "CHANGE_CITY", id, zh, en });
+    }
+}
+
+export const toggleDescription = () => {
+    return ( dispatch ) =>{
+        dispatch({ type: "TOGGLE_DESCRIPTION"})
+    }
+}
+export const blockDescription = () => {
+    return ( dispatch ) =>{
+        dispatch({ type: "BLOCK_DESCRIPTION"})
     }
 }
 

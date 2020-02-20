@@ -6,6 +6,7 @@ import Category from "./Category";
 import TC_Category from "./TC_Category";
 import TC_Symbol from "./TC_Symbol";
 import TC_Unit from "./TC_Unit";
+import TC_UnitTw from "./TC_UnitTw";
 import TC_UnitCategory from "./TC_UnitCategory";
 import TC_UnitCategory_TW from "./TC_UnitCategory_Tw"
 
@@ -40,8 +41,9 @@ class App extends React.Component{
                <Route path="/lessons" component={TC_UnitCategory}/>
                <Route path="/lessonstw" component={TC_UnitCategory_TW}/>
                <Route path="/vocabulary" component={TC_Unit}/>
+               <Route path="/vocabularytw" component={TC_UnitTw}/>
 
-               <Route path="/flashcard" component={FC_Category}/>
+               <Route path="/flashcard" component={ Dictionary }/>
                <Route path="/collection" component={FC_Collection}/>
                <Route path="/card" component={FC_Card}/>       
                <Route path="/spelling" component={FC_Spelling}/>
@@ -49,7 +51,6 @@ class App extends React.Component{
         )    
     }
 }
-
 
 
 export default App

@@ -102,6 +102,16 @@ class  Dictionary extends React.Component{
                         console.log("tts API err"+err)
                     })   
     }
+
+    send(){
+        let cityArr =[{id:"TW-NWT"},{id:"TW-HUA"},{id:"TW-KEE"},{id:"TW-TPE"},{id:"TW-TAO"},{id:"TW-HSZ"},
+        {id:"TW-HSQ"},{id:"TW-MIA"},{id:"TW-ILA"},{id:"TW-TXG"},{id:"TW-CHA"},{id:"TW-YUN"},
+        {id:"TW-CYI"},{id:"TW-CYQ"},{id:"TW-TNN"},{id:"TW-PIF"},{id:"TW-KHH"},{id:"TW-TTT"},{id:"TW-NAN"}]
+        // this.props.createData(cityArr)    
+
+    }
+
+    
     
 
     render(){
@@ -117,7 +127,7 @@ class  Dictionary extends React.Component{
                         <input type="submit" value="Submit"/>
                         
                 </form>  
-                
+                {/* <button onClick={ this.send.bind(this)}>data</button> */}
             </> 
         )
     }

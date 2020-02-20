@@ -15,10 +15,10 @@
 }
 .UnitCatalogTW .twMap{
     height: 650px;
-    width: 360px;
+    width: 340px;
     background-color: rgba(158, 134, 88, 0);
     overflow: hidden;
-    cursor: url(../imgs/map.png) 12 40, auto;
+    cursor: url(../imgs/map.png) 12 42, auto;
 
 }
 
@@ -60,7 +60,7 @@
         top:25px
     }
     .UnitCatalogTW{
-        margin-top: 130px;
+        margin-top: 160px;
     }
     .UnitCatalogTW .twMap{
         height: 1100px;
@@ -84,10 +84,10 @@
         font-size: 35px;
     }
     .UnitCatalogTW .twMap{
-       margin-top: 0px;
+       margin-top: 30px;
        position: absolute;
-       height: 540px;
-       width: 300px;
+       height: 470px;
+       width: 265px;
        left: 78px;
     }
 
@@ -101,9 +101,10 @@
     }
     .UnitCatalogTW .twMap{
 
-       height: 935px;
-       width: 517px;
-       left: 78px;
+       height: 845px;
+       width: 470px;
+       left: 30px;
+       top: 65px
     }
 
 }
@@ -116,11 +117,12 @@
     width: 300px;
     position: absolute;
     z-index: 1;
+    overflow: hidden;
     /* display: none; */
 }
 
 .UnitCatalogTW>.twCard>.card-content{
-    padding: 30px 50px 10px 50px;
+    padding: 30px 30px 10px 30px;
    
 }
 .UnitCatalogTW>.twCard>.card-content>.card-title{
@@ -129,7 +131,7 @@
     
 }
 .UnitCatalogTW>.twCard>.card-content>.card-action{
-    padding: 30px 50px 10px 50px;
+    padding: 30px 39px 10px 25px;
     display: flex;
     justify-content: space-between;
     font-size: 16px;
@@ -152,6 +154,10 @@
         font-size: 22px;
         padding: 20px 70px 10px 70px;
     }
+    /* .UnitCatalogTW>.twCard>.card-image{
+        width: 500px;
+        height: 330px; 
+    } */
 
 }
 
@@ -170,13 +176,18 @@
         font-size: 35px;
         padding: 20px 91px 10px 120px;
     }
+    /* .UnitCatalogTW>.twCard>.card-image{
+        width: 675px;
+        height: 450px;
+    } */
 }
 
 @media screen and (min-width:1280px){
     .UnitCatalogTW>.twCard{
         position: relative;
         width: 380px;
-        top: 100px;
+        top: 90px;
+        right: 8px;
     }
     .UnitCatalogTW>.twCard>.card-content{
         padding: 10px
@@ -188,6 +199,19 @@
     .UnitCatalogTW>.twCard>.card-content>.card-action{
         font-size: 16px;
         padding: 10px 65px 0px 85px;
+        justify-content: center;
+    }
+    .UnitCatalogTW>.twCard>.card-content>.card-action>.back{
+        display: none;
+    }
+    .UnitCatalogTW>.twCard>.card-image{
+        height: 255px;
+        overflow: hidden;
+        display: flex;
+    }
+    .UnitCatalogTW>.twCard>.card-image>img{
+        position: relative;    
+        justify-content: flex-start;
     }
 }
 
@@ -196,7 +220,7 @@
     .UnitCatalogTW>.twCard{
         position: relative;
         width: 570px;
-        top: 300px;
+        top: 285px;
     }
     .UnitCatalogTW>.twCard>.card-content{
         padding: 20px
@@ -209,4 +233,7 @@
         font-size: 22px;
         padding: 10px 95px 0px 115px;
     }
+    .UnitCatalogTW>.twCard>.card-image{    
+        height: 380px;
+    } 
 }

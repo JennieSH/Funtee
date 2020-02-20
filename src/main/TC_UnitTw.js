@@ -8,7 +8,7 @@ import { firestoreConnect } from "react-redux-firebase";
 import Loading from "../components/common/loading";
 import { lastPage, nextPage } from "../store/actions/unitAction";
 
-class TC_Unit extends React.Component{
+class TC_UnitTw extends React.Component{
  
     handleLastPage(){
         this.props.lastPage( this.props.indexPage )
@@ -77,23 +77,12 @@ export default compose(
         return(
             [{
                 collection: "Topics",
-                doc: "lesson",
+                doc: "lessonTw",
                 subcollections: [{collection: lesson}],
                 storeAs: lesson
             }]
         )
     }),
-    // firestoreConnect((props) =>{   
-    //     const lesson = props.location.state;    
-    //     return(
-    //         [{
-    //             collection: "Topics",
-    //             doc: "lessonTw",
-    //             subcollections: [{collection: lesson}],
-    //             storeAs: lesson
-    //         }]
-    //     )
-    // }),
     
     connect( mapStateToProps, mapDispatchToProps )
-)( TC_Unit )
+)( TC_UnitTw )
