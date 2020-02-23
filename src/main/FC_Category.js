@@ -11,9 +11,11 @@ import Loading from "../components/common/loading";
 import FCBook from "../components/flashCard/book";
 import AddBook from "../components/flashCard/addBook";
 import DelBook from "../components/flashCard/delBook";
+import EditBook from "../components/flashCard/editBook";
 
 
 class FC_Category extends React.Component{
+
 
     handleToggleAddBook(){
         this.props.toggleCreateBook()
@@ -21,16 +23,18 @@ class FC_Category extends React.Component{
     handleToggleDeleteBookIcon(){
         this.props.toggleDeleteBookIcon()
     }
-    handleToggleEditBook(){
+    handleToggleEditBookIcon(){
        this.props.toggleEditBookIcon()
     }
+
     render(){
+        
         const uid = this.props.auth.uid ;
         const userBooks = this.props.bookData[ uid ] ;
         
         if( ! uid ){ return <Redirect to="/signin"/> }
 
-        if ( userBooks === undefined ){
+        if ( userBooks === undefined){
             return(
                 <>
                     <Header/>
@@ -39,11 +43,13 @@ class FC_Category extends React.Component{
             )
         }else{      
             // console.log(userBooks)  
+
             const books = userBooks.map(( book, index )=>{
                 return(
                     <FCBook key={ index } book ={ book } uid={ uid }/>         
                 )
             })
+ 
             return(
                 <>
                     <Header/>                 
@@ -65,11 +71,12 @@ class FC_Category extends React.Component{
                             <div className="FC_book card edit" >                              
                                 <i className="material-icons white-text waves-effect" onClick={ this.handleToggleAddBook.bind(this)}>add</i> 
                                 <i className="material-icons white-text waves-effect" onClick={ this.handleToggleDeleteBookIcon.bind(this)}>remove</i>
-                                <i className="material-icons white-text waves-effect" onClick={ this.handleToggleEditBook.bind(this)} >edit</i> 
+                                <i className="material-icons white-text waves-effect" onClick={ this.handleToggleEditBookIcon.bind(this)} >edit</i> 
                             </div>
                         </div>
                         { this.props.createBookMenu? <AddBook uid={ this.props.auth.uid }/> : null}
                         { this.props.deleteBookMenu ? <DelBook currentDeleteBook={ this.props.currentDeleteBook }/> : null }
+                        { this.props.editBookMenu ? <EditBook currentEditBook={ this.props.currentEditBook }/> : null }
                         {books}
                     </div>               
                 </>
@@ -84,7 +91,9 @@ const mapStateToProps = ( state ) =>{
         bookData: state.firestore.ordered,
         createBookMenu: state.card.createBookMenu,
         deleteBookMenu : state.card.deleteBookMenu,
-        currentDeleteBook : state.card.currentDeleteBook
+        editBookMenu : state.card.editBookMenu,
+        currentDeleteBook : state.card.currentDeleteBook,
+        currentEditBook : state.card.currentEditBook,
     }
 }
 

@@ -51,7 +51,7 @@ class AddCard extends React.Component{
                         <input onChange={ this.handleChange.bind(this) } type="text" id="back"/>
                         { this.props.backErr ? <div className="red-text right">required field</div> : null }
                     </div> 
-                    <div className="createFolderBtn">
+                    <div className="createCardBtn">
                         <button className="btn white-text  waves-effect left" onSubmit={ this.handleSubmit.bind(this) }>Add</button> 
                         <button className="btn red white-text  waves-effect right" onClick={ this.handleToggleAddCard.bind(this)}>Back</button>      
                     </div>
