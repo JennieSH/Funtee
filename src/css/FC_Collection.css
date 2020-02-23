@@ -1,0 +1,174 @@
+.FC_Collection.container{
+    margin-top: 110px;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+    overflow: hidden;
+}
+.FC_Collection>.FCCard{
+    position: relative;
+}
+.FC_Collection>.stickyCard{
+    margin-bottom: 10px;
+    border-bottom: 1px solid #d86e6e; 
+  
+}
+
+.FC_Collection>.stickyCard .FC_card{
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.FC_Collection>.stickyCard .card-title i{
+    right: 10px;
+    font-size: 30px;
+    position: relative;
+    top: 5px;
+}
+.FC_Collection>.stickyCard>.FC_card>i{
+    font-size: 30px;
+    margin: 0;
+}
+
+.FC_Collection>.stickyCard .FC_card.plus>i{
+    font-size: 30px;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: rgb(222, 222, 222);
+}
+.FC_Collection>.stickyCard .FC_card.plus>i:hover{
+    background-color: #2196f3
+}
+
+/* common card */
+.FC_card{
+    width: 300px;
+    height: 100px;
+    margin: 20px 0 20px 0;
+    border-radius: 5px;
+    color: black;
+    position: relative;
+   
+}
+.FC_Collection>.FCCard>a>.FC_card .card-content{
+  padding: 18px 18px;
+  height: 100%;
+
+}
+.FC_Collection>.FCCard>a>.FC_card>.card-content>.card-description {
+   display: flex;
+   justify-content: space-between;
+}
+.FC_Collection>.FCCard>a>.FC_card>.card-content>.card-title{
+    font-weight: bold;
+    color: rgb(66, 66, 66);
+    display: flex;
+    justify-content: space-between;
+}
+.FC_Collection>.FCCard>a>.FC_card>.card-content>.card-title>i{
+
+    font-size: 30px;
+}
+
+.FC_card:hover{
+    background-color: rgba(231, 230, 230, 0.22);
+   
+}
+
+
+@media screen and (min-width:768px){
+    
+    .FC_Collection>.stickyCard{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      
+    }
+   
+    .FC_card{
+        width: 250px;
+        margin: 20px 15px;   
+    }
+}
+
+@media screen and (min-width:1024px){
+  
+    .FC_card{
+        width: 300px;
+        height: 130px;
+        margin: 30px 25px;   
+    }
+    .FC_Collection>.FCCard>a>.FC_card>.card-content{
+        padding-left: 25px;
+        padding-top: 30px;
+        
+    }
+    .FC_card>.card-content>.card-description{
+        margin-top: 10px;
+    }
+}
+
+
+@media screen and (min-width:1280px){
+  
+    .FC_Collection.container{
+        
+        margin-top: 80px;
+        justify-content: space-between;
+        width: 84%;
+    }
+    .FC_Collection>.stickyCard{
+        margin-bottom: 20px;
+       
+        border-bottom: 2px solid #d86e6e;         
+    }
+    
+    .FC_Collection>.stickyCard .FC_card{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+   
+    
+}
+
+@media screen and (min-width:1920px){
+    .FC_Collection.container{
+        width: 63%;
+        margin-top: 120px;
+    }
+    .FC_Collection>.stickyCard{
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+    }
+
+}
+
+
+/* delete */
+.FC_Collection>.FCCard>.delete{
+    position: absolute;
+    right: -13px;
+    top:8px;
+    z-index: 1;
+    font-size: 40px;
+}
+
+@media screen and (min-width:768px){
+    .FC_Collection>.FCCard>.delete{        
+        right: 0px;       
+    }
+}
+@media screen and (min-width:1024px){
+    .FC_Collection>.FCCard>.delete{
+        top:13px;
+        right: 8px;       
+    }
+}
+@media screen and (min-width:1280px){
+    .FC_Collection>.FCCard>.delete{
+        top:13px;
+        right: 8px;      
+    }
+}

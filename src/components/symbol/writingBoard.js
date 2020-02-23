@@ -19,6 +19,19 @@ class WritingBoard extends React.Component{
         // Undo
         undoBtn.addEventListener("click", this.clearCanvas)
     }
+    componentWillUnmount(){
+        cvs.removeEventListener("touchstart", this.touchStart, false);
+        cvs.removeEventListener("touchmove",  this.touchMove, false);
+        cvs.removeEventListener("touchend", this.touchEnd, false);
+
+        // Web
+        cvs.removeEventListener("mousedown", this.mouseDown);
+        cvs.removeEventListener("mousemove",  this.mouseMove);
+        cvs.removeEventListener("mouseup", this.mouseUp);
+
+        // Undo
+        undoBtn.removeEventListener("click", this.clearCanvas)
+    }
     // Mobile
     touchStart(e){
         this.draw = true;
@@ -90,7 +103,7 @@ class WritingBoard extends React.Component{
         return(
             <>
               <canvas id="cvs"/>
-              <button id="undoBtn">undo</button>
+              <i className="material-icons waves-effect" id="undoBtn">replay</i>
             </>
         )
     }

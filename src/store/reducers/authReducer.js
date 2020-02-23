@@ -6,17 +6,16 @@ const authReducer = ( state = initState, action) =>{
         // sign in
         case "SIGNIN_ERROR":
             console.log( "sign in error" )
-        return {
-            ...state, // need to copy before change one of items
-            authError : "Please check those details and try again." 
-        }
+            return {
+                ...state, // need to copy before change one of items
+                authError : "Please check those details and try again." 
+            }
         case "SIGNIN_SUCCESS":
             console.log("sign in success")
             return {
                 ...state,
                 authError:null,
             }
-
         // sign out
         case "SIGNOUT_SUCCESS":
             alert("sign out success")
@@ -33,11 +32,25 @@ const authReducer = ( state = initState, action) =>{
                 authError: null
             }
         case "SIGNUP_ERROR":    
-     
             return {
                 ...state,
                 authError: action.error.message // call parameter of action
             }
+
+        // reset password
+        case "RESET_PASSWORD_SUCCESS":
+            console.log("reset password success")
+            alert("Please check your email")
+            return {
+                ...state,
+                authError: null
+            } 
+        case "RESET_PASSWORD_ERROR":
+            return {
+                ...state,
+                authError: action.error.message
+            }
+
         default:
             return state
     }

@@ -8,7 +8,9 @@ class FC_Spelling extends React.Component{
         return(
             <>
                
-   ssssssssss
+               <div>驚不驚喜</div>
+                <div>訝不訝異</div>
+                <h1>裡面沒東西</h1>
             </>
             
         )

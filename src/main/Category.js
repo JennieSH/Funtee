@@ -14,7 +14,7 @@ class Category extends React.Component{
                 <Header/>
                 <div className="categoryContainer">             
                     <div className="description">
-                        <Link to="/learning">
+                        <Link to="/topics">
                             <img src={TC_img} alt="TC-learning"/> 
                             <div >
                                 <span>Learning Chinese</span>

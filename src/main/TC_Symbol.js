@@ -1,63 +1,90 @@
 import React from "react";
 import Header from "../components/common/header";
-import "../css/TC_Symobol.css";
-import WritingBoard from "../components/symobol/writingBoard";
-import TC_SymobolContent from "../components/symobol/Content";
-import PageController from "../components/common/pageController";
+import "../css/TC_Symbol.css";
+import WritingBoard from "../components/symbol/writingBoard";
+import TC_SymbolContent from "../components/symbol/content";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { lastPage, nextPage } from "../store/actions/symbolAction";
+import Loading from "../components/common/loading";
 
+class TC_Symbol extends React.Component{
 
-class TC_Symobol extends React.Component{
-
-    componentDidMount(){
-
-        const cvs = document.getElementById("cvs");
-        const TC_SymobolContent = document.getElementById("TC_SymobolContent");  
-        cvs.height = TC_SymobolContent.offsetHeight;
-        cvs.width = TC_SymobolContent.offsetWidth;
-        this.screenChange();
-
-
-        
-
-        fetch("https://www.moedict.tw/a/番茄.json",{
-            method: 'GET',
-        }).then(function(response) {
-            if (response.status >= 200 && response.status < 300) {
-                return response.json()
-            } else {
-                let error = new Error(response.statusText)
-                error.response = response
-                throw error
-            }
-        }).then((res)=>{
-            console.log(res)
-        })
-
-     
+    // page
+    handleLastPage(){
+       this.props.lastPage(this.props.indexPage)
     }
 
+    handleNextPage(){
+        this.props.nextPage(this.props.indexPage,37)
+    }
+
+
+    // canvas
+    componentDidUpdate(){
+        // fix canvas
+        const cvs = document.getElementById("cvs");
+        const TC_SymbolContent = document.getElementById("TC_SymbolContent");  
+        cvs.height = TC_SymbolContent.offsetHeight;
+        cvs.width = TC_SymbolContent.offsetWidth;
+        this.screenChange();
+       
+    }
     screenChange(){
         window.addEventListener("resize",this.resize);
     }
-
     resize(){
         location.reload()
     }
-
-    render(){ 
-        return(
-            <>
-                <Header/>              
-                <div className="TC_SymobolContainer">
-                    <TC_SymobolContent/>
-                    <WritingBoard/>
-                    <PageController/>
-                </div>
-            </>
-        )
+    render(){  
+        
+        if(!this.props.symbol){    
+            return(
+                <>
+                    <Header/>
+                    <Loading/>
+                </>
+            )           
+        }else{
+            return(
+                <>
+                    <Header/>     
+                    <i className="material-icons waves-effect" id="lastPageBtn_S" onClick={ this.handleLastPage.bind(this) }>navigate_before</i>
+                    <i className="material-icons waves-effect" id="nextPageBtn_S" onClick={ this.handleNextPage.bind(this) }>navigate_next</i>           
+                    <div className="TC_SymobolContainer">                  
+                        <TC_SymbolContent symbol={this.props.symbol.symbol}/>
+                        <WritingBoard/>  
+                        <div className="page">{this.props.symbol? `${this.props.indexPage}/37` : null}</div>                      
+                    </div>
+                                
+                </>
+            )
+        }
     }
 }
 
-export default TC_Symobol
+const mapStateToProps = ( state ) => {
+    
+    return{
+        symbol: state.firestore.data.Learning,
+        indexPage: state.symbol.indexPage,
+    }
+}
 
+const mapDispatchToProps = ( dispatch ) => {
+    return{
+        lastPage:  ( indexPage ) => dispatch(lastPage( indexPage )),
+        nextPage:  ( indexPage, maxPage ) => dispatch(nextPage( indexPage, maxPage )),
+    }
+}
 
+export default compose( 
+    firestoreConnect(() => [
+     {
+        collection: "Learning",
+        doc: "symbol",
+      }
+    ]),
+    connect( mapStateToProps, mapDispatchToProps )
+)( TC_Symbol);

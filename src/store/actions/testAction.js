@@ -14,6 +14,7 @@ export const createFruit = (fruit) =>{
         // const firestore = getFirestore(); // version problem
         const firestore = firebase.firestore();
         firestore.collection("fruit_type").add({
+    
             ...fruit,
             auth:"Jennie",
             createAt: new Date()
@@ -25,3 +26,18 @@ export const createFruit = (fruit) =>{
     }
 }
 
+    
+export const createData = (data) =>{
+    return ( dispatch, getState, { getFirebase, getFirestore } ) => {
+
+        const firestore = firebase.firestore();
+        // firestore.collection("fruit_type").add({
+        firestore.collection( "Topics" ).doc( "lessonTw" ).collection("TW-TTT").add({
+            ...data     
+        }).then(()=>{
+            dispatch ({ type: "CREATE_DATA", data })
+        }).catch((err)=>{
+            dispatch ( { type: "CREATE_DATA_ERROR", err } )
+        })      
+    }
+}

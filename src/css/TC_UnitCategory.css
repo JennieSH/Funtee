@@ -1,17 +1,20 @@
-.UnitCatalogContainer h2{
+.UnitCatalogContainer>h2{
     text-align: center;
     letter-spacing: 1px;
-    line-height: 50px;
+    line-height: 40px;
     color: white;
     font-weight: bold;
     text-shadow: 2px 2px 10px #000;
-    padding-top: 20px;
+    padding: 16px 0;
     background-color: #414141b2;
     margin: 0;
+    font-size: 22px;
+    margin-top: 50px;
 }
 
 .UnitCatalogContainer ul{
     list-style-type:none;
+    margin-top: 10px;
     width:100%;
     display: flex;
     flex-wrap: wrap;
@@ -28,26 +31,27 @@
     font-weight: bold;
     color:#000;
     font-size: 20px;
-    
+    margin-top: 20px;
+    border-radius: 5px;
 }
 
 .box1{
-    background-color:#3ed0cd
+    background-color:#D4E3E8;
 }
 .box2{
-    background-color:#b2e086
+    background-color:#E8DBE5;
 }
 .box3{
-    background-color:#fc7b51
+    background-color:#F0DAC5;
 }
 .box4{
-    background-color:#ef8899
+    background-color:#CBCAC5;
 }
 .box5{
-    background-color:#fce920
+    background-color:#EBCFCE;
 }
 .box6{
-    background-color:#ffa55e
+    background-color:#EFE6E9;
 }
 
 
@@ -62,21 +66,34 @@
 
 
 @media screen and (min-width:768px){
+    .UnitCatalogContainer>h2{
+        margin-top: 60px;
+        padding-bottom: 20px;
+
+    }
+
     .UnitCatalogContainer li{
         height: 200px;
         width: 200px;
         font-size: 24px;
         line-height: 200px;
+        margin-top: 60px;
+        
     }
   
 }
 @media screen and (min-width:1024px){
+    .UnitCatalogContainer h2{
+        margin-top: 60px;
+        padding: 40px 0;
+        font-size: 28px;
+    }
     .UnitCatalogContainer ul{
         width: 960px;
         position: relative;
         left: -20px;
         padding:60px 0;
-        margin-top: 150px;
+        margin-top: 130px;
     }
 
 
@@ -119,30 +136,31 @@
         position: absolute;
         content: "";
         transform: rotate(45deg);
+        border-radius: 5px;
     }
 
     .box1::before{
-        background-color:#3ed0cd;
+        background-color:#D4E3E8;
         z-index: -1;
     }
     .box2::before{
-        background-color:#b2e086;
+        background-color:#E8DBE5;
         z-index: -1;
     }
     .box3::before{
-        background-color:#fc7b51;
+        background-color:#F0DAC5;
         z-index: -1;
     }
     .box4::before{
-        background-color:#ef8899;
+        background-color:#CBCAC5;
         z-index: -1;
     }
     .box5::before{
-        background-color:#fce920;
+        background-color:#EBCFCE;
         z-index: -1;
     }
     .box6::before{
-        background-color:#ffa55e;
+        background-color:#EFE6E9;
         z-index: -1;
     }
 
@@ -162,22 +180,26 @@
     }
     .UnitCatalogContainer h2{
         width: 450px;
-        margin-top: 330px;
+        margin-top: 270px;
+        margin-left: 80px;
         height: 100%;
         padding: 30px 0;
-        background-color: #414141e8;
+        background-color: transparent;
+        text-shadow: none;
+        color: #000;
     }
     .UnitCatalogContainer ul{
         width: 860px;
         position: relative;
-        left: -50px;
-        margin-top: 0;
+        left: -90px;
+        margin-top: 70px;
     }
     .UnitCatalogContainer li{
         height: 150px;
         width: 150px;
         margin: 0 82px -13px;
         line-height: 140px;
+        
     }
 
 }
@@ -188,30 +210,26 @@
       
     }
     .UnitCatalogContainer h2{
-        margin-top: 500px;
+        margin-top: 420px;
+        margin-left: 130px;
         width: 600px;
         padding: 50px 0;
+        font-size: 40px;
+        line-height: 80px;
     }
 
     .UnitCatalogContainer ul{
         height: 50%;
         position: relative;
-        left: 150px;
-        top: 50px;
+        left: 100px;
+        top: 135px;
     }
 
     .UnitCatalogContainer li{
-        height: 200px;
-        width: 200px;
-        margin: 0 61px -40px;
+        height: 220px;
+        width: 220px;
+        margin:-11px 27px -24px 73px;
         line-height: 200px;
     }
 
 }
-
-
-
-
-
-
-

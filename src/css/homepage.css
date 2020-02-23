@@ -1,10 +1,130 @@
 .homepageContainer{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
    height: 100vh;
    overflow: hidden;
-   position: relative;
+   background-image: url(../imgs/banner.jpg);
+   background-size: cover;
+   background-position: center;
+}   
 
+
+/* when sign out */
+.homepageContainer>.container{
+   background-color: rgba(161, 158, 158, 0.219);
+   height: 100vh;
+   width: 100vw;
+   position: relative;
+   display: flex;
+   flex-direction:column;
+   align-items: center;
+}
+
+.homepageContainer>.container a{
+   display: flex;
+   justify-content: center;
+   position: relative;
+   top:300px;
+   margin-bottom: 50px;
+}
+.homepageContainer>.container>a>button{
+   font-size: 20px;
+   height: 44px;
+   width: 160px;
+   letter-spacing: 2px;
+}
+/* when sign in */
+.homepageContainer>.container>h1{
+   color: rgb(94, 91, 91);
+   text-align: center;
+   position: relative;
+   font-family: 'Courgette', cursive;
+   display: none;
+}
+.homepageContainer>.container>div{
+   height: 220px;
+   width: 220px;
+   background-color: rgba(81, 82, 82, 0.219);
+   border-radius: 50%;
+   overflow: hidden;
+   position: relative;
+   text-align: center;
+   top:220px;  
+}
+
+.homepageContainer>.container>div>img{
+   height: 100%;
+}
+
+
+@media screen and (min-width:768px){
+  
+   .homepageContainer>.container a{
+      top:380px
+   }
+   /* when sign in */
+   .homepageContainer>.container>div{
+      height: 320px;
+      width: 320px;
+      
+   }
+}
+
+@media screen and (min-width:1024px){
+   .homepageContainer>.container a{
+      top:600px;
+      margin-bottom: 80px;
+      
+   }
+   .homepageContainer>.container a button{
+      font-size: 26px;
+      height: 60px;
+      width: 200px;
+   }
+
+   /* when sign in */
+   .homepageContainer>.container>div{
+      height: 320px;
+      width: 320px;
+      position: absolute;
+   }
+}
+
+@media screen and (min-width:1280px){
+   .homepageContainer>.container{
+      height:450px;
+      width: 350px;
+      position: relative;
+      top:120px;
+      right: -380px;
+   }
+   .homepageContainer>.container>h1{
+      top:70px;
+      display: block;
+   }
+   .homepageContainer>.container a{
+      top:105px;
+      margin-bottom: 50px;
+   }
+   .homepageContainer>.container a button{
+      font-size: 26px;
+      height: 60px;
+      width: 200px;
+   }
+   /* when sign in */
+   .homepageContainer>.container>div{
+      height: 100px;
+      width: 100px;
+      top:70px;
+      position: relative;
+   }  
+}
+
+
+@media screen and (min-width:1920px){
+   .homepageContainer>.container{    
+      top:300px;
+      right: -630px;
+   }  
+   .homepageContainer>.container>h1{
+      top:60px;
+   }
 }

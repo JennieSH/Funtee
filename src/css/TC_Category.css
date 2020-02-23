@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 .TC_CatalogContainer>div{
@@ -67,7 +67,7 @@ a{
     text-decoration: none;
     color: #ffffff;
 }
-@media screen and (min-width:500px){
+@media screen and (min-width:768px){
     .TC_CatalogContainer>div{
         width: 55%;
     }
@@ -75,27 +75,41 @@ a{
         width: 95%;
     }
 }
-@media screen and (min-width:1000px){
+@media screen and (min-width:1024px){
     .TC_CatalogBox{
         width: 96.5%;
-    }
+  }  
 }
 
 
 
-@media screen and (min-width:1200px){
+@media screen and (min-width:1280px){
 
+    .TC_CatalogContainer{
+        margin-top: 130px;
+    }
     .TC_CatalogContainer{
         flex-direction: row;
     }
 
     .TC_CatalogContainer>div{
         width: 320px;
-        margin: 20px;
+        margin: 0 20px 20px 20px;
         height: 400px;
     }
     .TC_CatalogBox{
         width: 300px;
         height: 380px;
+    }
+}
+
+@media screen and (min-width:1920px){
+    .TC_CatalogContainer{
+        margin-top: 180px;
+    }
+    .TC_CatalogContainer>div{
+        width: 320px;
+        margin: 40px;
+        height: 400px;
     }
 }
