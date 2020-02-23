@@ -3,7 +3,7 @@ const initState = {
 };
 
 
-const symbolReducer = ( state= initState, action ) =>{
+const symbolReducer = ( state = initState, action ) =>{
     // control page
     switch (action.type) {      
         case "TO_LAST_PAGE":

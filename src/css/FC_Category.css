@@ -27,22 +27,25 @@
     position: relative;
     top: 5px;
 }
+
+ /* edit menu */
 .FC_Category>.stickyCard>.FC_book>i{
     font-size: 30px;
     margin: 0;
 }
-.FC_Category>.stickyCard .FC_book.plus{
+.FC_Category>.stickyCard .FC_book.edit{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    padding: 0 50px;
 }
-.FC_Category>.stickyCard .FC_book.plus>i{
+.FC_Category>.stickyCard .FC_book.edit>i{
     font-size: 30px;
     border-radius: 50%;
     padding: 5px;
     background-color: rgb(222, 222, 222);
 }
-.FC_Category>.stickyCard .FC_book.plus>i:hover{
+.FC_Category>.stickyCard .FC_book.edit>i:hover{
     background-color: #2196f3
 }
 
@@ -179,14 +182,14 @@
 }
 
 
-/* delete */
+/* delete book */
 .FC_Category>.FCBook>.delete{
     position: absolute;
     top:2px;
     right: -18px;
     z-index: 1;
     font-size: 40px;
-    display: none;
+    
 }
 
 
@@ -207,3 +210,27 @@
         right: 8px;      
     }
 }
+
+
+/* add book */
+.FC_book.addForm{ 
+    position: absolute;
+    width: 90vw;
+    height: auto;
+    z-index: 1;
+    padding: 30px 40px;
+    border: rgb(190, 190, 190) 1px solid;
+    top:20%
+} 
+.FC_book.addForm>form>h5{ 
+    margin-bottom: 25px;
+}
+.FC_book.addForm>form>.createFolderBtn{
+    margin-top: 50px;
+   
+}
+.FC_book.addForm>form>.createFolderBtn>button{
+    width: 92px;
+}
+
+

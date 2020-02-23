@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, HashRouter } from "react-router-dom";
 // Router
 import Homepage from "./Homepage";
 import Category from "./Category";
@@ -21,15 +21,14 @@ import ResetPassword from "../components/common/auth/resetPassword";
 import TC_Symbol_test from "./TC_Symbol_test";
 import AudioData from "../components/data/audioData";
 import SymbolData from "../components/data/symbolData";
-import  Dictionary from "../components/common/dictionary"
+import Dictionary from "../components/common/dictionary"
 
 
 class App extends React.Component{
 
-    render(){
-       
+    render(){    
         return(              
-            <BrowserRouter>       
+            <BrowserRouter>  
                <Route exact path="/" component={Homepage}/>
                <Route path="/signin" component={SignIn}/> 
                <Route path="/signup" component={SignUp}/>
@@ -43,9 +42,9 @@ class App extends React.Component{
                <Route path="/vocabulary" component={TC_Unit}/>
                <Route path="/vocabularytw" component={TC_UnitTw}/>
 
-               <Route path="/flashcard" component={ Dictionary }/>
-               <Route path="/collection" component={FC_Collection}/>
-               <Route path="/card" component={FC_Card}/>       
+               <Route path="/flashcard" component={ FC_Category }/>
+               <Route path="/collection/:title" component={FC_Collection}/>
+               <Route path="/card/:title/:key" component={FC_Card}/>       
                <Route path="/spelling" component={FC_Spelling}/>
             </BrowserRouter>
         )    

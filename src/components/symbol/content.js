@@ -15,14 +15,27 @@ class TC_SymbolContent extends React.Component{
           }
     }
 
-    componentDidMount(){      
-        navigator.getUserMedia({ audio: true },
+    componentDidMount(){    
+        // navigator.getUserMedia  = navigator.getUserMedia ||
+        //                         　navigator.webkitGetUserMedia ||
+        //                         　navigator.mozGetUserMedia ||
+        //                         　navigator.msGetUserMedia||
+        //                         　navigator.mediaDevices.getUserMedia;
+        
+        // getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+          
+
+          navigator.mediaDevices.getUserMedia({ audio: true },
             () => {
               console.log('Permission Granted');
+              alert('Permission Granted');
+
               this.setState({ isBlocked: false });
             },
             () => {
-              console.log('Permission Denied');
+              console.log('Permission Denied');s
+              alert('Permission Denied');
+
               this.setState({ isBlocked: true })
             },
           );
@@ -35,12 +48,13 @@ class TC_SymbolContent extends React.Component{
         if( this.state.isRecording === false){
             if (this.state.isBlocked) {
                 console.log('Permission Denied');
+                alert('Permission Denied');
               } else {
                 Mp3Recorder
                   .start()
                   .then(() => {
                     this.setState({ isRecording: true });
-                  
+                    alert('Permission Granted');
                   }).catch((e) => console.error(e));
               }
         }else{
