@@ -44,10 +44,9 @@ class FC_Collection extends React.Component{
         }else{
             const userCard= userBook.filter(( book )=> book.time === parseInt(bookDocName) )
             const cardArr = userCard[0].cards;
-            // console.log(userCard)
             const cards = cardArr.map(( card, index )=>{
                 return(
-                    <FCCard key={ index } uid={ uid } bookDocName={ bookDocName } card={ card } cardArr={ cardArr } index={ index }/>
+                    <FCCard key={ index } uid={ uid } bookDocName={ bookDocName } card={ card } cardArr={ cardArr } index={ index }  />
                 )
             })
             
@@ -100,7 +99,7 @@ const mapDispatchToProps = ( dispatch ) => {
     return{
        toggleCreateCard: ()=> dispatch(toggleCreateCard()),
        toggleDeleteCardIcon: ()=> dispatch(toggleDeleteCardIcon()),
-       toggleEditCardIcon: ()=>dispatch(toggleEditCardIcon())
+       toggleEditCardIcon: ()=>dispatch(toggleEditCardIcon()),
     }
 }
 

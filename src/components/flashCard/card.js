@@ -22,6 +22,7 @@ class FCCard extends React.Component{
     }
     render(){
         const card = this.props.card;
+
         return(
             <div className="FCCard">
                 { this.props.deleteCardIcon? <i className="delete material-icons red-text" onClick={ this.handleToggleDeleteCard.bind(this) }>cancel</i> : null }

@@ -6,7 +6,7 @@ import { firestoreConnect } from "react-redux-firebase";
 import Header from "../components/common/header";
 import Loading from "../components/common/loading";
 import "../css/FC_Card.css";
-import { lastCard, nextCard } from "../store/actions/cardAction";
+import { lastCard, nextCard, toggleCopyWord, textToSpeech, getCurrentCard  } from "../store/actions/cardAction";
 
 class FC_Card extends React.Component{
     constructor(props){
@@ -14,7 +14,8 @@ class FC_Card extends React.Component{
         this.state={     
             cardIndex: 0,
             flipped: false,
-			flipStyle: { transition: "transform 0.5s" }
+            flipStyle: { transition: "transform 0.5s" },
+      
         }
     }
 
@@ -22,7 +23,8 @@ class FC_Card extends React.Component{
         this.setState({ 
 			flipped: !this.state.flipped,
 			flipStyle: { transition: 'transform 0.5s' }
-		});
+        });
+        this.props.toggleCopyWord()
     }
     // card index
     handleLastCard(){
@@ -38,10 +40,15 @@ class FC_Card extends React.Component{
         this.props.nextCard( this.props.indexCard, currentBookLength )
     }
 
-    // edit
-    editCard(){
-        console.log("eee")
+    handleTTS( targetSide ){
+        this.props.textToSpeech( this.props.currentCard, targetSide )
     }
+    componentDidMount(){
+        const clipboard = new ClipboardJS("#copyWord")
+    }
+
+
+
     render(){
         
         const uid = this.props.auth.uid;
@@ -50,7 +57,7 @@ class FC_Card extends React.Component{
         const rotation = this.state.flipped ? 180 : 0;
 		const frontStyle = { ...this.state.flipStyle, transform: `rotateY(${rotation}deg)` }
         const backStyle = { ...this.state.flipStyle, transform: `rotateY(${180 + rotation}deg)` }
-        
+      
         if( !uid ){ return <Redirect to = "/signin"/> }
         if( !cards ){
             return(
@@ -62,8 +69,9 @@ class FC_Card extends React.Component{
         }else{
             const currentBook = cards[ bookDocName ].cards;
             const index = this.props.indexCard - 1;
-            console.log(currentBook)
+            this.props.getCurrentCard( currentBook[index] );
             return(
+                
                 <>
                 
                     <Header/>    
@@ -72,12 +80,16 @@ class FC_Card extends React.Component{
                         <div className="FC_cardEach card">
 
                             <div className="frontSide" style={frontStyle}>
-                                <i className="material-icons waves-effect blue-text" >edit</i> 
+                                <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this, "front" )} >volume_up
+                                    <audio id="audio"/>
+                                </i> 
                                 <span>{ currentBook[ index ].front }</span>
                             </div>
 
                             <div className="backSide" style={backStyle}>
-                                <i className="material-icons waves-effect blue-text" onClick={ this.editCard.bind(this) }>edit</i> 
+                                <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this, "back" ) }>volume_up
+                                    <audio id="audio"/>
+                                </i> 
                                 <span className="grey-text">{ currentBook[ index ].back }</span>                               
                             </div>
                         
@@ -88,10 +100,7 @@ class FC_Card extends React.Component{
                         <div className="controlMenu">
                             
                             <i className="material-icons waves-effect"  onClick={ this.handleFlip.bind(this) }>flip_camera_android</i>                  
-                            <i className="material-icons waves-effect">
-                                volume_up
-                                <audio id="audio"/>
-                            </i>                                          
+                            <i className="material-icons waves-effect" id="copyWord" data-clipboard-text={ this.props.copyWord? currentBook[ index ].front:currentBook[ index ].back} >file_copy</i>                                          
                             <i className="socket waves-effect" >
                                 <div className="record"></div>
                             </i>
@@ -102,7 +111,6 @@ class FC_Card extends React.Component{
                             <i className="material-icons waves-effect " onClick={ this.handleLastCard.bind(this) }>navigate_before</i>
                             <i className="material-icons waves-effect " id="nextPageBtn_F" onClick={ this.handleNextCard.bind(this) }>navigate_next</i>                       
                         </div>
-                    
                     </div>          
                 </>
                 
@@ -114,27 +122,22 @@ const mapStateToProps = ( state ) =>{
     return{
         auth : state.firebase.auth,
         cards : state.firestore.data,
-        indexCard : state.card.indexCard
+        indexCard : state.card.indexCard,
+        copyWord : state.card.copyWord,
+        currentCard : state.card.currentCard
     }
 }
 const mapDispatchToProps = ( dispatch ) => {
     return{
-        lastCard:  ( indexCard) => dispatch(lastCard( indexCard )),
+        lastCard:  ( indexCard ) => dispatch(lastCard( indexCard )),
         nextCard:  ( indexCard, maxCard  ) => dispatch(nextCard( indexCard, maxCard )),
+        toggleCopyWord: ()=> dispatch(toggleCopyWord()),
+        getCurrentCard: ( currentCard )=> dispatch(getCurrentCard( currentCard)),
+        textToSpeech: ( targetWords,targetSide )=> dispatch(textToSpeech( targetWords,targetSide ))
+        
     }
 }
 export default compose( 
-    // firestoreConnect((props) =>{   
-    //     const cards = props.match.params.title;
-    //     return(
-    //         [{
-    //             collection: "Cards",
-    //             doc: "ya",
-    //             subcollections: [{collection: cards}],
-    //             storeAs: cards
-    //         }]
-    //     )
-    // }),
     firestoreConnect((props) =>{     
         const uid = props.firestore._.authUid;
         return(

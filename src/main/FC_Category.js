@@ -16,6 +16,13 @@ import EditBook from "../components/flashCard/editBook";
 
 class FC_Category extends React.Component{
 
+    constructor(props){
+        super(props);
+        this.state={
+            previousData : this.props.bookData[ this.props.auth.uid ]
+        }
+    }
+
 
     handleToggleAddBook(){
         this.props.toggleCreateBook()
@@ -27,11 +34,12 @@ class FC_Category extends React.Component{
        this.props.toggleEditBookIcon()
     }
 
+
     render(){
         
         const uid = this.props.auth.uid ;
         const userBooks = this.props.bookData[ uid ] ;
-        
+        // console.log(userBooks)
         if( ! uid ){ return <Redirect to="/signin"/> }
 
         if ( userBooks === undefined){
@@ -42,11 +50,10 @@ class FC_Category extends React.Component{
                 </>
             )
         }else{      
-            // console.log(userBooks)  
-
+            
             const books = userBooks.map(( book, index )=>{
                 return(
-                    <FCBook key={ index } book ={ book } uid={ uid }/>         
+                    <FCBook key={ index } bookData ={ book } uid={ uid }/>         
                 )
             })
  
@@ -55,7 +62,7 @@ class FC_Category extends React.Component{
                     <Header/>                 
                     <div className="FC_Category container"> 
                         <div className="stickyCard"> 
-                            <Link to="/collection">
+                            {/* <Link to="/collection">
                                 <div className="FC_book card">
                                     <div className="card-content">
                                         <div className="card-description">                               
@@ -67,7 +74,7 @@ class FC_Category extends React.Component{
                                         </span>
                                     </div>                 
                                 </div>
-                            </Link>                            
+                            </Link>                             */}
                             <div className="FC_book card edit" >                              
                                 <i className="material-icons white-text waves-effect" onClick={ this.handleToggleAddBook.bind(this)}>add</i> 
                                 <i className="material-icons white-text waves-effect" onClick={ this.handleToggleDeleteBookIcon.bind(this)}>remove</i>

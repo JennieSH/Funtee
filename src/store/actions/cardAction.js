@@ -22,8 +22,10 @@ export const createBook = ( uid, data ) =>{
             const time = new Date().getTime();
 
             firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( `${time}` ).set({    
-                id:bookName,
-                lang:lang,
+                book:{
+                    id:bookName,
+                    lang:lang,
+                },
                 cards:[],
                 time: time
             }).then(()=>{
@@ -91,24 +93,24 @@ export const toggleEditBook = ()=>{ // Menu
     }
 }
 
-export const currentEditBook = ( uid, bookDocName, id )=>{
+export const currentEditBook = ( uid, bookDocName, bookData )=>{
     return ( dispatch ) => {
         const  currentEditBook = {
             uid :uid,
             bookDocName : bookDocName,
-            id: id
+            bookData: bookData
         }
 
         dispatch ({ type: "CURRENT_EDIT_BOOK", currentEditBook })
     }
 }
-export const editBook = ( uid, bookDocName, id )=>{
+export const editBook = ( uid, bookDocName, bookEditData )=>{
     return ( dispatch ) => {
 
         const firestore = firebase.firestore();
         const book = bookDocName.toString();
         firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).update({
-            id : id
+            book: bookEditData
         }).then(() => {
             dispatch ({ type: "EDIT_BOOK" })
         }).catch((err)=>{
@@ -117,8 +119,6 @@ export const editBook = ( uid, bookDocName, id )=>{
         
     }
 }
-
-
 
 
 
@@ -258,6 +258,13 @@ export const editCard = ( uid, bookDocName, newCard, previousCardArr, index )=>{
 
 
 // Card
+
+export const getCurrentCard = ( currentCard ) =>{
+    return ( dispatch) =>{          
+        dispatch({ type: "GET_CURRENT_CARD", currentCard });                 
+    }
+}
+
 export const lastCard = ( indexCard )=> {
     return ( dispatch) =>{     
         if( indexCard > 1 ){
@@ -275,5 +282,52 @@ export const nextCard = ( indexCard, maxCard ) => {
         }else{
             dispatch({ type: "TO_NEXT_CARD_ERR" });
         }    
+    }
+}
+
+export const toggleCopyWord = () =>{
+    return ( dispatch ) =>{
+        dispatch({ type: "TOGGLE_COPY_WORD" })
+    }
+}
+
+export const textToSpeech = ( targetWords,targetSide ) =>{
+
+    // console.log(targetWrds)
+    // let apiKey = "AIzaSyD-I8KgXlOZVldg8tK77bL-jpfcL6GKKZ4";
+    // let ttssrc = `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${apiKey}`;
+    //         fetch( ttssrc , {
+    //             method: 'POST',
+    //             body: JSON.stringify({
+    //                 "audioConfig": {
+    //                 "audioEncoding": "MP3",
+    //                 "pitch": 0,
+    //                 "speakingRate": 1
+    //                 },
+    //                 "input": {
+    //                 "text": `${this.state.chinese}`
+    //                 },
+    //                 "voice": {
+    //                 "languageCode": "cmn-CN",
+    //                 "name": "cmn-CN-Standard-D"
+    //                 }            
+    //             }),                    
+    //         }).then(function(response) {
+    //                 return response.json()      
+    //         }).then((res)=>{
+                
+    //             this.setState({
+    //                 ...this.state,
+    //                 audio:res.audioContent
+    //              })
+ 
+    //         }).then(()=>{
+    //             console.log("get audio")
+    //         }).catch((err)=>{
+    //             console.log("tts API err"+err)
+    //         }) 
+    console.log(targetWords,targetSide) 
+    return( dispatch )=>{
+        dispatch({ type: "GET_TTS" })
     }
 }

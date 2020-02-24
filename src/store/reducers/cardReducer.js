@@ -28,12 +28,14 @@ const initState = {
     editBackErr: false,
 
     // Card
+    
     indexCard: 1,
+    currentCard: null,
+    copyWord: true, // true: front ; false: back
 }
 
 const cardReducer = ( state = initState , action)=>{
     switch (action.type){
-
         // Category - create board   
         case "TOGGLE_CREATE_BOOK":
             return {
@@ -227,7 +229,14 @@ const cardReducer = ( state = initState , action)=>{
             console.log("EDIT_CARD_ERR"+action.err)
             return state
 
-        // Card - current card    
+
+
+        // Card - current card 
+        case "GET_CURRENT_CARD":
+            return {
+                ...state,
+                currentCard: action.currentCard
+            }   
         case "TO_LAST_CARD":
             return {
                 ...state,
@@ -245,6 +254,15 @@ const cardReducer = ( state = initState , action)=>{
         case "TO_NEXT_CARD_ERR":
             return state;
 
+
+        case "TOGGLE_COPY_WORD":
+            return{
+                ...state,
+                copyWord: !state.copyWord
+            }
+
+        case "GET_TTS":
+            return state
 
         default:
             return state

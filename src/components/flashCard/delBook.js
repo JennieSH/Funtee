@@ -14,7 +14,6 @@ class DelBook extends React.Component{
     }
 
     render(){
-
         return(
             <div className="FC_book addForm card" >         
                 
