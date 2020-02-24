@@ -31,7 +31,8 @@ const initState = {
     
     indexCard: 1,
     currentCard: null,
-    copyWord: true, // true: front ; false: back
+    currentSide: true, // true: front ; false: back
+    ttsSrc:null
 }
 
 const cardReducer = ( state = initState , action)=>{
@@ -236,7 +237,7 @@ const cardReducer = ( state = initState , action)=>{
             return {
                 ...state,
                 currentCard: action.currentCard
-            }   
+            }
         case "TO_LAST_CARD":
             return {
                 ...state,
@@ -255,15 +256,19 @@ const cardReducer = ( state = initState , action)=>{
             return state;
 
 
-        case "TOGGLE_COPY_WORD":
+        case "GET_CURRENT_SIDE":
             return{
                 ...state,
-                copyWord: !state.copyWord
+                currentSide: !state.currentSide
             }
 
         case "GET_TTS":
+            console.log("TTS success")
             return state
-
+            
+        case "GET_TTS_ERR":
+            console.log("TTS fail" + action.err)
+            return state
         default:
             return state
     }

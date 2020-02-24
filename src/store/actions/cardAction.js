@@ -259,9 +259,9 @@ export const editCard = ( uid, bookDocName, newCard, previousCardArr, index )=>{
 
 // Card
 
-export const getCurrentCard = ( currentCard ) =>{
-    return ( dispatch) =>{          
-        dispatch({ type: "GET_CURRENT_CARD", currentCard });                 
+export const getCurrentCard = ( currentCard )=> {
+    return ( dispatch) =>{     
+        dispatch({ type: "GET_CURRENT_CARD", currentCard });         
     }
 }
 
@@ -287,47 +287,43 @@ export const nextCard = ( indexCard, maxCard ) => {
 
 export const toggleCopyWord = () =>{
     return ( dispatch ) =>{
-        dispatch({ type: "TOGGLE_COPY_WORD" })
+        dispatch({ type: "GET_CURRENT_SIDE" })
     }
 }
 
-export const textToSpeech = ( targetWords,targetSide ) =>{
+export const textToSpeech = ( targetWords, targetSide ) =>{
+   return( dispatch )=>{
+        let targetWord;
+        if( targetSide?  targetWord = targetWords.front : targetWord = targetWords.back){ // true -front
+    
+            const apiKey = "AIzaSyD-I8KgXlOZVldg8tK77bL-jpfcL6GKKZ4";
+            const ttsSrc = `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${apiKey}`;
 
-    // console.log(targetWrds)
-    // let apiKey = "AIzaSyD-I8KgXlOZVldg8tK77bL-jpfcL6GKKZ4";
-    // let ttssrc = `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${apiKey}`;
-    //         fetch( ttssrc , {
-    //             method: 'POST',
-    //             body: JSON.stringify({
-    //                 "audioConfig": {
-    //                 "audioEncoding": "MP3",
-    //                 "pitch": 0,
-    //                 "speakingRate": 1
-    //                 },
-    //                 "input": {
-    //                 "text": `${this.state.chinese}`
-    //                 },
-    //                 "voice": {
-    //                 "languageCode": "cmn-CN",
-    //                 "name": "cmn-CN-Standard-D"
-    //                 }            
-    //             }),                    
-    //         }).then(function(response) {
-    //                 return response.json()      
-    //         }).then((res)=>{
-                
-    //             this.setState({
-    //                 ...this.state,
-    //                 audio:res.audioContent
-    //              })
- 
-    //         }).then(()=>{
-    //             console.log("get audio")
-    //         }).catch((err)=>{
-    //             console.log("tts API err"+err)
-    //         }) 
-    console.log(targetWords,targetSide) 
-    return( dispatch )=>{
-        dispatch({ type: "GET_TTS" })
-    }
+                fetch( ttsSrc , {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        "audioConfig": {
+                        "audioEncoding": "MP3",
+                        "pitch": 0,
+                        "speakingRate": 1
+                        },
+                        "input": {
+                        "text": `${targetWord}`
+                        },
+                        "voice": {
+                        "languageCode": "cmn-CN",
+                        "name": "cmn-CN-Standard-D"
+                        }            
+                    }),                    
+                }).then((res)=>{
+                    return res.json()      
+                }).then((res)=>{
+                    let tts = new Audio("data:audio/wav;base64," + res.audioContent );
+                    tts.play();
+                    dispatch({ type: "GET_TTS" })
+                }).catch((err)=>{
+                        dispatch({ type: "GET_TTS_ERR",err })           
+                }) 
+        }        
+    } 
 }

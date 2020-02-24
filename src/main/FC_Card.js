@@ -6,7 +6,7 @@ import { firestoreConnect } from "react-redux-firebase";
 import Header from "../components/common/header";
 import Loading from "../components/common/loading";
 import "../css/FC_Card.css";
-import { lastCard, nextCard, toggleCopyWord, textToSpeech, getCurrentCard  } from "../store/actions/cardAction";
+import { lastCard, nextCard, toggleCopyWord, textToSpeech,  getCurrentCard } from "../store/actions/cardAction";
 
 class FC_Card extends React.Component{
     constructor(props){
@@ -40,8 +40,10 @@ class FC_Card extends React.Component{
         this.props.nextCard( this.props.indexCard, currentBookLength )
     }
 
-    handleTTS( targetSide ){
-        this.props.textToSpeech( this.props.currentCard, targetSide )
+    handleTTS(){
+
+        this.props.textToSpeech( this.props.currentCard, this.props.currentSide  )
+       
     }
     componentDidMount(){
         const clipboard = new ClipboardJS("#copyWord")
@@ -50,14 +52,14 @@ class FC_Card extends React.Component{
 
 
     render(){
-        
+
         const uid = this.props.auth.uid;
         const cards = this.props.cards[uid];
         const bookDocName = this.props.match.params.title;
         const rotation = this.state.flipped ? 180 : 0;
 		const frontStyle = { ...this.state.flipStyle, transform: `rotateY(${rotation}deg)` }
         const backStyle = { ...this.state.flipStyle, transform: `rotateY(${180 + rotation}deg)` }
-      
+
         if( !uid ){ return <Redirect to = "/signin"/> }
         if( !cards ){
             return(
@@ -69,7 +71,8 @@ class FC_Card extends React.Component{
         }else{
             const currentBook = cards[ bookDocName ].cards;
             const index = this.props.indexCard - 1;
-            this.props.getCurrentCard( currentBook[index] );
+            this.props.getCurrentCard( currentBook[index] )
+         
             return(
                 
                 <>
@@ -80,16 +83,12 @@ class FC_Card extends React.Component{
                         <div className="FC_cardEach card">
 
                             <div className="frontSide" style={frontStyle}>
-                                <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this, "front" )} >volume_up
-                                    <audio id="audio"/>
-                                </i> 
+                                <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this) } >volume_up</i> 
                                 <span>{ currentBook[ index ].front }</span>
                             </div>
 
                             <div className="backSide" style={backStyle}>
-                                <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this, "back" ) }>volume_up
-                                    <audio id="audio"/>
-                                </i> 
+                                <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this) }>volume_up</i> 
                                 <span className="grey-text">{ currentBook[ index ].back }</span>                               
                             </div>
                         
@@ -100,7 +99,7 @@ class FC_Card extends React.Component{
                         <div className="controlMenu">
                             
                             <i className="material-icons waves-effect"  onClick={ this.handleFlip.bind(this) }>flip_camera_android</i>                  
-                            <i className="material-icons waves-effect" id="copyWord" data-clipboard-text={ this.props.copyWord? currentBook[ index ].front:currentBook[ index ].back} >file_copy</i>                                          
+                            <i className="material-icons waves-effect" id="copyWord" data-clipboard-text={ this.props.currentSide? currentBook[ index ].front:currentBook[ index ].back} >file_copy</i>                                          
                             <i className="socket waves-effect" >
                                 <div className="record"></div>
                             </i>
@@ -123,8 +122,9 @@ const mapStateToProps = ( state ) =>{
         auth : state.firebase.auth,
         cards : state.firestore.data,
         indexCard : state.card.indexCard,
-        copyWord : state.card.copyWord,
-        currentCard : state.card.currentCard
+        currentSide : state.card.currentSide,
+        currentCard : state.card.currentCard,
+        ttsSrc :state.card.ttsSrc
     }
 }
 const mapDispatchToProps = ( dispatch ) => {
@@ -132,8 +132,8 @@ const mapDispatchToProps = ( dispatch ) => {
         lastCard:  ( indexCard ) => dispatch(lastCard( indexCard )),
         nextCard:  ( indexCard, maxCard  ) => dispatch(nextCard( indexCard, maxCard )),
         toggleCopyWord: ()=> dispatch(toggleCopyWord()),
-        getCurrentCard: ( currentCard )=> dispatch(getCurrentCard( currentCard)),
-        textToSpeech: ( targetWords,targetSide )=> dispatch(textToSpeech( targetWords,targetSide ))
+        getCurrentCard: ( currentCard ) => dispatch(getCurrentCard( currentCard )),
+        textToSpeech: ( targetWords, targetSide )=> dispatch(textToSpeech( targetWords, targetSide ))
         
     }
 }
