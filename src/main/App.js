@@ -12,7 +12,9 @@ import TC_UnitCategory_TW from "./TC_UnitCategory_Tw"
 
 import FC_Category from "./FC_Category";
 import FC_Collection from "./FC_Collection";
+import FC_MyCollection from "./FC_MyCollection";
 import FC_Card from "./FC_Card";
+import FC_MyCard from "./FC_MyCard";
 import FC_Spelling from "./FC_Spelling";
 import SignIn from "../components/common/auth/signIn";
 import SignUp from "../components/common/auth/signUp";
@@ -44,7 +46,9 @@ class App extends React.Component{
 
                <Route path="/flashcard" component={ FC_Category }/>
                <Route path="/collection/:title" component={FC_Collection}/>
-               <Route path="/card/:title/:key" component={FC_Card}/>       
+               <Route path="/mycollection" component={FC_MyCollection}/>
+               <Route path="/card/:title/:index/:key" component={FC_Card}/>       
+               <Route path="/mycard/:index" component={FC_MyCard}/>    
                <Route path="/spelling" component={FC_Spelling}/>
             </BrowserRouter>
         )    

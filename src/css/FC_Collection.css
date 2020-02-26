@@ -27,18 +27,25 @@
     position: relative;
     top: 5px;
 }
+
+ /* edit menu */
 .FC_Collection>.stickyCard>.FC_card>i{
     font-size: 30px;
     margin: 0;
 }
-
-.FC_Collection>.stickyCard .FC_card.plus>i{
+.FC_Collection>.stickyCard .FC_card.edit{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 50px;
+}
+.FC_Collection>.stickyCard .FC_card.edit>i{
     font-size: 30px;
     border-radius: 50%;
     padding: 5px;
     background-color: rgb(222, 222, 222);
 }
-.FC_Collection>.stickyCard .FC_card.plus>i:hover{
+.FC_Collection>.stickyCard .FC_card.edit>i:hover{
     background-color: #2196f3
 }
 
@@ -116,7 +123,8 @@
     .FC_Collection.container{
         
         margin-top: 80px;
-        justify-content: space-between;
+        justify-content: space-around;
+        align-items: center;
         width: 84%;
     }
     .FC_Collection>.stickyCard{
@@ -147,28 +155,115 @@
 
 
 /* delete */
-.FC_Collection>.FCCard>.delete{
+.FC_Collection>.FCCard>.delete, .FC_Collection>.FCCard>.edit{
     position: absolute;
     right: -13px;
     top:8px;
     z-index: 1;
     font-size: 40px;
 }
+.FC_Collection>.FCCard>.edit{
+    background-color: green;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 22px;
+    right: -10px;
+    top: 10px
+}
+.FC_book>h6{
+    margin-top: 25px;
 
+}
+.FC_book>.deleteCardBtn{
+    margin-top: 25px;
+}
+.FC_book>.deleteCardBtn>button{
+    width: 104px;
+}
+.FC_book>.editCardBtn{
+    margin-top: 25px;
+} 
 @media screen and (min-width:768px){
     .FC_Collection>.FCCard>.delete{        
         right: 0px;       
     }
+
+    .FC_Collection>.FC_book>.deleteCardBtn{
+        margin-top: 40px;
+    }
+    .FC_Collection>.FC_book>.editCardBtn{
+        margin-top: 40px;
+    } 
+    .FC_Collection>.FC_book>input{
+        margin-top: 20px;
+    }
+    .FC_Collection>.FCCard>.edit{
+        right: 2px;
+        top:10px;
+    }
+
+
 }
 @media screen and (min-width:1024px){
     .FC_Collection>.FCCard>.delete{
         top:13px;
         right: 8px;       
     }
+    .FC_Collection>.FCCard>.edit{
+        top: 18px;
+        right: 9px;       
+    }
 }
 @media screen and (min-width:1280px){
     .FC_Collection>.FCCard>.delete{
-        top:13px;
+        top:15px;
         right: 8px;      
+    }
+}
+/* add card */
+.FC_book.addForm>form>.createCardBtn>button{
+    width: 92px;
+}
+.FC_book.addForm>form>.createCardBtn{
+    margin-top: 50px;
+}
+@media screen and (min-width:1280px){
+
+    .FC_book.addForm>form>.createCardBtn{
+        margin-top: 40px;
+    }
+    .FC_book.addForm>form>.createCardBtn>button{
+        margin-bottom: 10px;
+    }
+
+}
+
+.FCCard>.star{
+    font-size: 35px;
+    position: absolute;
+    top:35px;
+    right: 5px;
+    z-index: 1;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+@media screen and (min-width:768px){
+    .FCCard>.star{
+        top:27px;
+        right: 10px;
+        margin: 20px;
+    }
+}
+@media screen and (min-width:1024px){
+    .FCCard>.star{
+        top:45px;
+        right: 25px;
+        font-size: 40px;
+    }
+}
+@media screen and (min-width:1280px){
+    .FCCard>.star{
+        font-size: 35px;
     }
 }

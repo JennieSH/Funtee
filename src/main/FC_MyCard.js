@@ -6,15 +6,14 @@ import { firestoreConnect } from "react-redux-firebase";
 import Header from "../components/common/header";
 import Loading from "../components/common/loading";
 import "../css/FC_Card.css";
-import { lastCard, nextCard, toggleCopyWord, textToSpeech,  getCurrentCard, resetIndex  } from "../store/actions/cardAction";
+import { lastMyCard, nextMyCard, toggleCopyWord, textToSpeech_My,  getCurrentMyCard, resetMyIndex } from "../store/actions/cardAction";
 import MicRecorder from "mic-recorder-to-mp3";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
-class FC_Card extends React.Component{
+class FC_MyCard extends React.Component{
     constructor(props){
         super(props);
         this.state={     
-            cardIndex: 0,
             flipped: false,
             flipStyle: { transition: "transform 0.5s" },
 
@@ -34,20 +33,17 @@ class FC_Card extends React.Component{
     }
 
     handleLastCard(){
-       this.props.lastCard( this.props.indexCard )  
+       this.props.lastMyCard( this.props.indexCard )  
     }
 
     handleNextCard(){
-        const uid = this.props.auth.uid;
-        const cards = this.props.cards[uid];
-        const bookDocName = this.props.match.params.title;
-        const currentBookLength = cards[bookDocName].cards.length;
-        this.props.nextCard( this.props.indexCard, currentBookLength )
+        this.props.nextMyCard( this.props.indexCard, this.props.currentMyCardArrLen )
     }
 
     handleTTS(){
-        new Audio("data:audio/wav;base64," + this.props.ttsCard ).play();
+        new Audio("data:audio/wav;base64," + this.props.ttsMyCard ).play();
     }
+
     handleRecord(){
         if( this.state.isRecording === false){
             if (this.state.isBlocked) {
@@ -72,16 +68,17 @@ class FC_Card extends React.Component{
         }
         
     }
+
     handlePlay(){
         document.getElementById("audioRecord").play()
     }
 
     componentDidMount(){
         const clipboard = new ClipboardJS("#copyWord");
-        this.props.resetIndex(parseInt(this.props.match.params.index))
+        this.props.resetMyIndex(parseInt(this.props.match.params.index))
 
-        
-        if (navigator.mediaDevices === undefined) {
+
+            if (navigator.mediaDevices === undefined) {
             navigator.mediaDevices = {};
           }
           
@@ -102,9 +99,9 @@ class FC_Card extends React.Component{
               });
             }
           }
-        
 
-        navigator.mediaDevices.getUserMedia({ audio: true },
+
+           navigator.mediaDevices.getUserMedia({ audio: true },
             () => {
               console.log('Permission Granted');
               this.setState({ isBlocked: false });
@@ -114,24 +111,20 @@ class FC_Card extends React.Component{
               this.setState({ isBlocked: true })
             },
           );
-
     }
+
+    
 
     render(){
 
         const uid = this.props.auth.uid;
-        const cards = this.props.cards[uid];
-        const bookDocName = this.props.match.params.title;
+        const userBooks = this.props.cards[this.props.auth.uid];
         const rotation = this.state.flipped ? 180 : 0;
 		const frontStyle = { ...this.state.flipStyle, transform: `rotateY(${rotation}deg)` }
         const backStyle = { ...this.state.flipStyle, transform: `rotateY(${180 + rotation}deg)` }
 
-
-      
-
         if( !uid ){ return <Redirect to = "/signin"/> }
-
-        if( !cards ){
+        if( !userBooks ){
             return(
                 <>
                     <Header/>
@@ -139,16 +132,27 @@ class FC_Card extends React.Component{
                 </>
             )
         }else{
-            const currentBook = cards[ bookDocName ].cards;
+            const allCardArr = [];        
+          
+            userBooks.map( book => {
+                book.cards.map((card, index)=>{     
+                    card.index = index;
+                    card.bookDocName = book.id;
+                    card.uid = uid;
+                    allCardArr.push(card)
+                })             
+            });
+            const starCardArr = allCardArr.filter( card => card.star === true)
             const index = this.props.indexCard;
-            this.props.getCurrentCard( currentBook[index] )
-           
-            if (this.props.ttsCard === null ){
-                this.props.textToSpeech( currentBook[index] , this.props.currentSide ) 
+            this.props.getCurrentMyCard( starCardArr[index] , starCardArr.length )
+         
+            if (this.props.ttsMyCard ===null ){
+                this.props.textToSpeech_My( starCardArr[index], this.props.currentSide ) 
             }
-            return(
-                
-                <>   
+      
+
+            return(       
+                <>              
                     <Header/>    
                     <div className="FC_CardEach container">
                     
@@ -156,22 +160,22 @@ class FC_Card extends React.Component{
 
                             <div className="frontSide" style={frontStyle}>
                                 <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this) } >volume_up</i> 
-                                <span>{ currentBook[ index ].front }</span>
+                                <span>{ starCardArr[ index ].front }</span>
                             </div>
 
                             <div className="backSide" style={backStyle}>
                                 <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this) }>volume_up</i> 
-                                <span className="grey-text">{ currentBook[ index ].back }</span>                               
+                                <span className="grey-text">{ starCardArr[ index ].back }</span>                               
                             </div>
                         
                         </div>
 
-                        <span className="page">{ `${ this.props.indexCard + 1 } / ${ currentBook.length }` }</span>
+                        <span className="page">{ `${ this.props.indexCard+1 } / ${ starCardArr.length }` }</span>
 
                         <div className="controlMenu">
                             
                             <i className="material-icons waves-effect"  onClick={ this.handleFlip.bind(this) }>flip_camera_android</i>                  
-                            <i className="material-icons waves-effect" id="copyWord" data-clipboard-text={ this.props.currentSide? currentBook[ index ].front:currentBook[ index ].back} >file_copy</i>                                          
+                            <i className="material-icons waves-effect" id="copyWord" data-clipboard-text={ this.props.currentSide? starCardArr[ index ].front:starCardArr[ index ].back} >file_copy</i>                                          
                             <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) } >
                                 <div className={`record ${ this.state.isRecording? "active":null}`}></div>         
                             </i>
@@ -193,27 +197,29 @@ class FC_Card extends React.Component{
 const mapStateToProps = ( state ) =>{
     return{
         auth : state.firebase.auth,
-        cards : state.firestore.data,
-        indexCard : state.card.indexCard,
+        cards : state.firestore.ordered,
+        indexCard : state.card.indexMyCard,
         currentSide : state.card.currentSide,
-        currentCard : state.card.currentCard,
-        ttsCard: state.card.ttsCard
+        currentMyCard : state.card.currentMyCard,
+        currentMyCardArrLen : state.card.currentMyCardArrLen,
+        ttsMyCard: state.card.ttsMyCard
     }
 }
 const mapDispatchToProps = ( dispatch ) => {
     return{
-        lastCard:  ( indexCard ) => dispatch(lastCard( indexCard )),
-        nextCard:  ( indexCard, maxCard  ) => dispatch(nextCard( indexCard, maxCard )),
+        lastMyCard:  ( indexCard ) => dispatch(lastMyCard( indexCard )),
+        nextMyCard:  ( indexCard, maxCard  ) => dispatch(nextMyCard( indexCard, maxCard )),
         toggleCopyWord: ()=> dispatch(toggleCopyWord()),
-        getCurrentCard: ( currentCard ) => dispatch(getCurrentCard( currentCard )),
-        textToSpeech: ( targetWords, targetSide )=> dispatch(textToSpeech( targetWords, targetSide )),
-        resetIndex: (index)=> dispatch(resetIndex(index)), 
+        getCurrentMyCard: ( currentCard, starCardArr ) => dispatch(getCurrentMyCard( currentCard, starCardArr )),
+        textToSpeech_My: ( targetWords, targetSide )=> dispatch(textToSpeech_My( targetWords, targetSide )),
+        resetMyIndex: (index)=> dispatch(resetMyIndex(index)), 
+        
     }
 }
 export default compose( 
     connect( mapStateToProps, mapDispatchToProps ),
     firestoreConnect((props) =>{     
-        const uid = props.auth.uid;
+        const uid = props.firestore._.authUid;
         return(
             [{
                 collection: "Cards",
@@ -223,6 +229,6 @@ export default compose(
             }]
         )
     })
-)( FC_Card )
+)( FC_MyCard )
 
 

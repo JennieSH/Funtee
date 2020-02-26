@@ -39,12 +39,12 @@ class EditBook extends React.Component{
         return(
             <div className="FC_book addForm card" >         
                 
-                  <h5 className="blue-grey-text center">Edit Folder</h5>
-                    <input type="text"  defaultValue={ currentEditBook.id } onChange={ this.handleEditValue.bind(this) }/>
-                    <div className="editBookBtn">
-                        <button className="btn white-text  waves-effect left" onClick={ this.handleEdit.bind(this) }>Edit</button> 
-                        <button className="btn red white-text  waves-effect right" onClick={ this.handleToggleEditBookIcon.bind(this)}>Back</button>      
-                    </div>
+                <h5 className="blue-grey-text center">Edit Collection</h5>
+                <input type="text"  defaultValue={ currentEditBook.id } onChange={ this.handleEditValue.bind(this) }/>
+                <div className="editBookBtn">
+                    <button className="btn white-text  waves-effect left" onClick={ this.handleEdit.bind(this) }>Edit</button> 
+                    <button className="btn red white-text  waves-effect right" onClick={ this.handleToggleEditBookIcon.bind(this)}>Back</button>      
+                </div>
                 
             </div>          
         )

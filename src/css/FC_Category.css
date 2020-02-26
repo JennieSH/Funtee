@@ -155,7 +155,8 @@
     .FC_Category.container{
         width: 84%;
         margin-top: 80px;
-        justify-content: space-between;
+        justify-content: space-around;
+        align-items: center;
     }
     .FC_Category>.stickyCard{
         margin-bottom: 20px;
@@ -166,6 +167,9 @@
         margin-left: 50px;
         margin-right: 50px;
     }
+    /* .FC_book{
+        margin:  30px 29px
+    } */
     
 }
 
@@ -182,26 +186,60 @@
 }
 
 
-/* delete book */
-.FC_Category>.FCBook>.delete{
+/* delete/edit book */
+.FC_Category>.FCBook>.delete, .FC_Category>.FCBook>.edit{
     position: absolute;
     top:2px;
     right: -18px;
     z-index: 1;
     font-size: 40px;
-    
 }
+.FC_Category>.FCBook>.edit{
+    background-color: green;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 24px;
+    right: -13px;
+}
+.FC_Category>.FC_book>h6{
+    margin-top: 25px;
 
-
+}
+.FC_Category>.FC_book>.deleteBookBtn{
+    margin-top: 25px;
+}
+.FC_Category>.FC_book>.deleteBookBtn>button{
+    width: 104px;
+}
+.FC_Category>.FC_book>.editBookBtn{
+    margin-top: 25px;
+}
+.FC_Category>.FC_book>.editBookBtn>button{
+    width: 92px;
+}
 @media screen and (min-width:768px){
     .FC_Category>.FCBook>.delete{              
         right: -3px;
+    }
+   
+    .FC_Category>.FC_book>.deleteBookBtn{
+        margin-top: 40px;
+    }
+    .FC_Category>.FC_book>.editBookBtn{
+        margin-top: 40px;
+    }
+    .FC_Category>.FC_book>input{
+        margin-top: 20px;
     }
 }
 @media screen and (min-width:1024px){
     .FC_Category>.FCBook>.delete{
         top:13px;
         right: 8px;       
+    }
+    .FC_Category>.FCBook>.edit{
+        top:15px;
+        right: 10px;       
     }
 }
 @media screen and (min-width:1280px){
@@ -217,7 +255,7 @@
     position: absolute;
     width: 90vw;
     height: auto;
-    z-index: 1;
+    z-index: 2;
     padding: 30px 40px;
     border: rgb(190, 190, 190) 1px solid;
     top:20%
@@ -227,10 +265,44 @@
 }
 .FC_book.addForm>form>.createFolderBtn{
     margin-top: 50px;
-   
 }
 .FC_book.addForm>form>.createFolderBtn>button{
     width: 92px;
 }
 
+@media screen and (min-width:768px){
+    .FC_book.addForm{             
+        margin: auto;
+        width: 60vw;
+        top:70%;
+        padding: 30px 70px;
 
+    }
+    .FC_book.addForm{             
+        margin: auto;
+        width: 60vw;
+        top:70%;
+        padding: 30px 70px;
+
+    }
+}
+
+@media screen and (min-width:1024px){
+    .FC_book.addForm{                  
+        top:50%;
+    }
+
+}
+@media screen and (min-width:1280px){
+    .FC_book.addForm{                  
+        top:20%;
+        width: 37vw;
+    }
+    .FC_book.addForm>form>.createFolderBtn{
+        margin-top: 40px;
+    }
+    .FC_book.addForm>form>.createFolderBtn>button{
+        margin-bottom: 10px;
+    }
+
+}

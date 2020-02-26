@@ -67,8 +67,8 @@ class FC_Collection extends React.Component{
                                 </div>
                             </Link>
 
-                            <div className="FC_card card plus">                              
-                                <i className="material-icons white-text material-icons waves-effect" onClick={ this.handToggleAddCard.bind(this) }>add</i>                          
+                            <div className="FC_card card edit">                              
+                                <i className="material-icons white-text waves-effect" onClick={ this.handToggleAddCard.bind(this) }>add</i>                          
                                 <i className="material-icons white-text waves-effect" onClick={ this.handleToggleDeleteCardIcon.bind(this)}>remove</i>
                                 <i className="material-icons white-text waves-effect" onClick={ this.handleToggleEditCardIcon.bind(this)} >edit</i> 
                             </div>                                           
@@ -104,8 +104,9 @@ const mapDispatchToProps = ( dispatch ) => {
 }
 
 export default compose( 
+    connect( mapStateToProps, mapDispatchToProps ),
     firestoreConnect((props) =>{     
-        const uid = props.firestore._.authUid;
+        const uid = props.auth.uid;
         return(
             [{
                 collection: "Cards",
@@ -114,9 +115,7 @@ export default compose(
                 storeAs: uid
             }]
         )
-    }),
-    
-    connect( mapStateToProps, mapDispatchToProps )
+    })
 )( FC_Collection )
 
 

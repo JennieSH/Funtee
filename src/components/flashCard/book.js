@@ -15,13 +15,13 @@ class FCBook extends React.Component{
     }
 
     render(){
-        // console.log(this.props.bookData.book)
+
         const bookData = this.props.bookData;
         // console.log(bookData)
         return(
             <div className="FCBook">
                 { this.props.deleteBookIcon? <i className="delete material-icons red-text" onClick={ this.handleToggleDeleteBookIcon.bind(this) }>cancel</i> : null }
-                { this.props.editBookIcon? <i className="edit material-icons green-text" onClick={ this.handleToggleEditBookIcon.bind(this) }>edit</i> : null }
+                { this.props.editBookIcon? <i className="edit material-icons white-text" onClick={ this.handleToggleEditBookIcon.bind(this) }>edit</i> : null }
                 <Link to={`/collection/${bookData.time}`}>
                         <div className="FC_book card">
                             <div className="card-content">

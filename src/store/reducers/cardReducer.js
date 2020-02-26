@@ -30,9 +30,16 @@ const initState = {
     // Card
     
     indexCard: 1,
+    indexMyCard: 1,
     currentCard: null,
+    currentMyCard: null,
+    currentMyCardArrLen: null,
     currentSide: true, // true: front ; false: back
-    ttsSrc:null
+    ttsCard:null,
+    ttsMyCard:null,
+
+
+
 }
 
 const cardReducer = ( state = initState , action)=>{
@@ -74,7 +81,8 @@ const cardReducer = ( state = initState , action)=>{
             return {
                 ...state,
                 deleteBookIcon: !state.deleteBookIcon,
-                editBookIcon: false
+                editBookIcon: false,
+                createBookMenu: false
             }
         case "TOGGLE_DELETE_BOOK":
             return {
@@ -104,6 +112,7 @@ const cardReducer = ( state = initState , action)=>{
                 ...state,
                 editBookIcon: !state.editBookIcon,
                 deleteBookIcon: false,
+                createBookMenu: false
             }
         case "TOGGLE_EDIT_BOOK":
             return {
@@ -229,9 +238,11 @@ const cardReducer = ( state = initState , action)=>{
         case "EDIT_CARD_ERR":
             console.log("EDIT_CARD_ERR"+action.err)
             return state
-
-
-
+        case "TOGGLE_STAR":
+            return state
+        case "TOGGLE_STAR_ERR":
+            console.log("TOGGLE_STAR" + err)
+            return state
         // Card - current card 
         case "GET_CURRENT_CARD":
             return {
@@ -241,7 +252,8 @@ const cardReducer = ( state = initState , action)=>{
         case "TO_LAST_CARD":
             return {
                 ...state,
-                indexCard: state.indexCard-1
+                indexCard: state.indexCard-1,
+                ttsCard:null,
             }
         case "TO_LAST_CARD_ERR":
             return state
@@ -250,25 +262,84 @@ const cardReducer = ( state = initState , action)=>{
         case "TO_NEXT_CARD":
             return {
                 ...state,
-                indexCard: state.indexCard+1
+                indexCard: state.indexCard+1,
+                ttsCard:null,
             }
         case "TO_NEXT_CARD_ERR":
             return state;
 
 
+            // my card
+        case "RESET_MY_INDEX":           
+            return{
+                ...state,
+                indexMyCard: action.index,
+                ttsMyCard:null,
+                currentSide: true,
+            }
+        case "RESET_INDEX":           
+            return{
+                ...state,
+                indexCard: action.index,
+                ttsCard:null,
+                currentSide: true,
+            }
+        case "GET_CURRENT_MYCARD":
+            return {
+                ...state,
+                currentMyCard: action.currentCard,
+                currentMyCardArrLen: action.starCardArrLen
+            }
+
+        case "TO_LAST_MYCARD":
+            return {
+                ...state,
+                indexMyCard: state.indexMyCard-1,
+                ttsMyCard:null
+            }
+        case "TO_LAST_MYCARD_ERR":
+            return state
+
+
+        case "TO_NEXT_MYCARD":
+            return {
+                ...state,
+                indexMyCard: state.indexMyCard+1,
+                ttsMyCard:null
+            }
+        case "TO_NEXT_MYCARD_ERR":
+            return state;
+          
         case "GET_CURRENT_SIDE":
             return{
                 ...state,
-                currentSide: !state.currentSide
+                currentSide: !state.currentSide,
+                ttsMyCard:null,
+                ttsCard:null,
             }
-
+    
         case "GET_TTS":
             console.log("TTS success")
-            return state
-            
+            return {
+                ...state,
+                ttsCard : action.tts
+            }
         case "GET_TTS_ERR":
             console.log("TTS fail" + action.err)
             return state
+
+
+
+        case "GET_TTS_MY":
+            console.log("TTS_MY success")
+            return {
+                ...state,
+                ttsMyCard:action.tts
+            }
+        case "GET_TTS_MY_ERR":
+            console.log("TTS_MY fail" + action.err)
+            return state
+        
         default:
             return state
     }

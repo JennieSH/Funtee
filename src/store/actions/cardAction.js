@@ -255,10 +255,31 @@ export const editCard = ( uid, bookDocName, newCard, previousCardArr, index )=>{
         
     }
 }
+export const toggleStar = ( cardData, previousCardArr )=> {
+    return ( dispatch) =>{     
+
+        const firestore = firebase.firestore();
+
+        previousCardArr[ cardData.index ].star = !cardData.star 
+
+        firestore.collection( "Cards" ).doc( cardData.uid ).collection( cardData.uid ).doc( cardData.bookDocName ).update({
+            cards : previousCardArr
+        }).then(() => {
+            dispatch({ type: "TOGGLE_STAR" }); 
+        }).catch((err)=>{
+            dispatch({ type: "TOGGLE_STAR_ERR", err });        
+        }) 
+    }
+}
+
 
 
 // Card
-
+export const toggleCopyWord = () =>{
+    return ( dispatch ) =>{
+        dispatch({ type: "GET_CURRENT_SIDE" })
+    }
+}
 export const getCurrentCard = ( currentCard )=> {
     return ( dispatch) =>{     
         dispatch({ type: "GET_CURRENT_CARD", currentCard });         
@@ -267,7 +288,7 @@ export const getCurrentCard = ( currentCard )=> {
 
 export const lastCard = ( indexCard )=> {
     return ( dispatch) =>{     
-        if( indexCard > 1 ){
+        if( indexCard > 0 ){
             dispatch({ type: "TO_LAST_CARD" });
         }else{
             dispatch({ type: "TO_LAST_CARD_ERR" });
@@ -277,25 +298,91 @@ export const lastCard = ( indexCard )=> {
 
 export const nextCard = ( indexCard, maxCard ) => {
     return ( dispatch) =>{
-        if( indexCard < maxCard ){
+        if( indexCard < maxCard-1 ){
                 dispatch({ type: "TO_NEXT_CARD" });
         }else{
             dispatch({ type: "TO_NEXT_CARD_ERR" });
         }    
     }
 }
-
-export const toggleCopyWord = () =>{
+export const textToSpeech = ( targetWords, targetSide ) =>{
+    return( dispatch )=>{
+         let targetWord;
+         if( targetSide?  targetWord = targetWords.front : targetWord = targetWords.back){ // true -front
+     
+             const apiKey = "AIzaSyD-I8KgXlOZVldg8tK77bL-jpfcL6GKKZ4";
+             const ttsSrc = `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${apiKey}`;
+ 
+                 fetch( ttsSrc , {
+                     method: 'POST',
+                     body: JSON.stringify({
+                         "audioConfig": {
+                         "audioEncoding": "MP3",
+                         "pitch": 0,
+                         "speakingRate": 1
+                         },
+                         "input": {
+                         "text": `${targetWord}`
+                         },
+                         "voice": {
+                         "languageCode": "cmn-CN",
+                         "name": "cmn-CN-Standard-D"
+                         }            
+                     }),                    
+                 }).then((res)=>{
+                    return res.json()      
+                 }).then((res)=>{
+                    const tts = res.audioContent;                                      
+                    dispatch({ type: "GET_TTS", tts })
+                 }).catch((err)=>{
+                    dispatch({ type: "GET_TTS_ERR",err })           
+                 }) 
+         }        
+     } 
+ }
+// Card my card
+export const getCurrentMyCard = ( currentCard, starCardArrLen )=> {
+    return ( dispatch) =>{     
+        dispatch({ type: "GET_CURRENT_MYCARD", currentCard, starCardArrLen });         
+    }
+}
+export const resetMyIndex = ( index ) =>{
     return ( dispatch ) =>{
-        dispatch({ type: "GET_CURRENT_SIDE" })
+        dispatch({ type: "RESET_MY_INDEX" , index })
+    }
+}
+export const resetIndex = ( index ) =>{
+    return ( dispatch ) =>{
+        dispatch({ type: "RESET_INDEX" , index })
     }
 }
 
-export const textToSpeech = ( targetWords, targetSide ) =>{
+export const lastMyCard = ( indexCard )=> {
+    return ( dispatch) =>{     
+        if( indexCard > 0 ){
+            dispatch({ type: "TO_LAST_MYCARD" });
+        }else{
+            dispatch({ type: "TO_LAST_MYCARD_ERR" });
+        }              
+    }
+}
+
+export const nextMyCard = ( indexCard, maxCard ) => {
+    return ( dispatch) =>{
+        if( indexCard < maxCard-1 ){
+            dispatch({ type: "TO_NEXT_MYCARD" });
+        }else{
+            dispatch({ type: "TO_NEXT_MYCARD_ERR" });
+        }    
+    }
+}
+
+
+
+export const textToSpeech_My = ( targetWords, targetSide ) =>{
    return( dispatch )=>{
         let targetWord;
-        if( targetSide?  targetWord = targetWords.front : targetWord = targetWords.back){ // true -front
-    
+        if( targetSide?  targetWord = targetWords.front : targetWord = targetWords.back){ // true -front 
             const apiKey = "AIzaSyD-I8KgXlOZVldg8tK77bL-jpfcL6GKKZ4";
             const ttsSrc = `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${apiKey}`;
 
@@ -318,12 +405,12 @@ export const textToSpeech = ( targetWords, targetSide ) =>{
                 }).then((res)=>{
                     return res.json()      
                 }).then((res)=>{
-                    let tts = new Audio("data:audio/wav;base64," + res.audioContent );
-                    tts.play();
-                    dispatch({ type: "GET_TTS" })
+                    const tts = res.audioContent;                  
+                    dispatch({ type: "GET_TTS_MY", tts })
                 }).catch((err)=>{
-                        dispatch({ type: "GET_TTS_ERR",err })           
+                    dispatch({ type: "GET_TTS_MY_ERR", err })           
                 }) 
         }        
     } 
 }
+

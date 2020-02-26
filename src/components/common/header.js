@@ -177,7 +177,7 @@
 
 
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/authActions";
 import "../../css/common.css";
@@ -197,6 +197,15 @@ class Header extends React.Component{
     //     M.Sidenav.init(sidenav, {});
         
     // }
+    handlePath(e){
+        if ( !this.props.authState ){
+            e.stopPropagation();
+            e.preventDefault();
+            this.props.history.push("/signin");
+        }
+    
+        console.log(this.props.authState)
+    }
 
     handleSignOut(){
         let checkSignOut=confirm("Do you want to Sign out")
@@ -215,7 +224,11 @@ class Header extends React.Component{
 
         return(
             <header>
-
+{/* <div className="fixed-action-btn ">
+  <a className="btn-floating btn-large red toolbar">
+    <i className="large material-icons">import_contacts</i>
+  </a>
+</div> */}
                 <nav className="nav-wrapper">
                     <div className="container">
                         <Link to="/" className="brand-logo">FUNTEE</Link>
@@ -231,7 +244,7 @@ class Header extends React.Component{
 
                         <ul className="right hide-on-med-and-down">
                             <li><Link to="/topics">Learning Chinese</Link></li>
-                            <li><Link to="/flashcard">Flash Card</Link></li>
+                            <li><Link to="/flashcard" onClick={this.handlePath.bind(this)}>Flash Card</Link></li>
                             <li>{ authSignAction }</li>
                             <li><a>Language</a></li>
                             <li><Link to="/" className="btn btn-floating teal"><img className="a" src={ BT } /></Link></li>
@@ -245,7 +258,7 @@ class Header extends React.Component{
                             </li>
                             <hr/>
                             <li><Link to="/topics"><img src={ languageNav } className="navImgs"/>Learning Chinese</Link></li>
-                            <li><Link to="/flashcard"><img src={ flashcard } className="navImgs"/>Flash Card</Link></li>
+                            <li><Link to="/flashcard" onClick={this.handlePath.bind(this)} ><img src={ flashcard } className="navImgs"/>Flash Card</Link></li>
                             <li>{ authSignAction }</li>
                             <li><a><img src={ language } className="navImgs"/>Language</a>
                             </li>
@@ -262,7 +275,6 @@ class Header extends React.Component{
     }
 }
 const mapStateToProps = ( state ) => {
-    // console.log(state.firebase.auth.uid)
     return{
         authState : state.firebase.auth.uid
     }
@@ -272,4 +284,4 @@ const mapDispatchToProps = ( dispatch ) => {
         signOut : ()=> dispatch(signOut())
     }
 }
-export default connect( mapStateToProps, mapDispatchToProps )( Header )
+export default  withRouter(connect( mapStateToProps, mapDispatchToProps )( Header ))

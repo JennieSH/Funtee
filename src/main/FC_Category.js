@@ -36,11 +36,11 @@ class FC_Category extends React.Component{
 
 
     render(){
-        
         const uid = this.props.auth.uid ;
         const userBooks = this.props.bookData[ uid ] ;
         // console.log(userBooks)
-        if( ! uid ){ return <Redirect to="/signin"/> }
+        if( !uid ){ return <Redirect to="/signin"/> }
+ 
 
         if ( userBooks === undefined){
             return(
@@ -50,31 +50,33 @@ class FC_Category extends React.Component{
                 </>
             )
         }else{      
-            
             const books = userBooks.map(( book, index )=>{
                 return(
                     <FCBook key={ index } bookData ={ book } uid={ uid }/>         
                 )
             })
- 
+            const starCardArr = [];
+            const starCard = userBooks.map(book => book.cards);
+                  starCard.forEach(card => card.forEach(cardEach => starCardArr.push(cardEach)));
+            const starCardLength = starCardArr.filter(starCard => starCard.star === true).length;
             return(
                 <>
                     <Header/>                 
                     <div className="FC_Category container"> 
                         <div className="stickyCard"> 
-                            {/* <Link to="/collection">
+                            <Link to="/mycollection">
                                 <div className="FC_book card">
                                     <div className="card-content">
                                         <div className="card-description">                               
-                                            <span className="grey-text right">100 cards</span>   
+                                            <span className="grey-text right">{ starCardLength }  cards</span>   
                                         </div>                                
                                         <span className="card-title center-align"> 
                                             <i className="material-icons yellow-text text-darken-2 ">star</i>
-                                            收藏
+                                            My Collection
                                         </span>
                                     </div>                 
                                 </div>
-                            </Link>                             */}
+                            </Link>                            
                             <div className="FC_book card edit" >                              
                                 <i className="material-icons white-text waves-effect" onClick={ this.handleToggleAddBook.bind(this)}>add</i> 
                                 <i className="material-icons white-text waves-effect" onClick={ this.handleToggleDeleteBookIcon.bind(this)}>remove</i>
@@ -113,18 +115,17 @@ const mapDispatchToProps = ( dispatch ) => {
 }
 
 export default 
-compose( 
+compose(    
+    connect( mapStateToProps, mapDispatchToProps ),
     firestoreConnect((props) =>{     
-        const uid = props.firestore._.authUid;
+        const uid = props.auth.uid;
         return(
             [{
                 collection: "Cards",
                 doc: uid ,
-                subcollections: [{collection: uid}],
-                storeAs: uid
+                subcollections: [{collection: `${uid}`}],
+                storeAs: `${uid}`
             }]
         )
     }),
-    
-    connect( mapStateToProps, mapDispatchToProps )
 )( FC_Category )
