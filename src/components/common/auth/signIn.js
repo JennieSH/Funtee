@@ -10,6 +10,8 @@ import google from "../../../imgs/google.jpg";
 
 
 
+
+
 class SignIn extends React.Component{
 
     constructor(props){
@@ -46,8 +48,9 @@ class SignIn extends React.Component{
     FB_Redirect(){
         let providerF = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithRedirect(providerF).then(function(result) {
-            let token = result.credential.accessToken;      
-            let user = result.user;
+            // let token = result.credential.accessToken;      
+            let user = result.user;    
+        
           })
     }
 

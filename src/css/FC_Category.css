@@ -10,7 +10,7 @@
 }
 .FC_Category>.stickyCard{
     margin-bottom: 10px;
-    border-bottom: 1px solid #d86e6e; 
+    border-bottom: 1px solid rgb(153, 131, 109); 
   
 }
 
@@ -161,7 +161,7 @@
     .FC_Category>.stickyCard{
         margin-bottom: 20px;
        
-        border-bottom: 2px solid #d86e6e;         
+        border-bottom: 2px solid rgb(153, 131, 109);       
     }
     .FC_Category>.stickyCard .FC_book{
         margin-left: 50px;
@@ -193,6 +193,7 @@
     right: -18px;
     z-index: 1;
     font-size: 40px;
+    cursor: pointer;
 }
 .FC_Category>.FCBook>.edit{
     background-color: green;

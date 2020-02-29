@@ -29,8 +29,8 @@ const initState = {
 
     // Card
     
-    indexCard: 1,
-    indexMyCard: 1,
+    indexCard: 0,
+    indexMyCard: 0,
     currentCard: null,
     currentMyCard: null,
     currentMyCardArrLen: null,

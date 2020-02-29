@@ -1,130 +1,500 @@
-.homepageContainer{
-   height: 100vh;
+.homepageContainer>header>.nav-wrapper{
+   background-color: #FCFAF8;
+   box-shadow: none;
+}
+.homepageContainer>header .nav-wrapper .container>a{
+   color:  #6d5e4f;
+}
+
+/* bubble */
+.bubbleContainer{
+   width:100%;
+   height:100vh;
    overflow: hidden;
-   background-image: url(../imgs/banner.jpg);
-   background-size: cover;
-   background-position: center;
-}   
-
-
-/* when sign out */
-.homepageContainer>.container{
-   background-color: rgba(161, 158, 158, 0.219);
-   height: 100vh;
-   width: 100vw;
-   position: relative;
-   display: flex;
-   flex-direction:column;
-   align-items: center;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   flex-direction: column; 
+}
+ 
+.under-container{
+   width:100vw;
+   max-width:100%;
 }
 
-.homepageContainer>.container a{
-   display: flex;
-   justify-content: center;
-   position: relative;
-   top:300px;
-   margin-bottom: 50px;
+.bubble {
+   position:relative;
 }
-.homepageContainer>.container>a>button{
-   font-size: 20px;
-   height: 44px;
-   width: 160px;
-   letter-spacing: 2px;
+ 
+.bubble::before{
+   content: "";
+   position:absolute;
+   z-index:-1;
+   top: 130px;
+   left: 230px;
+   transform: translate(-50%, -50%);
+   display: block;
+   width: 20vh;
+   height: 20vh;
+   min-height: 100px;
+   min-width: 100px;
+   background: #ECDDDC;
+   border: 5px solid #fcfcfc96;
+   box-shadow: inset 0px -20px 100px 0px rgba(255, 255, 255, 0.48);
+   animation: 
+     transform 20s linear infinite alternate,
+     movement 40s linear infinite alternate,
+     shade 60s linear infinite alternate;
+ }
+ 
+.bubble::after{
+   content: "";
+   position:absolute;
+   z-index:0;
+   left: 50%;
+   top:40px;
+   transform: translate(-50%, -50%);
+   display: block;
+   width: 40vh;
+   height: 40vh;
+   min-height: 200px;
+   min-width: 200px;
+   background-image: url(https://images.unsplash.com/photo-1546098072-0c1e1f7a73de?ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80);
+   background-size: 120% 120%;
+   border: 15px solid #efebe9a1;
+   box-shadow:inset 0 0 0px 10px #fffefe57;
+   animation: 
+     transform2 20s linear infinite alternate-reverse,
+     shade 60s linear infinite alternate-reverse;
+ }
+ 
+ @keyframes transform
+ {
+     0%,
+   100% { border-radius: 33% 67% 70% 30% / 30% 30% 70% 70%; } 
+    20% { border-radius: 37% 63% 51% 49% / 37% 65% 35% 63%; } 
+    40% { border-radius: 36% 64% 64% 36% / 64% 48% 52% 36%; } 
+    60% { border-radius: 37% 63% 51% 49% / 30% 30% 70% 70%; } 
+    80% { border-radius: 40% 60% 42% 58% / 41% 51% 49% 59%; } 
+ }
+ 
+ @keyframes transform2 {
+   0%{border-radius: 42% 58% 60% 40% / 32% 54% 46% 68%}
+   20%{border-radius: 59% 41% 36% 64% / 32% 64% 36% 68%}
+   40%{border-radius: 48% 52% 52% 48% / 54% 53% 47% 46%}
+   60%{border-radius: 42% 58% 51% 49% / 63% 64% 36% 37%}
+   80%{border-radius: 32% 68% 33% 67% / 63% 35% 65% 37%}
+   100%{border-radius: 34% 66% 52% 48% / 34% 53% 47% 66%}
 }
-/* when sign in */
-.homepageContainer>.container>h1{
-   color: rgb(94, 91, 91);
-   text-align: center;
-   position: relative;
-   font-family: 'Courgette', cursive;
-   display: none;
+ 
+@keyframes movement{
+   from { -webkit-transform: rotate(-1turn) translateY(-50px); transform: rotate(-1turn) translateY(-50px); }
+     to { -webkit-transform: none; transform: none; }
 }
-.homepageContainer>.container>div{
-   height: 220px;
-   width: 220px;
-   background-color: rgba(81, 82, 82, 0.219);
-   border-radius: 50%;
-   overflow: hidden;
-   position: relative;
-   text-align: center;
-   top:220px;  
+ 
+@keyframes shade{
+   0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
 }
 
-.homepageContainer>.container>div>img{
-   height: 100%;
+@media screen and (min-width:640px){
+   .bubble::before{   
+      top: 5vh;
+      left: 55vh;
+    
+   }
 }
-
 
 @media screen and (min-width:768px){
-  
-   .homepageContainer>.container a{
-      top:380px
+   .bubble {
+      top:0px
    }
-   /* when sign in */
-   .homepageContainer>.container>div{
-      height: 320px;
-      width: 320px;
-      
+
+   .bubble::before{   
+      top: 0;
+      left: 50vh;
+      width: 17vh;
+      height: 17vh;
    }
 }
 
-@media screen and (min-width:1024px){
-   .homepageContainer>.container a{
-      top:600px;
-      margin-bottom: 80px;
-      
+@media screen and (min-width:800px){
+   .bubble::after{
+      width: 55vh;
+      height: 55vh;
+}
+    
+   .bubble::before{   
+      top: 8vh;
+      left: 95vh;
+      width: 20vh;
+      height: 20vh;
    }
-   .homepageContainer>.container a button{
-      font-size: 26px;
-      height: 60px;
-      width: 200px;
+}
+
+
+@media screen and (min-width:1024px){    
+   .bubble {
+      top:0px
+   }
+   .bubble::before{
+      left: 53vh;
+   }
+}
+
+ @media screen and (min-width:1280px){
+   .bubbleContainer{
+      flex-direction: row;
+      position: relative;
+   }
+   
+   .bubble::before{
+      left: 45vw;
+      width: 15vw;
+      height: 15vw;
+   }
+   .bubble::after{
+      width: 65vh;
+      height: 65vh;
+   }
+}
+
+@media screen and (min-width:1920px){
+   .bubble::before{
+      width: 15vw;
+      height: 15vw;
+   }
+}
+
+ /* bubble content */
+.contentContainer{
+   position: relative;
+   top: 30vh;
+   width: 100%;
+   text-align: center;
+   padding: 40px;
+ }
+.contentContainer>div{
+   font-size: 20px;
+   font-weight: bold;
+   font-family: "Sriracha", cursive; 
+ }
+
+.contentContainer>.authBtn{
+   margin-top: 45px;
+   display: flex;
+   justify-content: space-around;
+ }
+.contentContainer>.authBtn>a>button{
+   width: 120px;
+   font-weight: bold;
+   letter-spacing: 1px;
+}
+.contentContainer>.authBtn>a>.guest{
+   color: #6d5e4f; ;
+   background-color: rgb(252, 248, 244);
+   border: 1px solid #6d5e4f; ; 
+}
+.contentContainer>.authBtn>a>.member{
+   color: #FCFAF8; ;
+   background-color: #6d5e4fee;
+   border: 1px solid #6d5e4fee; 
+}
+@media screen and (min-width:640px){
+   .contentContainer{    
+      top: 25vh;
+    }
+   .contentContainer>div{
+      font-size: 20px;
+    }
+   
+   .contentContainer>.authBtn{
+     padding: 0 70px;
+     margin-top: 25px;
+    }
+   .contentContainer>.authBtn>a>button{
+      width: 105px;
+      height: 35px;
+      letter-spacing: 0px;
+      font-size: 12px;
    }
 
-   /* when sign in */
-   .homepageContainer>.container>div{
-      height: 320px;
-      width: 320px;
-      position: absolute;
+}
+@media screen and (min-width:768px){
+   .contentContainer{    
+      top: 25vh;
+    }
+   .contentContainer>div{
+      font-size: 24px;
+    }
+   
+   .contentContainer>.authBtn{
+     padding: 0 120px;
+     margin-top: 30px;
+    }
+   .contentContainer>.authBtn>a>button{
+      width: 125px;
+      height: 40px;
+      font-size: 16px;
+   }
+}
+@media screen and (min-width:800px){
+
+   .contentContainer{    
+      top: 30vh;
+    }
+   .contentContainer>div{
+      font-size: 24px;
+    }
+   
+   .contentContainer>.authBtn{
+ 
+     margin-top: 23px;
+    }
+   .contentContainer>.authBtn>a>button{
+      width: 130px;
+      height: 40px;
+      letter-spacing: 0px;
+      font-size: 15px;
+   }
+
+
+ }
+@media screen and (min-width:1024px){
+   
+   .contentContainer{    
+      top: 33vh;
+    }
+   .contentContainer>div{
+      font-size: 28px;
+    }
+   
+   .contentContainer>.authBtn{
+     padding: 0 200px;
+     margin-top: 32px;
+    }
+   .contentContainer>.authBtn>a>button{
+      width: 135px;
+      height: 40px;
+      letter-spacing: 0px;
+      font-size: 15px;
+   }
+}
+@media screen and (min-width:1280px){
+   .contentContainer{
+      position: relative;
+      top:0;
+      width: 80%;
+   }
+   .contentContainer>.authBtn{
+      padding:  0 60px;
+      justify-content: space-between;
+    }
+   .contentContainer>.authBtn>a>button{
+      width: 150px;
+      letter-spacing:2px;
+   }
+}
+@media screen and (min-width:1366px){
+   .contentContainer{
+      width: 70%;
+   }
+}
+@media screen and (min-width:1600px){
+   .contentContainer{
+      margin-right: 10vh;
+      width: 60%;
+   }
+}
+
+@media screen and (min-width:1920px){
+   .contentContainer{
+      top:0; 
+      margin-right: 20vh;
+   }
+   .contentContainer>div{
+      font-size: 32px;
+    }
+   .contentContainer>.authBtn{
+      padding:  0 85px;
+      margin-top: 45px;
+      justify-content: space-between;
+    }
+   .contentContainer>.authBtn>a>button{
+      width: 150px;
+      letter-spacing: 1px;
+   }
+}
+@media screen and (min-width:2048px){
+   .contentContainer{
+      top:0; 
+      margin-right: 28vh;
+   }
+}
+
+
+/* information  */
+.informationContainer {
+   width: 100%;
+   background-color: #EEE4E1;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 30px 0;
+}
+.information.card {
+   width: 300px;
+   padding-top: 20px;
+}
+
+.information.card>.card-image{
+   border-bottom:1px solid #c2b6ab;
+   padding: 20px;
+   width: 100%;
+}
+.information.card>.card-image img{
+   width: 100%;
+}
+.information.card .card-title{
+   font-weight: bold;
+}
+@media screen and (min-width:768px){
+   .informationContainer {
+     
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      padding: 30px ;
+   }
+   .information.card {
+      height: 490px;  
+      margin: 0;
+   }
+
+}
+@media screen and (min-width:993px){
+   .information.card {
+      height: 510px;
+   }
+}
+@media screen and (min-width:1024px){
+   .information.card {
+      height: 520px;  
+   }
+   .informationContainer {
+      justify-content: center;
+   }
+   .information.card {
+      margin: 0 70px;
+   }
+}
+@media screen and (min-width:1280px){
+   .informationContainer {
+
+      padding: 30px 0;
+   
+   }
+   .information.card {
+      width: 300px;  
+      height: 570px;
+      margin: 0 90px;
+   }
+   .information.card>.card-image{
+      height: 260px;
+      padding: 25px;
+      position: relative;  
+      background-size: 70% 70%;
+      background-repeat:no-repeat;
+      background-position: center center
+     }
+
+   .information.card p{
+      line-height: 25px; 
+      margin-top:15px  
+   }
+}
+@media screen and (min-width:1600px){
+ 
+   .information.card {
+      margin: 0 120px;
+   }
+}
+@media screen and (min-width:1920px){
+   .informationContainer {
+      justify-content: center;
+      
+   }
+   .information.card {
+      margin: 0 145px;
+   }
+}
+
+/* tool */
+.toolContainer {
+   width: 100%;
+   background-color: #E7D8C9;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 30px 0;
+}
+.tool.card {
+   width: 300px;
+   height: 200px;
+   position: relative;
+   margin-top: 50px;
+   
+   
+}
+
+.tool.card>.card-image{
+   background-color: rgb(211, 205, 198);
+   border: 5px solid #ffffff;
+   height: 80px;
+   width: 80px;
+   border-radius: 50%;
+   position: absolute;
+   top: -35px;
+   left: 120px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+.tool.card>.card-image>i{
+   font-size: 40px;
+   color: #faf6f6;
+}
+.tool.card>.card-content{
+   margin-top: 30px;
+}
+.tool.card .card-title{
+   font-weight: bold;
+}
+@media screen and (min-width:768px){
+   .toolContainer {
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-around;
+   }
+   .tool.card {
+      margin-top: 60px;    
    }
 }
 
 @media screen and (min-width:1280px){
-   .homepageContainer>.container{
-      height:450px;
-      width: 350px;
-      position: relative;
-      top:120px;
-      right: -380px;
+   .toolContainer {
+      padding: 30px 60px;
    }
-   .homepageContainer>.container>h1{
-      top:70px;
-      display: block;
-   }
-   .homepageContainer>.container a{
-      top:105px;
-      margin-bottom: 50px;
-   }
-   .homepageContainer>.container a button{
-      font-size: 26px;
-      height: 60px;
-      width: 200px;
-   }
-   /* when sign in */
-   .homepageContainer>.container>div{
-      height: 100px;
-      width: 100px;
-      top:70px;
-      position: relative;
-   }  
 }
-
-
 @media screen and (min-width:1920px){
-   .homepageContainer>.container{    
-      top:300px;
-      right: -630px;
-   }  
-   .homepageContainer>.container>h1{
-      top:60px;
+   .toolContainer {
+      padding: 30px 140px;
+      justify-content: center;
+   }
+   .tool.card {
+      margin: 60px 70px;    
    }
 }

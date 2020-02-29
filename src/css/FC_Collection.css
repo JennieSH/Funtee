@@ -10,7 +10,7 @@
 }
 .FC_Collection>.stickyCard{
     margin-bottom: 10px;
-    border-bottom: 1px solid #d86e6e; 
+    border-bottom: 1px solid rgb(153, 131, 109); 
   
 }
 
@@ -130,7 +130,7 @@
     .FC_Collection>.stickyCard{
         margin-bottom: 20px;
        
-        border-bottom: 2px solid #d86e6e;         
+        border-bottom: 2px solid rgb(153, 131, 109);        
     }
     
     .FC_Collection>.stickyCard .FC_card{
@@ -154,13 +154,14 @@
 }
 
 
-/* delete */
+/* delete edit */
 .FC_Collection>.FCCard>.delete, .FC_Collection>.FCCard>.edit{
     position: absolute;
     right: -13px;
     top:8px;
     z-index: 1;
     font-size: 40px;
+    cursor: pointer;
 }
 .FC_Collection>.FCCard>.edit{
     background-color: green;

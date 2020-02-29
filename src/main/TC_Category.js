@@ -13,7 +13,7 @@ class TC_Category extends React.Component{
                     <div>
                         <div className="TC_CatalogBox">
                             <img/>                       
-                            <span>Taiwanese<br/>Phonetic Symbol</span>
+                            <span>Mandarin<br/>Phonetic Symbols</span>
                             <button><Link to="/symbol">Learn More</Link></button>
                         </div>
                     </div>

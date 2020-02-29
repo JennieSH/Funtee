@@ -35,7 +35,7 @@ class TC_Unit extends React.Component{
             const maxPage=lesson.length;
             console.log(this.props.firestore)
             return(
-                <>
+                <>  
                     <Header/>
                     <i className="material-icons waves-effect" id="lastPageBtn_U" onClick={ this.handleLastPage.bind(this) }>navigate_before</i>
                     <i className="material-icons waves-effect" id="nextPageBtn_U" onClick={ this.handleNextPage.bind(this) }>navigate_next</i> 

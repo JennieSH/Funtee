@@ -145,11 +145,14 @@ class FC_MyCard extends React.Component{
             const starCardArr = allCardArr.filter( card => card.star === true)
             const index = this.props.indexCard;
             this.props.getCurrentMyCard( starCardArr[index] , starCardArr.length )
-         
+      
+
+            if ( !starCardArr[index] ){return <Loading/> }
+    
             if (this.props.ttsMyCard ===null ){
                 this.props.textToSpeech_My( starCardArr[index], this.props.currentSide ) 
-            }
-      
+            }   
+            
 
             return(       
                 <>              
@@ -157,10 +160,9 @@ class FC_MyCard extends React.Component{
                     <div className="FC_CardEach container">
                     
                         <div className="FC_cardEach card">
-
                             <div className="frontSide" style={frontStyle}>
                                 <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this) } >volume_up</i> 
-                                <span>{ starCardArr[ index ].front }</span>
+                                <span>{ starCardArr[index].front }</span>
                             </div>
 
                             <div className="backSide" style={backStyle}>
@@ -172,17 +174,15 @@ class FC_MyCard extends React.Component{
 
                         <span className="page">{ `${ this.props.indexCard+1 } / ${ starCardArr.length }` }</span>
 
-                        <div className="controlMenu">
-                            
+                        <div className="controlMenu">                          
                             <i className="material-icons waves-effect"  onClick={ this.handleFlip.bind(this) }>flip_camera_android</i>                  
-                            <i className="material-icons waves-effect" id="copyWord" data-clipboard-text={ this.props.currentSide? starCardArr[ index ].front:starCardArr[ index ].back} >file_copy</i>                                          
+                            <i className="material-icons waves-effect" id="copyWord" data-clipboard-text={ this.props.currentSide? starCardArr[index].front:starCardArr[index].back} >file_copy</i>                                          
                             <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) } >
                                 <div className={`record ${ this.state.isRecording? "active":null}`}></div>         
                             </i>
                             <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
                                 <audio src={this.state.blobURL} id="audioRecord"/>
-                            </i>
-                                        
+                            </i>                                       
                         </div>
                         <div className="pageControl">
                             <i className="material-icons waves-effect " onClick={ this.handleLastCard.bind(this) }>navigate_before</i>

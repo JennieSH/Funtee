@@ -3,40 +3,37 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "../css/homepage.css";
 import Header from "../components/common/header";
-import BT from "../imgs/BT.png";
-
+import Footer from "../components/common/footer";
+import Information from "../components/homepage/information";
+import Tool from "../components/homepage/tool";
+import { Guest, Member } from "../components/homepage/authBtn";
 
 class Homepage extends React.Component{
 
     render(){   
-        if (this.props.auth.uid === undefined){
-            return(
-                <>
-                    <Header/>
-                    <div className="homepageContainer">
-                       <div className="container">
-                            <h1>Welcome</h1>
-                            <Link to="/signin"><button className="waves-effect waves-light btn">SIGN IN</button></Link>
-                            <Link to="/topics"><button className="waves-effect waves-light btn">Guest</button></Link>
-                        </div>
-                    </div>          
-                </>
+        return(
+            <>        
+                <div className="homepageContainer">
+                    <Header/>            
+                    <div className="bubbleContainer ">
+                        <div className="under-container bubble " ></div>
+                            <div className="contentContainer ">
+                            <div className="red-text text-lighten-2">Making Language Fun and Easy !</div>
+                            <div className="authBtn">     
+                                { this.props.auth.uid? <Member/> : <Guest/> }               
+                            </div>
+                        </div> 
+                    </div>  
+                </div> 
+
+                <Information/>  
+
+                <div className="toolContainer">        
+                    <Tool/>
+                </div>
+                <Footer/>  
+            </>          
             )
-         }else{   
-            return(
-                <>
-                    <Header/>
-                    <div className="homepageContainer">
-                        <div className="container">
-                                <h1>Hello !</h1>
-                                <div><img src={BT}/></div>
-                                <Link to="/category"><button className="waves-effect waves-light btn">Start</button></Link>          
-                        </div>
-                       
-                    </div>               
-                </>               
-            )
-        }
     }
 }
 
