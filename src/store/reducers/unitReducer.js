@@ -5,17 +5,32 @@ const initState = {
     isBlocked: false,
     city:null,
     description:true,
+
+
+    unitTTS:null
     
  };
 
 const unitReducer = ( state= initState, action ) =>{
    
     switch (action.type) {    
+        case "GET_TTS":
+            console.log("TTS success")
+            return {
+                ...state,
+                unitTTS : action.tts
+            }
+
+
+
+
+
         // page  
         case "TO_LAST_PAGE":
             return {
                 ...state,
-                indexPage:state.indexPage-1
+                indexPage:state.indexPage-1,
+                unitTTS : null
             }
         case "TO_LAST_PAGE_ERR":
             return state
@@ -23,7 +38,8 @@ const unitReducer = ( state= initState, action ) =>{
         case "TO_NEXT_PAGE":
             return {
                 ...state,
-                indexPage:state.indexPage+1
+                indexPage:state.indexPage+1,
+                unitTTS : null
             }
         case "TO_NEXT_PAGE_ERR":
             return state;

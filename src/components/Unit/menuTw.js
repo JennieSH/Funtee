@@ -4,7 +4,7 @@ import { readTTS, initRecord, startRecord, stopRecord } from "../../store/action
 import MicRecorder from "mic-recorder-to-mp3";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
-class UnitlMenu extends React.Component{
+class UnitlMenuTw extends React.Component{
 
     constructor(props){
         super(props)
@@ -42,13 +42,10 @@ class UnitlMenu extends React.Component{
         this.props.initRecord()
     }
 
-    // handleRead(){  
-    //   this.props.readTTS(this.props.audio)
-    // }
     handleRead(){  
-      new Audio("data:audio/wav;base64," + this.props.unit.unitTTS ).play();
-
+      this.props.readTTS(this.props.audio)
     }
+   
 
     handleRecord (){
 
@@ -111,4 +108,4 @@ const mapDispatchToProps = (dispatch) => {
        stopRecord: () => dispatch(stopRecord())
     }
 }
-export default  connect( mapStateToProps, mapDispatchToProps )(UnitlMenu)
+export default  connect( mapStateToProps, mapDispatchToProps )(UnitlMenuTw)

@@ -56,7 +56,7 @@ class FC_Collection extends React.Component{
                     <div className="FC_Collection container"> 
                         <div className="stickyCard">
                             
-                            <Link to="/spelling">
+                            {/* <Link to="/spelling">
                                 <div className="FC_card card">
                                     <div className="card-content">                                
                                         <span className="card-title center-align"> 
@@ -65,7 +65,7 @@ class FC_Collection extends React.Component{
                                         </span>
                                     </div>                 
                                 </div>
-                            </Link>
+                            </Link> */}
 
                             <div className="FC_card card edit">                              
                                 <i className="material-icons white-text waves-effect" onClick={ this.handToggleAddCard.bind(this) }>add</i>                          

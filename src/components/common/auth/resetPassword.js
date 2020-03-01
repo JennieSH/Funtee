@@ -2,9 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { resetPassword } from "../../../store/actions/authActions";
-import "../../../css/common.css";
+import "../../../css/account.css";
 import Header from "../header";
-import firebase from "firebase/app";
 
 
 class ResetPassword extends React.Component{
@@ -38,8 +37,8 @@ class ResetPassword extends React.Component{
         return(
             <>
                 <Header/>  
-                <div className="AuthContainer">
-                    <div className="container">
+        
+                    <div className="ResetContainer">
 
                       
                         <div className="input-field">
@@ -49,7 +48,7 @@ class ResetPassword extends React.Component{
                         { authError ? <h4>{authError}</h4> : null }
                         <button onClick={ this.handlePasswordReset.bind(this) } className="waves-effect waves-light btn">Send Email</button>
                     </div>
-                </div>
+          
             </> 
         )
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/common/header";
 import "../css/TC_Unit.css";
-import UnitlMenu from "../components/unit/menu";
+import UnitlMenuTw from "../components/unit/menuTw";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
@@ -47,7 +47,7 @@ class TC_UnitTw extends React.Component{
                                 <li>{ lesson[index].chinese }</li>
                                 <li>{ lesson[index].english }</li>                            
                             </ul>                                             
-                            <UnitlMenu audio={ lesson[index].audio }/>  
+                            <UnitlMenuTw audio={ lesson[index].audio }/>  
                             <span  className="page">{ `${indexPage} / ${maxPage}` }</span>
                     </div>
                     

@@ -49,7 +49,7 @@ class FC_MyCollection extends React.Component{
                                 </div>     
                                 <span className="grey-text ">- { starCardArr.length }  cards</span>   
                             </div>                   
-                            <Link to="/spelling">
+                            {/* <Link to="/spelling">
                                 <div className="FC_card card">
                                     <div className="card-content">                                
                                         <span className="card-title center-align"> 
@@ -58,7 +58,7 @@ class FC_MyCollection extends React.Component{
                                         </span>
                                     </div>                 
                                 </div>
-                            </Link>             
+                            </Link>              */}
                         </div>  
                         { cards }
                     </div>               

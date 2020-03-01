@@ -1,6 +1,47 @@
 import MicRecorder from 'mic-recorder-to-mp3';
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
+export const textToSpeech = ( targetWord ) =>{
+    return( dispatch )=>{
+       
+             const apiKey = "AIzaSyD-I8KgXlOZVldg8tK77bL-jpfcL6GKKZ4";
+             const ttsSrc = `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${apiKey}`;
+ 
+                 fetch( ttsSrc , {
+                     method: 'POST',
+                     body: JSON.stringify({
+                         "audioConfig": {
+                         "audioEncoding": "MP3",
+                         "pitch": 0,
+                         "speakingRate": 1
+                         },
+                         "input": {
+                         "text": `${targetWord}`
+                         },
+                         "voice": {
+                         "languageCode": "cmn-CN",
+                         "name": "cmn-CN-Standard-D"
+                         }            
+                     }),                    
+                 }).then((res)=>{
+                    return res.json()      
+                 }).then((res)=>{
+                    const tts = res.audioContent;   
+                    dispatch({ type: "GET_TTS", tts })
+                 })
+              
+     } 
+ }
+
+
+
+
+
+
+
+
+
+
 export const lastPage = ( indexPage )=> {
     return ( dispatch) =>{     
         if( indexPage > 1 ){

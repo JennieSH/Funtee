@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, HashRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 // Router
 import Homepage from "./Homepage";
 import Category from "./Category";
@@ -16,6 +16,7 @@ import FC_MyCollection from "./FC_MyCollection";
 import FC_Card from "./FC_Card";
 import FC_MyCard from "./FC_MyCard";
 import FC_Spelling from "./FC_Spelling";
+import Account from "./Account";
 import SignIn from "../components/common/auth/signIn";
 import SignUp from "../components/common/auth/signUp";
 import ResetPassword from "../components/common/auth/resetPassword";
@@ -32,8 +33,8 @@ class App extends React.Component{
         return(              
             <BrowserRouter>  
                <Route exact path="/" component={Homepage}/>
-               <Route path="/signin" component={SignIn}/> 
-               <Route path="/signup" component={SignUp}/>
+               <Route path="/signin" component={Account}/> 
+               {/* <Route path="/signup" component={SignUp}/> */}
                <Route path="/resetpassword" component={ResetPassword}/>   
                  
                <Route path="/category" component={Category}/>                                       
