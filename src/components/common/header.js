@@ -76,7 +76,7 @@ class Header extends React.Component{
                             <li><Link to="/topics">Learning Chinese</Link></li>
                             <li><Link to="/flashcard" onClick={this.handlePath.bind(this)}>Flash Card</Link></li>
                             <li>{ authSignAction }</li>
-                            <li><a>Language</a></li>
+                            {/* <li><a>Language</a></li> */}
                             { auth.uid ?<li><Link to="/" className="web-info btn btn-floating "><span className="white-text ">{ fabName }</span></Link></li> : null}
                         </ul>     
 
@@ -99,12 +99,12 @@ class Header extends React.Component{
                                 </Link>
                             </li>                                                       
                             <li>{ authSignAction }</li>                        
-                            <li>
+                            {/* <li>
                                 <a>
                                     <i className=" material-icons" >language</i>   
                                     Language
                                 </a>
-                            </li>
+                            </li> */}
                         </ul>           
                     
                     </div>

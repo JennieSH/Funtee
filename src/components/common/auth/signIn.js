@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { signIn } from "../../../store/actions/authActions";
 import firebase from 'firebase/app';
-import facebook from "../../../imgs/facebook.jpg";
-import google from "../../../imgs/google.jpg";
+import facebook from "../../../imgs/facebook.png";
+import google from "../../../imgs/google.png";
 
 
 
@@ -17,6 +17,9 @@ class SignIn extends React.Component{
         this.state={
             email:null,
             password:null,
+
+            blankName:null,
+            blankPassword:null
         }
 
     }
@@ -31,9 +34,11 @@ class SignIn extends React.Component{
         e.preventDefault();
 
         if ( this.state.email === null ){
-            alert("請輸入信箱")
+           
         }else if( this.state.password === null ){
-            alert("請輸密碼")
+            // this.setState({
+            //     blankName:
+            // })
         }else if ( this.state.password.trim().length < 6 ){
             alert("密碼至少六個字");         
         }else{
@@ -67,12 +72,12 @@ class SignIn extends React.Component{
         
         return(
             <>
-      
-                    <form onSubmit={ this.handleSubmit.bind(this) } className="authForm" id="authFormIn"> 
+                <form onSubmit={ this.handleSubmit.bind(this) } className="authForm" id="authFormIn"> 
 
                         <div className="input-field">
                             <label htmlFor="email">Email</label>        
                             <input onChange={ this.handleChange.bind(this) } type="email"id="email" name="email"/>
+
                         </div>
 
                         <div className="input-field">

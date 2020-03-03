@@ -42,13 +42,13 @@ class UnitlMenu extends React.Component{
         this.props.initRecord()
     }
 
-    // handleRead(){  
-    //   this.props.readTTS(this.props.audio)
-    // }
     handleRead(){  
-      new Audio("data:audio/wav;base64," + this.props.unit.unitTTS ).play();
-
+      this.props.readTTS(this.props.audio)
     }
+    // handleRead(){  
+    //   new Audio("data:audio/wav;base64," + this.props.unit.unitTTS ).play();
+
+    // }
 
     handleRecord (){
 

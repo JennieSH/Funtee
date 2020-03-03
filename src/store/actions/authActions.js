@@ -58,3 +58,9 @@ export const resetPassword = ( emailAddress ) =>{
         });
     })
 }
+
+export const closePasswordDialogBox = () =>{
+    return(( dispatch)=>{
+            dispatch({ type: "CLOSE_PASSWORD_DIALOGBOX" })
+    })
+}

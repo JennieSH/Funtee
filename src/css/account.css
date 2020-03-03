@@ -54,6 +54,7 @@
 }
 .auth .authCover div p{
     margin: 35px 0;
+    color: #37474f 
 }
 .auth .authCover div button{
         
@@ -61,9 +62,9 @@
     height: 40px;
     border-radius: 25px;
     font-size: 18px;
-    background-color: rgb(83, 83, 83);
+    background-color: rgb(56, 55, 55);
     font-weight: bold;
-    color: #E6BEAB;
+    color: rgb(226, 226, 226);
     border: none;
     letter-spacing: 1px;
     margin-top: 15px;
@@ -129,7 +130,7 @@
     font-size: 1.5em;
     background-color: #E6BEAB;
     font-weight: bold;
-    color: rgb(83, 83, 83);
+    color: rgb(61, 61, 61);
     border: none;
     letter-spacing: 1px;
     margin-top: 15px;
@@ -249,13 +250,23 @@
         top:16vw
     }
 }
+@media screen and (min-width:1600px){
+    .auth{
+        width: 66vw;
+    }
+}
 @media screen and (min-width:1920px){
     .auth{
-        top:20vw
+        top:20vw;
+        width: 60vw;
     }
 }
 
-.ResetContainer{
+
+
+
+/* reset password */
+.resetContainer{
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -263,4 +274,135 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(161, 151, 131, 0.144);
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
 }
+.resetContainer>span{
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #4e342e
+}
+.resetContainer>div{
+    width: 65%;
+    position: relative;
+    margin-top: 4rem;
+    margin-bottom: 0rem;
+}
+
+.resetContainer>div>i{
+    font-size: 34px;
+    margin-left: 10px;
+    margin-right: 20px;
+    position: absolute;
+    right: -1rem;
+    bottom: 10px;
+}
+
+.resetContainer>h4{
+    font-size: 1rem;
+    color: red;
+    text-align: center
+}
+.resetContainer>button{
+    margin-top: 1rem;
+}
+
+@media screen and (min-width:600px){
+    .resetContainer>div{
+        width: 48%;
+    }
+    .resetContainer>button{
+        margin-top: 2rem;
+    }
+}
+@media screen and (min-width:768px){
+    .resetContainer>div{
+        width: 38%;
+    }
+    .resetContainer>button{
+        margin-top: 2rem;
+    }
+}
+@media screen and (min-width:1024px){
+    .resetContainer>div{
+        width: 25vw;
+    }
+}
+@media screen and (min-width:1280px){
+    .resetContainer>div{
+        margin-top: 4rem;
+    }
+}
+@media screen and (min-width:1600px){
+    .resetContainer>div{
+        width: 20vw;
+    }
+}
+@media screen and (min-width:1920px){
+    .resetContainer>div{
+        width: 17vw;
+    }
+    .resetContainer>button{
+        margin-bottom: 3vw;
+    }
+}
+
+.resetContainer>.resetPassword.card{
+    height: 50vw;
+    width: 80vw;
+    position: absolute;
+    z-index: 1;
+    padding: 7vw 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}   
+.resetContainer>.resetPassword.card span{
+    text-align: center;
+    color:#4e342e;
+}
+
+
+@media screen and (min-width:600px){
+    .resetContainer>.resetPassword.card{
+        height: 35vw;
+        width: 46vw;
+    }
+}
+@media screen and (min-width:768px){
+    .resetContainer>.resetPassword.card{
+        height: 30vw;
+        width: 53vw;
+    }
+}
+@media screen and (min-width:1024px){
+    .resetContainer>.resetPassword.card{
+        height: 20vw;
+        width: 31vw;
+        padding : 4vw 5vw
+    }
+}
+@media screen and (min-width:1280px){
+    .resetContainer>.resetPassword.card{
+        height: 16vw;
+        width: 26vw;
+        padding : 3vw 4vw
+    }
+}
+@media screen and (min-width:1600px){
+    .resetContainer>.resetPassword.card{
+        height: 13vw;
+        width: 20vw;
+        padding : 2vw 3vw
+
+    }
+}
+@media screen and (min-width:1920px){
+    .resetContainer>.resetPassword.card{
+        height: 10vw;
+        width: 17vw;
+        padding : 2vw 2vw;
+
+    }
+}
+

@@ -36,9 +36,9 @@ class TC_Unit extends React.Component{
             console.log(this.props.firestore)
 
 
-            if (this.props.unitTTS === null ){
-                this.props.textToSpeech( lesson[index].chinese  ) 
-            }
+            // if (this.props.unitTTS === null ){
+            //     this.props.textToSpeech( lesson[index].chinese  ) 
+            // }
             return(
                 <>  
                     <Header/>

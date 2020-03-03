@@ -62,7 +62,7 @@ class Account extends React.Component{
                                     </div>
                                     
                                     <div className="auth_up_info" style={{display: this.state.signIn ? "block" : "none" }}>
-                                        <h3>Hello, Guest</h3>
+                                        <h3 >Hello, Guest</h3>
                                         <p>Enter your personal details and create your own flash cards.</p>
                                         <button className="signUpBottom" onClick={this.handleToggleUp_W.bind(this)}>SIGN UP</button>
                                     </div>

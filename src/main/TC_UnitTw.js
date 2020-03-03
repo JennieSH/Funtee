@@ -33,7 +33,8 @@ class TC_UnitTw extends React.Component{
             const index = this.props.indexPage-1;
             const indexPage = this.props.indexPage;
             const maxPage=lesson.length;
-            console.log(this.props.firestore)
+            // console.log(this.props.firestore)
+            if(lesson[index].imgs){ return <Loading/>}
             return(
                 <>
                     <Header/>

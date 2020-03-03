@@ -392,41 +392,62 @@
 @media screen and (min-width:1280px){
    .informationContainer {
 
-      padding: 30px 0;
+      padding: 50px 0;
    
    }
    .information.card {
-      width: 300px;  
-      height: 570px;
-      margin: 0 90px;
+      width: 485px;  
+      height: 23vw;
+      margin: 0 3vw;
+      display: flex;
+      padding: 20px;
    }
    .information.card>.card-image{
-      height: 260px;
-      padding: 25px;
+      height: 100%;
+      width: 110%;
+      padding: 0 3vw;
+      border-right: 1px solid #c2b6ab;
       position: relative;  
-      background-size: 70% 70%;
-      background-repeat:no-repeat;
-      background-position: center center
-     }
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      border-bottom: none;
 
+     }
+   .information.card>.card-image img{
+      width: 130%;
+   }
+   .information>.card-content{
+      padding: 10px 0px 20px 30px;
+   }
+   .information.card>.card-image>.btn-floating{
+      right: -20px;
+      top:0.5rem;
+   }
    .information.card p{
-      line-height: 25px; 
+      line-height: 1.5rem; 
       margin-top:15px  
    }
 }
 @media screen and (min-width:1600px){
  
    .information.card {
-      margin: 0 120px;
+      margin: 0 6vw;
+      width: 34vw;
+   }
+   .information>.card-content {
+      padding: 40px 0px 20px 30px;
    }
 }
 @media screen and (min-width:1920px){
-   .informationContainer {
-      justify-content: center;
-      
-   }
+
    .information.card {
-      margin: 0 145px;
+      margin: 0 4vw;
+      height: 17vw;
+      width: 32vw;
+   }
+   .information.card>.card-image>.btn-floating{
+      top:2.5rem;
    }
 }
 

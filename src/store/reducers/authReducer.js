@@ -1,5 +1,7 @@
 const initState = {
     authError:null,
+    passwordError:null,
+    passwordDialogBox:false
 };
 const authReducer = ( state = initState, action) =>{
     switch( action.type ){
@@ -40,15 +42,23 @@ const authReducer = ( state = initState, action) =>{
         // reset password
         case "RESET_PASSWORD_SUCCESS":
             console.log("reset password success")
-            alert("Please check your email")
             return {
                 ...state,
-                authError: null
+                authError: null,
+                passwordError: null,
+                passwordDialogBox: true,
+
             } 
         case "RESET_PASSWORD_ERROR":
             return {
                 ...state,
-                authError: action.error.message
+                passwordError: action.error.message
+            }
+        case "CLOSE_PASSWORD_DIALOGBOX":
+            return {
+                ...state,
+                passwordError:null,
+                passwordDialogBox: false  
             }
 
         default:
