@@ -1,9 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 // import "../css/account.css";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-// import facebook from "../../../imgs/facebook.jpg";
-// import google from "../../../imgs/google.jpg";
 import Header from "../components/common/header";
 import SignIn from "../components/common/auth/signIn";
 import SignUp from "../components/common/auth/signUp";
@@ -42,7 +40,7 @@ class Account extends React.Component{
     render() {
         if( this.props.auth.uid )return <Redirect to="/"/>
         return (
-            <>
+            <Fragment>
                 <Header/>
                 <div className="authContainer">
                     <div className="authMenu">
@@ -50,7 +48,6 @@ class Account extends React.Component{
                         <div className="authBg">
                             <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=60"/>
                         </div>
-
 
                         <div className="auth" id="auth">
                                 <div className="authCover" id="authCover">
@@ -78,7 +75,6 @@ class Account extends React.Component{
                                 </div>                          
                         </div>
 
-
                         <div className="authMobileContainer">
                             <div className="authMobile">
                                 <div className="authMobile_Btn">
@@ -90,8 +86,7 @@ class Account extends React.Component{
                         
                     </div>
                 </div>
-            </>
-           
+            </Fragment>
         );
     }
   }
