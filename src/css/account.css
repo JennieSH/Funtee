@@ -237,10 +237,12 @@
         transition: all 1.6s ease-in-out;
         z-index: 2;
         transform: translateX(100%);
+
     }
     .auth .authCover.active{
         transition: all 1.6s ease-in-out;      
         transform: translateX(0%);
+
     }
 
 

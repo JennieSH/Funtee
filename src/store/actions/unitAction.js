@@ -33,15 +33,6 @@ export const textToSpeech = ( targetWord ) =>{
      } 
  }
 
-
-
-
-
-
-
-
-
-
 export const lastPage = ( indexPage )=> {
     return ( dispatch) =>{     
         if( indexPage > 1 ){
@@ -63,18 +54,18 @@ export const nextPage = ( indexPage, maxPage ) => {
     }
 }
 
-export const changeCity = ( id, zh, en ) => {
+export const getCurrentCity = ( cityID, cityName, cityEnglishName ) => {
     return ( dispatch ) =>{
-        dispatch({ type: "CHANGE_CITY", id, zh, en });
+        dispatch({ type: "GET_CURRENT_CITY", cityID, cityName, cityEnglishName });
     }
 }
 
-export const toggleDescription = () => {
+export const closeDescription = () => {
     return ( dispatch ) =>{
-        dispatch({ type: "TOGGLE_DESCRIPTION"})
+        dispatch({ type: "CLOSE_DESCRIPTION"})
     }
 }
-export const blockDescription = () => {
+export const blockDescription_Mobile = () => {
     return ( dispatch ) =>{
         dispatch({ type: "BLOCK_DESCRIPTION"})
     }

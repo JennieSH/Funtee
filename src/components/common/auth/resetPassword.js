@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { resetPassword } from "../../../store/actions/authActions";
@@ -38,7 +38,7 @@ class ResetPassword extends React.Component{
         const { passwordError, auth, passwordDialogBox } = this.props;
         if( auth.uid )return <Redirect to="/"/>         
         return(
-            <>
+            <Fragment>
                 <Header/>  
                 <div className="resetContainer">               
                     <span>Reset Your Password</span> 
@@ -52,7 +52,7 @@ class ResetPassword extends React.Component{
                     <button onClick={ this.handlePasswordReset.bind(this) } className="waves-effect waves-light btn  brown lighten-1">Send Email</button>
                     { passwordDialogBox? <PasswordDialog/> : null }
                 </div>
-            </> 
+            </Fragment> 
         )
     }
 }

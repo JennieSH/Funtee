@@ -1,28 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import { changeCity } from "../../store/actions/unitAction";
+import { getCurrentCity, blockDescription_Mobile } from "../../store/actions/unitAction";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
-import { blockDescription } from "../../store/actions/unitAction";
 
 class TaiwanMap extends React.Component{
-
-    constructor(props){
-        super(props);
-        this.state={
-            currentCity:null
-        }
-    }
 
     handleChooseCity(e){
 
         e.stopPropagation();
- 
-        let id = e.target.id;
-        let zh = e.target.getAttribute("name");
-        let en = e.target.getAttribute("title");
-        this.props.changeCity( id, zh, en)
-        let cityArr = this.props.cityArr[0].city;
+        const cityID = e.target.id;
+        const cityName = e.target.getAttribute("name");
+        const cityEnglishName = e.target.getAttribute("title");
+        this.props.getCurrentCity( cityID,  cityName, cityEnglishName)
+
+        const cityArr = this.props.cityArr[0].city;
         cityArr.forEach(city =>{
             if ( city.id === e.target.id){
                 e.target.setAttribute( "class", "land active" )
@@ -30,12 +22,9 @@ class TaiwanMap extends React.Component{
                 document.getElementById(city.id).setAttribute( "class", "land" )
             }
         });
-
-        this.props.blockDescription()
-
+        this.props.blockDescription_Mobile() 
     }
     
-
     render(){
         return(
      
@@ -67,14 +56,13 @@ class TaiwanMap extends React.Component{
 }
 const mapStateToProps = ( state ) => {
     return{
-        currentCity: state.unit.city,
         cityArr: state.firestore.ordered.Topics
     }
 }
 const mapDispatchToProps = ( dispatch ) => {
     return{
-        changeCity : ( id, zh, en ) => dispatch(changeCity( id, zh, en )),
-        blockDescription : () => dispatch(blockDescription())
+        getCurrentCity : ( cityID, cityName, cityEnglishName ) => dispatch(getCurrentCity( cityID, cityName, cityEnglishName )),
+        blockDescription_Mobile : () => dispatch(blockDescription_Mobile())
     }
 }
 

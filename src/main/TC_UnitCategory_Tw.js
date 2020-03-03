@@ -40,7 +40,6 @@ class TC_UnitCategory_TW extends React.Component{
 }
 const mapStateToProps = ( state ) => {
     return{
-        // currentCity: state.unit.city,
         lessonData: state.firestore.data.Topics
     }
 }
@@ -53,5 +52,3 @@ export default compose(
     ]),
     connect( mapStateToProps, null )
 )( TC_UnitCategory_TW )
-
-// export default TC_UnitCategory_TW

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 class WritingBoard extends React.Component{
 
     componentDidMount(){
@@ -20,6 +20,8 @@ class WritingBoard extends React.Component{
         undoBtn.addEventListener("click", this.clearCanvas)
     }
     componentWillUnmount(){
+
+        // Mobile
         cvs.removeEventListener("touchstart", this.touchStart, false);
         cvs.removeEventListener("touchmove",  this.touchMove, false);
         cvs.removeEventListener("touchend", this.touchEnd, false);
@@ -69,7 +71,7 @@ class WritingBoard extends React.Component{
         this.ctx.strokeStyle="#272727";
         this.ctx.lineWidth=6;
     
-        var o=this;
+        let o=this;
         this.offsetX=this.offsetLeft;
         this.offsetY=this.offsetTop;
     
@@ -101,10 +103,10 @@ class WritingBoard extends React.Component{
 
     render(){      
         return(
-            <>
+            <Fragment>
               <canvas id="cvs"/>
               <i className="material-icons waves-effect" id="undoBtn">replay</i>
-            </>
+            </Fragment >
         )
     }
 }

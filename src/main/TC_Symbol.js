@@ -22,21 +22,26 @@ class TC_Symbol extends React.Component{
 
 
     // canvas
+
+    componentDidMount(){
+        window.addEventListener("resize", this.resize);
+    }
+
     componentDidUpdate(){
         // fix canvas
         const cvs = document.getElementById("cvs");
         const TC_SymbolContent = document.getElementById("TC_SymbolContent");  
         cvs.height = TC_SymbolContent.offsetHeight;
         cvs.width = TC_SymbolContent.offsetWidth;
-        this.screenChange();
-       
     }
-    screenChange(){
-        window.addEventListener("resize",this.resize);
+    componentWillUnmount(){
+        window.removeEventListener("resize", this.resize);
     }
+
     resize(){
         location.reload()
     }
+    
     render(){  
         
         if(!this.props.symbol){    

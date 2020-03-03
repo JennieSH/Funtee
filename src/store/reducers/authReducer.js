@@ -24,7 +24,6 @@ const authReducer = ( state = initState, action) =>{
                 authError:null,
             }
 
-
         // sign up
         case "SIGNUP_SUCCESS":
             return {
@@ -52,6 +51,7 @@ const authReducer = ( state = initState, action) =>{
                 ...state,
                 signOutDialogBox: !state.signOutDialogBox
             }
+            
         // reset password
         case "RESET_PASSWORD_SUCCESS":
             // console.log("reset password success")

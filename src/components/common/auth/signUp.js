@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import {  signUp } from "../../../store/actions/authActions";
-import "../../../css/common.css";
+
 
 class SignUp extends React.Component{
     constructor(props){

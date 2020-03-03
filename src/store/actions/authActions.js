@@ -81,7 +81,6 @@ export const toggleSignOut = () =>{
     }
 }
 
-
 // reset password
 
 export const resetPassword = ( emailAddress ) =>{
