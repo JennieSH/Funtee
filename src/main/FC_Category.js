@@ -11,9 +11,18 @@ import Loading from "../components/common/loading";
 import FCBook from "../components/flashCard/book";
 import AddBook from "../components/flashCard/addBook";
 import DelBook from "../components/flashCard/delBook";
+import EditBook from "../components/flashCard/editBook";
 
 
 class FC_Category extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state={
+            previousData : this.props.bookData[ this.props.auth.uid ]
+        }
+    }
+
 
     handleToggleAddBook(){
         this.props.toggleCreateBook()
@@ -21,16 +30,19 @@ class FC_Category extends React.Component{
     handleToggleDeleteBookIcon(){
         this.props.toggleDeleteBookIcon()
     }
-    handleToggleEditBook(){
+    handleToggleEditBookIcon(){
        this.props.toggleEditBookIcon()
     }
+
+
     render(){
         const uid = this.props.auth.uid ;
         const userBooks = this.props.bookData[ uid ] ;
-        
-        if( ! uid ){ return <Redirect to="/signin"/> }
+        // console.log(userBooks)
+        if( !uid ){ return <Redirect to="/signin"/> }
+ 
 
-        if ( userBooks === undefined ){
+        if ( userBooks === undefined){
             return(
                 <>
                     <Header/>
@@ -38,26 +50,29 @@ class FC_Category extends React.Component{
                 </>
             )
         }else{      
-            // console.log(userBooks)  
             const books = userBooks.map(( book, index )=>{
                 return(
-                    <FCBook key={ index } book ={ book } uid={ uid }/>         
+                    <FCBook key={ index } bookData ={ book } uid={ uid }/>         
                 )
             })
+            const starCardArr = [];
+            const starCard = userBooks.map(book => book.cards);
+                  starCard.forEach(card => card.forEach(cardEach => starCardArr.push(cardEach)));
+            const starCardLength = starCardArr.filter(starCard => starCard.star === true).length;
             return(
                 <>
                     <Header/>                 
                     <div className="FC_Category container"> 
                         <div className="stickyCard"> 
-                            <Link to="/collection">
+                            <Link to="/mycollection">
                                 <div className="FC_book card">
                                     <div className="card-content">
                                         <div className="card-description">                               
-                                            <span className="grey-text right">100 cards</span>   
+                                            <span className="grey-text right">{ starCardLength }  cards</span>   
                                         </div>                                
                                         <span className="card-title center-align"> 
                                             <i className="material-icons yellow-text text-darken-2 ">star</i>
-                                            收藏
+                                            My Collection
                                         </span>
                                     </div>                 
                                 </div>
@@ -65,11 +80,12 @@ class FC_Category extends React.Component{
                             <div className="FC_book card edit" >                              
                                 <i className="material-icons white-text waves-effect" onClick={ this.handleToggleAddBook.bind(this)}>add</i> 
                                 <i className="material-icons white-text waves-effect" onClick={ this.handleToggleDeleteBookIcon.bind(this)}>remove</i>
-                                <i className="material-icons white-text waves-effect" onClick={ this.handleToggleEditBook.bind(this)} >edit</i> 
+                                <i className="material-icons white-text waves-effect" onClick={ this.handleToggleEditBookIcon.bind(this)} >edit</i> 
                             </div>
                         </div>
                         { this.props.createBookMenu? <AddBook uid={ this.props.auth.uid }/> : null}
                         { this.props.deleteBookMenu ? <DelBook currentDeleteBook={ this.props.currentDeleteBook }/> : null }
+                        { this.props.editBookMenu ? <EditBook currentEditBook={ this.props.currentEditBook }/> : null }
                         {books}
                     </div>               
                 </>
@@ -84,7 +100,9 @@ const mapStateToProps = ( state ) =>{
         bookData: state.firestore.ordered,
         createBookMenu: state.card.createBookMenu,
         deleteBookMenu : state.card.deleteBookMenu,
-        currentDeleteBook : state.card.currentDeleteBook
+        editBookMenu : state.card.editBookMenu,
+        currentDeleteBook : state.card.currentDeleteBook,
+        currentEditBook : state.card.currentEditBook,
     }
 }
 
@@ -97,18 +115,17 @@ const mapDispatchToProps = ( dispatch ) => {
 }
 
 export default 
-compose( 
+compose(    
+    connect( mapStateToProps, mapDispatchToProps ),
     firestoreConnect((props) =>{     
-        const uid = props.firestore._.authUid;
+        const uid = props.auth.uid;
         return(
             [{
                 collection: "Cards",
                 doc: uid ,
-                subcollections: [{collection: uid}],
-                storeAs: uid
+                subcollections: [{collection: `${uid}`}],
+                storeAs: `${uid}`
             }]
         )
     }),
-    
-    connect( mapStateToProps, mapDispatchToProps )
 )( FC_Category )

@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import Loading from "../components/common/loading";
-import { lastPage, nextPage } from "../store/actions/unitAction";
+import { lastPage, nextPage, textToSpeech } from "../store/actions/unitAction";
 
 class TC_Unit extends React.Component{
  
@@ -34,8 +34,13 @@ class TC_Unit extends React.Component{
             const indexPage = this.props.indexPage;
             const maxPage=lesson.length;
             console.log(this.props.firestore)
+
+
+            // if (this.props.unitTTS === null ){
+            //     this.props.textToSpeech( lesson[index].chinese  ) 
+            // }
             return(
-                <>
+                <>  
                     <Header/>
                     <i className="material-icons waves-effect" id="lastPageBtn_U" onClick={ this.handleLastPage.bind(this) }>navigate_before</i>
                     <i className="material-icons waves-effect" id="nextPageBtn_U" onClick={ this.handleNextPage.bind(this) }>navigate_next</i> 
@@ -60,7 +65,8 @@ class TC_Unit extends React.Component{
 const mapStateToProps = ( state ) => {
     return{
         firestore: state.firestore,
-        indexPage: state.unit.indexPage
+        indexPage: state.unit.indexPage,
+        unitTTS: state.unit.unitTTS
     }
 }
 
@@ -68,6 +74,7 @@ const mapDispatchToProps = ( dispatch ) => {
     return{
         lastPage:  ( indexPage ) => dispatch(lastPage( indexPage )),
         nextPage:  ( indexPage, maxPage ) => dispatch(nextPage( indexPage, maxPage )),
+        textToSpeech: (targetWord ) => dispatch(textToSpeech(targetWord))
     }
 }
 

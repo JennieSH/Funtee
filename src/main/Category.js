@@ -8,6 +8,8 @@ import FC_img from "../imgs/FC_catalog.jpg";
 
 
 class Category extends React.Component{
+
+
     render(){
         return(
             <>

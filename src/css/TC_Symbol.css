@@ -356,7 +356,13 @@
         left: calc(100vw - 50px);
     }
 }
-
+@media screen and (min-width:1366px){
+    .TC_SymobolContainer #undoBtn{      
+        
+        right: 170px;
+       
+     }
+}
 @media screen and (min-width:1920px){
 
     .TC_SymobolContent{      

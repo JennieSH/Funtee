@@ -1,193 +1,10 @@
-// // import React from "react";
-// // import { Link } from 'react-router-dom';
-// // import { connect } from "react-redux";
-// // import { signOut } from "../../store/actions/authActions";
-// // import "../../css/common.css";
-
-
-// // class Header extends React.Component{
-
-// //     clickSignOut(){
-// //         let checkSignOut=confirm("Do you want to Sign out")
-// //         if ( checkSignOut ){
-// //             this.props.signOut();
-// //         }
-// //     }
-
-// //     render(){
-// //         let  authSignAction; 
-// //         if( this.props.authState ){
-// //             authSignAction= <div onClick={ this.clickSignOut.bind(this) }>Sign Out</div>        
-// //         }else{
-// //             authSignAction = <div><Link to="/signin">Sign In</Link></div>        
-// //         }
-
-// //         return(
-// //             <header>
-// //                 <div><Link to="/">DAWAN</Link></div>   
-// //                 <input type="checkbox" name="" id="menu_control"/>
-// //                 <label htmlFor="menu_control" className="menuBtn">
-// //                         <div className="lineContainer">
-// //                             <span className="line line-first"></span>
-// //                             <span className="line line-second"></span>
-// //                             <span className="line line-third"></span>
-// //                         </div>  
-// //                 </label>
-// //                 <nav>
-// //                     <div><Link to="/learning">Learning Chinese</Link></div>
-// //                     <div><Link to="/flashcard">Flash Card</Link></div>
-// //                     { authSignAction }
-// //                     <div>Language</div>
-// //                 </nav>    
-// //             </header>
-// //         )
-// //     }
-// // }
-// // const mapStateToProps = ( state ) => {
-// //     // console.log(state.firebase.auth.uid)
-// //     return{
-// //         authState : state.firebase.auth.uid
-// //     }
-// // }
-// // const mapDispatchToProps = ( dispatch ) => {
-// //     return{
-// //         signOut : ()=> dispatch(signOut())
-// //     }
-// // }
-// // export default connect( mapStateToProps, mapDispatchToProps )( Header )
-
-
-// import React from "react";
-// import { Link } from 'react-router-dom';
-// import { connect } from "react-redux";
-// import { signOut } from "../../store/actions/authActions";
-// import "../../css/common.css";
-
-
-// class Header extends React.Component{
-
-//     clickSignOut(){
-//         let checkSignOut=confirm("Do you want to Sign out")
-//         if ( checkSignOut ){
-//             this.props.signOut();
-//         }
-//     }
-
-//     render(){
-//         let  authSignAction; 
-//         if( this.props.authState ){
-//             authSignAction= <div onClick={ this.clickSignOut.bind(this) }>Sign Out</div>        
-//         }else{
-//             authSignAction = <div><Link to="/signin">Sign In</Link></div>        
-//         }
-
-//         return(
-//             <header>
-//                 <div><Link to="/">DAWAN</Link></div>   
-//                 <input type="checkbox" name="" id="menu_control"/>
-//                 <label htmlFor="menu_control" className="menuBtn">
-//                         <div className="lineContainer">
-//                             <span className="line line-first"></span>
-//                             <span className="line line-second"></span>
-//                             <span className="line line-third"></span>
-//                         </div>  
-//                 </label>
-//                 <nav>
-//                     <div><Link to="/learning">Learning Chinese</Link></div>
-//                     <div><Link to="/flashcard">Flash Card</Link></div>
-//                     { authSignAction }
-//                     <div>Language</div>
-//                 </nav>    
-//             </header>
-//         )
-//     }
-// }
-// const mapStateToProps = ( state ) => {
-//     // console.log(state.firebase.auth.uid)
-//     return{
-//         authState : state.firebase.auth.uid
-//     }
-// }
-// const mapDispatchToProps = ( dispatch ) => {
-//     return{
-//         signOut : ()=> dispatch(signOut())
-//     }
-// }
-// export default connect( mapStateToProps, mapDispatchToProps )( Header )
-
-
-
-// import React from "react";
-// import { Link } from 'react-router-dom';
-// import { connect } from "react-redux";
-// import { signOut } from "../../store/actions/authActions";
-// import "../../css/common.css";
-
-
-// class Header extends React.Component{
-
-//     clickSignOut(){
-//         let checkSignOut=confirm("Do you want to Sign out")
-//         if ( checkSignOut ){
-//             this.props.signOut();
-//         }
-//     }
-
-//     render(){
-//         let  authSignAction; 
-//         if( this.props.authState ){
-//             authSignAction= <div onClick={ this.clickSignOut.bind(this) }>Sign Out</div>        
-//         }else{
-//             authSignAction = <div><Link to="/signin">Sign In</Link></div>        
-//         }
-
-//         return(
-//             <header>
-//                 <div><Link to="/">DAWAN</Link></div>   
-//                 <input type="checkbox" name="" id="menu_control"/>
-//                 <label htmlFor="menu_control" className="menuBtn">
-//                         <div className="lineContainer">
-//                             <span className="line line-first"></span>
-//                             <span className="line line-second"></span>
-//                             <span className="line line-third"></span>
-//                         </div>  
-//                 </label>
-//                 <nav>
-//                     <div><Link to="/learning">Learning Chinese</Link></div>
-//                     <div><Link to="/flashcard">Flash Card</Link></div>
-//                     { authSignAction }
-//                     <div>Language</div>
-//                 </nav>    
-//             </header>
-//         )
-//     }
-// }
-// const mapStateToProps = ( state ) => {
-//     // console.log(state.firebase.auth.uid)
-//     return{
-//         authState : state.firebase.auth.uid
-//     }
-// }
-// const mapDispatchToProps = ( dispatch ) => {
-//     return{
-//         signOut : ()=> dispatch(signOut())
-//     }
-// }
-// export default connect( mapStateToProps, mapDispatchToProps )( Header )
-
-
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/authActions";
 import "../../css/common.css";
-import language from "../../imgs/language_nav.png";
-import flashcard from "../../imgs/flashcard.png";
-import signin from "../../imgs/signin.png";
-import languageNav from "../../imgs/language.png";
-import M from "materialize-css";
 
-import BT from "../../imgs/BT.png";
+import M from "materialize-css";
 
 
 class Header extends React.Component{
@@ -197,6 +14,13 @@ class Header extends React.Component{
     //     M.Sidenav.init(sidenav, {});
         
     // }
+    handlePath(e){
+        if ( !this.props.auth.uid ){
+            e.stopPropagation();
+            e.preventDefault();
+            this.props.history.push("/signin");
+        }
+    }
 
     handleSignOut(){
         let checkSignOut=confirm("Do you want to Sign out")
@@ -206,21 +30,38 @@ class Header extends React.Component{
     }
 
     render(){
-        let  authSignAction; 
-        if( this.props.authState ){
-            authSignAction= <Link to="/" onClick={ this.handleSignOut.bind(this) }><img src={ signin } className="navImgs"/>Sign Out</Link>     
+        const auth =this.props.auth;
+        let name;
+        let fabName;
+        let authSignAction; 
+
+        // sign in / sign out
+        if( auth.uid ){
+            authSignAction= <Link to="/" onClick={ this.handleSignOut.bind(this) }><i className="navI material-icons" >lock_open</i>Sign Out</Link>
         }else{
-            authSignAction = <Link to="/signin"><img src={ signin } className="navImgs"/>Sign In</Link>       
+            name = "Hi, Guest";
+            authSignAction = <Link to="/signin"><i className="navI material-icons">lock</i>Sign In</Link>       
         }
+
+        // fab name
+        if ( auth.uid ){
+            if ( auth.displayName ){
+                name = `Hi, ${auth.displayName.split(" ")[0]}`;
+                fabName = auth.displayName.substr(0,1)
+            }else{
+                name = auth.email.split("@")[0]
+                fabName = auth.email.substr(0,1)
+            }
+        }
+
 
         return(
             <header>
-
                 <nav className="nav-wrapper">
                     <div className="container">
                         <Link to="/" className="brand-logo">FUNTEE</Link>
 
-                        <input type="checkbox" name="" id="menu_control"/>
+                        <input type="checkbox" id="menu_control"/>
                         <label htmlFor="menu_control" className="menuBtn">
                             <div className="lineContainer">
                                 <span className="line line-first"></span>
@@ -229,42 +70,52 @@ class Header extends React.Component{
                             </div>  
                         </label>
 
-                        <ul className="right hide-on-med-and-down">
-                            <li><Link to="/topics">Learning Chinese</Link></li>
-                            <li><Link to="/flashcard">Flash Card</Link></li>
-                            <li>{ authSignAction }</li>
-                            <li><a>Language</a></li>
-                            <li><Link to="/" className="btn btn-floating teal"><img className="a" src={ BT } /></Link></li>
-                        </ul>
 
-                        <ul className="sidenav grey lighten-3 right" id="mobile-menu">
-                            <li>
-                                <Link to="/" className="btn btn-floating teal">
-                                    <img className="usrImgs" src={ BT }/>
-                                </Link>
-                            </li>
-                            <hr/>
-                            <li><Link to="/topics"><img src={ languageNav } className="navImgs"/>Learning Chinese</Link></li>
-                            <li><Link to="/flashcard"><img src={ flashcard } className="navImgs"/>Flash Card</Link></li>
+
+                        <ul className="right hide-on-med-and-down ">
+                            <li><Link to="/topics">Learning Chinese</Link></li>
+                            <li><Link to="/flashcard" onClick={this.handlePath.bind(this)}>Flash Card</Link></li>
                             <li>{ authSignAction }</li>
-                            <li><a><img src={ language } className="navImgs"/>Language</a>
-                            </li>
+                            {/* <li><a>Language</a></li> */}
+                            { auth.uid ?<li><Link to="/" className="web-info btn btn-floating "><span className="white-text ">{ fabName }</span></Link></li> : null}
+                        </ul>     
+
+
+
+                        <ul className="sidenav" id="mobile-menu">
+                            <li className="userName">
+                                <Link to="/" className="btn btn-floating"><span className="fabName">{ fabName }</span></Link>
+                                <span className="brown-text text-darken-3">{name}</span>
+                            </li>             
+                            <li>
+                                <Link to="/topics"><i className=" material-icons" >translate</i>
+                                    Learning Chinese
+                                </Link>
+                            </li>                            
+                            <li>
+                                <Link to="/flashcard" onClick={this.handlePath.bind(this)} ><i className="material-icons" >style</i>
+                                    Flash Card
+                                    { auth.uid? null : <span className="badge grey lighten-2  grey-text ">member only</span> }
+                                </Link>
+                            </li>                                                       
+                            <li>{ authSignAction }</li>                        
+                            {/* <li>
+                                <a>
+                                    <i className=" material-icons" >language</i>   
+                                    Language
+                                </a>
+                            </li> */}
                         </ul>           
+                    
                     </div>
                 </nav> 
-
-
-
-
-
             </header>
         )
     }
 }
 const mapStateToProps = ( state ) => {
-    // console.log(state.firebase.auth.uid)
     return{
-        authState : state.firebase.auth.uid
+        auth : state.firebase.auth,
     }
 }
 const mapDispatchToProps = ( dispatch ) => {
@@ -272,4 +123,4 @@ const mapDispatchToProps = ( dispatch ) => {
         signOut : ()=> dispatch(signOut())
     }
 }
-export default connect( mapStateToProps, mapDispatchToProps )( Header )
+export default  withRouter(connect( mapStateToProps, mapDispatchToProps )( Header ))

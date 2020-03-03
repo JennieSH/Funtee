@@ -16,25 +16,38 @@ class TC_SymbolContent extends React.Component{
     }
 
     componentDidMount(){    
-        // navigator.getUserMedia  = navigator.getUserMedia ||
-        //                         　navigator.webkitGetUserMedia ||
-        //                         　navigator.mozGetUserMedia ||
-        //                         　navigator.msGetUserMedia||
-        //                         　navigator.mediaDevices.getUserMedia;
-        
-        // getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+        if (navigator.mediaDevices === undefined) {
+            navigator.mediaDevices = {};
+          }
+          
+            if (navigator.mediaDevices.getUserMedia === undefined) {
+            navigator.mediaDevices.getUserMedia = function(constraints) {
+              // First get ahold of the legacy getUserMedia, if present
+              let getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+          
+              // Some browsers just don't implement it - return a rejected promise with an error
+              // to keep a consistent interface
+              if (!getUserMedia) {
+                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+              }
+          
+              // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
+              return new Promise(function(resolve, reject) {
+                getUserMedia.call(navigator, constraints, resolve, reject);
+              });
+            }
+          }
           
 
           navigator.mediaDevices.getUserMedia({ audio: true },
             () => {
               console.log('Permission Granted');
-              alert('Permission Granted');
 
               this.setState({ isBlocked: false });
             },
             () => {
-              console.log('Permission Denied');s
-              alert('Permission Denied');
+              console.log('Permission Denied');
 
               this.setState({ isBlocked: true })
             },
@@ -48,13 +61,13 @@ class TC_SymbolContent extends React.Component{
         if( this.state.isRecording === false){
             if (this.state.isBlocked) {
                 console.log('Permission Denied');
-                alert('Permission Denied');
+                
               } else {
                 Mp3Recorder
                   .start()
                   .then(() => {
                     this.setState({ isRecording: true });
-                    alert('Permission Granted');
+                    console.log('Permission Granted');
                   }).catch((e) => console.error(e));
               }
         }else{

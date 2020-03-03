@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+.authContainer{
+    width: 100%;
+    background-color: rgba(161, 151, 131, 0.144);
+}
+.authMenu{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.authBg{
+    position: absolute;
+    z-index: -2;
+    opacity: 0.1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.authBg img{
+    height: 100%;
+}
+.auth{
+    display: flex;
+    width: 200%;
+    position: relative;
+    left: 50vw;
+    transition: all 0.6s ease-in-out;
+}
+.auth.active{
+    transition: all 0.6s ease-in-out;
+    left: -50vw;
+}
+.auth .authCover{
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+.auth .authCover div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 70px;
+    text-align: center;
+}
+.auth .authCover div p{
+    margin: 35px 0;
+}
+.auth .authCover div button{
+        
+    width: 50%;
+    height: 40px;
+    border-radius: 25px;
+    font-size: 18px;
+    background-color: rgb(83, 83, 83);
+    font-weight: bold;
+    color: #E6BEAB;
+    border: none;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+.signIn{
+    width: 100%;
+    height: 100%;
+    padding: 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.signUp{
+    width: 100%;
+    height: 100%;
+    padding: 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.authContainer .authForm input{
+    font-size: 20px;
+    padding: 0 10px;
+    outline:none;
+}
+.authContainer .authForm h4{
+    
+    font-size: 12px;
+    padding: 5px 0;
+    margin: 0;
+    text-align: center;
+
+}
+.authContainer .authForm .authMethod img{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin: 0 10px;
+    
+ 
+ }
+.authContainer .authForm .authMethod  h5{
+    margin-left: 15px;
+    text-align: end;
+    font-size: 12px;
+}
+
+.authForm .authSignBtn button{
+    
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 1.5em;
+    background-color: #E6BEAB;
+    font-weight: bold;
+    color: rgb(83, 83, 83);
+    border: none;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+.authForm .authSignBtn button:active{
+    transform: scale(0.95);
+}
+
+.authMobileContainer{
+    width: 100%;
+}
+.authMobile{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    justify-content: space-between;
+    
+}
+.authMobile_Btn>span, .authMobile_Btn>p{
+    display: none;
+}
+.authMobile_Btn>button{
+    width: 50vw;
+    height: 7vh;
+    letter-spacing: 1px;
+    font-size: 20px;
+    border: none;
+    font-weight: bold;
+}
+.authMobile_Btn>button:hover{
+    background-color:  #E6BEAB;
+    color: #5d4037
+}
+.authMobile_Btn>button:active{
+    background-color:  #E6BEAB;
+    color: #5d4037
+}
+.signInBottom{
+    background-color: #77695B;
+    color: #ffffff;
+}
+.signUpBottom{
+    background-color: rgb(202, 191, 179);
+    color: rgb(66, 66, 66);
+}
+
+@media screen and (min-width:1280px){
+    .authContainer{
+        display: flex;
+        justify-content: center;
+    }
+    .authBg{
+        opacity: 0.7;
+        width: 100%;
+    }
+    .authBg img{
+        height: auto;
+        width: 100%;
+  
+    } 
+    .auth{
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        position: absolute;
+        overflow: hidden;
+        width: 70vw;   
+        height: 400px;
+        opacity: 0.8;
+        left: auto;
+        top:12vw
+    }
+
+    .signIn{
+        background-color: rgba(45, 52, 54, 1.0);
+        height: 400px;
+    }
+    .signUp{
+        background-color: rgba(45, 52, 54, 1.0);
+        height: 400px;
+    }
+
+    .authContainer .authForm input{
+        color: #ffffff;
+        margin-bottom: 0px;
+    }
+
+    .authForm .authSignBtn button{
+        height: 40px;
+        font-size: 18px;
+    }
+
+    /* cover */
+    .auth .authCover{
+        display: block;
+        height: 400px;
+        width: 50%;
+        background-color:  #EDECE8;
+        position: absolute;
+        transition: all 1.6s ease-in-out;
+        z-index: 2;
+        transform: translateX(100%);
+    }
+    .auth .authCover.active{
+        transition: all 1.6s ease-in-out;      
+        transform: translateX(0%);
+    }
+
+
+    .authMobileContainer{
+        display: none;
+    }
+} 
+
+@media screen and (min-width:1366px){
+    .auth{
+        top:16vw
+    }
+}
+@media screen and (min-width:1920px){
+    .auth{
+        top:20vw
+    }
+}

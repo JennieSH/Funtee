@@ -1,10 +1,8 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import {  signUp } from "../../../store/actions/authActions";
 import "../../../css/common.css";
-import Header from "../header";
-import  "../../../css/auth.css";
 
 
 
@@ -23,7 +21,7 @@ class SignUp extends React.Component{
 
     handleChange(e){
         this.setState({
-            [e.currentTarget.id]:e.currentTarget.value
+            [e.currentTarget.name]:e.currentTarget.value
         })
     }
 
@@ -49,41 +47,31 @@ class SignUp extends React.Component{
         const { authError, auth } = this.props;
         if( auth.uid )return <Redirect to="/"/>       
         return(
-            <>
-                <Header/>  
-                {/* <img src={BB} className="banner"/> */}
-                <div className="AuthContainer">
-                <div className="container">
+            <>          
                     <form onSubmit={ this.handleSubmit.bind(this) } className="authForm up">
                         <div className="input-field">
                             <label htmlFor="name">Name</label>  
-                            <input onChange={ this.handleChange.bind(this) } type="text" id="name"/>  
+                            <input onChange={ this.handleChange.bind(this) } type="text" id="newName" name="name"/>  
                         </div> 
                         <div className="input-field">
                             <label htmlFor="email">Email</label>  
-                            <input onChange={ this.handleChange.bind(this) } type="email" id="email"/> 
+                            <input onChange={ this.handleChange.bind(this) } type="email" id="newEmail" name="email"/> 
                         </div>
                         <div className="input-field">
                             <label htmlFor="password">Password</label>  
-                            <input onChange={ this.handleChange.bind(this) } type="password" id="password"/>
+                            <input onChange={ this.handleChange.bind(this) } type="password" id="newPassword" name="password"/>
                         </div>
                         <div className="input-field">
                             <label htmlFor="confirmPassword">Confirm Password</label>  
-                            <input onChange={ this.handleChange.bind(this) } type="password" id="confirmPassword"/>
+                            <input onChange={ this.handleChange.bind(this) } type="password" id="confirmPassword" name="confirmPassword"/>
                         </div>
                        { authError ? <h4  className="red-text center">{authError}</h4> : null }
-                       <div className="authSignBtn"> 
-                            <Link to="/signin"><button className="waves-effect">SIGN IN</button></Link>             
+                       <div className="authSignBtn">         
                             <button className="waves-effect"> SIGN UP</button>
                            
                         </div>
                    
                     </form>
-
-                </div>    
-                   
-                   
-                </div>
             </> 
         )
     }

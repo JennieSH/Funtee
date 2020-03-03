@@ -28,15 +28,19 @@ export const signOut = () =>{
 
 
 export const signUp = ( userInfo ) =>{
-    const firestore = firebase.firestore();
+    // const firestore = firebase.firestore();
     return (( dispatch, getState )=>{
         firebase.auth().createUserWithEmailAndPassword( userInfo.email, userInfo.password )
-        .then((response)=>{
-            firestore.collection( "User" ).doc( response.user.uid ).set({
-               name: userInfo.name,
-               email: userInfo.email
-           })               
-        }).then(()=>{
+        .then(()=>{
+            firebase.auth().currentUser.updateProfile({
+                displayName: userInfo.name 
+              }).then(()=>{
+                console.log("Update successful") 
+              }).catch((err)=>{
+                console.log("Update a user's profile"+err)
+              });
+        })
+        .then(()=>{           
             dispatch({ type: "SIGNUP_SUCCESS" })
         }).catch((error)=>{
             dispatch({ type: "SIGNUP_ERROR", error })
@@ -52,5 +56,11 @@ export const resetPassword = ( emailAddress ) =>{
         }).catch((error)=>{
             dispatch({ type: "RESET_PASSWORD_ERROR", error })
         });
+    })
+}
+
+export const closePasswordDialogBox = () =>{
+    return(( dispatch)=>{
+            dispatch({ type: "CLOSE_PASSWORD_DIALOGBOX" })
     })
 }

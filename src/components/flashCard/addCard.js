@@ -51,7 +51,7 @@ class AddCard extends React.Component{
                         <input onChange={ this.handleChange.bind(this) } type="text" id="back"/>
                         { this.props.backErr ? <div className="red-text right">required field</div> : null }
                     </div> 
-                    <div className="createFolderBtn">
+                    <div className="createCardBtn">
                         <button className="btn white-text  waves-effect left" onSubmit={ this.handleSubmit.bind(this) }>Add</button> 
                         <button className="btn red white-text  waves-effect right" onClick={ this.handleToggleAddCard.bind(this)}>Back</button>      
                     </div>
@@ -63,6 +63,7 @@ class AddCard extends React.Component{
 
 const mapStateToProps = ( state ) =>{
     return{
+        auth : state.firebase.auth,
         frontErr: state.card.frontErr,
         backErr: state.card.backErr,
         cards: state.firestore.data.Cards,
@@ -78,8 +79,9 @@ const mapDispatchToProps = ( dispatch ) => {
 }
 export default 
 compose( 
+    connect( mapStateToProps, mapDispatchToProps ),
     firestoreConnect((props) =>{     
-        const uid = props.firestore._.authUid;
+        const uid = props.auth.uid;
         return(
             [{
                 collection: "Cards",
@@ -88,7 +90,5 @@ compose(
                 storeAs: uid
             }]
         )
-    }),
-   
-    connect( mapStateToProps, mapDispatchToProps )
+    })
 )( AddCard  )

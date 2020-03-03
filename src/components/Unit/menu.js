@@ -15,14 +15,43 @@ class UnitlMenu extends React.Component{
     }
 
     componentDidMount(){      
+        
+        if (navigator.mediaDevices === undefined) {
+            navigator.mediaDevices = {};
+          }
+          
+            if (navigator.mediaDevices.getUserMedia === undefined) {
+            navigator.mediaDevices.getUserMedia = function(constraints) {
+              // First get ahold of the legacy getUserMedia, if present
+              let getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+          
+              // Some browsers just don't implement it - return a rejected promise with an error
+              // to keep a consistent interface
+              if (!getUserMedia) {
+                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+              }
+          
+              // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
+              return new Promise(function(resolve, reject) {
+                getUserMedia.call(navigator, constraints, resolve, reject);
+              });
+            }
+          }
+
+
         this.props.initRecord()
     }
 
     handleRead(){  
-        this.props.readTTS(this.props.audio)
+      this.props.readTTS(this.props.audio)
     }
+    // handleRead(){  
+    //   new Audio("data:audio/wav;base64," + this.props.unit.unitTTS ).play();
+
+    // }
 
     handleRecord (){
+
         if( this.state.isRecording === false){
             if (this.props.unit.isBlocked) {
                 console.log('Permission Denied');
@@ -50,8 +79,7 @@ class UnitlMenu extends React.Component{
 
     
     render(){
-        const unitState = this.props.unit;  
-        // console.log(unitState)      
+        const unitState = this.props.unit;      
         return(
             <>
             <div className="TC_UnitlMenu">
