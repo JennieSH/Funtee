@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
 import Header from "../components/common/header"
 import "../css/category.css";
@@ -12,7 +12,7 @@ class Category extends React.Component{
 
     render(){
         return(
-            <>
+            <Fragment>
                 <Header/>
                 <div className="categoryContainer">             
                     <div className="description">
@@ -32,7 +32,7 @@ class Category extends React.Component{
                         </Link>
                     </div>                    
                 </div>
-            </>
+            </Fragment>
             
         )
     }

@@ -22,7 +22,6 @@ class TC_Symbol extends React.Component{
 
 
     // canvas
-
     componentDidMount(){
         window.addEventListener("resize", this.resize);
     }
