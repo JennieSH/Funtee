@@ -2,7 +2,6 @@
 .authContainer{
     width: 100%;
     background-color: rgba(161, 151, 131, 0.062);
-    
 }
 .authMenu{
     width: 100%;
@@ -95,13 +94,19 @@
     padding: 0 10px;
     outline:none;
 }
-.authContainer .authForm h4{
-    
+.authContainer .authForm h4{   
     font-size: 12px;
     padding: 5px 0;
     margin: 0;
     text-align: center;
-
+    color: #ef9a9a;
+}
+.authContainer .authForm>.input-field>h4{   
+    font-size: 12px;
+    padding: 5px 0;
+    margin: 0;
+    text-align: center;
+    color: #ef9a9a;
 }
 .authContainer .authForm .authMethod{
     display: flex;
@@ -112,10 +117,8 @@
     height: 35px;
     width: 35px;
     border-radius: 50%;
-    margin: 20px 10px 0 10px;
-    
- 
- }
+    margin: 15px 10px 0 10px;
+}
 .authContainer .authForm .authMethod  h5{
     margin-left: 15px;
     text-align: end;
@@ -233,10 +236,12 @@
         transition: all 1.6s ease-in-out;
         z-index: 2;
         transform: translateX(100%);
+
     }
     .auth .authCover.active{
         transition: all 1.6s ease-in-out;      
         transform: translateX(0%);
+
     }
 
 
@@ -406,3 +411,83 @@
     }
 }
 
+
+/* sign out */
+.signOut.card{
+    position: absolute;
+    top: 65vw;
+    left: 5%;
+    height: 50vw;
+    width: 90vw;
+    padding: 10vw;
+    background-color: #fcfaf8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+}
+.signOut.card>span{
+    text-align: center;
+    color:#4e342e;
+    line-height: 38px;
+    font-size: 1.3rem;
+}
+.signOut.card>div{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 7vw;
+}
+.signOut.card>div button{
+    border: 1px solid #795548 ;
+    width: 120px;
+    font-weight: bold;
+}
+
+
+@media screen and (min-width:600px){
+    .signOut.card{
+        height: 35vw;
+        width: 55vw;
+        left: 25%;
+        top:39vw;
+        padding: 5vw;
+    }
+}
+@media screen and (min-width:768px){
+    .signOut.card{
+        height: 30vw;
+        width: 50vw;
+    }
+}
+@media screen and (min-width:1024px){
+    .signOut.card{
+        height: 20vw;
+        width: 40vw;
+        padding : 4vw 5vw;
+        left: 30%;
+    }
+}
+@media screen and (min-width:1280px){
+    .signOut.card{
+        left: 34%;
+        height: 16vw;
+        width: 32vw;
+        padding : 3vw 4vw;
+        top : 15vw
+    }
+    .signOut.card>div{
+        margin-top: 3vw;
+      }
+}
+
+@media screen and (min-width:1920px){
+    .signOut.card{
+        height: 13vw;
+        width: 26vw;
+        left: 37%;
+
+    }
+}

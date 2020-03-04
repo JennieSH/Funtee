@@ -3,7 +3,7 @@ const initState = {
     isRecording: false,
     mp3: null,
     isBlocked: false,
-    city:null,
+    currentCity:null,
     description:true,
 
 
@@ -45,19 +45,19 @@ const unitReducer = ( state= initState, action ) =>{
             return state;
 
         // map
-        case "CHANGE_CITY":
+        case "GET_CURRENT_CITY":
             return {
                 ...state,
-                city:{
-                    id: action.id,
-                    en: action.en,
-                    zh: action.zh
+                currentCity:{
+                    cityID: action.cityID,      
+                    cityName: action.cityName,
+                    cityEnglishName: action.cityEnglishName
                 }
             };
-        case "TOGGLE_DESCRIPTION":{
+        case "CLOSE_DESCRIPTION":{
             return {
                 ...state,
-                description: !state.description
+                description: false
             }
         }
         case "BLOCK_DESCRIPTION":{

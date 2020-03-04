@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Header from "../components/common/header";
 import "../css/TC_Unit.css";
 import UnitlMenu from "../components/unit/menu";
@@ -24,10 +24,10 @@ class TC_Unit extends React.Component{
         const lesson = this.props.firestore.ordered[this.props.location.state];
         if( !lesson ){
             return(
-                <>
+                <Fragment>
                     <Header/>
                     <Loading/>
-                </>
+                </Fragment>
             )
         }else{
             const index = this.props.indexPage-1;
@@ -40,7 +40,7 @@ class TC_Unit extends React.Component{
             //     this.props.textToSpeech( lesson[index].chinese  ) 
             // }
             return(
-                <>  
+                <Fragment>  
                     <Header/>
                     <i className="material-icons waves-effect" id="lastPageBtn_U" onClick={ this.handleLastPage.bind(this) }>navigate_before</i>
                     <i className="material-icons waves-effect" id="nextPageBtn_U" onClick={ this.handleNextPage.bind(this) }>navigate_next</i> 
@@ -56,7 +56,7 @@ class TC_Unit extends React.Component{
                             <span  className="page">{ `${indexPage} / ${maxPage}` }</span>
                     </div>
                     
-                </>        
+                </Fragment>        
             )
         }
     }

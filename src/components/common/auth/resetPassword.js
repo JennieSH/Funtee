@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { resetPassword } from "../../../store/actions/authActions";
 import "../../../css/account.css";
 import Header from "../header";
-import PasswordDialog from "./modal_auth";
+import PasswordDialog from "./passwordDialog";
 
 
 class ResetPassword extends React.Component{
@@ -15,14 +15,14 @@ class ResetPassword extends React.Component{
             email:null,
             blankemail:false,
         }
-
     }
+
     handleChange(e){
         this.setState({
-            email : e.currentTarget.value
-            
+            email : e.currentTarget.value 
         })
     }
+
     handlePasswordReset(){
         if (this.state.email === null){
             this.setState({
@@ -30,15 +30,15 @@ class ResetPassword extends React.Component{
                 blankemail:true
             })
         }else{
-          
             this.props.resetPassword(this.state.email)
         }
     }
+    
     render(){
         const { passwordError, auth, passwordDialogBox } = this.props;
         if( auth.uid )return <Redirect to="/"/>         
         return(
-            <>
+            <Fragment>
                 <Header/>  
                 <div className="resetContainer">               
                     <span>Reset Your Password</span> 
@@ -52,7 +52,7 @@ class ResetPassword extends React.Component{
                     <button onClick={ this.handlePasswordReset.bind(this) } className="waves-effect waves-light btn  brown lighten-1">Send Email</button>
                     { passwordDialogBox? <PasswordDialog/> : null }
                 </div>
-            </> 
+            </Fragment> 
         )
     }
 }

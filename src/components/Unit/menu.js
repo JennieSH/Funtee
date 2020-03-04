@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { readTTS, initRecord, startRecord, stopRecord } from "../../store/actions/unitAction";
 import MicRecorder from "mic-recorder-to-mp3";
@@ -47,7 +47,6 @@ class UnitlMenu extends React.Component{
     }
     // handleRead(){  
     //   new Audio("data:audio/wav;base64," + this.props.unit.unitTTS ).play();
-
     // }
 
     handleRecord (){
@@ -78,20 +77,19 @@ class UnitlMenu extends React.Component{
     }  
 
     
-    render(){
-        const unitState = this.props.unit;      
+    render(){  
         return(
-            <>
-            <div className="TC_UnitlMenu">
-                    <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>volume_up</i>                                          
-                    <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
-                        <div className={`record ${ this.state.isRecording? "active":null}`}></div>                      
-                    </i>
-                    <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
-                        <audio src={this.state.blobURL} id="audioRecord"/>
-                    </i>             
-                </div>   
-            </>           
+            <Fragment >
+              <div className="TC_UnitlMenu">
+                <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>volume_up</i>                                          
+                <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
+                  <div className={`record ${ this.state.isRecording? "active":null}`}></div>                      
+                </i>
+                <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
+                  <audio src={this.state.blobURL} id="audioRecord"/>
+                </i>             
+              </div>   
+            </Fragment >           
         )
     }
 }

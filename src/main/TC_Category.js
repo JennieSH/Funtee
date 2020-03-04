@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
 import Header from "../components/common/header";
 import "../css/TC_Category.css";
@@ -10,10 +10,10 @@ class TC_Category extends React.Component{
 
     render(){
         return(
-            <>
+            <Fragment>
                 <Header/>
                 <div className="TC_CatalogContainer">
-                    <div>
+                    <div >
                         <div className="TC_CatalogBox">
                             <div className="img">
                                 <img src={symbol_U}/>  
@@ -43,7 +43,7 @@ class TC_Category extends React.Component{
                         </div>
                     </div>
                 </div>
-            </>        
+            </Fragment>        
         )
     }
 }

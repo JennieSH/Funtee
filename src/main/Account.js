@@ -1,9 +1,7 @@
-import React from "react";
-// import "../css/account.css";
-import { Link, Redirect } from "react-router-dom";
+import React, { Fragment } from "react";
+import "../css/account.css";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-// import facebook from "../../../imgs/facebook.jpg";
-// import google from "../../../imgs/google.jpg";
 import Header from "../components/common/header";
 import SignIn from "../components/common/auth/signIn";
 import SignUp from "../components/common/auth/signUp";
@@ -13,36 +11,59 @@ class Account extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            signIn:true,
-
+            displaySignInWeb:true,
+            displaySignInMobile:true
         }
     }
-
-
-    handleToggleIn_M(){
-        document.getElementById("auth").classList.remove("active");
-    }
-    handleToggleUp_M(){
-        document.getElementById("auth").classList.add("active")
-    }
-
-    handleToggleIn_W(){
-        document.getElementById("authCover").classList.remove("active");
+    handleBlock_IN_Web(){
         this.setState({
-            signIn:true
+            ...this.state,
+            displaySignInWeb: true
         })
     }
-    handleToggleUp_W(){
-        document.getElementById("authCover").classList.add("active");
+    handleBlock_UP_Web(){
         this.setState({
-            signIn:false
+            ...this.state,
+            displaySignInWeb: false
         })
     }
+    handleBlock_IN_Mobile(){
+        this.setState({
+            ...this.state,
+            displaySignInMobile: true
+        })
+    }
+    handleBlock_UP_Mobile(){
+        this.setState({
+            ...this.state,
+            displaySignInMobile: false
+        })
+    }
+ 
+
+    componentDidMount(){
+        window.addEventListener("resize", this.resize.bind(this));
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener("resize", this.resize.bind(this));
+    }
+
+    resize(){
+       if (document.body.clientWidth>1280){
+        this.setState({
+            ...this.state,
+            displaySignInMobile: true
+        })
+       }
+    }
+
+    
 
     render() {
         if( this.props.auth.uid )return <Redirect to="/"/>
         return (
-            <>
+            <Fragment>
                 <Header/>
                 <div className="authContainer">
                     <div className="authMenu">
@@ -51,20 +72,19 @@ class Account extends React.Component{
                             <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=60"/>
                         </div>
 
+                        <div className={ this.state.displaySignInMobile? "auth" : "auth active" } id="auth">
+                                <div className={ this.state.displaySignInWeb? "authCover" :  "authCover active" } id="authCover">
 
-                        <div className="auth" id="auth">
-                                <div className="authCover" id="authCover">
-
-                                    <div className="auth_in_info" style={{display: this.state.signIn? "none": "block" }}>
+                                    <div className="auth_in_info" style={{display: this.state.displaySignInWeb? "none": "block" }}>
                                         <h3>Welcome Back</h3>
                                         <p>To keep connected with us please login with your personal information.</p>
-                                        <button className="signInBottom" onClick={this.handleToggleIn_W.bind(this)}>SIGN IN</button>
+                                        <button className="signInBottom" onClick={this.handleBlock_IN_Web.bind(this)}>SIGN IN</button>
                                     </div>
                                     
-                                    <div className="auth_up_info" style={{display: this.state.signIn ? "block" : "none" }}>
+                                    <div className="auth_up_info" style={{display: this.state.displaySignInWeb ? "block" : "none" }}>
                                         <h3 >Hello, Guest</h3>
                                         <p>Enter your personal details and create your own flash cards.</p>
-                                        <button className="signUpBottom" onClick={this.handleToggleUp_W.bind(this)}>SIGN UP</button>
+                                        <button className="signUpBottom" onClick={this.handleBlock_UP_Web.bind(this)}>SIGN UP</button>
                                     </div>
 
                                 </div>
@@ -78,20 +98,18 @@ class Account extends React.Component{
                                 </div>                          
                         </div>
 
-
                         <div className="authMobileContainer">
                             <div className="authMobile">
                                 <div className="authMobile_Btn">
-                                    <button className="signInBottom" onClick={this.handleToggleIn_M.bind(this)}>SIGN IN</button>   
-                                    <button className="signUpBottom" onClick={this.handleToggleUp_M.bind(this)}>SIGN UP</button>
+                                    <button className="signInBottom" onClick={this.handleBlock_IN_Mobile.bind(this)}>SIGN IN</button>   
+                                    <button className="signUpBottom" onClick={this.handleBlock_UP_Mobile.bind(this)}>SIGN UP</button>
                                 </div>
                             </div>
                         </div>
                         
                     </div>
                 </div>
-            </>
-           
+            </Fragment>
         );
     }
   }

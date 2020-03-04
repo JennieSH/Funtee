@@ -22,36 +22,3 @@ export const nextPage = ( indexPage, maxPage ) => {
         }    
     }
 }
-
-// export const getSymbolAudio = () => {
-//     return ( dispatch) =>{
-//         const storage = firebase.storage();
-//         const storageRef = storage.ref().child("symbolSVG");
-//         let symbolAudioArr=[];
-//         storageRef.listAll().then( res => {
-//             res.items.forEach(function(itemRef) {
-//                 console.log(itemRef)
-//                 itemRef.getDownloadURL().then(function (url) {
-//                     console.log(url)
-//                     symbolAudioArr.push(url);
-//                     dispatch({ type: "GET_SYMBOL_AUDIO", symbolAudioArr});
-//                 })
-//             });            
-//         }).catch(function(error) {
-//             console.log("getSymbolAudio"+error)
-//             dispatch({ type: "GET_SYMBOL_AUDIO_ERR"});
-//         });
-//     }
-// }
-
-
-// export const getSymbolAudioEach = (itemRef) => {
-//     return ( dispatch) =>{
-//         itemRef.getDownloadURL().then(function (url) {          
-//             dispatch({ type: "GET_SYMBOL_AUDIO_EACH",url});
-//         }).catch(()=>{
-//             dispatch({ type: "GET_SYMBOL_AUDIO_EACH_ERR"});
-//         })
-//     }
-// }
-

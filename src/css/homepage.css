@@ -288,7 +288,6 @@
    }
    .contentContainer>.authBtn{
       padding:  0 60px;
-      justify-content: space-between;
     }
    .contentContainer>.authBtn>a>button{
       width: 150px;
@@ -318,7 +317,6 @@
    .contentContainer>.authBtn{
       padding:  0 85px;
       margin-top: 45px;
-      justify-content: space-between;
     }
    .contentContainer>.authBtn>a>button{
       width: 150px;

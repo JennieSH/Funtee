@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
-import Header from "../components/common/header"
+import Header from "../components/common/header";
 import "../css/category.css";
 import TC_img from "../imgs/TC_catalog.jpg";
 import FC_img from "../imgs/FC_catalog.jpg";
@@ -12,7 +12,7 @@ class Category extends React.Component{
 
     render(){
         return(
-            <>
+            <Fragment>
                 <Header/>
                 <div className="categoryContainer">             
                     <div className="description">
@@ -32,7 +32,7 @@ class Category extends React.Component{
                         </Link>
                     </div>                    
                 </div>
-            </>
+            </Fragment>
             
         )
     }

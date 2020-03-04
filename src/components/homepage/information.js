@@ -7,7 +7,6 @@ class Information extends React.Component{
 
     render(){
         return(
-
             <div className="informationContainer">       
             
                 <div className="information card">
@@ -40,47 +39,6 @@ class Information extends React.Component{
                 </div>
 
             </div> 
-
-            // <div className="informationContainer">       
-                    
-            //             <div className="information">
-            //                 <div className="informationImg">             
-                                 
-            //                     <img src={learn}/>
-            //                 </div>
-
-            //                 <i className="material-icons">extension</i> 
-
-            //                 <div className="informationContent">
-            //                     <span className="informationTitle red-text text-lighten-2">Chinese Lessons</span>
-            //                     <div>The beauty of Funtee is that you don't need to study our lessons in a specific order, they are self-contained.
-            //                         <br/><br/>
-            //                         We also provide Mandarin Phonetic Symbols to help you pronounce and remember Traditional Chinese.
-            //                     </div>
-            //                 </div>                      
-            //             </div>
-            //             {/* <div className="information">
-            //                 <div className="informationImg">             
-                                 
-            //                     <img src={flashCard}/>
-            //                 </div>
-
-            //                 <i className="material-icons">extension</i> 
-
-            //                 <div className="informationContent">
-            //                     <span className="informationTitle red-text text-lighten-2">Flash Card</span>
-            //                     <div>Flashcards are effective because they are founded on the principles of rote and memorization. 
-            //                         <br/>
-            //                         <br/>
-            //                         With Funtee, you can use our web-based flashcard maker to create your own set. 
-            //                     </div>
-            //                 </div>                      
-            //             </div>
-            //             */}
-
-            //         </div> 
-
-
         )         
     }
 

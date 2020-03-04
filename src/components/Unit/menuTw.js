@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { readTTS, initRecord, startRecord, stopRecord } from "../../store/actions/unitAction";
 import MicRecorder from "mic-recorder-to-mp3";
@@ -78,7 +78,7 @@ class UnitlMenuTw extends React.Component{
     render(){
         const unitState = this.props.unit;      
         return(
-            <>
+            <Fragment>
             <div className="TC_UnitlMenu">
                     <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>volume_up</i>                                          
                     <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
@@ -88,7 +88,7 @@ class UnitlMenuTw extends React.Component{
                         <audio src={this.state.blobURL} id="audioRecord"/>
                     </i>             
                 </div>   
-            </>           
+            </Fragment>           
         )
     }
 }

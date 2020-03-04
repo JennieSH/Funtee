@@ -17,8 +17,6 @@ import FC_Card from "./FC_Card";
 import FC_MyCard from "./FC_MyCard";
 import FC_Spelling from "./FC_Spelling";
 import Account from "./Account";
-import SignIn from "../components/common/auth/signIn";
-import SignUp from "../components/common/auth/signUp";
 import ResetPassword from "../components/common/auth/resetPassword";
 // test 
 import TC_Symbol_test from "./TC_Symbol_test";
@@ -34,7 +32,6 @@ class App extends React.Component{
             <BrowserRouter>  
                <Route exact path="/" component={Homepage}/>
                <Route path="/signin" component={Account}/> 
-               {/* <Route path="/signup" component={SignUp}/> */}
                <Route path="/resetpassword" component={ResetPassword}/>   
                  
                <Route path="/category" component={Category}/>                                       

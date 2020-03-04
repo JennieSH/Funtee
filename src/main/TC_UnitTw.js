@@ -1,12 +1,13 @@
-import React from "react";
-import Header from "../components/common/header";
-import "../css/TC_Unit.css";
-import UnitlMenuTw from "../components/unit/menuTw";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
-import Loading from "../components/common/loading";
 import { lastPage, nextPage } from "../store/actions/unitAction";
+import "../css/TC_Unit.css";
+import Header from "../components/common/header";
+import UnitlMenuTw from "../components/unit/menuTw";
+import Loading from "../components/common/loading";
+
 
 class TC_UnitTw extends React.Component{
  
@@ -15,44 +16,48 @@ class TC_UnitTw extends React.Component{
     }
  
     handleNextPage(){
-        const lessonLength = this.props.firestore.ordered[this.props.location.state].length
+        const cityID = this.props.location.state; 
+        const lessonLength = this.props.firestore.ordered[cityID].length;
         this.props.nextPage(this.props.indexPage, lessonLength)
     }
 
     render(){
-        console.log(this.props.location.state);
-        const lesson = this.props.firestore.ordered[this.props.location.state];
+        const cityID = this.props.location.state;
+        const lesson = this.props.firestore.ordered[cityID];
+        
         if( !lesson ){
             return(
-                <>
+                <Fragment>
                     <Header/>
                     <Loading/>
-                </>
+                </Fragment>
             )
         }else{
-            const index = this.props.indexPage-1;
             const indexPage = this.props.indexPage;
+            const index = indexPage-1;
             const maxPage=lesson.length;
-            // console.log(this.props.firestore)
-            if(lesson[index].imgs){ return <Loading/>}
+        
             return(
-                <>
+                <Fragment>
                     <Header/>
                     <i className="material-icons waves-effect" id="lastPageBtn_U" onClick={ this.handleLastPage.bind(this) }>navigate_before</i>
                     <i className="material-icons waves-effect" id="nextPageBtn_U" onClick={ this.handleNextPage.bind(this) }>navigate_next</i> 
                     <div className="TC_UnitContainer">
-                        <div className="unitImg"><div><img src={ lesson[index].imgs }/></div></div>                    
-                            <ul>
-                                <li>{ lesson[index].zhuyin }</li>
-                                <li>{ lesson[index].pinyin }</li>
-                                <li>{ lesson[index].chinese }</li>
-                                <li>{ lesson[index].english }</li>                            
-                            </ul>                                             
-                            <UnitlMenuTw audio={ lesson[index].audio }/>  
-                            <span  className="page">{ `${indexPage} / ${maxPage}` }</span>
-                    </div>
-                    
-                </>        
+                        <div className="unitImg">
+                            <div>
+                                {lesson[index].imgs? <img src={ lesson[index].imgs }/> : <Loading/> }
+                            </div>
+                        </div>                    
+                        <ul>
+                            <li>{ lesson[index].zhuyin }</li>
+                            <li>{ lesson[index].pinyin }</li>
+                            <li>{ lesson[index].chinese }</li>
+                            <li>{ lesson[index].english }</li>                            
+                        </ul>                                             
+                        <UnitlMenuTw audio={ lesson[index].audio }/>  
+                        <span  className="page">{ `${indexPage} / ${maxPage}` }</span>
+                    </div>            
+                </Fragment>        
             )
         }
     }
@@ -84,6 +89,5 @@ export default compose(
             }]
         )
     }),
-    
     connect( mapStateToProps, mapDispatchToProps )
 )( TC_UnitTw )

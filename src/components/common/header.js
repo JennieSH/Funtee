@@ -1,19 +1,11 @@
 import React from "react";
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { signOut } from "../../store/actions/authActions";
+import SignOutDialog from "../common/auth/signOutDialog";
+import { toggleSignOut } from "../../store/actions/authActions";
 import "../../css/common.css";
-
-import M from "materialize-css";
-
-
 class Header extends React.Component{
 
-    // componentDidMount() {
-    //     let sidenav = document.querySelectorAll(".sidenav");
-    //     M.Sidenav.init(sidenav, {});
-        
-    // }
     handlePath(e){
         if ( !this.props.auth.uid ){
             e.stopPropagation();
@@ -23,10 +15,7 @@ class Header extends React.Component{
     }
 
     handleSignOut(){
-        let checkSignOut=confirm("Do you want to Sign out")
-        if ( checkSignOut ){
-            this.props.signOut();
-        }
+        this.props.toggleSignOut();
     }
 
     render(){
@@ -35,9 +24,9 @@ class Header extends React.Component{
         let fabName;
         let authSignAction; 
 
-        // sign in / sign out
+        // the status of sign in / sign out 
         if( auth.uid ){
-            authSignAction= <Link to="/" onClick={ this.handleSignOut.bind(this) }><i className="navI material-icons" >lock_open</i>Sign Out</Link>
+            authSignAction= <a onClick={ this.handleSignOut.bind(this) }><i className="navI material-icons" >lock_open</i>Sign Out</a>
         }else{
             name = "Hi, Guest";
             authSignAction = <Link to="/signin"><i className="navI material-icons">lock</i>Sign In</Link>       
@@ -54,7 +43,6 @@ class Header extends React.Component{
             }
         }
 
-
         return(
             <header>
                 <nav className="nav-wrapper">
@@ -70,8 +58,6 @@ class Header extends React.Component{
                             </div>  
                         </label>
 
-
-
                         <ul className="right hide-on-med-and-down ">
                             <li><Link to="/topics">Learning Chinese</Link></li>
                             <li><Link to="/flashcard" onClick={this.handlePath.bind(this)}>Flash Card</Link></li>
@@ -79,8 +65,6 @@ class Header extends React.Component{
                             {/* <li><a>Language</a></li> */}
                             { auth.uid ?<li><Link to="/" className="web-info btn btn-floating "><span className="white-text ">{ fabName }</span></Link></li> : null}
                         </ul>     
-
-
 
                         <ul className="sidenav" id="mobile-menu">
                             <li className="userName">
@@ -105,10 +89,10 @@ class Header extends React.Component{
                                     Language
                                 </a>
                             </li> */}
-                        </ul>           
-                    
+                        </ul>                                    
                     </div>
-                </nav> 
+                    { this.props.signOutDialogBox? <SignOutDialog/> : null }
+                </nav>     
             </header>
         )
     }
@@ -116,11 +100,12 @@ class Header extends React.Component{
 const mapStateToProps = ( state ) => {
     return{
         auth : state.firebase.auth,
+        signOutDialogBox : state.auth.signOutDialogBox 
     }
 }
 const mapDispatchToProps = ( dispatch ) => {
     return{
-        signOut : ()=> dispatch(signOut())
+        toggleSignOut : ()=> dispatch(toggleSignOut())
     }
 }
 export default  withRouter(connect( mapStateToProps, mapDispatchToProps )( Header ))
