@@ -5,14 +5,15 @@
     align-items: center;
 }
 .TC_SymobolContent{
-    margin-top: 90px;
+    margin-top: 85px;
     height: 320px;
     width: 270px;
-    background-color: rgba(223, 210, 193, 0.705);
+    background-color: #F4EFE7;
     padding: 8px;
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid #eceaea;
+    border: 2px solid #eceaea;
+    border-radius: 5px;
    
 }
 .TC_SymobolContent>.ContentImg{
@@ -129,7 +130,28 @@
     cursor: url(../imgs/pencil.png) 4 12, auto;
     background-color: rgb(254, 255, 255);
     border: 1px solid #eceaea;
+    border-radius: 5px;
+    opacity: 0.2;
+    position: relative;
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/dawan-bfa08.appspot.com/o/symbolSVG%2F01.svg?alt=media&token=a52f5d4a-3843-45d7-af2d-5a1ee4e754ca);
+    background-size:contain;
+    -webkit-background-size: contain;
+    background-repeat:no-repeat; 
 }
+
+/* .TC_SymobolContainer canvas::before{
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/dawan-bfa08.appspot.com/o/symbolSVG%2F01.svg?alt=media&token=a52f5d4a-3843-45d7-af2d-5a1ee4e754ca);
+    background-size:contain;
+    -webkit-background-size: contain;
+    background-repeat:no-repeat;
+    z-index: -1;
+    position: absolute;
+    top:0;
+    left: 0;
+
+
+} */
+
 
 
 .TC_SymobolContainer #undoBtn{

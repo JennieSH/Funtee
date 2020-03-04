@@ -1,123 +1,125 @@
 .TC_CatalogContainer{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
-}
-
-.TC_CatalogContainer>div{
-    height: 370px;
-    width: 300px;
-    background-color: rgb(250, 248, 248);
-    margin-bottom: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,.15);
-}
-
-
-.TC_CatalogBox{
-    width: 280px;
-    height: 350px;
-    border: 2px solid #6d6d6d;
-    border-radius: 14px;
-    margin: 8px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-
-}
-
-.TC_CatalogBox>.img{
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-    margin: 50px 0 30px 0;
-    position: relative;
-    overflow: hidden;
-    display: flex;
     justify-content: center;
     align-items: center;
-}
-.TC_CatalogBox>.img img{
-    height: 80%;
-    position: relative;
-}
-
-.TC_CatalogBox>span{
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 1px;
-    line-height: 32px;
-    font-weight: bold;
-}
-
-.TC_CatalogBox>a>button{
-    margin-top: 20px;
-    height: 38px;
-    width: 150px;
-    color: white;
-    border-radius: 30px;
-    background: #BBD2C5;
-    background: -webkit-linear-gradient(to right, #292E49, #536976, rgb(76, 87, 81));
-    background: linear-gradient(to right, rgb(51, 57, 87), #536976, rgb(76, 85, 80));
-    border: none;
-    letter-spacing: 1px;
-}
-
-
-.TC_CatalogBox>a>button:hover{
-    width: 180px;
-    transition: .8s;  
-}
-
-a{
-    text-decoration: none;
-    color: #ffffff;
-}
-@media screen and (min-width:768px){
+    margin-top: 100px;
+  }
+  
+  .TC_CatalogContainer>div{
+      height: 370px;
+      width: 300px;
+      background-color: rgb(250, 248, 248);
+      margin-bottom: 40px;
+      border-radius: 5px;
+      box-shadow: 1px 2px 2px rgba(0,0,0,.15);
+      padding: 1rem;
+  }
+  
+  
+  .TC_CatalogContainer>div>.TC_CatalogBox{
+      width: 100%;
+      height: 100%;
+      border: 2px solid #6d6d6d;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+  }
+  
+  .TC_CatalogContainer>div>.TC_CatalogBox>.img{
+      height: 120px;
+      width: 120px;
+      border-radius: 50%;
+      margin: 50px 0 30px 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .TC_CatalogContainer>div>.TC_CatalogBox>.img img{
+      height: 80%;
+      position: relative;
+  }
+  
+  .TC_CatalogContainer>div>.TC_CatalogBox>span{
+      font-size: 20px;
+      text-align: center;
+      letter-spacing: 1px;
+      line-height: 32px;
+      font-weight: bold;
+  }
+  
+  .TC_CatalogContainer>div>.TC_CatalogBox>a>button{
+      margin-top: 20px;
+      height: 38px;
+      width: 150px;
+      color: white;
+      border-radius: 30px;
+      background: #BBD2C5;
+      background: -webkit-linear-gradient(to right, #292E49, #536976, rgb(76, 87, 81));
+      background: linear-gradient(to right, rgb(51, 57, 87), #536976, rgb(76, 85, 80));
+      border: none;
+      letter-spacing: 1px;
+      cursor: pointer;
+  }
+  
+  
+  /* .TC_CatalogContainer>div>.TC_CatalogBox>a>button:hover{
+      width: 180px;
+      transition: all .6s ease-in-out;
+    }
+   */
+  .TC_CatalogContainer>div>.TC_CatalogBox>a{
+      text-decoration: none;
+      color: #ffffff;
+  }
+  @media screen and (min-width:768px){
+      .TC_CatalogContainer>div{
+          width: 55%;
+      }
+    
+  }
+  @media screen and (min-width:1024px){
     .TC_CatalogContainer>div{
-        width: 55%;
-    }
-    .TC_CatalogBox{
-        width: 95%;
-    }
-}
-@media screen and (min-width:1024px){
-    .TC_CatalogBox{
-        width: 96.5%;
-  }  
-}
-
-
-
-@media screen and (min-width:1280px){
-
+          width: 45%;
+    }  
+  }
+  
+  @media screen and (min-width:1280px){
+  
     .TC_CatalogContainer{
-        margin-top: 130px;
-    }
-    .TC_CatalogContainer{
-        flex-direction: row;
-    }
-
+          margin-top: 130px;
+          flex-direction: row;
+      }
     .TC_CatalogContainer>div{
-        width: 320px;
-        margin: 0 20px 20px 20px;
-        height: 400px;
-    }
-    .TC_CatalogBox{
-        width: 300px;
-        height: 380px;
-    }
-}
+          width: 300px;
+          margin: 0 25px 20px 25px;
+          height: 380px;
+          transition: all .6s ease-in-out;
 
-@media screen and (min-width:1920px){
-    .TC_CatalogContainer{
-        margin-top: 180px;
+      }
+    .TC_CatalogContainer>div:hover{
+          width: 28%;
+          transition: all .6s ease-in-out;
+      }
+    .TC_CatalogBox{
+          width: 300px;
+          height: 380px;
+      }
+  }
+  
+  @media screen and (min-width:1920px){
+      .TC_CatalogContainer{
+          margin-top: 180px;
+      }
+      .TC_CatalogContainer>div{
+        margin: 3vw;
     }
-    .TC_CatalogContainer>div{
-        width: 320px;
-        margin: 40px;
-        height: 400px;
+    .TC_CatalogContainer>div:hover{
+        width: 20%;
     }
-}
+
+  }

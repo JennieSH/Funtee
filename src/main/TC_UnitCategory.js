@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {Route, Link} from 'react-router-dom';
 import Header from "../components/common/header";
 import "../css/TC_UnitCategory.css";
@@ -9,7 +9,7 @@ import "../css/TC_UnitCategory.css";
 class TC_UnitCategory extends React.Component{
     render(){
         return(
-            <>
+            <Fragment>
                 <Header/>
                 <div className="UnitCatalogContainer">
                     <h2>Common <br/>Chinese Vocabulary</h2>
@@ -22,7 +22,7 @@ class TC_UnitCategory extends React.Component{
                         <Link to={{pathname:"/vocabulary", state:"emotion"}}><li className="box6">Emotion</li></Link>
                     </ul>
                 </div>
-            </>
+            </Fragment>
             
         )
     }

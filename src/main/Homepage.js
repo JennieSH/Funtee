@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import "../css/homepage.css";
 import Header from "../components/common/header";
@@ -12,7 +11,7 @@ class Homepage extends React.Component{
 
     render(){   
         return(
-            <>        
+            <Fragment>        
                 <div className="homepageContainer">
                     <Header/>            
                     <div className="bubbleContainer ">
@@ -32,7 +31,7 @@ class Homepage extends React.Component{
                     <Tool/>
                 </div>
                 <Footer/>  
-            </>          
+            </Fragment>          
             )
     }
 }

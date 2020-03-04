@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "../css/TC_UnitCategory_Tw.css";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -16,14 +16,14 @@ class TC_UnitCategory_TW extends React.Component{
     
         if ( !this.props.lessonData){
             return (
-                <>
+                <Fragment>
                     <Header/>
                     <Loading/>
-                </>
+                </Fragment>
             )
         }else{
             return(
-                <>
+                <Fragment>
                     <Header/> 
                     <div className="UnitCatalogTW container">
                         <span className="twTitle blue-grey-text text-darken-3">Meet charming Taiwan</span>
@@ -32,7 +32,7 @@ class TC_UnitCategory_TW extends React.Component{
                         </div>
                         <TWCard/>
                     </div>
-                </>
+                </Fragment>
                 
             )
         }    

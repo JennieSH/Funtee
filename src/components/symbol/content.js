@@ -93,7 +93,7 @@ class TC_SymbolContent extends React.Component{
             <div className="TC_SymobolContent" id="TC_SymbolContent">           
                 <div className="ContentImg">
                     <div>{ symbol.imgs ? <img src={ symbol.imgs[index] }/> : null }</div>
-                    <div className="TC_SymobolExample"><img src={ symbol.svg[index]}/></div>
+                    <div className="TC_SymobolExample"><img src={ symbol.svg[index] }/></div>
                 </div>
                 <div className="ContentImgDetail">
                     <span className="pink-text text-darken-3">{ symbol.zhuyin[index] }</span>
@@ -110,7 +110,8 @@ class TC_SymbolContent extends React.Component{
                     <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
                         <div className={`record ${ this.state.isRecording? "active" : null}` }></div>                      
                     </i>
-                    <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
+                    <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>
+                      play_arrow
                         <audio src={this.state.blobURL} id="audioRecord"/>
                     </i>             
                 </div> 

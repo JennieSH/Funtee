@@ -41,7 +41,7 @@ class WritingBoard extends React.Component{
         let ctx = this.getContext("2d");
         let startX = this.offsetLeft ;
         let startY = this.offsetTop ;
-        ctx.strokeStyle = "#272727";
+        ctx.strokeStyle = "#d50000";
         ctx.lineWidth = 6;
     
         ctx.beginPath();
@@ -68,7 +68,7 @@ class WritingBoard extends React.Component{
     mouseDown(e){
         this.draw=true;
         this.ctx = this.getContext("2d");
-        this.ctx.strokeStyle="#272727";
+        this.ctx.strokeStyle ="#d50000";
         this.ctx.lineWidth=6;
     
         let o=this;
@@ -102,9 +102,12 @@ class WritingBoard extends React.Component{
     }
 
     render(){      
+        
+     
+        const zhinyinArr = this.props.symbolZhuyin;
         return(
             <Fragment>
-              <canvas id="cvs"/>
+              <canvas id="cvs" />
               <i className="material-icons waves-effect" id="undoBtn">replay</i>
             </Fragment >
         )

@@ -26,7 +26,7 @@ class Header extends React.Component{
 
         // the status of sign in / sign out 
         if( auth.uid ){
-            authSignAction= <Link to="/" onClick={ this.handleSignOut.bind(this) }><i className="navI material-icons" >lock_open</i>Sign Out</Link>
+            authSignAction= <a onClick={ this.handleSignOut.bind(this) }><i className="navI material-icons" >lock_open</i>Sign Out</a>
         }else{
             name = "Hi, Guest";
             authSignAction = <Link to="/signin"><i className="navI material-icons">lock</i>Sign In</Link>       

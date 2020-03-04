@@ -17,8 +17,7 @@ class Member extends React.Component{
       
         return(
            <Fragment>
-                <Link to="/category"><button className="member waves-effect waves-light btn">LESSON</button></Link>
-                <Link to="/flashcard"><button className="guest waves-effect waves-light btn">CARDS</button></Link> 
+                <Link to="/category"><button className="member waves-effect waves-light btn">START</button></Link>
            </Fragment>
         )         
     }

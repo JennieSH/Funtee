@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
-import Header from "../components/common/header"
+import Header from "../components/common/header";
 import "../css/category.css";
 import TC_img from "../imgs/TC_catalog.jpg";
 import FC_img from "../imgs/FC_catalog.jpg";
