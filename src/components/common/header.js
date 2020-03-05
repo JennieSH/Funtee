@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import SignOutDialog from "../common/auth/signOutDialog";
 import { toggleSignOut } from "../../store/actions/authActions";
 import "../../css/common.css";
+import "materialize-css";
 class Header extends React.Component{
 
     handlePath(e){
