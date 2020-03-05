@@ -132,8 +132,7 @@ class FC_MyCard extends React.Component{
                 </>
             )
         }else{
-            const allCardArr = [];        
-          
+            const allCardArr = [];      
             userBooks.map( book => {
                 book.cards.map((card, index)=>{     
                     card.index = index;
@@ -219,15 +218,17 @@ const mapDispatchToProps = ( dispatch ) => {
 export default compose( 
     connect( mapStateToProps, mapDispatchToProps ),
     firestoreConnect((props) =>{     
-        const uid = props.firestore._.authUid;
-        return(
-            [{
-                collection: "Cards",
-                doc: uid ,
-                subcollections: [{collection: uid}],
-                storeAs: uid
-            }]
-        )
+        const uid = props.auth.uid;
+        if ( uid ){
+            return(
+                [{
+                    collection: "Cards",
+                    doc: uid ,
+                    subcollections: [{collection: uid}],
+                    storeAs: uid
+                }]
+            )
+        }
     })
 )( FC_MyCard )
 

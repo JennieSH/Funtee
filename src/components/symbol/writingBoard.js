@@ -38,9 +38,9 @@ class WritingBoard extends React.Component{
     touchStart(e){
         this.draw = true;
         this.touch = e.targetTouches[0]; // default the first finger
-        let ctx = this.getContext("2d");
-        let startX = this.offsetLeft ;
-        let startY = this.offsetTop ;
+        const ctx = this.getContext("2d");
+        const startX = this.offsetLeft ;
+        const startY = this.offsetTop ;
         ctx.strokeStyle = "#d50000";
         ctx.lineWidth = 6;
     
@@ -49,10 +49,10 @@ class WritingBoard extends React.Component{
         e.preventDefault(); // avoiding other touching actions
     }  
     touchMove(e) {
-        let ctx = this.getContext("2d");
+        const ctx = this.getContext("2d");
         this.touch = e.targetTouches[0];   
-        let startX = this.offsetLeft;
-        let startY = this.offsetTop;
+        const startX = this.offsetLeft;
+        const startY = this.offsetTop;
     
         if (this.draw){
             ctx.lineTo(this.touch.pageX-startX, this.touch.pageY-startY);
@@ -68,7 +68,7 @@ class WritingBoard extends React.Component{
     mouseDown(e){
         this.draw=true;
         this.ctx = this.getContext("2d");
-        this.ctx.strokeStyle ="#d50000";
+        this.ctx.strokeStyle = "#d50000";
         this.ctx.lineWidth=6;
     
         let o=this;
@@ -80,10 +80,9 @@ class WritingBoard extends React.Component{
             this.offsetX+=o.offsetLeft;
             this.offsetY+=o.offsetTop;
         }
-    
+
         this.ctx.beginPath();
         this.ctx.moveTo(e.pageX-this.offsetX,e.pageY-this.offsetY);
-
     }
     mouseMove(e){
         if (this.draw){
@@ -102,13 +101,22 @@ class WritingBoard extends React.Component{
     }
 
     render(){      
-        
-     
         const zhinyinArr = this.props.symbolZhuyin;
+        const style={
+            backgroundImage: `url(${zhinyinArr[this.props.index-1]})`,
+            backgroundSize: "contain",
+            WebkitBackgroundSize: "contain",
+            backgroundRepeat:"no-repeat", 
+            opacity: 0.4,    
+        } 
         return(
             <Fragment>
-              <canvas id="cvs" />
-              <i className="material-icons waves-effect" id="undoBtn">replay</i>
+                <div className="writingBoard">
+                    <canvas id="cvs" style={ style }/>
+                    <div className="writingBoardMenu">
+                        <i className="material-icons waves-effect" id="undoBtn">replay</i>  
+                    </div>  
+                </div>        
             </Fragment >
         )
     }

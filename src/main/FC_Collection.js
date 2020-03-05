@@ -107,14 +107,16 @@ export default compose(
     connect( mapStateToProps, mapDispatchToProps ),
     firestoreConnect((props) =>{     
         const uid = props.auth.uid;
-        return(
-            [{
-                collection: "Cards",
-                doc: uid ,
-                subcollections: [{collection: uid}],
-                storeAs: uid
-            }]
-        )
+        if( uid ){
+            return(
+                [{
+                    collection: "Cards",
+                    doc: uid ,
+                    subcollections: [{collection: uid}],
+                    storeAs: uid
+                }]
+            )
+        }
     })
 )( FC_Collection )
 
