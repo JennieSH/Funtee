@@ -1,22 +1,22 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 // Router
-import Homepage from "./Homepage";
-import Category from "./Category";
-import TC_Category from "./TC_Category";
-import TC_Symbol from "./TC_Symbol";
-import TC_Unit from "./TC_Unit";
-import TC_UnitTw from "./TC_UnitTw";
-import TC_UnitCategory from "./TC_UnitCategory";
-import TC_UnitCategory_TW from "./TC_UnitCategory_Tw"
+import Homepage from "./homepage";
+import Category from "./category";
+import TcCategory from "./tcCategory";
+import TcSymbol from "./tcSymbol";
+import TcLesson from "./tcLesson";
+import TcLessonTw from "./tcLessonTw";
+import TcLessonCategory from "./tcLessonCategory";
+import TcLessonCategoryTw from "./tcLessonCategoryTw"
 
-import FC_Category from "./FC_Category";
-import FC_Collection from "./FC_Collection";
-import FC_MyCollection from "./FC_MyCollection";
-import FC_Card from "./FC_Card";
-import FC_MyCard from "./FC_MyCard";
-import FC_Spelling from "./FC_Spelling";
-import Account from "./Account";
+import FcCategory from "./fcCategory";
+import FcCollection from "./fcCollection";
+import FcMyCollection from "./fcMyCollection";
+import FcCard from "./fcCard";
+import FcMyCard from "./fcMyCard";
+import FC_Spelling from "./fcSpelling";
+import Account from "./account";
 import ResetPassword from "../components/common/auth/resetPassword";
 // test 
 import TC_Symbol_test from "./TC_Symbol_test";
@@ -30,24 +30,24 @@ class App extends React.Component{
     render(){    
         return(              
             <BrowserRouter>  
-               <Route exact path="/" component={Homepage}/>
-               <Route path="/signin" component={Account}/> 
-               <Route path="/resetpassword" component={ResetPassword}/>   
+               <Route exact path="/" component={ Homepage }/>
+               <Route path="/signin" component={ Account }/> 
+               <Route path="/resetpassword" component={ ResetPassword }/>   
                  
-               <Route path="/category" component={Category}/>                                       
-               <Route path="/topics" component={TC_Category}/>
-               <Route path="/symbol" component={TC_Symbol}/>            
-               <Route path="/lessons" component={TC_UnitCategory}/>
-               <Route path="/lessonstw" component={TC_UnitCategory_TW}/>
-               <Route path="/vocabulary" component={TC_Unit}/>
-               <Route path="/vocabularytw" component={TC_UnitTw}/>
+               <Route path="/category" component={ Category }/>                                       
+               <Route path="/topics" component={ TcCategory }/>
+               <Route path="/symbol" component={ TcSymbol }/>            
+               <Route path="/lessons" component={ TcLessonCategory }/>
+               <Route path="/lessonstw" component={ TcLessonCategoryTw }/>
+               <Route path="/vocabulary" component={ TcLesson }/>
+               <Route path="/vocabularytw" component={ TcLessonTw }/>
 
-               <Route path="/flashcard" component={ FC_Category }/>
-               <Route path="/collection/:title" component={FC_Collection}/>
-               <Route path="/mycollection" component={FC_MyCollection}/>
-               <Route path="/card/:title/:index/:key" component={FC_Card}/>       
-               <Route path="/mycard/:index" component={FC_MyCard}/>    
-               <Route path="/spelling" component={FC_Spelling}/>
+               <Route path="/flashcard" component={ FcCategory }/>
+               <Route path="/collection/:title" component={ FcCollection }/>
+               <Route path="/mycollection" component={ FcMyCollection }/>
+               <Route path="/card/:title/:index/:key" component={ FcCard }/>       
+               <Route path="/mycard/:index" component={ FcMyCard }/>    
+               <Route path="/spelling" component={ FC_Spelling }/>
             </BrowserRouter>
         )    
     }

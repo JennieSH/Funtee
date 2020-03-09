@@ -3,31 +3,27 @@ import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
-import { closeDescription} from "../../store/actions/unitAction";
-
-
-
-
-class TWCard extends React.Component{
+import { closeDescriptionMobile} from "../../store/actions/lessonAction";
+class CardTw extends React.Component{
 
     handleCloseDescription(){              
-        this.props.closeDescription();    
-    }
-    
-    render(){   
-        const cityArr = this.props.lessonData.lessonTw.city;
-        const currentCity = this.props.currentCity;
+        this.props.closeDescriptionMobile();    
+    }    
+    render(){  
+        const { lessonData, currentCity, description } = this.props;
+        const cityArr = lessonData.lessonTw.city;
+
         if ( currentCity !== null ){
             cityArr.forEach( city =>{
-                if (currentCity.cityID  === city.id){
+                if (currentCity.cityId  === city.id){
                     currentCity.img= city.img
                 }
             })
         }
           
-        if( this.props.description ){
+        if( description ){
             return(                   
-                <div className="twCard card" >    
+                <div className="cardTw card" >    
                     <div className="card-image">
                         <img src={ currentCity ?  currentCity.img : this.props.lessonData.lessonTw.twImg }/>
                     </div>                                   
@@ -37,8 +33,8 @@ class TWCard extends React.Component{
                             <span>{ currentCity? currentCity.cityEnglishName : "Taiwan" }</span>
                         </div>
                         <div className="card-action center">
-                            { currentCity? <Link to={{pathname:"/vocabularytw", state: currentCity.cityID }}>START</Link> : <span className="orange-text">WELCOME</span> }
-                            <span className="back blue-text" onClick={ this.handleCloseDescription.bind(this) }>BACK</span>
+                            { currentCity? <Link to={{pathname:"/vocabularytw", state: currentCity.cityId }}>START</Link> : <span className="start">WELCOME</span> }
+                            <span className="back" onClick={ this.handleCloseDescription.bind(this) }>BACK</span>
                         </div>
                     </div>                            
                 </div>
@@ -50,14 +46,14 @@ class TWCard extends React.Component{
 }
 const mapStateToProps = ( state ) => {
     return{
-        currentCity: state.unit.currentCity,
+        currentCity: state.lesson.currentCity,
         lessonData: state.firestore.data.Topics,
-        description: state.unit.description
+        description: state.lesson.description
     }
 }
 const mapStateToDispatch = ( dispatch ) => {
     return{
-        closeDescription: () => dispatch(closeDescription())
+        closeDescriptionMobile: () => dispatch(closeDescriptionMobile())
     }
 }
 export default compose( 
@@ -68,4 +64,4 @@ export default compose(
       }
     ]),
     connect( mapStateToProps, mapStateToDispatch )
-)( TWCard )
+)( CardTw )

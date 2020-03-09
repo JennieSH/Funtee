@@ -1,18 +1,18 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { readTTS, initRecord, startRecord, stopRecord } from "../../store/actions/unitAction";
+import { readTTS, initRecord, startRecord, stopRecord } from "../../store/actions/lessonAction";
 import MicRecorder from "mic-recorder-to-mp3";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
-class UnitlMenuTw extends React.Component{
+class LessonMenu extends React.Component{
 
-    constructor(props){
-        super(props)
-        this.state = {
-            isRecording: false,
-            blobURL: "",
-          }
-    }
+  constructor(props){
+    super(props)
+    this.state = {
+      isRecording: false,
+      blobURL: "",
+      }
+  }
 
     componentDidMount(){      
         
@@ -45,12 +45,14 @@ class UnitlMenuTw extends React.Component{
     handleRead(){  
       this.props.readTTS(this.props.audio)
     }
-   
+    // handleRead(){  
+    //   new Audio("data:audio/wav;base64," + this.props.lesson.lessonTTS ).play();
+    // }
 
     handleRecord (){
 
         if( this.state.isRecording === false){
-            if (this.props.unit.isBlocked) {
+            if (this.props.lesson.isBlocked) {
                 console.log('Permission Denied');
               } else {
                 Mp3Recorder
@@ -75,20 +77,19 @@ class UnitlMenuTw extends React.Component{
     }  
 
     
-    render(){
-        const unitState = this.props.unit;      
+    render(){  
         return(
-            <Fragment>
-            <div className="TC_UnitlMenu">
-                    <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>volume_up</i>                                          
-                    <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
-                        <div className={`record ${ this.state.isRecording? "active":null}`}></div>                      
-                    </i>
-                    <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
-                        <audio src={this.state.blobURL} id="audioRecord"/>
-                    </i>             
-                </div>   
-            </Fragment>           
+            <Fragment >
+              <div className="tcLessonMenu">
+                <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>volume_up</i>                                          
+                <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
+                  <div className={`record ${ this.state.isRecording? "active":null}`}></div>                      
+                </i>
+                <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
+                  <audio src={this.state.blobURL} id="audioRecord"/>
+                </i>             
+              </div>   
+            </Fragment >           
         )
     }
 }
@@ -96,7 +97,7 @@ class UnitlMenuTw extends React.Component{
 
 const mapStateToProps = ( state ) => {
     return{
-        unit: state.unit
+        lesson: state.lesson
     }
 }
 
@@ -104,8 +105,8 @@ const mapDispatchToProps = (dispatch) => {
     return{
        readTTS: (src) => dispatch(readTTS(src)),
        initRecord: () => dispatch(initRecord()),
-       startRecord: () => dispatch( startRecord()),
+       startRecord: () => dispatch(startRecord()),
        stopRecord: () => dispatch(stopRecord())
     }
 }
-export default  connect( mapStateToProps, mapDispatchToProps )(UnitlMenuTw)
+export default  connect( mapStateToProps, mapDispatchToProps )( LessonMenu )

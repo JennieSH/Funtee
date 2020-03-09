@@ -1,4 +1,4 @@
-.TC_CatalogContainer{
+.tcCategoryContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,7 +6,7 @@
     margin-top: 100px;
   }
   
-  .TC_CatalogContainer>div{
+  .tcCategoryContainer>div{
       height: 370px;
       width: 300px;
       background-color: rgb(250, 248, 248);
@@ -17,7 +17,7 @@
   }
   
   
-  .TC_CatalogContainer>div>.TC_CatalogBox{
+  .tcCategoryContainer>div>.tcCategoryBox{
       width: 100%;
       height: 100%;
       border: 2px solid #6d6d6d;
@@ -28,7 +28,7 @@
   
   }
   
-  .TC_CatalogContainer>div>.TC_CatalogBox>.img{
+  .tcCategoryContainer>div>.tcCategoryBox>.img{
       height: 120px;
       width: 120px;
       border-radius: 50%;
@@ -39,12 +39,12 @@
       justify-content: center;
       align-items: center;
   }
-  .TC_CatalogContainer>div>.TC_CatalogBox>.img img{
+  .tcCategoryContainer>div>.tcCategoryBox>.img img{
       height: 80%;
       position: relative;
   }
   
-  .TC_CatalogContainer>div>.TC_CatalogBox>span{
+  .tcCategoryContainer>div>.tcCategoryBox>span{
       font-size: 20px;
       text-align: center;
       letter-spacing: 1px;
@@ -52,7 +52,7 @@
       font-weight: bold;
   }
   
-  .TC_CatalogContainer>div>.TC_CatalogBox>a>button{
+  .tcCategoryContainer>div>.tcCategoryBox>a>button{
       margin-top: 20px;
       height: 38px;
       width: 150px;
@@ -67,58 +67,58 @@
   }
   
   
-  /* .TC_CatalogContainer>div>.TC_CatalogBox>a>button:hover{
+  /* .tcCategoryContainer>div>.tcCategoryBox>a>button:hover{
       width: 180px;
       transition: all .6s ease-in-out;
     }
    */
-  .TC_CatalogContainer>div>.TC_CatalogBox>a{
+   .tcCategoryContainer>div>.tcCategoryBox>a{
       text-decoration: none;
       color: #ffffff;
   }
   @media screen and (min-width:768px){
-      .TC_CatalogContainer>div{
-          width: 55%;
-      }
+    .tcCategoryContainer>div{
+        width: 55%;
+    }
     
   }
   @media screen and (min-width:1024px){
-    .TC_CatalogContainer>div{
+    .tcCategoryContainer>div{
           width: 45%;
     }  
   }
   
   @media screen and (min-width:1280px){
   
-    .TC_CatalogContainer{
+    .tcCategoryContainer{
           margin-top: 130px;
           flex-direction: row;
       }
-    .TC_CatalogContainer>div{
+    .tcCategoryContainer>div{
           width: 300px;
           margin: 0 25px 20px 25px;
           height: 380px;
           transition: all .6s ease-in-out;
 
       }
-    .TC_CatalogContainer>div:hover{
+    .tcCategoryContainer>div:hover{
           width: 28%;
           transition: all .6s ease-in-out;
       }
-    .TC_CatalogBox{
+    .tcCategoryBox{
           width: 300px;
           height: 380px;
       }
   }
   
   @media screen and (min-width:1920px){
-      .TC_CatalogContainer{
+    .tcCategoryContainer{
           margin-top: 180px;
       }
-      .TC_CatalogContainer>div{
+    .tcCategoryContainer>div{
         margin: 3vw;
     }
-    .TC_CatalogContainer>div:hover{
+    .tcCategoryContainer>div:hover{
         width: 20%;
     }
 

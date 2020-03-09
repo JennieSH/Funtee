@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
 import Header from "../components/common/header";
-import "../css/TC_Category.css";
-import symbol_U from "../imgs/unit-symbol.png";
-import common_U from "../imgs/unit-common.png";
-import taiwan_U from "../imgs/unit-taiwan.png";
+import "../css/tcCategory.css";
+import symbol from "../imgs/unit-symbol.png";
+import common from "../imgs/unit-common.png";
+import taiwan from "../imgs/unit-taiwan.png";
 
 class TC_Category extends React.Component{
 
@@ -12,11 +12,11 @@ class TC_Category extends React.Component{
         return(
             <Fragment>
                 <Header/>
-                <div className="TC_CatalogContainer">
+                <div className="tcCategoryContainer">
                     <div >
-                        <div className="TC_CatalogBox">
+                        <div className="tcCategoryBox">
                             <div className="img">
-                                <img src={symbol_U}/>  
+                                <img src={symbol}/>  
                             </div>                     
                             <span>Mandarin<br/>Phonetic Symbols</span>
                             <Link to="/symbol"><button>Learn More</button></Link>
@@ -24,9 +24,9 @@ class TC_Category extends React.Component{
                     </div>
                    
                     <div>
-                        <div className="TC_CatalogBox">
+                        <div className="tcCategoryBox">
                         <div className="img">
-                                <img src={common_U}/>  
+                                <img src={common}/>  
                             </div>                          
                             <span>Common<br/> Vocabulary</span>
                             <Link to="/lessons"><button>Learn More</button></Link>
@@ -34,9 +34,9 @@ class TC_Category extends React.Component{
                     </div>
 
                     <div>
-                        <div className="TC_CatalogBox">
+                        <div className="tcCategoryBox">
                         <div className="img">
-                                <img src={taiwan_U}/>  
+                                <img src={taiwan}/>  
                             </div>                          
                             <span>Common Vocabulary<br/>In Taiwan</span>
                             <Link to="/lessonstw"><button>Learn More</button></Link>

@@ -1,19 +1,15 @@
 import React, { Fragment } from "react";
-import "../css/TC_UnitCategory_Tw.css";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import Loading from "../components/common/loading";
 import Header from "../components/common/header";
-import TaiwanMap from "../components/unit/taiwanMap";
-import TWCard from "../components/unit/twCard";
+import MapTw from "../components/lesson/mapTw";
+import CardTw from "../components/lesson/cardTw";
+import "../css/tcLessonCategoryTw.css";
 
-
-
-class TC_UnitCategory_TW extends React.Component{
-    
+class tcCategoryTw extends React.Component{   
     render(){
-    
         if ( !this.props.lessonData){
             return (
                 <Fragment>
@@ -25,15 +21,14 @@ class TC_UnitCategory_TW extends React.Component{
             return(
                 <Fragment>
                     <Header/> 
-                    <div className="UnitCatalogTW container">
-                        <span className="twTitle blue-grey-text text-darken-3">Meet charming Taiwan</span>
-                        <div className="twMap">
-                            <TaiwanMap/>
+                    <div className="lessonCategoryTw container">
+                        <span className="titleTw">Meet Charming Taiwan</span>
+                        <div className="mapTw">
+                            <MapTw/>
                         </div>
-                        <TWCard/>
+                        <CardTw/>
                     </div>
-                </Fragment>
-                
+                </Fragment>              
             )
         }    
     }
@@ -50,5 +45,5 @@ export default compose(
         doc: "lessonTw",
       }
     ]),
-    connect( mapStateToProps, null )
-)( TC_UnitCategory_TW )
+    connect( mapStateToProps )
+)( tcCategoryTw  )

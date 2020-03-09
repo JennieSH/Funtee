@@ -33,39 +33,58 @@ export const textToSpeech = ( targetWord ) =>{
      } 
  }
 
-export const lastPage = ( indexPage )=> {
-    return ( dispatch) =>{     
+
+export const lastPage = ( indexPage, path )=> {
+    return ( dispatch) =>{    
         if( indexPage > 1 ){
-            dispatch({ type: "TO_LAST_PAGE" });
-        }else{
-            dispatch({ type: "TO_LAST_PAGE_ERR" });
+            if ( path === "/symbol"){
+                dispatch({ type: "TO_LAST_PAGE_SYMBOL" });
+            }else if( path === "/vocabulary"){
+                dispatch({ type: "TO_LAST_PAGE_LESSON" });
+            }else{
+                dispatch({ type: "TO_LAST_PAGE_LESSON_TW" });
+            }     
         }              
     }
 }
 
-
-export const nextPage = ( indexPage, maxPage ) => {
+export const nextPage = ( indexPage, maxPage, path, currentLesson ) => {
     return ( dispatch ) =>{
         if( indexPage < maxPage ){
-            dispatch({ type: "TO_NEXT_PAGE" });
-        }else{
-            dispatch({ type: "TO_NEXT_PAGE_ERR" });
+            if ( path === "/symbol" ){
+                dispatch({ type: "TO_NEXT_PAGE_SYMBOL" });
+            }else if ( path === "/vocabulary" ){
+                dispatch({ type: "TO_NEXT_PAGE_LESSON", currentLesson });
+            }else{
+                dispatch({ type: "TO_NEXT_PAGE_LESSON_TW", currentLesson });
+            }     
         }    
     }
 }
 
-export const getCurrentCity = ( cityID, cityName, cityEnglishName ) => {
+export const initPage = ( path ) => {
     return ( dispatch ) =>{
-        dispatch({ type: "GET_CURRENT_CITY", cityID, cityName, cityEnglishName });
+        if( path === "/vocabulary" ){
+            dispatch({ type: "INIT_PAGE_LESSON" });
+        }else{
+            dispatch({ type: "INIT_PAGE_LESSON_TW" })
+        } 
     }
 }
 
-export const closeDescription = () => {
+
+export const getCurrentCity = ( cityId, cityName, cityEnglishName ) => {
+    return ( dispatch ) =>{
+        dispatch({ type: "GET_CURRENT_CITY", cityId, cityName, cityEnglishName });
+    }
+}
+
+export const closeDescriptionMobile = () => {
     return ( dispatch ) =>{
         dispatch({ type: "CLOSE_DESCRIPTION"})
     }
 }
-export const blockDescription_Mobile = () => {
+export const blockDescriptionMobile = () => {
     return ( dispatch ) =>{
         dispatch({ type: "BLOCK_DESCRIPTION"})
     }

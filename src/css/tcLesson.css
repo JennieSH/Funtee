@@ -1,0 +1,463 @@
+.tcLessonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12vh;
+}
+.tcLessonContainer>.tcLessonContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tcLessonContainer>.tcLessonContent>.lessonImg{
+    background-color: #F4EFE7;
+    height: 270px;
+    width: 270px;
+    overflow: hidden;
+    padding: 30px;
+    box-sizing: border-box;
+    border: 5px dashed #E1D7C9;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 
+                0 3px 1px -2px rgba(0,0,0,0.12), 
+                0 1px 5px 0 rgba(0,0,0,0.2);
+}
+.tcLessonContainer>.tcLessonContent>.lessonImg>img{
+    height: 100%;  
+    width: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 
+                0 3px 1px -2px rgba(0,0,0,0.12), 
+                0 1px 5px 0 rgba(0,0,0,0.2);
+}
+.tcLessonContainer>.tcLessonContent>.lessonDetail{  
+    height: 270px;
+    width: 270px;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #E1D7C9;
+    padding: 20px 0;
+    border: 5px dashed rgb(255, 255, 255);
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 
+                0 3px 1px -2px rgba(0,0,0,0.12), 
+                0 1px 5px 0 rgba(0,0,0,0.2);
+    list-style-type:none;
+}
+.tcLessonContainer>.tcLessonContent>.lessonDetail>li{
+    font-weight: bold;
+    font-size: 1.7rem;
+    color:#009688;
+}
+.tcLessonContainer>.tcLessonContent>.lessonDetail>li:nth-child(n+2){
+    color: #5F5F5A;
+}
+.tcLessonContainer>.tcLessonContent>.lessonDetail>li:nth-child(n+3){
+    color: #1b79ac;
+}
+.tcLessonContainer>.tcLessonContent>.lessonDetail>li:nth-child(n+4){
+    color: #F37101;
+}
+.tcLessonContainer>.lessonPage{
+    width: 100%;
+    text-align: center;
+    color: rgb(119, 118, 118);
+    margin: 1rem 0;
+    font-size: 1rem
+}
+
+@media screen and (min-width:768px){
+    .tcLessonContainer{
+        margin-top: 12vh;
+    }  
+    .tcLessonContainer>.tcLessonContent>.lessonImg{
+        height: 360px;
+        width: 360px;
+    }
+    .tcLessonContainer>.tcLessonContent>.lessonDetail{
+        height: 300px;
+        width: 360px;
+        margin-top: 6vh;
+    }
+    .tcLessonContainer>.tcLessonContent>.lessonDetail>li{
+        font-size: 1.8rem;
+    }
+    .tcLessonContainer>.lessonPage{
+        margin: 1.5rem;
+        font-size: 1.5rem;
+    }
+}
+@media screen and (min-width:1024px){
+    .tcLessonContainer{
+        margin-top: 12vh;
+    }
+    .tcLessonContainer>.tcLessonContent>.lessonImg{
+        height: 450px;
+        width: 450px;
+    }
+    .tcLessonContainer>.tcLessonContent>.lessonDetail{
+        height: 450px;
+        width: 450px;
+        margin-top: 6vh;
+    }
+    .tcLessonContainer>.tcLessonContent>.lessonDetail>li{
+        font-size: 2rem;
+    }
+    .tcLessonContainer>.lessonPage{
+        margin-top: 2rem;
+        font-size: 2rem;
+    }
+}
+@media screen and (min-width:1025px){
+    .tcLessonContainer{
+        margin-top: 20vh;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        overflow: hidden;
+    }
+    .tcLessonContainer>.tcLessonContent{
+        flex-direction: row;
+    }
+    .tcLessonContainer>.tcLessonContent>.lessonImg{
+        height: 28vw;
+        width: 28vw;
+    }
+    .tcLessonContainer>.tcLessonContent>.lessonDetail{
+        margin: 0 0 0 5vw;
+        height: 28vw;
+        width: 28vw;
+    }
+    .tcLessonContainer>.lessonPage{
+       font-size: 1rem;
+    }
+}
+@media screen and (min-width:1280px){
+    .tcLessonContainer>.tcLessonContent>.lessonImg{
+        height: 28vw;
+        width: 28vw;
+    }
+    .tcLessonContainer>.tcLessonContent>.lessonDetail{
+        margin: 0 0 0 9vw;
+        height: 28vw;
+        width: 28vw;
+    }
+    .tcLessonContainer>.lessonPage{
+       font-size: 1rem;
+       margin: 0.8rem 0;
+    }
+}
+@media screen and (min-width:1366px){    
+    .tcLessonContainer>.tcLessonContent>.lessonImg{
+        height: 30vw;
+        width: 30vw;
+    }
+    .tcLessonContainer>.tcLessonContent>.lessonDetail{
+        margin: 0 0 0 7vw;
+        height: 30vw;
+        width: 30vw;
+    }
+    .tcLessonContainer>.lessonPage{
+        font-size: 1.5rem;
+    }
+}
+@media screen and (min-width:1600px){  
+    .tcLessonContainer{
+        margin-top: 12vw;
+    }
+    .tcLessonContainer>.tcLessonContent>.lessonDetail>li{
+        font-weight: bold;
+        font-size: 2.3rem;
+    }
+}
+@media screen and (min-width:1920px){    
+    .tcLessonContainer{
+        margin-top: 19vh;
+    }
+    .tcLessonContainer>.tcLessonContent>.lessonDetail>li{
+        font-size: 2.8rem;
+    }
+    .tcLessonContainer>.lessonPage{
+        font-size: 2rem;
+        margin: 3rem;
+    }
+}
+/* lessonPage */
+#lastPageBtnLesson, #nextPageBtnLesson{
+    position: absolute;
+    top:33vh;
+    font-size: 40px;
+    color: seashell;
+    background-color: rgba(49, 46, 42, 0.185);
+}
+#nextPageBtnLesson{
+    left: calc(100% - 40px);
+}
+#lastPageBtnLesson,#nextPageBtnLesson:hover{
+    background-color: rgba(49, 46, 42, 0.568);
+}
+@media screen and (min-width:768px){  
+    #lastPageBtnLesson,#nextPageBtnLesson{
+        top:35vh;
+        font-size: 50px;
+    }
+    #nextPageBtnLesson{
+        left: calc(100% - 50px);
+    }
+}
+@media screen and (min-width:1024px){
+    #lastPageBtnLesson,#nextPageBtnLesson{
+        top:35vh;
+        font-size: 70px;
+    }
+    #nextPageBtnLesson{
+        left: calc(100% - 70px);
+    }
+}
+@media screen and (min-width:1025px){
+    #lastPageBtnLesson,#nextPageBtnLesson{
+        top: 20vh;
+        font-size: 50px;
+    }
+    #nextPageBtnLesson{
+        left: calc(100% - 50px);
+    }
+}
+@media screen and (min-width:1280px){
+    #lastPageBtnLesson,#nextPageBtnLesson{
+        top:30vh;
+    }
+}
+@media screen and (min-width:1920px){
+    #lastPageBtnLesson,#nextPageBtnLesson{
+        top:28vh;
+        font-size: 60px;
+    }
+    #nextPageBtnLesson{
+        left: calc(100% - 60px);
+    }
+}
+/* Menu */
+.tcLessonMenu{
+    height: 50px;
+    width: 270px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0.5vh;
+}
+.tcLessonMenu i{
+    font-size: 35px;
+}
+.tcLessonMenu i:hover{
+    background-color: rgba(169, 169, 169, 0.5);
+    border-radius: 50%;
+}
+.tcLessonMenu .socket{
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: 2px solid #eceaea;
+    position: relative;  
+}
+.tcLessonMenu .socket .record{
+    width: 90%;
+    height: 90%;
+    background: red;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 2px;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    transition-timing-function: cubic-bezier(.05,.58,.32,1.35);
+    -webkit-transition-timing-function: cubic-bezier(.05,.58,.32,1.35); 
+    cursor: pointer
+}
+.tcLessonMenu .socket .record.active{
+    width: 60%;
+    height: 60%;
+    border-radius: 4px;
+    top: 6px;
+}
+@media screen and (min-width:768px){
+    .tcLessonMenu{
+        width: 36vh;
+        margin-top: 2vh;  
+    }    
+    .tcLessonMenu i{
+        font-size: 40px; 
+    }
+    .tcLessonMenu .socket{
+        width: 40px;
+        height: 40px;       
+    }  
+    .tcLessonMenu .socket .record.active{
+        top: 7.5px;  
+    }
+}
+@media screen and (min-width:1025px){
+    .tcLessonMenu{
+        width: 60%;
+        margin-top: 5vh;
+    }
+}
+@media screen and (min-width:1280px){
+    .tcLessonMenu{
+        width: 50%;
+        margin-top: 4.5vh;
+    }    
+    .tcLessonMenu i{
+        font-size: 35px; 
+    }
+    .tcLessonMenu .socket{
+        width: 35px;
+        height: 35px;       
+    }  
+    .tcLessonMenu .socket .record.active{
+        top: 6.5px;  
+    }
+}
+@media screen and (min-width:1025px){
+    .tcLessonMenu{
+        width: 60%;
+        margin-top: 5vh;
+    }
+}
+@media screen and (min-width:1600px){
+    .tcLessonMenu i{
+        font-size: 40px; 
+    }
+    .tcLessonMenu .socket{
+        width: 40px;
+        height: 40px;       
+    }  
+    .tcLessonMenu .socket .record.active{
+        top: 7.5px;  
+    }
+}
+@media screen and (min-width:1920px){
+    .tcLessonMenu i{
+        font-size: 50px; 
+    }
+    .tcLessonMenu .socket{
+        width: 50px;
+        height: 50px;       
+    }  
+    .tcLessonMenu .socket .record.active{
+        top: 9.5px;  
+    }
+}
+/* lesson taiwan */
+.tcLessonContainer>#contentTw>.lessonDetail{
+    text-align: center;
+    justify-content: center;
+
+}
+.tcLessonContainer>#contentTw>.lessonDetail>li{
+    padding: 1rem;
+    font-size: 1.2rem;   
+}
+.tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+3){
+    font-size: 1.3rem;
+}
+.tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+4){
+    font-size: 1.2rem;
+}
+@media screen and (min-width:768px){
+    .tcLessonContainer>#contentTw>.lessonDetail>li{
+        font-size: 1.4rem;      
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+2){
+        font-size: 1.5rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+3){
+        font-size: 1.6rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+4){
+        font-size: 1.4rem;
+    }
+}
+@media screen and (min-width:1024px){
+    .tcLessonContainer>#contentTw>.lessonDetail>li{
+        padding: 1.5rem;
+        font-size:1.8rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+2){
+        font-size:2rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+3){
+        font-size:2rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+4){
+        font-size:2rem;
+    }
+}
+@media screen and (min-width:1025px){
+    .tcLessonContainer>#contentTw>.lessonDetail>li{
+        padding: 0.5rem;
+        font-size:1.3rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+2){
+        font-size:1.3rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+3){
+        font-size:1.3rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+4){
+        font-size:1.3rem;
+    }
+}
+@media screen and (min-width:1028px){
+    .tcLessonContainer>#contentTw>.lessonDetail>li{
+        padding: 1rem;
+        font-size:1.4rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+2){
+        font-size:1.4rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+3){
+        font-size:1.5rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+4){
+        font-size:1.4rem;
+    }
+}
+@media screen and (min-width:1600px){
+    .tcLessonContainer>#contentTw>.lessonDetail>li{
+        padding: 1.5rem;
+        font-size:1.8rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+2){
+        font-size:2rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+3){
+        font-size:2rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+4){
+        font-size:2rem;
+    }
+}
+@media screen and (min-width:1920px){
+    .tcLessonContainer>#contentTw>.lessonDetail>li{
+        padding: 2rem;
+        font-size:2.2rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+2){
+        font-size:2.2rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+3){
+        font-size:2.5rem;
+    }
+    .tcLessonContainer>#contentTw>.lessonDetail>li:nth-child(n+4){
+        font-size:2.1rem;
+    }
+}

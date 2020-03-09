@@ -14,7 +14,7 @@ class PasswordDialog extends React.Component{
             <Fragment>
                 <div className="resetPassword card" >
                     <span>Your password have been sent to your e-mail address.</span> 
-                    <button onClick={ this.handleClosePasswordDialog.bind(this) } className="waves-effect waves-light btn  brown lighten-1">Close</button>
+                    <button onClick={ this.handleClosePasswordDialog.bind(this) } className="waves-effect waves-light btn">Close</button>
                 </div>
             </Fragment> 
         )

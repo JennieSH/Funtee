@@ -17,7 +17,7 @@
    flex-direction: column; 
 }
  
-.under-container{
+.underContainer{
    width:100vw;
    max-width:100%;
 }
@@ -173,18 +173,21 @@
    width: 100%;
    text-align: center;
    padding: 40px;
- }
+}
 .contentContainer>div{
    font-size: 20px;
    font-weight: bold;
    font-family: "Sriracha", cursive; 
- }
+}
+.contentContainer>.slogan{
+   color: #e57373 ;
+}
 
 .contentContainer>.authBtn{
    margin-top: 45px;
    display: flex;
    justify-content: space-around;
- }
+}
 .contentContainer>.authBtn>a>button{
    width: 120px;
    font-weight: bold;
@@ -354,8 +357,12 @@
 .information.card>.card-image img{
    width: 100%;
 }
+.information.card>.card-image a{
+  background-color: #f9a825;
+}
 .information.card .card-title{
    font-weight: bold;
+   color: #e57373 ;
 }
 @media screen and (min-width:768px){
    .informationContainer {
@@ -491,6 +498,7 @@
 }
 .tool.card .card-title{
    font-weight: bold;
+   color: #607d8b;
 }
 @media screen and (min-width:768px){
    .toolContainer {

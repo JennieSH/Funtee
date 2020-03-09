@@ -1,4 +1,4 @@
-.UnitCatalogContainer>h2{
+.lessonCategoryContainer>h2{
     text-align: center;
     letter-spacing: 1px;
     line-height: 3rem;
@@ -11,8 +11,7 @@
     font-size: 1.5rem;
     padding-top: 17vw;
 }
-
-.UnitCatalogContainer ul{
+.lessonCategoryContainer>ul{
     list-style-type:none;
     margin-top: 1.5rem;
     width:100%;
@@ -22,7 +21,7 @@
     justify-content: center;
 }
 
-.UnitCatalogContainer li{
+.lessonCategoryContainer li{
     width: 150px;
     height: 150px;
     text-align: center;
@@ -55,23 +54,23 @@
 }
 
 
-.UnitCatalogContainer a{
+.lessonCategoryContainer a{
     text-decoration: none;
     color: black;
 }
-.UnitCatalogContainer ul li:hover{
+.lessonCategoryContainer ul li:hover{
     color: #fff;
     background-color: #000;
 }
 
 
 @media screen and (min-width:768px){
-    .UnitCatalogContainer>h2{
+    .lessonCategoryContainer>h2{
         padding-top: 80px;
         padding-bottom: 20px;
     }
 
-    .UnitCatalogContainer li{
+    .lessonCategoryContainer li{
         height: 200px;
         width: 200px;
         font-size: 2rem;
@@ -81,12 +80,12 @@
   
 }
 @media screen and (min-width:1024px){
-    .UnitCatalogContainer h2{
+    .lessonCategoryContainer h2{
         padding: 40px 0;
         padding-top: 100px;
         font-size: 28px;
     }
-    .UnitCatalogContainer ul{
+    .lessonCategoryContainer ul{
         width: 960px;
         position: relative;
         padding:60px 0;
@@ -95,7 +94,7 @@
     }
 
 
-    .UnitCatalogContainer li{
+    .lessonCategoryContainer li{
         font-size: 1.5rem;
         position: relative;
         margin: 0 61px -40px;
@@ -125,7 +124,7 @@
     }
 
 
-    .UnitCatalogContainer li::before{
+    .lessonCategoryContainer li::before{
         width: 100%;
         height: 100%;
         top:0;
@@ -161,35 +160,20 @@
         z-index: -1;
     }
 
-    .UnitCatalogContainer ul li:hover{
+    .lessonCategoryContainer ul li:hover{
         background-color: transparent;
     }
-    .UnitCatalogContainer li:hover::before{
+    .lessonCategoryContainer li:hover::before{
         background-color: #000;
     }
 
 }
-@media screen and (min-width:1070px){
-    .UnitCatalogContainer ul{
-        left: 3vw;
-    }
-}
-@media screen and (min-width:1170px){
-    .UnitCatalogContainer ul{
-        left: 6vw;
-    }
-}
-@media screen and (min-width:1170px){
-    .UnitCatalogContainer ul{
-        left: 10vw;
-    }
-}
-@media screen and (min-width:1280px){
-    .UnitCatalogContainer{
+@media screen and (min-width:1025px){
+    .lessonCategoryContainer{
         display: flex;
         flex-direction: row;
     }
-    .UnitCatalogContainer h2{
+    .lessonCategoryContainer h2{
         width: 35vw;
         margin-top: 20vw;
         height: 100%;
@@ -198,13 +182,13 @@
         text-shadow: none;
         color: #263238;
     }
-    .UnitCatalogContainer ul{
+    .lessonCategoryContainer ul{
         width: 860px;
         position: relative;
-        left: -6vw;
+        left: -9vw;
         margin-top: 8vw;
     }
-    .UnitCatalogContainer li{
+    .lessonCategoryContainer li{
         height: 160px;
         width: 160px;
         margin: -25px 79px -15px;
@@ -212,13 +196,19 @@
         
     }
 }
-
-@media screen and (min-width:1600px){
-    .UnitCatalogContainer{
-        display: flex;
-      
+@media screen and (min-width:1280px){
+   .lessonCategoryContainer ul{
+        left: -6vw;
     }
-    .UnitCatalogContainer h2{
+    .lessonCategoryContainer h2{
+        margin-top: 19vw;
+    }
+}
+@media screen and (min-width:1600px){
+    .lessonCategoryContainer{
+        display: flex;
+    }
+    .lessonCategoryContainer h2{
         margin-top: 20vw;
         margin-left: 10vw;
         width: 25vw;
@@ -227,18 +217,16 @@
         line-height: 6rem;
     }
 
-    .UnitCatalogContainer ul{
+    .lessonCategoryContainer ul{
         height: 50%;
         position: relative;
         left: 3vw;
-        top: 4vw;
+        top: 0;
     }
-
-    .UnitCatalogContainer li{
+    .lessonCategoryContainer li{
         height: 220px;
         width: 220px;
         margin:-11px 27px -24px 73px;
         line-height: 225px;
     }
-
 }

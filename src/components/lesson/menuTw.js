@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { readTTS, initRecord, startRecord, stopRecord } from "../../store/actions/unitAction";
+import { readTTS, initRecord, startRecord, stopRecord } from "../../store/actions/lessonAction";
 import MicRecorder from "mic-recorder-to-mp3";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
-class UnitlMenu extends React.Component{
+class LessonMenuTw extends React.Component{
 
     constructor(props){
         super(props)
@@ -45,14 +45,12 @@ class UnitlMenu extends React.Component{
     handleRead(){  
       this.props.readTTS(this.props.audio)
     }
-    // handleRead(){  
-    //   new Audio("data:audio/wav;base64," + this.props.unit.unitTTS ).play();
-    // }
+   
 
     handleRecord (){
 
         if( this.state.isRecording === false){
-            if (this.props.unit.isBlocked) {
+            if (this.props.lesson.isBlocked) {
                 console.log('Permission Denied');
               } else {
                 Mp3Recorder
@@ -77,27 +75,27 @@ class UnitlMenu extends React.Component{
     }  
 
     
-    render(){  
-        return(
-            <Fragment >
-              <div className="TC_UnitlMenu">
-                <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>volume_up</i>                                          
-                <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
-                  <div className={`record ${ this.state.isRecording? "active":null}`}></div>                      
-                </i>
-                <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
-                  <audio src={this.state.blobURL} id="audioRecord"/>
-                </i>             
-              </div>   
-            </Fragment >           
-        )
-    }
+  render(){   
+    return(
+      <Fragment>
+        <div className="tcLessonMenu">
+          <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>volume_up</i>                                          
+          <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
+            <div className={`record ${ this.state.isRecording? "active":null}`}></div>                      
+          </i>
+          <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
+            <audio src={this.state.blobURL} id="audioRecord"/>
+          </i>             
+        </div>   
+      </Fragment>           
+    )
+  }
 }
 
 
 const mapStateToProps = ( state ) => {
     return{
-        unit: state.unit
+        lesson: state.lesson
     }
 }
 
@@ -109,4 +107,4 @@ const mapDispatchToProps = (dispatch) => {
        stopRecord: () => dispatch(stopRecord())
     }
 }
-export default  connect( mapStateToProps, mapDispatchToProps )(UnitlMenu)
+export default  connect( mapStateToProps, mapDispatchToProps )( LessonMenuTw )

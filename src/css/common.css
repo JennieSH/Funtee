@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Sriracha&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
 
 body{
     margin: 0;
@@ -8,7 +7,6 @@ body{
     position: relative;
 
 }
-
 /* header */
 header{
     position: fixed;
@@ -27,18 +25,13 @@ header .nav-wrapper .container{
    position: relative;
  
 }
-
 header .nav-wrapper .container>a{
-    font-family: 'Sriracha', cursive; 
+    font-family: "Sriracha", cursive; 
     position: relative;
     right: -20px;
-    
     color:  rgb(122, 109, 96);
 }
-
-
-
-#mobile-menu{
+#mobileMenu{
     position: absolute;
     left: 295px;
     top:57px;
@@ -49,7 +42,7 @@ header .nav-wrapper .container>a{
 
 }
 
-#menu_control:checked ~ #mobile-menu{
+#menuControl:checked ~ #mobileMenu{
     display: block;
     animation-name:navAnimation;
     animation-duration:0.5s;
@@ -64,7 +57,7 @@ header .nav-wrapper .container>a{
 }
  
 /* burger bar */
-#menu_control{
+#menuControl{
     position: absolute;
     z-index: -2;
     opacity: 0;
@@ -95,26 +88,26 @@ header .nav-wrapper .container>a{
     left: 0;
     background:  rgb(153, 131, 109);
 }
-.lineContainer .line-first{
+.lineContainer .lineFirst{
     top: 0;
 }
-.lineContainer .line-second{
+.lineContainer .lineSecond{
     top: 50%;
     transform: translate(0, -50%);
 }
-.lineContainer .line-third{
+.lineContainer .lineThird{
     bottom: 0;
 }
 
 /* 路徑缺一不可 */
-#menu_control:checked ~ label div .line-first{
+#menuControl:checked ~ label div .lineFirst{
     transition: all 0.5s;
     width: 50%;
     transform: rotate(-45deg);
     top: 3.5px;
     left: -1px;
 }
-#menu_control:checked ~ label div .line-third{
+#menuControl:checked ~ label div .lineThird{
     transition: all 0.5s;
     width: 50%;
     transform: rotate(45deg);
@@ -128,9 +121,12 @@ header a.btn.btn-floating{
     margin: 15px ;
     
 }
-header .btn-floating.web-info{
+header .btn-floating.webInfo{
    background-color: #746656;
 }
+header .btn-floating.webInfo>span{
+   color: white;
+ }
 
 nav ul>li>a{
     color:#5d4037 ;
@@ -143,6 +139,11 @@ nav .userName{
 }
 nav .userName>span{
     margin-left: 15px;
+    color: #4e342e ;
+}
+nav .sidenav>li>a>.badge{
+    background-color: #e0e0e0;
+    color: #9e9e9e ;
 }
 nav .userName a .fabName{
     display: flex;
@@ -175,13 +176,13 @@ nav .userName .fabName{
     }
 
 
-    #mobile-menu{      
+    #mobileMenu{      
         left: 255px;
         top:63px;
         
     }
     
-    #menu_control:checked ~ #mobile-menu{
+    #menuControl:checked ~ #mobileMenu{
         animation-name:navAnimation_pad;
      }
      @keyframes navAnimation_pad{
@@ -351,15 +352,10 @@ nav .userName .fabName{
     70% { opacity : 1; }
     100% {opacity : 0; }
   }
-
-
-
 /* footer */
-
 .page-footer{
     /* background-color: #E6BEAB; */
     background-color: #6d5e4fee;
-
 }
 .page-footer>div{
     /* color:#513D3A */
@@ -367,78 +363,3 @@ nav .userName .fabName{
 }
 
 
-/* Login */
-/* .AuthContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-    background-color: rgba(68, 70, 70, 0.062);
-    
-}
-
-.AuthContainer .authForm{
-    display: flex;
-    flex-direction: column;
-}
-.AuthContainer .authForm input{
-   height: 50px;
-   width: 250px;
-   border: none;
-   border-bottom: 2px solid  rgb(0, 0, 0);
-   font-size: 20px;
-   padding: 0 10px;
-   outline:none;
-   background-color: transparent;
-}
-
-
-
-.AuthContainer .authForm h5{
-    text-align: end;
-    margin-bottom: 0;
-    font-size: 12px;
-}
-
-.AuthContainer .authForm button{
-    height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 50px;
-    border: none;
-    margin: 30px 0 22px 0;
-    background-color: rgb(161, 160, 160);
-}
-
-.AuthContainer>a>button{
-    height: 50px;
-    width: 270px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 50px;
-    border: none;
-    background-color: pink;
-    margin-bottom: 22px;
-}
-
-
-.AuthContainer>button{
-    height: 50px;
-    width: 270px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 50px;
-    border: none;
-    background-color: rgb(21, 47, 104);
-    margin-bottom: 22px;
-    color: white;
-}
-.AuthContainer>.google{
-  
-    background-color: rgb(235, 48, 48);
-   
-}
- */

@@ -24,7 +24,6 @@ class TC_SymbolContent extends React.Component{
     }
     handleFlipSymbol(){
       this.setState({
-        ...this.state,
         flipSymbol: !this.state.flipSymbol
       })
     }
@@ -89,9 +88,9 @@ class TC_SymbolContent extends React.Component{
     const symbol = this.props.symbol;
     const index = this.props.indexPage-1;
     return(
-      <div className="TC_SymobolContent" id="TC_SymbolContent">      
+      <div className="tcSymbolContent" id="tcSymbolContent">      
         { this.state.flipSymbol? <FrontSymbol symbol={ symbol } index={ index }/> : <BackSymbol symbol={ symbol } index={ index }/> }
-        <div className="TC_SymobolMenu">
+        <div className="tcSymobolMenu">
           <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this, symbol.audio[index]) }>volume_up</i>                                          
           <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
             <div className={`record ${ this.state.isRecording? "active" : null}` }></div>                      
@@ -106,9 +105,9 @@ class TC_SymbolContent extends React.Component{
 
 const mapStateToProps = ( state ) => {
     return{
-        indexPage: state.symbol.indexPage,
-        symbolAudio: state.symbol
+      indexPage: state.lesson.indexPageSymbol,
+      symbolAudio: state.symbol
     }
 }
 
-export default connect(mapStateToProps, null)( TC_SymbolContent);
+export default connect( mapStateToProps, null )( TC_SymbolContent );

@@ -27,7 +27,7 @@ class Tool extends React.Component{
                         <i className="material-icons">{tool.icon}</i> 
                     </div>
                     <div className="card-content">
-                        <span className="card-title center blue-grey-text">{tool.title}</span>
+                        <span className="card-title center ">{tool.title}</span>
                         <p>{tool.inner}</p>
                     </div>                      
                 </div>    

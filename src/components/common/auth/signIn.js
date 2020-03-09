@@ -41,11 +41,11 @@ class SignIn extends React.Component{
             this.props.signIn(this.state)            
         }
     }
-    FB_Redirect(){
+    FacebookRedirect(){
         this.props.signIn_Facebook()
     }
 
-    GO_Redirect(){
+    GoogleRedirect(){
         this.props.signIn_Google()
     }
 
@@ -73,9 +73,9 @@ class SignIn extends React.Component{
                     </div>
 
                     <div className="authMethod">                
-                        <img src={ google } onClick={ this.GO_Redirect.bind(this) }/>
-                        <img src={ facebook }  onClick={ this.FB_Redirect.bind(this) }/>     
-                        <Link to="/resetpassword"><h5 className="right-align grey-text">FORGOT  PASSWORD ></h5></Link>               
+                        <img src={ google } onClick={ this.GoogleRedirect.bind(this) }/>
+                        <img src={ facebook }  onClick={ this.FacebookRedirect.bind(this) }/>     
+                        <Link to="/resetpassword"><h5 className="right-align">FORGOT  PASSWORD ></h5></Link>               
                     </div>
                 </form>
             </Fragment> 

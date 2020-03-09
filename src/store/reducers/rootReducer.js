@@ -2,8 +2,7 @@ import { combineReducers } from 'redux';
 // Combine all reducers files with rootReducer 
 import authReducer from "./authReducer";
 import testReducer from "./testReducer";
-import symbolReducer from "./symbolReducer";
-import unitReducer from "./unitReducer";
+import lessonReducer from "./lessonReducer";
 import cardReducer from "./cardReducer";
 import { firebaseReducer } from "react-redux-firebase"
 import { firestoreReducer } from "redux-firestore"
@@ -12,8 +11,7 @@ import { firestoreReducer } from "redux-firestore"
 const rootReducer = combineReducers({
     auth: authReducer,
     test: testReducer,
-    symbol: symbolReducer,
-    unit: unitReducer,
+    lesson: lessonReducer,
     card: cardReducer,
     firebase: firebaseReducer,
     firestore: firestoreReducer

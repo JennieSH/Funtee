@@ -12,10 +12,10 @@ class Information extends React.Component{
                 <div className="information card">
                     <div className="card-image learn" > 
                         <img src={learn}/>            
-                        <a className="btn-floating halfway-fab yellow darken-3" ><i className="material-icons">extension</i></a>   
+                        <a className="btn-floating halfway-fab" ><i className="material-icons">extension</i></a>   
                     </div>
                     <div className="card-content">
-                        <span className="card-title red-text text-lighten-2">Chinese Lessons</span>
+                        <span className="card-title">Chinese Lessons</span>
                         <p>The beauty of Funtee is that you don't need to study our lessons in a specific order, they are self-contained.
                             <br/><br/>
                             We also provide Mandarin Phonetic Symbols to help you pronounce and remember Traditional Chinese.
@@ -26,10 +26,10 @@ class Information extends React.Component{
                 <div className="information card">
                     <div className="card-image flashCard" >
                         <img src={flashCard}/>
-                        <a className="btn-floating halfway-fab yellow darken-3" ><i className="material-icons ">extension</i></a>   
+                        <a className="btn-floating halfway-fab"><i className="material-icons">extension</i></a>   
                     </div>
                     <div className="card-content">
-                        <span className="card-title red-text text-lighten-2">Flash Card</span>
+                        <span className="card-title">Flash Card</span>
                         <p>Flashcards are effective because they are founded on the principles of rote and memorization. 
                             <br/>
                             <br/>
@@ -41,6 +41,5 @@ class Information extends React.Component{
             </div> 
         )         
     }
-
 }
 export default Information

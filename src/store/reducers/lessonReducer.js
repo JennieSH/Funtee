@@ -1,5 +1,10 @@
 const initState = {
-    indexPage:1,
+    indexPageSymbol: 1,
+    indexPageLesson: 1,
+    indexPageLessonTw: 1,
+    previousLesson: null,
+    previousLessonTw: null,
+
     isRecording: false,
     mp3: null,
     isBlocked: false,
@@ -11,7 +16,7 @@ const initState = {
     
  };
 
-const unitReducer = ( state= initState, action ) =>{
+const lessonReducer = ( state = initState, action ) =>{
    
     switch (action.type) {    
         case "GET_TTS":
@@ -20,36 +25,63 @@ const unitReducer = ( state= initState, action ) =>{
                 ...state,
                 unitTTS : action.tts
             }
-
-
-
-
-
-        // page  
-        case "TO_LAST_PAGE":
+        // symbol page
+        case "TO_LAST_PAGE_SYMBOL":
             return {
                 ...state,
-                indexPage:state.indexPage-1,
+                indexPageSymbol: state.indexPageSymbol-1,
                 unitTTS : null
             }
-        case "TO_LAST_PAGE_ERR":
-            return state
-
-        case "TO_NEXT_PAGE":
+        case "TO_NEXT_PAGE_SYMBOL":
             return {
                 ...state,
-                indexPage:state.indexPage+1,
+                indexPageSymbol: state.indexPageSymbol+1,
                 unitTTS : null
             }
-        case "TO_NEXT_PAGE_ERR":
-            return state;
-
+        // lesson page  
+        case "INIT_PAGE_LESSON":
+            return{
+                ...state,
+                indexPageLesson: 1,
+            }
+        case "TO_LAST_PAGE_LESSON":
+            return {
+                ...state,
+                indexPageLesson: state.indexPageLesson-1,
+                unitTTS : null
+            }
+        case "TO_NEXT_PAGE_LESSON":
+            return {
+                ...state,
+                indexPageLesson: state.indexPageLesson+1,
+                previousLesson: action.currentLesson,
+                unitTTS : null
+            }
+        // lesson tw page  
+        case "INIT_PAGE_LESSON_TW":
+            return{
+                ...state,
+                indexPageLessonTw: 1,
+            }
+        case "TO_LAST_PAGE_LESSON_TW":
+            return {
+                ...state,
+                indexPageLessonTw: state.indexPageLessonTw-1,       
+                unitTTS : null
+            }
+        case "TO_NEXT_PAGE_LESSON_TW":
+            return {
+                ...state,
+                indexPageLessonTw: state.indexPageLessonTw+1,
+                previousLessonTw: action.currentLesson,
+                unitTTS : null
+            }
         // map
         case "GET_CURRENT_CITY":
             return {
                 ...state,
                 currentCity:{
-                    cityID: action.cityID,      
+                    cityId: action.cityId,      
                     cityName: action.cityName,
                     cityEnglishName: action.cityEnglishName
                 }
@@ -105,4 +137,4 @@ const unitReducer = ( state= initState, action ) =>{
             return state;
     }
 }
-export default unitReducer
+export default lessonReducer
