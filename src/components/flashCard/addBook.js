@@ -29,23 +29,23 @@ class AddBook extends React.Component{
 
     render(){
         return(
-            <div className="FC_book addForm card" >         
+            <div className="fcBook addForm card" >         
                 <form onSubmit={ this.handleSubmit.bind(this) }>
-                  <h5 className="blue-grey-text center">New Folder</h5>                
+                    <h5>New Folder</h5>                
                     <div className="input-field">
                         <label htmlFor="name">Name</label>  
                         <input onChange={ this.handleChange.bind(this) } type="text" id="bookName"/>
-                        { this.props.nameErr ? <span className="red-text right">required field</span> : null }
+                        { this.props.nameErr ? <span>required field</span> : null }
                     </div> 
                    
                     <div className="input-field">
                         <label htmlFor="name">Language</label>  
                         <input onChange={ this.handleChange.bind(this) } type="text" id="lang"/>
-                        { this.props.langErr ? <div className="red-text right">required field</div> : null }
+                        { this.props.langErr ? <span>required field</span> : null }
                     </div> 
                     <div className="createFolderBtn">
-                        <button className="btn white-text  waves-effect left" onSubmit={ this.handleSubmit.bind(this) }>Add</button> 
-                        <button className="btn red white-text  waves-effect right" onClick={ this.handleToggleAddBook.bind(this)}>Back</button>      
+                        <button className="btn waves-effect left" onSubmit={ this.handleSubmit.bind(this) }>Add</button> 
+                        <button className="btn waves-effect right" onClick={ this.handleToggleAddBook.bind(this)}>Back</button>      
                     </div>
                 </form>
             </div>          

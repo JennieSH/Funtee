@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from "../components/common/header";
 import "../css/tcLessonCategory.css";
 
-class TcLessonCategor  extends React.Component{
+class TcLessonCategory  extends React.Component{
     render(){
         return(
             <Fragment>
@@ -24,4 +24,4 @@ class TcLessonCategor  extends React.Component{
     }
 }
 
-export default TcLessonCategor
+export default TcLessonCategory

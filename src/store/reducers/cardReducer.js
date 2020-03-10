@@ -11,6 +11,7 @@ const initState = {
     editBookIcon: false,
     editBookMenu: false,
     currentEditBook: null,
+    editBookNameErr: true,
 
     // Collection
     createCardMenu: false,
@@ -44,15 +45,32 @@ const initState = {
 
 const cardReducer = ( state = initState , action)=>{
     switch (action.type){
+        // Category - init state   
+        case "INIT_BOOK_STATE":
+            return{
+                ...state,
+                createBookMenu: false,
+                nameErr: false,
+                langErr: false,
+            
+                deleteBookIcon: false,
+                deleteBookMenu: false,
+            
+                editBookIcon: false,
+                editBookMenu: false,
+                editBookNameErr: false
+            }
         // Category - create board   
         case "TOGGLE_CREATE_BOOK":
             return {
                 ...state,
                 createBookMenu:!state. createBookMenu,
+                deleteBookMenu: false,
+                editBookMenu: false,
                 deleteBookIcon: false,
-                editBookIcon: false
-            }
-        
+                editBookIcon: false,
+                
+            }       
         case "CREATE_BOOK_NAME_ERR":
             return {
                 ...state,
@@ -64,25 +82,23 @@ const cardReducer = ( state = initState , action)=>{
                 langErr:true
             }
         case "CREATE_BOOK":
-            console.log("CREATE_BOOK_SUCCESS")
             return  {
                 ...state,
                 nameErr: false,
                 langErr: false,
                 createBookMenu: false
             }
-
         case "CREATE_BOOK_ERR":
             console.log("CREATE_BOOK_ERR" + action.err)
             return state
-
         // Category - delete board
         case "TOGGLE_DELETE_BOOK_ICON":
             return {
                 ...state,
                 deleteBookIcon: !state.deleteBookIcon,
                 editBookIcon: false,
-                createBookMenu: false
+                createBookMenu: false,
+                editBookMenu: false
             }
         case "TOGGLE_DELETE_BOOK":
             return {
@@ -96,7 +112,6 @@ const cardReducer = ( state = initState , action)=>{
                 deleteBookMenu: true,
             }
         case "DELETE_BOOK":
-            console.log("DELETE_BOOK_SUCCESS")
             return{
                 ...state,
                 deleteBookMenu: false,
@@ -105,14 +120,15 @@ const cardReducer = ( state = initState , action)=>{
         case "DELETE_BOOK_ERR":
             console.log("DELETE_BOOK_ERR"+action.err)
             return state
-
         // Category - edit board
         case "TOGGLE_EDIT_BOOK_ICON":
             return {
                 ...state,
                 editBookIcon: !state.editBookIcon,
                 deleteBookIcon: false,
-                createBookMenu: false
+                createBookMenu: false,
+                editBookMenu: false,
+                deleteBookMenu: false
             }
         case "TOGGLE_EDIT_BOOK":
             return {
@@ -126,17 +142,36 @@ const cardReducer = ( state = initState , action)=>{
                 editBookMenu: true,
             }
         case "EDIT_BOOK":
-            console.log("EDIT_BOOK_SUCCESS")
             return{
                 ...state,
                 editBookMenu: false,
                 editBookIcon: false,
+                editBookNameErr: false
             }
         case "EDIT_BOOK_ERR":
             console.log("EDIT_BOOK_ERR"+action.err)
             return state
-
-
+        case "EDIT_BOOK_NAME_ERR":
+            return{
+                ...state,
+                editBookNameErr: true
+            }
+        // Collection - init 
+        case "INIT_CARD_STATE":
+            return{
+                ...state,
+                createCardMenu: false,
+                frontErr: false,
+                backErr: false,
+            
+                deleteCardIcon: false,
+                deleteCardMenu: false,
+            
+                editCardIcon: false,
+                editCardMenu: false,
+                editFrontErr: false,
+                editBackErr: false,
+            }
         // Collection - create card board
         case "TOGGLE_CREATE_CARD":
             return {
@@ -186,7 +221,6 @@ const cardReducer = ( state = initState , action)=>{
                 deleteCardMenu: true,
             }
         case "DELETE_CARD":
-            console.log("DELETE_CARD_SUCCESS")
             return{
                 ...state,
                 deleteCardMenu: false,
@@ -195,7 +229,6 @@ const cardReducer = ( state = initState , action)=>{
         case "DELETE_CARD_ERR":
             console.log("DELETE_CARD_ERR"+action.err)
             return state
-
         // Collection - edit board
         case "TOGGLE_EDIT_CARD_ICON":
             return {
@@ -227,7 +260,6 @@ const cardReducer = ( state = initState , action)=>{
                 editBackErr:true
             } 
         case "EDIT_CARD":
-            console.log("EDIT_CARD_SUCCESS")
             return{
                 ...state,
                 editCardMenu: false,

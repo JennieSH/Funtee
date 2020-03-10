@@ -1,13 +1,17 @@
 import firebase from "firebase/app";
 
-
+// Category - init
+export const initBookState = ()=>{
+    return ( dispatch ) => {
+        dispatch ({ type: "INIT_BOOK_STATE" })  
+    }
+}
 // Category - create
 export const toggleCreateBook = ()=>{
     return ( dispatch ) => {
         dispatch ({ type: "TOGGLE_CREATE_BOOK" })
     }
 }
-
 export const createBook = ( uid, data ) =>{ 
     return ( dispatch ) => {
 
@@ -43,13 +47,11 @@ export const toggleDeleteBookIcon = ()=>{
         dispatch ({ type: "TOGGLE_DELETE_BOOK_ICON" })
     }
 }
-
 export const toggleDeleteBook = ()=>{ // Menu
     return ( dispatch ) => {
         dispatch ({ type: "TOGGLE_DELETE_BOOK" })
     }
 }
-
 export const currentDeleteBook = ( uid, bookDocName, id )=>{
     return ( dispatch ) => {
         const  currentDeleteBook = {
@@ -57,7 +59,6 @@ export const currentDeleteBook = ( uid, bookDocName, id )=>{
             bookDocName : bookDocName,
             id: id
         }
-
         dispatch ({ type: "CURRENT_DELETE_BOOK", currentDeleteBook })
     }
 }
@@ -67,18 +68,13 @@ export const deleteBook = ( uid, bookDocName )=>{
         const firestore = firebase.firestore();
         const book = bookDocName.toString();
      
-        firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).delete().then(() => {
-
-            // window.location.href = "/flashcard"
-        })
+        firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).delete()
         .then(()=>{
             dispatch ({ type: "DELETE_BOOK" })
         })
         .catch((err)=>{
             dispatch ({ type: "DELETE_BOOK_ERR", err })
         })
-
-        
     }
 }
 // Category - edit
@@ -92,7 +88,6 @@ export const toggleEditBook = ()=>{ // Menu
         dispatch ({ type: "TOGGLE_EDIT_BOOK" })
     }
 }
-
 export const currentEditBook = ( uid, bookDocName, bookData )=>{
     return ( dispatch ) => {
         const  currentEditBook = {
@@ -100,30 +95,34 @@ export const currentEditBook = ( uid, bookDocName, bookData )=>{
             bookDocName : bookDocName,
             bookData: bookData
         }
-
         dispatch ({ type: "CURRENT_EDIT_BOOK", currentEditBook })
     }
 }
 export const editBook = ( uid, bookDocName, bookEditData )=>{
     return ( dispatch ) => {
-
-        const firestore = firebase.firestore();
-        const book = bookDocName.toString();
-        firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).update({
-            book: bookEditData
-        }).then(() => {
-            dispatch ({ type: "EDIT_BOOK" })
-        }).catch((err)=>{
-            dispatch ({ type: "EDIT_BOOK_ERR", err })
-        })
-        
+        if ( bookEditData.id === null || bookEditData.id.trim() === ""){
+            dispatch ({ type: "EDIT_BOOK_NAME_ERR" })   
+        }else{
+            const firestore = firebase.firestore();
+            const book = bookDocName.toString();
+            firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).update({
+                book: bookEditData
+            }).then(() => {
+                dispatch ({ type: "EDIT_BOOK" })
+            }).catch((err)=>{
+                dispatch ({ type: "EDIT_BOOK_ERR", err })
+            })
+        } 
     }
 }
 
 
-
-
-
+// Collection - init
+export const initCardState = ()=>{
+    return ( dispatch ) => {
+        dispatch ({ type: "INIT_CARD_STATE" })  
+    }
+}
 // Collection - create
 export const toggleCreateCard = ()=>{
     return ( dispatch ) => {
@@ -134,9 +133,9 @@ export const toggleCreateCard = ()=>{
 export const createCard = ( uid, bookDocName, cardArr, data ) =>{
     return ( dispatch ) => {
 
-        if ( data.front === null ||  data.front.trim() === ""){
+        if ( data.front === null ||  data.front.trim() === "" ){
             dispatch ({ type: "CREATE_CARD_FRONT_ERR" })
-        }else if( data.back === null ||  data.back.trim() === ""){
+        }else if( data.back === null ||  data.back.trim() === "" ){
             dispatch ({ type: "CREATE_CARD_BACK_ERR" })
         }else{
             const firestore = firebase.firestore();
@@ -238,18 +237,18 @@ export const editCard = ( uid, bookDocName, newCard, previousCardArr, index )=>{
         }else if( newCard.back === null ||  newCard.back.trim() === ""){
             dispatch ({ type: "EDIT_CARD_BACK_ERR" })
         }else{
-        const firestore = firebase.firestore();
-        const book = bookDocName.toString();
+            const firestore = firebase.firestore();
+            const book = bookDocName.toString();
 
-        previousCardArr[index]=newCard;
+            previousCardArr[index]=newCard;
 
-        firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).update({
-            cards : previousCardArr
-        }).then(() => {
-            dispatch ({ type: "EDIT_CARD" })
-        }).catch((err)=>{
-            dispatch ({ type: "EDIT_CARD_ERR", err })
-        })
+            firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).update({
+                cards : previousCardArr
+            }).then(() => {
+                dispatch ({ type: "EDIT_CARD" })
+            }).catch((err)=>{
+                dispatch ({ type: "EDIT_CARD_ERR", err })
+            })
        
         }
         

@@ -1,16 +1,16 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {  Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import Header from "../components/common/header";
 import Loading from "../components/common/loading";
-import "../css/FC_Card.css";
+import "../css/fcCard.css";
 import { lastMyCard, nextMyCard, toggleCopyWord, textToSpeech_My,  getCurrentMyCard, resetMyIndex } from "../store/actions/cardAction";
 import MicRecorder from "mic-recorder-to-mp3";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
-class FC_MyCard extends React.Component{
+class FcMyCard extends React.Component{
     constructor(props){
         super(props);
         this.state={     
@@ -126,10 +126,10 @@ class FC_MyCard extends React.Component{
         if( !uid ){ return <Redirect to = "/signin"/> }
         if( !userBooks ){
             return(
-                <>
+                <Fragment>
                     <Header/>
                     <Loading/>
-                </>
+                </Fragment>
             )
         }else{
             const allCardArr = [];      
@@ -154,7 +154,7 @@ class FC_MyCard extends React.Component{
             
 
             return(       
-                <>              
+                <Fragment>              
                     <Header/>    
                     <div className="FC_CardEach container">
                     
@@ -188,7 +188,7 @@ class FC_MyCard extends React.Component{
                             <i className="material-icons waves-effect " id="nextPageBtn_F" onClick={ this.handleNextCard.bind(this) }>navigate_next</i>                       
                         </div>                 
                     </div>          
-                </>      
+                </Fragment>      
             )
         }
     }
@@ -230,6 +230,6 @@ export default compose(
             )
         }
     })
-)( FC_MyCard )
+)( FcMyCard )
 
 

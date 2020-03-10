@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { createCard, toggleCreateCard } from "../../store/actions/cardAction";
-
 class AddCard extends React.Component{
 
     constructor(props){
@@ -13,47 +12,37 @@ class AddCard extends React.Component{
             back:null
         }
     }
- 
     handleChange(e){
         this.setState({
             [ e.currentTarget.id ] : e.currentTarget.value
         })
     }
-
     handleSubmit(e){
         e.preventDefault();
-        this.props.createCard( this.props.uid, this.props.bookDocName, this.props.cardArr, this.state)    
+        const { uid, bookDocName, cardArr } =this.props;
+        this.props.createCard( uid, bookDocName, cardArr, this.state)  ;  
     }
-
     handleToggleAddCard(){
-        this.props.toggleCreateCard()
+        this.props.toggleCreateCard();
     }
-
     render(){
         return(
-            <div className="FC_book addForm card" >         
+            <div className="fcBook addForm card" >         
                 <form onSubmit={ this.handleSubmit.bind(this) }>
-                  <h5 className="blue-grey-text center">New Card</h5>
-
-
-
-
-                {/* { this.props.nameErr ? <p className="red-text right">required field</p> : null } */}
-                 
+                  <h5>New Card</h5>
                     <div className="input-field">
                         <label htmlFor="name">Front</label>  
                         <input onChange={ this.handleChange.bind(this) } type="text" id="front"/>
-                        { this.props.frontErr ? <span className="red-text right">required field</span> : null }
+                        { this.props.frontErr ? <span>required field</span> : null }
                     </div> 
-                   
                     <div className="input-field">
                         <label htmlFor="name">Back</label>  
                         <input onChange={ this.handleChange.bind(this) } type="text" id="back"/>
-                        { this.props.backErr ? <div className="red-text right">required field</div> : null }
+                        { this.props.backErr ? <span>required field</span> : null }
                     </div> 
                     <div className="createCardBtn">
-                        <button className="btn white-text  waves-effect left" onSubmit={ this.handleSubmit.bind(this) }>Add</button> 
-                        <button className="btn red white-text  waves-effect right" onClick={ this.handleToggleAddCard.bind(this)}>Back</button>      
+                        <button className="btn waves-effect left" onSubmit={ this.handleSubmit.bind(this) }>Add</button> 
+                        <button className="btn waves-effect right" onClick={ this.handleToggleAddCard.bind(this)}>Back</button>      
                     </div>
                 </form>
             </div>          
@@ -70,13 +59,13 @@ const mapStateToProps = ( state ) =>{
        
     }
 }
-
 const mapDispatchToProps = ( dispatch ) => {
     return{
        createCard: ( uid, bookDocName, cardArr, data ) => dispatch(createCard( uid, bookDocName, cardArr, data )),
        toggleCreateCard: ()=> dispatch(toggleCreateCard())
     }
 }
+
 export default 
 compose( 
     connect( mapStateToProps, mapDispatchToProps ),
@@ -91,4 +80,4 @@ compose(
             }]
         )
     })
-)( AddCard  )
+)( AddCard )

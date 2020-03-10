@@ -12,7 +12,7 @@
 /* content front */
 .tcSymobolContainer>.tcSymobol>.tcSymbolContent{
     margin-top: 85px;
-    height: 340px;
+    height: 330px;
     width: 290px;
     background-color: rgb(240, 237, 233);
     padding: 3px;
@@ -67,16 +67,16 @@
     font-size: 2rem;
 }
 .tcSymobolContainer>.tcSymobol>.tcSymbolContent>.ContentImgDetail span:nth-child(n+1){
-    color: #ff9800;
+    color: #009688;
 }
 .tcSymobolContainer>.tcSymobol>.tcSymbolContent>.ContentImgDetail span:nth-child(n+2){
-    color:#9e9e9e
+    color:#5F5F5A;
 }
 .tcSymobolContainer>.tcSymobol>.tcSymbolContent>.ContentImgDetail span:nth-child(n+3){
-    color:#689f38
+    color:#1b79ac;
 }
 .tcSymobolContainer>.tcSymobol>.tcSymbolContent>.ContentImgDetail span:nth-child(n+4){
-    color:#00838f 
+    color:#F37101;
 }
 @media screen and (min-width:586px){
     .tcSymobolContainer>.tcSymobol>.tcSymbolContent{
@@ -294,6 +294,15 @@
     }
     #nextPageBtnSymbol{
         left: calc(100% - 70px);
+    }
+}
+@media screen and (min-width:1025px){
+    #lastPageBtnSymbol, #nextPageBtnSymbol{
+        top:50vh;
+        font-size: 50px;
+    }
+    #nextPageBtnSymbol{
+        left: calc(100% - 50px);
     }
 }
 @media screen and (min-width:1280px){

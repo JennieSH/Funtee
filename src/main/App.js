@@ -19,7 +19,6 @@ import FC_Spelling from "./fcSpelling";
 import Account from "./account";
 import ResetPassword from "../components/common/auth/resetPassword";
 // test 
-import TC_Symbol_test from "./TC_Symbol_test";
 import AudioData from "../components/data/audioData";
 import SymbolData from "../components/data/symbolData";
 import Dictionary from "../components/common/dictionary"

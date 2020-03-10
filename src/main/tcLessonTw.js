@@ -10,7 +10,7 @@ import LessonMenuTw from "../components/lesson/menuTw";
 import Loading from "../components/common/loading";
 import "../css/tcLesson.css";
 
-class tcLessonTw extends React.Component{
+class TcLessonTw extends React.Component{
  
     handleLastPage(){
         const { indexPage, location, lastPage } = this.props;
@@ -86,4 +86,4 @@ export default compose(
         )
     }),
     connect( mapStateToProps, mapDispatchToProps )
-)( tcLessonTw )
+)( TcLessonTw )

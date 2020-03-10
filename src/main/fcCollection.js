@@ -1,20 +1,18 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
-import { toggleCreateCard, toggleDeleteCardIcon, toggleEditCardIcon } from "../store/actions/cardAction";
+import { toggleCreateCard, toggleDeleteCardIcon, toggleEditCardIcon, initCardState } from "../store/actions/cardAction";
 import Header from "../components/common/header";
-import FCCard from "../components/flashCard/card";
+import Card from "../components/flashCard/card";
 import AddCard from "../components/flashCard/addCard";
 import Loading from "../components/common/loading";
 import DelCard from "../components/flashCard/delCard";
 import EditCard from "../components/flashCard/editCard";
-import "../css/FC_Collection.css";
+import "../css/fcCollection.css";
 
-
-class FC_Collection extends React.Component{
-
+class FcCollection extends React.Component{
 
     handToggleAddCard(){
         this.props.toggleCreateCard()
@@ -25,60 +23,61 @@ class FC_Collection extends React.Component{
     handleToggleEditCardIcon(){
         this.props.toggleEditCardIcon()
     }
-
+    componentDidMount(){
+        this.props.initCardState()
+    }
 
     render(){
-        const uid = this.props.auth.uid;
-        const bookDocName = this.props.match.params.title;
-        const userBook = this.props.cards[this.props.auth.uid];
+        const { auth, match, cards, currentDeleteCard, currentEditCard } = this.props;
+        const uid = auth.uid;
+        const userBook = cards[uid];
+        const bookDocName = match.params.title;
         
         if( !uid ){ return <Redirect to = "/signin"/> }
-
         if ( userBook === undefined ){
             return(
-                <>
+                <Fragment>
                     <Header/>
                     <Loading/>
-                </>
+                </Fragment>
             )
         }else{
             const userCard= userBook.filter(( book )=> book.time === parseInt(bookDocName) )
             const cardArr = userCard[0].cards;
             const cards = cardArr.map(( card, index )=>{
                 return(
-                    <FCCard key={ index } uid={ uid } bookDocName={ bookDocName } card={ card } cardArr={ cardArr } index={ index }  />
+                    <Card key={ index } uid={ uid } bookDocName={ bookDocName } card={ card } cardArr={ cardArr } index={ index }  />
                 )
             })
-            
             return(         
-                <>
+                <Fragment>
                     <Header/>
-                    <div className="FC_Collection container"> 
+                    <div className="fcCollection container"> 
                         <div className="stickyCard">
                             
                             {/* <Link to="/spelling">
-                                <div className="FC_card card">
-                                    <div className="card-content">                                
-                                        <span className="card-title center-align"> 
-                                            <i className="material-icons green-text text-darken-1">spellcheck</i>
+                                <div className="fcCard card">
+                                    <div className="card-content spelling">                                
+                                        <span className="card-title"> 
+                                            <i className="material-icons">spellcheck</i>
                                             Spelling
                                         </span>
                                     </div>                 
                                 </div>
                             </Link> */}
 
-                            <div className="FC_card card edit">                              
-                                <i className="material-icons white-text waves-effect" onClick={ this.handToggleAddCard.bind(this) }>add</i>                          
-                                <i className="material-icons white-text waves-effect" onClick={ this.handleToggleDeleteCardIcon.bind(this)}>remove</i>
-                                <i className="material-icons white-text waves-effect" onClick={ this.handleToggleEditCardIcon.bind(this)} >edit</i> 
+                            <div className="fcCard card edit">                              
+                                <i className="material-icons waves-effect" onClick={ this.handToggleAddCard.bind(this) }>add</i>                          
+                                <i className="material-icons waves-effect" onClick={ this.handleToggleDeleteCardIcon.bind(this)}>remove</i>
+                                <i className="material-icons waves-effect" onClick={ this.handleToggleEditCardIcon.bind(this)} >edit</i> 
                             </div>                                           
                         </div>  
-                        { this.props.createCardMenu? <AddCard uid={ this.props.auth.uid } bookDocName = {bookDocName} cardArr={ cardArr }/> : null}             
-                        { this.props.deleteCardMenu? <DelCard currentDeleteCard={ this.props.currentDeleteCard }/> : null }
-                        { this.props.editCardMenu ? <EditCard currentEditCard={ this.props.currentEditCard }/> : null }
+                        { this.props.createCardMenu? <AddCard uid={ uid } bookDocName = { bookDocName } cardArr={ cardArr }/> : null}             
+                        { this.props.deleteCardMenu? <DelCard currentDeleteCard={ currentDeleteCard }/> : null }
+                        { this.props.editCardMenu ? <EditCard currentEditCard={ currentEditCard }/> : null }
                         { cards }
                     </div>               
-                </>  
+                </Fragment>  
             )
         }
     }
@@ -92,17 +91,16 @@ const mapStateToProps = ( state ) =>{
         editCardMenu : state.card.editCardMenu,
         currentDeleteCard : state.card.currentDeleteCard,
         currentEditCard : state.card.currentEditCard,
-
     }
 }
 const mapDispatchToProps = ( dispatch ) => {
     return{
-       toggleCreateCard: ()=> dispatch(toggleCreateCard()),
-       toggleDeleteCardIcon: ()=> dispatch(toggleDeleteCardIcon()),
-       toggleEditCardIcon: ()=>dispatch(toggleEditCardIcon()),
+        initCardState: ()=>dispatch(initCardState()),
+        toggleCreateCard: ()=> dispatch(toggleCreateCard()),
+        toggleDeleteCardIcon: ()=> dispatch(toggleDeleteCardIcon()),
+        toggleEditCardIcon: ()=>dispatch(toggleEditCardIcon()),
     }
 }
-
 export default compose( 
     connect( mapStateToProps, mapDispatchToProps ),
     firestoreConnect((props) =>{     
@@ -118,6 +116,6 @@ export default compose(
             )
         }
     })
-)( FC_Collection )
+)( FcCollection )
 
 

@@ -91,7 +91,7 @@ class Account extends React.Component{
                     </div>
                 </div>
             </Fragment>
-        );
+        )
     }
 }
 

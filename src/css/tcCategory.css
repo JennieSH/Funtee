@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 100px;
+    margin-bottom: 50px;
   }
   
   .tcCategoryContainer>div{
@@ -123,3 +124,10 @@
     }
 
   }
+/* footer */
+.tcCategoryContainer>.page-footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}

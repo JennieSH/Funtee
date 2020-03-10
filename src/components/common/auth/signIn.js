@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { signIn, signIn_Facebook, signIn_Google } from "../../../store/actions/authActions";
+import { signIn, signInFacebook, signInGoogle } from "../../../store/actions/authActions";
 import facebook from "../../../imgs/facebook.png";
 import google from "../../../imgs/google.png";
 
@@ -42,11 +42,11 @@ class SignIn extends React.Component{
         }
     }
     FacebookRedirect(){
-        this.props.signIn_Facebook()
+        this.props.signInFacebook()
     }
 
     GoogleRedirect(){
-        this.props.signIn_Google()
+        this.props.signInGoogle()
     }
 
     render(){
@@ -93,8 +93,8 @@ const mapStateToProps = ( state ) => {
 const mapDispatchToProps = ( dispatch ) => {
     return{
         signIn : (creds) => dispatch(signIn(creds)),
-        signIn_Facebook : () => dispatch(signIn_Facebook()),
-        signIn_Google : () =>dispatch(signIn_Google())
+        signInFacebook : () => dispatch(signInFacebook()),
+        signInGoogle : () =>dispatch(signInGoogle())
     }
 }
 export default connect( mapStateToProps, mapDispatchToProps)( SignIn )

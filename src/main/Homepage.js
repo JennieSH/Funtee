@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import "../css/homepage.css";
 import Header from "../components/common/header";
 import Footer from "../components/common/footer";
 import Information from "../components/homepage/information";
 import Tool from "../components/homepage/tool";
 import { Guest, Member } from "../components/homepage/authBtn";
+import "../css/homepage.css";
 
 class Homepage extends React.Component{
 

@@ -5,7 +5,6 @@
     align-items: center;
     justify-content: center;
     margin-top: 25vw;  
-  
 }
 .categoryContainer>.description{   
     height: 400px;
@@ -134,4 +133,11 @@
         width: 30vw;
         height: 20vw;
      }
+}
+
+.categoryContainer>.page-footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
 }

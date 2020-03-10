@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { editBook,  toggleEditBook } from "../../store/actions/cardAction";
+import { editBook, toggleEditBook } from "../../store/actions/cardAction";
 
 class EditBook extends React.Component{
 
@@ -11,7 +11,6 @@ class EditBook extends React.Component{
                id: this.props.currentEditBook.bookData.id,
                lang : this.props.currentEditBook.bookData.lang
             }
-            
         }
     }
     handleEditValue(e){
@@ -25,36 +24,37 @@ class EditBook extends React.Component{
     handleToggleEditBookIcon(){
         this.props.toggleEditBook()
     }
-
     handleEdit(){
-        if (this.state.editBookValue.id === this.props.currentEditBook.bookData.id){
-            console.log("The editBookValue is the same")
-        }else{
-           this.props.editBook( this.props.currentEditBook.uid, this.props.currentEditBook.bookDocName, this.state.editBookValue )
+        const currentEditBook = this.props.currentEditBook ;
+        if (this.state.editBookValue.id !== currentEditBook.bookData.id){
+           this.props.editBook( currentEditBook.uid, currentEditBook.bookDocName, this.state.editBookValue )
         } 
     }
-
     render(){
-        const currentEditBook = this.props.currentEditBook.bookData
+        const currentEditBook = this.props.currentEditBook.bookData;
         return(
-            <div className="FC_book addForm card" >         
-                
-                <h5 className="blue-grey-text center">Edit Collection</h5>
+            <div className="fcBook addForm card" >         
+                <h5>Edit Collection</h5>
                 <input type="text"  defaultValue={ currentEditBook.id } onChange={ this.handleEditValue.bind(this) }/>
+                { this.props.editBookNameErr ? <span>required field</span> : null } 
                 <div className="editBookBtn">
-                    <button className="btn white-text  waves-effect left" onClick={ this.handleEdit.bind(this) }>Edit</button> 
-                    <button className="btn red white-text  waves-effect right" onClick={ this.handleToggleEditBookIcon.bind(this)}>Back</button>      
+                    <button className="btn waves-effect left" onClick={ this.handleEdit.bind(this) }>Edit</button> 
+                    <button className="btn waves-effect right" onClick={ this.handleToggleEditBookIcon.bind(this)}>Back</button>      
                 </div>
                 
             </div>          
         )
     }
 }
-
+const mapStateToProps = ( state ) =>{
+    return{
+        editBookNameErr: state.card.editBookNameErr,  
+    }
+}
 const mapDispatchToProps = ( dispatch ) => {
     return{
        editBook: ( uid, bookDocName, bookEditData ) => dispatch(editBook( uid, bookDocName, bookEditData )),
        toggleEditBook: ()=> dispatch(toggleEditBook())
     }
 }
-export default connect( null, mapDispatchToProps )( EditBook  )
+export default connect(  mapStateToProps, mapDispatchToProps )( EditBook  )

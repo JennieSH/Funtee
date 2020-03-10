@@ -1,16 +1,20 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {  Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
+import { LastPageBtn, NextPageBtn } from "../components/lesson/pageBtn";
+import { lastCard, nextCard, toggleCopyWord, textToSpeech,  getCurrentCard, resetIndex  } from "../store/actions/cardAction";
 import Header from "../components/common/header";
 import Loading from "../components/common/loading";
-import "../css/FC_Card.css";
-import { lastCard, nextCard, toggleCopyWord, textToSpeech,  getCurrentCard, resetIndex  } from "../store/actions/cardAction";
+import Footer from "../components/common/footer";
+import "../css/fcCard.css";
 import MicRecorder from "mic-recorder-to-mp3";
 
+
+
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
-class FC_Card extends React.Component{
+class FcCard extends React.Component{
     constructor(props){
         super(props);
         this.state={     
@@ -32,19 +36,17 @@ class FC_Card extends React.Component{
         });
         this.props.toggleCopyWord()
     }
-
     handleLastCard(){
        this.props.lastCard( this.props.indexCard )  
     }
-
     handleNextCard(){
-        const uid = this.props.auth.uid;
+        const { auth,  match, indexCard, nextCard } = this.props;
+        const uid = auth.uid;
         const cards = this.props.cards[uid];
-        const bookDocName = this.props.match.params.title;
+        const bookDocName = match.params.title;
         const currentBookLength = cards[bookDocName].cards.length;
-        this.props.nextCard( this.props.indexCard, currentBookLength )
+        nextCard( indexCard, currentBookLength );
     }
-
     handleTTS(){
         new Audio("data:audio/wav;base64," + this.props.ttsCard ).play();
     }
@@ -69,13 +71,11 @@ class FC_Card extends React.Component{
              
               this.setState({ blobURL, isRecording: false });
             }).catch((e) => console.log(e));
-        }
-        
+        }   
     }
     handlePlay(){
         document.getElementById("audioRecord").play()
     }
-
     componentDidMount(){
         const clipboard = new ClipboardJS("#copyWord");
         this.props.resetIndex(parseInt(this.props.match.params.index))
@@ -114,79 +114,65 @@ class FC_Card extends React.Component{
               this.setState({ isBlocked: true })
             },
           );
-
     }
 
     render(){
-
-        const uid = this.props.auth.uid;
+        const { auth,  match, indexCard, currentSide, getCurrentCard } = this.props;
+        const uid = auth.uid;
         const cards = this.props.cards[uid];
-        const bookDocName = this.props.match.params.title;
+        const bookDocName = match.params.title;
         const rotation = this.state.flipped ? 180 : 0;
 		const frontStyle = { ...this.state.flipStyle, transform: `rotateY(${rotation}deg)` }
         const backStyle = { ...this.state.flipStyle, transform: `rotateY(${180 + rotation}deg)` }
 
-
-      
-
         if( !uid ){ return <Redirect to = "/signin"/> }
-
         if( !cards ){
             return(
-                <>
+                <Fragment>
                     <Header/>
                     <Loading/>
-                </>
+                </Fragment>
             )
         }else{
             const currentBook = cards[ bookDocName ].cards;
-            const index = this.props.indexCard;
-            this.props.getCurrentCard( currentBook[index] )
+            const index = indexCard;
+            getCurrentCard( currentBook[index] )
             
-            if (this.props.ttsCard === null ){
-                this.props.textToSpeech( currentBook[index] , this.props.currentSide ) 
-            }
-
-            return(
-                
-                <>   
-                    <Header/>    
-                    <div className="FC_CardEach container">
-                    
-                        <div className="FC_cardEach card">
-
-                            <div className="frontSide" style={frontStyle}>
-                                <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this) } >volume_up</i> 
-                                <span>{ currentBook[ index ].front }</span>
-                            </div>
-
-                            <div className="backSide" style={backStyle}>
-                                <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this) }>volume_up</i> 
-                                <span className="grey-text">{ currentBook[ index ].back }</span>                               
-                            </div>
-                        
+            // if (this.props.ttsCard === null ){
+            //     this.props.textToSpeech( currentBook[index] , this.props.currentSide ) 
+            // }
+            return(   
+                <div className="fcCardEach container">
+                    <Header/>
+                    <div className="card">
+                        <div className="frontSide" style={frontStyle}>
+                            <i className="material-icons waves-effect" onClick={ this.handleTTS.bind(this) } >volume_up</i> 
+                            <span>{ currentBook[ index ].front }</span>
                         </div>
-
-                        <span className="page">{ `${ this.props.indexCard + 1 } / ${ currentBook.length }` }</span>
-
+                        <div className="backSide" style={backStyle}>
+                            <i className="material-icons waves-effect" onClick={ this.handleTTS.bind(this) }>volume_up</i> 
+                            <span>{ currentBook[ index ].back }</span>                               
+                        </div>
+                    </div>
+                    <div className="cardControler">
+                        <span className="page">{ `${ indexCard + 1 } / ${ currentBook.length }` }</span>
                         <div className="controlMenu">
-                            
                             <i className="material-icons waves-effect"  onClick={ this.handleFlip.bind(this) }>flip_camera_android</i>                  
-                            <i className="material-icons waves-effect" id="copyWord" data-clipboard-text={ this.props.currentSide? currentBook[ index ].front:currentBook[ index ].back} >file_copy</i>                                          
+                            <i className="material-icons waves-effect" id="copyWord" data-clipboard-text={ currentSide? currentBook[ index ].front : currentBook[ index ].back} >file_copy</i>                                          
                             <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) } >
-                                <div className={`record ${ this.state.isRecording? "active":null}`}></div>         
+                                <div className={ `record ${ this.state.isRecording? "active":null}` }/>         
                             </i>
                             <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
-                                <audio src={this.state.blobURL} id="audioRecord"/>
-                            </i>
-                                        
+                                <audio src={ this.state.blobURL } id="audioRecord"/>
+                            </i>        
                         </div>
                         <div className="pageControl">
-                            <i className="material-icons waves-effect " onClick={ this.handleLastCard.bind(this) }>navigate_before</i>
-                            <i className="material-icons waves-effect " id="nextPageBtn_F" onClick={ this.handleNextCard.bind(this) }>navigate_next</i>                       
-                        </div>                 
-                    </div>          
-                </>      
+                            <LastPageBtn handleLastPage = { this.handleLastCard.bind(this) } id="lastPageBtnCard"/>
+                            <NextPageBtn handleNextPage={ this.handleNextCard.bind(this) } id="nextPageBtnCard"/>
+                        </div>     
+                    </div>
+                    <Footer/>            
+                </div>      
             )
         }
     }
@@ -226,6 +212,6 @@ export default compose(
             )
         }
     })
-)( FC_Card )
+)( FcCard )
 
 

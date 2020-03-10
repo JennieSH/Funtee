@@ -1,18 +1,18 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
 import Header from "../components/common/header";
-import "../css/tcCategory.css";
+import Footer from "../components/common/footer";
 import symbol from "../imgs/unit-symbol.png";
 import common from "../imgs/unit-common.png";
 import taiwan from "../imgs/unit-taiwan.png";
-
-class TC_Category extends React.Component{
+import "../css/tcCategory.css";
+class TcCategory extends React.Component{
 
     render(){
         return(
             <Fragment>
-                <Header/>
                 <div className="tcCategoryContainer">
+                    <Header/>
                     <div >
                         <div className="tcCategoryBox">
                             <div className="img">
@@ -42,11 +42,12 @@ class TC_Category extends React.Component{
                             <Link to="/lessonstw"><button>Learn More</button></Link>
                         </div>
                     </div>
+                    <Footer/>
                 </div>
             </Fragment>        
         )
     }
 }
-export default TC_Category 
+export default TcCategory 
 
 

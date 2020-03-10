@@ -1,20 +1,19 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
-import { toggleCreateBook, toggleDeleteBookIcon, toggleEditBookIcon } from "../store/actions/cardAction";
-import "../css/FC_Category.css";
-
+import { toggleCreateBook, toggleDeleteBookIcon, toggleEditBookIcon, initBookState } from "../store/actions/cardAction";
 import Header from "../components/common/header";
+import Footer from "../components/common/footer";
 import Loading from "../components/common/loading";
-import FCBook from "../components/flashCard/book";
+import FcBook from "../components/flashCard/book";
 import AddBook from "../components/flashCard/addBook";
 import DelBook from "../components/flashCard/delBook";
 import EditBook from "../components/flashCard/editBook";
+import "../css/fcCategory.css";
 
-
-class FC_Category extends React.Component{
+class FcCategory extends React.Component{
 
     constructor(props){
         super(props);
@@ -22,7 +21,6 @@ class FC_Category extends React.Component{
             previousData : this.props.bookData[ this.props.auth.uid ]
         }
     }
-
 
     handleToggleAddBook(){
         this.props.toggleCreateBook()
@@ -33,26 +31,28 @@ class FC_Category extends React.Component{
     handleToggleEditBookIcon(){
        this.props.toggleEditBookIcon()
     }
-
+    componentDidMount(){
+        this.props.initBookState()
+    }
 
     render(){
-        const uid = this.props.auth.uid ;
-        const userBooks = this.props.bookData[ uid ] ;
-        // console.log(userBooks)
+        const { auth, bookData, createBookMenu, deleteBookMenu, editBookMenu, currentDeleteBook, currentEditBook } = this.props;
+        const uid = auth.uid;
+        const userBooks = bookData[ uid ];
+       
         if( !uid ){ return <Redirect to="/signin"/> }
- 
 
         if ( userBooks === undefined){
             return(
-                <>
+                <Fragment>
                     <Header/>
                     <Loading/>
-                </>
+                </Fragment>
             )
         }else{      
             const books = userBooks.map(( book, index )=>{
                 return(
-                    <FCBook key={ index } bookData ={ book } uid={ uid }/>         
+                    <FcBook key={ index } bookData ={ book } uid={ uid }/>         
                 )
             })
             const starCardArr = [];
@@ -60,36 +60,37 @@ class FC_Category extends React.Component{
                   starCard.forEach(card => card.forEach(cardEach => starCardArr.push(cardEach)));
             const starCardLength = starCardArr.filter(starCard => starCard.star === true).length;
             return(
-                <>
+                <Fragment>
                     <Header/>                 
-                    <div className="FC_Category container"> 
+                    <div className="fcCategory container"> 
+
                         <div className="stickyCard"> 
                             <Link to="/mycollection">
-                                <div className="FC_book card">
+                                <div className="fcBook card">
                                     <div className="card-content">
                                         <div className="card-description">                               
-                                            <span className="grey-text right">{ starCardLength }  cards</span>   
+                                            <span>{ starCardLength }  cards</span>   
                                         </div>                                
-                                        <span className="card-title center-align"> 
-                                            <i className="material-icons yellow-text text-darken-2 ">star</i>
+                                        <span className="card-title center"> 
+                                            <i className="material-icons">star</i>
                                             My Collection
                                         </span>
                                     </div>                 
                                 </div>
                             </Link>                            
-                            <div className="FC_book card edit" >                              
-                                <i className="material-icons white-text waves-effect" onClick={ this.handleToggleAddBook.bind(this)}>add</i> 
-                                <i className="material-icons white-text waves-effect" onClick={ this.handleToggleDeleteBookIcon.bind(this)}>remove</i>
-                                <i className="material-icons white-text waves-effect" onClick={ this.handleToggleEditBookIcon.bind(this)} >edit</i> 
+                            <div className="fcBook card edit" >                              
+                                <i className="material-icons waves-effect" onClick={ this.handleToggleAddBook.bind(this) }>add</i> 
+                                <i className="material-icons waves-effect" onClick={ this.handleToggleDeleteBookIcon.bind(this) }>remove</i>
+                                <i className="material-icons waves-effect" onClick={ this.handleToggleEditBookIcon.bind(this) } >edit</i> 
                             </div>
                         </div>
-                        { this.props.createBookMenu? <AddBook uid={ this.props.auth.uid }/> : null}
-                        { this.props.deleteBookMenu ? <DelBook currentDeleteBook={ this.props.currentDeleteBook }/> : null }
-                        { this.props.editBookMenu ? <EditBook currentEditBook={ this.props.currentEditBook }/> : null }
-                        {books}
+
+                        { createBookMenu ? <AddBook uid={ uid }/> : null}
+                        { deleteBookMenu ? <DelBook currentDeleteBook={ currentDeleteBook }/> : null }
+                        { editBookMenu ? <EditBook currentEditBook={ currentEditBook }/> : null }
+                        { books }
                     </div>               
-                </>
-                
+                </Fragment>   
             )
         }
     }
@@ -108,9 +109,10 @@ const mapStateToProps = ( state ) =>{
 
 const mapDispatchToProps = ( dispatch ) => {
     return{
-       toggleCreateBook: ()=> dispatch(toggleCreateBook()),
-       toggleDeleteBookIcon: ()=> dispatch(toggleDeleteBookIcon()),
-       toggleEditBookIcon: ()=>dispatch(toggleEditBookIcon())
+        initBookState: ()=>dispatch(initBookState()),
+        toggleCreateBook: ()=> dispatch(toggleCreateBook()),
+        toggleDeleteBookIcon: ()=> dispatch(toggleDeleteBookIcon()),
+        toggleEditBookIcon: ()=>dispatch(toggleEditBookIcon())
     }
 }
 
@@ -130,4 +132,4 @@ compose(
             )
         }
     }),
-)( FC_Category )
+)( FcCategory )

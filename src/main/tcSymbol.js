@@ -61,8 +61,8 @@ class TcSymbol extends React.Component{
                     <div className="tcSymobol">                  
                         <TcSymbolContent symbol={ this.props.learningData.symbol }/>
                         <WritingBoard symbolZhuyin={ this.props.learningData.symbol.svg } index={ this.props.indexPage }/>
-                        <div className="symbolPage">{this.props.learningData? `${this.props.indexPage}/${ symbolArrLength }` : null}</div>                 
-                    </div>                     
+                        <div className="symbolPage">{ this.props.learningData? `${this.props.indexPage}/${ symbolArrLength }` : null }</div>                 
+                    </div>                  
                 </div>
             )
         }

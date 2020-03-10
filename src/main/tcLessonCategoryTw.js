@@ -8,7 +8,7 @@ import MapTw from "../components/lesson/mapTw";
 import CardTw from "../components/lesson/cardTw";
 import "../css/tcLessonCategoryTw.css";
 
-class tcCategoryTw extends React.Component{   
+class TcLessonCategoryTw extends React.Component{   
     render(){
         if ( !this.props.lessonData){
             return (
@@ -46,4 +46,4 @@ export default compose(
       }
     ]),
     connect( mapStateToProps )
-)( tcCategoryTw  )
+)( TcLessonCategoryTw )
