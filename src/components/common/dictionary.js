@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createData } from "../../store/actions/testAction"; //w
 
 import {  firestoreConnect } from "react-redux-firebase"; // r
 import { compose } from "redux";
@@ -133,10 +132,5 @@ class  Dictionary extends React.Component{
     }
 }
 
-const mapDispatchToProps = (dispatch) =>{
-    return{
-        createData: (data)=>dispatch(createData(data))
-    }
-}
 // export default Dictionary
-export default connect( null, mapDispatchToProps )(Dictionary)
+export default Dictionary

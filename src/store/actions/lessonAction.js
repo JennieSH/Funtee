@@ -29,8 +29,7 @@ export const textToSpeech = ( targetWord ) =>{
                     dispatch({ type: "GET_TTS", tts })
                  })     
     } 
- }
-
+}
 
 export const lastPage = ( indexPage, path )=> {
     return ( dispatch) =>{    
@@ -88,12 +87,4 @@ export const blockDescriptionMobile = () => {
     }
 }
 
-export const readTTS = ( src ) => {
-    return ( dispatch ) =>{
-        const audio = new Audio("data:audio/wav;base64," + src);
-        audio.play();
-
-        dispatch({ type: "READ＿TTS" });
-    }
-}
 

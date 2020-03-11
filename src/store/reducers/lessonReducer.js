@@ -11,7 +11,6 @@ const initState = {
     currentCity:null,
     description:true,
 
-
     unitTTS:null
     
  };
@@ -20,7 +19,6 @@ const lessonReducer = ( state = initState, action ) =>{
    
     switch (action.type) {    
         case "GET_TTS":
-            console.log("TTS success")
             return {
                 ...state,
                 unitTTS : action.tts

@@ -289,8 +289,6 @@ const cardReducer = ( state = initState , action)=>{
             }
         case "TO_LAST_CARD_ERR":
             return state
-
-
         case "TO_NEXT_CARD":
             return {
                 ...state,
@@ -299,8 +297,6 @@ const cardReducer = ( state = initState , action)=>{
             }
         case "TO_NEXT_CARD_ERR":
             return state;
-
-
             // my card
         case "RESET_MY_INDEX":           
             return{
@@ -322,7 +318,6 @@ const cardReducer = ( state = initState , action)=>{
                 currentMyCard: action.currentCard,
                 currentMyCardArrLen: action.starCardArrLen
             }
-
         case "TO_LAST_MYCARD":
             return {
                 ...state,
@@ -331,8 +326,6 @@ const cardReducer = ( state = initState , action)=>{
             }
         case "TO_LAST_MYCARD_ERR":
             return state
-
-
         case "TO_NEXT_MYCARD":
             return {
                 ...state,
@@ -341,7 +334,6 @@ const cardReducer = ( state = initState , action)=>{
             }
         case "TO_NEXT_MYCARD_ERR":
             return state;
-          
         case "GET_CURRENT_SIDE":
             return{
                 ...state,
@@ -349,9 +341,7 @@ const cardReducer = ( state = initState , action)=>{
                 ttsMyCard:null,
                 ttsCard:null,
             }
-    
         case "GET_TTS":
-            console.log("TTS success")
             return {
                 ...state,
                 ttsCard : action.tts
@@ -359,11 +349,7 @@ const cardReducer = ( state = initState , action)=>{
         case "GET_TTS_ERR":
             console.log("TTS fail" + action.err)
             return state
-
-
-
         case "GET_TTS_MY":
-            console.log("TTS_MY success")
             return {
                 ...state,
                 ttsMyCard:action.tts

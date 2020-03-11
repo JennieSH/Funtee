@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { readTTS, initRecord, startRecord, stopRecord } from "../../store/actions/lessonAction";
 import Recorder from 'js-audio-recorder';
 
 let recorder ;
@@ -14,8 +13,9 @@ class LessonMenu extends React.Component{
     }
   }
   handleRead(){  
-    new Audio("data:audio/wav;base64," + this.props.lesson.lessonTTS ).play();
+    // new Audio("data:audio/wav;base64," + this.props.lesson.lessonTTS ).play(); // text to speech
     // this.props.readTTS(this.props.audio) // for data of firebase
+    new Audio( "data:audio/wav;base64," + this.props.audio).play(); // for data from firebase
   }
   handleRecord(){
     if ( this.state.isBlocked ){
@@ -73,12 +73,4 @@ const mapStateToProps = ( state ) => {
     lesson: state.lesson
   }
 }
-const mapDispatchToProps = (dispatch) => {
-    return{
-       readTTS: (src) => dispatch(readTTS(src)),
-       initRecord: () => dispatch(initRecord()),
-       startRecord: () => dispatch(startRecord()),
-       stopRecord: () => dispatch(stopRecord())
-    }
-}
-export default  connect( mapStateToProps, mapDispatchToProps )( LessonMenu )
+export default  connect( mapStateToProps )( LessonMenu )
