@@ -40,9 +40,9 @@ class TcLesson extends React.Component{
             const indexPage = this.props.indexPage;
             const index = indexPage-1;
             const maxPage = lesson.length;
-            // if (this.props.lessonTTS === null ){
-            //     this.props.textToSpeech( lesson[index].chinese  ) 
-            // }
+            if (this.props.lessonTTS === null ){
+                this.props.textToSpeech( lesson[index].chinese  ) 
+            }
             return(
                 <Fragment>  
                     <Header/>

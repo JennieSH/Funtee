@@ -116,7 +116,6 @@ export const editBook = ( uid, bookDocName, bookEditData )=>{
     }
 }
 
-
 // Collection - init
 export const initCardState = ()=>{
     return ( dispatch ) => {
@@ -129,7 +128,6 @@ export const toggleCreateCard = ()=>{
         dispatch ({ type: "TOGGLE_CREATE_CARD" })
     }
 }
-
 export const createCard = ( uid, bookDocName, cardArr, data ) =>{
     return ( dispatch ) => {
 
@@ -163,13 +161,11 @@ export const toggleDeleteCardIcon = ()=>{
         dispatch ({ type: "TOGGLE_DELETE_CARD_ICON" })
     }
 }
-
 export const toggleDeleteCard = ()=>{
     return ( dispatch ) => {
         dispatch ({ type: "TOGGLE_DELETE_CARD" })
     }
 }
-
 export const currentDeleteCard = ( uid, bookDocName, card, cardArr, index )=>{
     return ( dispatch ) => {
 
@@ -189,9 +185,6 @@ export const deleteCard = ( currentDeleteCard )=>{
 
         const firestore = firebase.firestore();
         const bookDocName = currentDeleteCard.bookDocName.toString();
-        
-        // const newCardArr = JSON.parse(JSON.stringify(currentDeleteCard.previousCardArr));      
-        // newCardArr.splice( currentDeleteCard.index, 1 )
 
         currentDeleteCard.previousCardArr.splice( currentDeleteCard.index, 1 )
 
@@ -215,7 +208,6 @@ export const toggleEditCard = ()=>{ // Menu
         dispatch ({ type: "TOGGLE_EDIT_CARD" })
     }
 }
-
 export const currentEditCard = ( uid, bookDocName, card, cardArr, index )=>{
     return ( dispatch ) => {
         const  currentEditCard = {
@@ -230,8 +222,7 @@ export const currentEditCard = ( uid, bookDocName, card, cardArr, index )=>{
     }
 }
 export const editCard = ( uid, bookDocName, newCard, previousCardArr, index )=>{
-    return ( dispatch ) => {
-       
+    return ( dispatch ) => {     
         if ( newCard.front === null ||  newCard.front.trim() === ""){
             dispatch ({ type: "EDIT_CARD_FRONT_ERR" })         
         }else if( newCard.back === null ||  newCard.back.trim() === ""){
@@ -249,9 +240,7 @@ export const editCard = ( uid, bookDocName, newCard, previousCardArr, index )=>{
             }).catch((err)=>{
                 dispatch ({ type: "EDIT_CARD_ERR", err })
             })
-       
-        }
-        
+        }  
     }
 }
 export const toggleStar = ( cardData, previousCardArr )=> {
@@ -271,8 +260,6 @@ export const toggleStar = ( cardData, previousCardArr )=> {
     }
 }
 
-
-
 // Card
 export const toggleCopyWord = () =>{
     return ( dispatch ) =>{
@@ -284,7 +271,6 @@ export const getCurrentCard = ( currentCard )=> {
         dispatch({ type: "GET_CURRENT_CARD", currentCard });         
     }
 }
-
 export const lastCard = ( indexCard )=> {
     return ( dispatch) =>{     
         if( indexCard > 0 ){
@@ -294,7 +280,6 @@ export const lastCard = ( indexCard )=> {
         }              
     }
 }
-
 export const nextCard = ( indexCard, maxCard ) => {
     return ( dispatch) =>{
         if( indexCard < maxCard-1 ){
@@ -355,7 +340,6 @@ export const resetIndex = ( index ) =>{
         dispatch({ type: "RESET_INDEX" , index })
     }
 }
-
 export const lastMyCard = ( indexCard )=> {
     return ( dispatch) =>{     
         if( indexCard > 0 ){
@@ -365,7 +349,6 @@ export const lastMyCard = ( indexCard )=> {
         }              
     }
 }
-
 export const nextMyCard = ( indexCard, maxCard ) => {
     return ( dispatch) =>{
         if( indexCard < maxCard-1 ){
@@ -375,9 +358,6 @@ export const nextMyCard = ( indexCard, maxCard ) => {
         }    
     }
 }
-
-
-
 export const textToSpeech_My = ( targetWords, targetSide ) =>{
    return( dispatch )=>{
         let targetWord;

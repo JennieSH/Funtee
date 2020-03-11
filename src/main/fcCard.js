@@ -8,12 +8,10 @@ import { lastCard, nextCard, toggleCopyWord, textToSpeech,  getCurrentCard, rese
 import Header from "../components/common/header";
 import Loading from "../components/common/loading";
 import Footer from "../components/common/footer";
+import Recorder from 'js-audio-recorder';
 import "../css/fcCard.css";
-import MicRecorder from "mic-recorder-to-mp3";
 
-
-
-const Mp3Recorder = new MicRecorder({ bitRate: 128 });
+let recorder ;
 class FcCard extends React.Component{
     constructor(props){
         super(props);
@@ -21,24 +19,49 @@ class FcCard extends React.Component{
             cardIndex: 0,
             flipped: false,
             flipStyle: { transition: "transform 0.5s" },
-
-            isRecording: false,
-            blobURL: "",
             isBlocked: false,
-      
+            isRecording: false,
         }
     }
-
     handleFlip(){
         this.setState({ 
 			flipped: !this.state.flipped,
-			flipStyle: { transition: 'transform 0.5s' }
+			flipStyle: { transition: "transform 0.5s" }
         });
         this.props.toggleCopyWord()
     }
-    handleLastCard(){
-       this.props.lastCard( this.props.indexCard )  
+    handleRead(){
+        new Audio("data:audio/wav;base64," + this.props.ttsCard ).play();
     }
+    handleRecord(){
+        if ( this.state.isBlocked ){
+            if( this.state.isRecording ){
+                recorder.stop();
+                this.setState({
+                    isRecording:false
+                });
+            }else{
+                recorder = new Recorder({
+                    sampleBits: 16,
+                    sampleRate: 16000,
+                    numChannels: 1,
+                })
+                recorder.start().then(() => {
+                    this.setState({
+                        isRecording:true
+                    });
+                }, (error) => {
+                    console.log(`${error.name} : ${error.message}`);
+                });
+            }
+        } 
+    }
+    handlePlay(){
+       recorder.play();
+    }
+    handleLastCard(){
+        this.props.lastCard( this.props.indexCard );
+     }
     handleNextCard(){
         const { auth,  match, indexCard, nextCard } = this.props;
         const uid = auth.uid;
@@ -46,74 +69,18 @@ class FcCard extends React.Component{
         const bookDocName = match.params.title;
         const currentBookLength = cards[bookDocName].cards.length;
         nextCard( indexCard, currentBookLength );
-    }
-    handleTTS(){
-        new Audio("data:audio/wav;base64," + this.props.ttsCard ).play();
-    }
-    handleRecord(){
-        if( this.state.isRecording === false){
-            if (this.state.isBlocked) {
-                console.log('Permission Denied');
-              } else {
-                Mp3Recorder
-                  .start()
-                  .then(() => {
-                    this.setState({ isRecording: true });
-                    console.log('Permission Granted');
-                  }).catch((e) => console.error(e));
-              }
-        }else{
-            Mp3Recorder
-            .stop()
-            .getMp3()
-            .then(([buffer, blob]) => {
-              const blobURL = URL.createObjectURL(blob)
-             
-              this.setState({ blobURL, isRecording: false });
-            }).catch((e) => console.log(e));
-        }   
-    }
-    handlePlay(){
-        document.getElementById("audioRecord").play()
-    }
+     }
     componentDidMount(){
         const clipboard = new ClipboardJS("#copyWord");
         this.props.resetIndex(parseInt(this.props.match.params.index))
 
-        
-        if (navigator.mediaDevices === undefined) {
-            navigator.mediaDevices = {};
-          }
-          
-            if (navigator.mediaDevices.getUserMedia === undefined) {
-            navigator.mediaDevices.getUserMedia = function(constraints) {
-              // First get ahold of the legacy getUserMedia, if present
-              let getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-          
-              // Some browsers just don't implement it - return a rejected promise with an error
-              // to keep a consistent interface
-              if (!getUserMedia) {
-                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-              }
-          
-              // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-              return new Promise(function(resolve, reject) {
-                getUserMedia.call(navigator, constraints, resolve, reject);
-              });
-            }
-          }
-        
-
-        navigator.mediaDevices.getUserMedia({ audio: true },
-            () => {
-              console.log('Permission Granted');
-              this.setState({ isBlocked: false });
-            },
-            () => {
-              console.log('Permission Denied');
-              this.setState({ isBlocked: true })
-            },
-          );
+        Recorder.getPermission().then(() => {
+            this.setState({
+                isBlocked:true
+            });
+        }, (error) => {
+            console.log(`${error.name} : ${error.message}`);
+        });
     }
 
     render(){
@@ -138,19 +105,19 @@ class FcCard extends React.Component{
             const index = indexCard;
             getCurrentCard( currentBook[index] )
             
-            // if (this.props.ttsCard === null ){
-            //     this.props.textToSpeech( currentBook[index] , this.props.currentSide ) 
-            // }
+            if (this.props.ttsCard === null ){
+                this.props.textToSpeech( currentBook[index] , this.props.currentSide );
+            }
             return(   
                 <div className="fcCardEach container">
                     <Header/>
                     <div className="card">
                         <div className="frontSide" style={frontStyle}>
-                            <i className="material-icons waves-effect" onClick={ this.handleTTS.bind(this) } >volume_up</i> 
+                            <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) } >volume_up</i> 
                             <span>{ currentBook[ index ].front }</span>
                         </div>
                         <div className="backSide" style={backStyle}>
-                            <i className="material-icons waves-effect" onClick={ this.handleTTS.bind(this) }>volume_up</i> 
+                            <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>volume_up</i> 
                             <span>{ currentBook[ index ].back }</span>                               
                         </div>
                     </div>
@@ -162,9 +129,7 @@ class FcCard extends React.Component{
                             <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) } >
                                 <div className={ `record ${ this.state.isRecording? "active":null}` }/>         
                             </i>
-                            <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
-                                <audio src={ this.state.blobURL } id="audioRecord"/>
-                            </i>        
+                            <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow</i>        
                         </div>
                         <div className="pageControl">
                             <LastPageBtn handleLastPage = { this.handleLastCard.bind(this) } id="lastPageBtnCard"/>

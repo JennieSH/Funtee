@@ -1,80 +1,59 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { readTTS, initRecord, startRecord, stopRecord } from "../../store/actions/lessonAction";
-import MicRecorder from "mic-recorder-to-mp3";
+import Recorder from 'js-audio-recorder';
 
-const Mp3Recorder = new MicRecorder({ bitRate: 128 });
+let recorder ;
 class LessonMenuTw extends React.Component{
 
-    constructor(props){
-        super(props)
-        this.state = {
-            isRecording: false,
-            blobURL: "",
-          }
+  constructor(props){
+    super(props)
+    this.state = {
+      isBlocked: false,
+      isRecording: false,
     }
+  }
 
-    componentDidMount(){      
-        
-        if (navigator.mediaDevices === undefined) {
-            navigator.mediaDevices = {};
-          }
-          
-            if (navigator.mediaDevices.getUserMedia === undefined) {
-            navigator.mediaDevices.getUserMedia = function(constraints) {
-              // First get ahold of the legacy getUserMedia, if present
-              let getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-          
-              // Some browsers just don't implement it - return a rejected promise with an error
-              // to keep a consistent interface
-              if (!getUserMedia) {
-                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-              }
-          
-              // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-              return new Promise(function(resolve, reject) {
-                getUserMedia.call(navigator, constraints, resolve, reject);
-              });
-            }
-          }
+  handleRead(){  
+    new Audio("data:audio/wav;base64," + this.props.lesson.lessonTTS ).play();
+    // this.props.readTTS(this.props.audio)  // for data of firebase
+  }
+  handleRecord(){
+    if ( this.state.isBlocked ){
+      if( this.state.isRecording ){
+        recorder.stop();
+        this.setState({
+          isRecording:false
+        });
+      }else{
+        recorder = new Recorder({
+          sampleBits: 16,
+          sampleRate: 16000,
+          numChannels: 1,
+        });
+        recorder.start().then(() => {
+          this.setState({
+          isRecording:true
+          });
+        }, (error) => {
+          console.log(`${error.name} : ${error.message}`);
+        });
+      }
+    } 
+  }
+  handlePlay(){
+    recorder.play();
+  }
+  componentDidMount(){
+    Recorder.getPermission().then(() => {
+      this.setState({
+        isBlocked:true
+      });
+    }, (error) => {
+      console.log(`${error.name} : ${error.message}`);
+    });
+  } 
 
-
-        this.props.initRecord()
-    }
-
-    handleRead(){  
-      this.props.readTTS(this.props.audio)
-    }
-   
-
-    handleRecord (){
-
-        if( this.state.isRecording === false){
-            if (this.props.lesson.isBlocked) {
-                console.log('Permission Denied');
-              } else {
-                Mp3Recorder
-                .start()
-                .then(() => {
-                  this.setState({ isRecording: true });
-                }).catch((e) => console.error(e));
-              }
-        }else{
-            Mp3Recorder
-            .stop()
-            .getMp3()
-            .then(([buffer, blob]) => {
-              const blobURL = URL.createObjectURL(blob)
-              this.setState({ blobURL, isRecording: false });
-            }).catch((e) => console.log(e));
-        }
-    }
-
-    handlePlay (){
-        document.getElementById("audioRecord").play()
-    }  
-
-    
   render(){   
     return(
       <Fragment>
@@ -83,15 +62,12 @@ class LessonMenuTw extends React.Component{
           <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
             <div className={`record ${ this.state.isRecording? "active":null}`}></div>                      
           </i>
-          <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
-            <audio src={this.state.blobURL} id="audioRecord"/>
-          </i>             
+          <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow</i>             
         </div>   
       </Fragment>           
     )
   }
 }
-
 
 const mapStateToProps = ( state ) => {
     return{
