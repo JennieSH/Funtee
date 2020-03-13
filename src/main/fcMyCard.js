@@ -5,120 +5,84 @@ import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import Header from "../components/common/header";
 import Loading from "../components/common/loading";
+import Footer from "../components/common/footer";
 import "../css/fcCard.css";
 import { lastMyCard, nextMyCard, toggleCopyWord, textToSpeech_My,  getCurrentMyCard, resetMyIndex } from "../store/actions/cardAction";
-import MicRecorder from "mic-recorder-to-mp3";
+import { LastPageBtn, NextPageBtn } from "../components/lesson/pageBtn";
+import Recorder from 'js-audio-recorder';
 
-const Mp3Recorder = new MicRecorder({ bitRate: 128 });
+let recorder ;
 class FcMyCard extends React.Component{
     constructor(props){
         super(props);
         this.state={     
             flipped: false,
             flipStyle: { transition: "transform 0.5s" },
-
-            isRecording: false,
-            blobURL: "",
             isBlocked: false,
-      
+            isRecording: false,
         }
     }
-
     handleFlip(){
         this.setState({ 
 			flipped: !this.state.flipped,
-			flipStyle: { transition: 'transform 0.5s' }
+			flipStyle: { transition: "transform 0.5s" }
         });
         this.props.toggleCopyWord()
     }
-
     handleLastCard(){
        this.props.lastMyCard( this.props.indexCard )  
     }
-
     handleNextCard(){
         this.props.nextMyCard( this.props.indexCard, this.props.currentMyCardArrLen )
     }
-
-    handleTTS(){
+    handleRead(){
         new Audio("data:audio/wav;base64," + this.props.ttsMyCard ).play();
     }
-
     handleRecord(){
-        if( this.state.isRecording === false){
-            if (this.state.isBlocked) {
-                console.log('Permission Denied');
-              } else {
-                Mp3Recorder
-                  .start()
-                  .then(() => {
-                    this.setState({ isRecording: true });
-                    console.log('Permission Granted');
-                  }).catch((e) => console.error(e));
-              }
-        }else{
-            Mp3Recorder
-            .stop()
-            .getMp3()
-            .then(([buffer, blob]) => {
-              const blobURL = URL.createObjectURL(blob)
-             
-              this.setState({ blobURL, isRecording: false });
-            }).catch((e) => console.log(e));
-        }
-        
+        if ( this.state.isBlocked ){
+            if( this.state.isRecording ){
+                recorder.stop();
+                this.setState({
+                    isRecording:false
+                });
+            }else{
+                recorder = new Recorder({
+                    sampleBits: 16,
+                    sampleRate: 16000,
+                    numChannels: 1,
+                })
+                recorder.start().then(() => {
+                    this.setState({
+                        isRecording:true
+                    });
+                }, (error) => {
+                    console.log(`${error.name} : ${error.message}`);
+                });
+            }
+        } 
     }
 
     handlePlay(){
-        document.getElementById("audioRecord").play()
+        recorder.play();
     }
 
     componentDidMount(){
         const clipboard = new ClipboardJS("#copyWord");
         this.props.resetMyIndex(parseInt(this.props.match.params.index))
 
-
-            if (navigator.mediaDevices === undefined) {
-            navigator.mediaDevices = {};
-          }
-          
-            if (navigator.mediaDevices.getUserMedia === undefined) {
-            navigator.mediaDevices.getUserMedia = function(constraints) {
-              // First get ahold of the legacy getUserMedia, if present
-              let getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-          
-              // Some browsers just don't implement it - return a rejected promise with an error
-              // to keep a consistent interface
-              if (!getUserMedia) {
-                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-              }
-          
-              // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-              return new Promise(function(resolve, reject) {
-                getUserMedia.call(navigator, constraints, resolve, reject);
-              });
-            }
-          }
-
-
-           navigator.mediaDevices.getUserMedia({ audio: true },
-            () => {
-              console.log('Permission Granted');
-              this.setState({ isBlocked: false });
-            },
-            () => {
-              console.log('Permission Denied');
-              this.setState({ isBlocked: true })
-            },
-          );
+        Recorder.getPermission().then(() => {
+            this.setState({
+                isBlocked:true
+            });
+        }, (error) => {
+            console.log(`${error.name} : ${error.message}`);
+        });
     }
 
-    
-
     render(){
-
-        const uid = this.props.auth.uid;
-        const userBooks = this.props.cards[this.props.auth.uid];
+        const { auth, cards, indexCard, getCurrentMyCard, ttsMyCard, textToSpeech_My, currentSide  } = this.props;
+        const uid = auth.uid;
+        const userBooks = cards[ uid ];
         const rotation = this.state.flipped ? 180 : 0;
 		const frontStyle = { ...this.state.flipStyle, transform: `rotateY(${rotation}deg)` }
         const backStyle = { ...this.state.flipStyle, transform: `rotateY(${180 + rotation}deg)` }
@@ -142,53 +106,43 @@ class FcMyCard extends React.Component{
                 })             
             });
             const starCardArr = allCardArr.filter( card => card.star === true)
-            const index = this.props.indexCard;
-            this.props.getCurrentMyCard( starCardArr[index] , starCardArr.length )
-      
-
+            const index = indexCard;
+            getCurrentMyCard( starCardArr[index] , starCardArr.length )
             if ( !starCardArr[index] ){return <Loading/> }
-    
-            if (this.props.ttsMyCard ===null ){
-                this.props.textToSpeech_My( starCardArr[index], this.props.currentSide ) 
+
+            if (ttsMyCard ===null ){
+                textToSpeech_My( starCardArr[index], currentSide ) 
             }   
-            
-
-            return(       
-                <Fragment>              
-                    <Header/>    
-                    <div className="FC_CardEach container">
-                    
-                        <div className="FC_cardEach card">
-                            <div className="frontSide" style={frontStyle}>
-                                <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this) } >volume_up</i> 
-                                <span>{ starCardArr[index].front }</span>
-                            </div>
-
-                            <div className="backSide" style={backStyle}>
-                                <i className="material-icons waves-effect blue-text" onClick={ this.handleTTS.bind(this) }>volume_up</i> 
-                                <span className="grey-text">{ starCardArr[ index ].back }</span>                               
-                            </div>
-                        
+            return(      
+                <div className="fcCardEach container">
+                    <Header/>
+                    <div className="card">
+                        <div className="frontSide" style={frontStyle}>
+                            <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) } >volume_up</i> 
+                            <span>{ starCardArr[index].front }</span>
                         </div>
-
-                        <span className="page">{ `${ this.props.indexCard+1 } / ${ starCardArr.length }` }</span>
-
-                        <div className="controlMenu">                          
+                        <div className="backSide" style={ backStyle }>
+                            <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this) }>volume_up</i> 
+                            <span>{ starCardArr[ index ].back }</span>                               
+                        </div>
+                    </div>
+                    <div className="cardControler">   
+                        <span className="page">{ `${ indexCard+1 } / ${ starCardArr.length }` }</span>                   
+                        <div className="controlMenu">
                             <i className="material-icons waves-effect"  onClick={ this.handleFlip.bind(this) }>flip_camera_android</i>                  
-                            <i className="material-icons waves-effect" id="copyWord" data-clipboard-text={ this.props.currentSide? starCardArr[index].front:starCardArr[index].back} >file_copy</i>                                          
+                            <i className="material-icons waves-effect" id="copyWord" data-clipboard-text={ currentSide? starCardArr[index].front:starCardArr[index].back} >file_copy</i>                                          
                             <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) } >
                                 <div className={`record ${ this.state.isRecording? "active":null}`}></div>         
                             </i>
-                            <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow
-                                <audio src={this.state.blobURL} id="audioRecord"/>
-                            </i>                                       
-                        </div>
+                            <i className="material-icons waves-effect" onClick={ this.handlePlay.bind(this) }>play_arrow</i>
+                        </div>                                       
                         <div className="pageControl">
-                            <i className="material-icons waves-effect " onClick={ this.handleLastCard.bind(this) }>navigate_before</i>
-                            <i className="material-icons waves-effect " id="nextPageBtn_F" onClick={ this.handleNextCard.bind(this) }>navigate_next</i>                       
-                        </div>                 
-                    </div>          
-                </Fragment>      
+                            <LastPageBtn handleLastPage = { this.handleLastCard.bind(this) } id="lastPageBtnMyCard"/>
+                            <NextPageBtn handleNextPage={ this.handleNextCard.bind(this) } id="nextPageBtnMyCard"/>                   
+                        </div>
+                    </div>
+                    <Footer/>                
+                </div>          
             )
         }
     }

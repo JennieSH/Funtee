@@ -103,7 +103,7 @@ class FcCard extends React.Component{
         }else{
             const currentBook = cards[ bookDocName ].cards;
             const index = indexCard;
-            getCurrentCard( currentBook[index] )
+            getCurrentCard( currentBook[index] );
             
             if (this.props.ttsCard === null ){
                 this.props.textToSpeech( currentBook[index] , this.props.currentSide );
