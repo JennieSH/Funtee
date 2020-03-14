@@ -15,13 +15,13 @@ Password : 123456
 ## Table of Content
 * [Technologies](#Technologies)
 * [Features and Demo](#Features-and-Demo)
+	* [RWD](#RWD)
     * [Writing Board](#Writing-Board)
     * [SVG Map](#SVG-Map)
     * [Sound Record](#Sound-Record)
 	* [Text to Speech](#Text-to-Speech)
 	* [Copy Text](#Copy-Text)
     * [Member System](#Member-System)
-    * [RWD](#RWD)
  
 ---
 ## Technologies
@@ -41,11 +41,14 @@ Password : 123456
 ---
 ## Features and Demo
 
+### RWD
+
+![RWD](https://i.imgur.com/6aUBKQm.png)
+
 ### Writing Board
 *  Use Canvas to create writing board
 
 ![Writing Board](https://i.imgur.com/JFDDsN7.gif)
-
 
 ### SVG Map 
 * Adopt SVG for selecting city of Taiwan
@@ -62,12 +65,10 @@ Password : 123456
 
 ![Text to Speech](https://i.imgur.com/t3Axj43.jpg)
 
-
 ### Copy Text
 * Provide one click copy text
 
 ![Copy Text](https://i.imgur.com/Nn02B2X.gif)
-
 
 ### Member System
 * Support Google, FB and E-mail Login
@@ -79,16 +80,6 @@ Password : 123456
 * Editing cards and deleting cards are available
 
 ![Flashcard](https://i.imgur.com/2BNAYXE.gif)
-
-
-### RWD
-
-![RWD](https://i.imgur.com/6aUBKQm.png)
-
-
-
-
-
 
 ---
 ## Next Version
