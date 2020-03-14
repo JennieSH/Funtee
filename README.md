@@ -68,7 +68,9 @@ Password : 123456
 ### Copy Text
 * Provide one click copy text
 
-![Copy Text](https://i.imgur.com/Nn02B2X.gif)
+![Copy Text](https://i.imgur.com/Z0jjYld.gif)
+
+
 
 ### Member System
 * Support Google, FB and E-mail Login
