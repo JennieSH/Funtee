@@ -11,9 +11,9 @@
 }
 /* content front */
 .tcSymobolContainer>.tcSymobol>.tcSymbolContent{
-    margin-top: 85px;
+    margin-top: 11vh;
     height: 330px;
-    width: 290px;
+    width: 280px;
     background-color: rgb(240, 237, 233);
     padding: 3px;
     display: flex;
@@ -121,7 +121,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         padding: 0 10vw;
-        margin-top: 10vw;
+        margin-top: 19vh;
     }
     .tcSymobolContainer>.tcSymobol>.tcSymbolContent{     
         width: 45%;
@@ -278,6 +278,9 @@
     margin-top: 15px;
     font-size:1rem;
 }
+.tcSymobolContainer>.tcSymobol{
+    margin-bottom: 3rem;
+}
 @media screen and (min-width:768px){  
     #lastPageBtnSymbol, #nextPageBtnSymbol{
         top:500px;
@@ -314,6 +317,11 @@
         left: calc(100% - 50px);
     }
 }
+@media screen and (min-width:1600px){
+    #lastPageBtnSymbol, #nextPageBtnSymbol{
+        top:400px;
+    }
+}
 @media screen and (min-width:1920px){   
     #lastPageBtnSymbol ,#nextPageBtnSymbol{
         top:500px;
@@ -323,3 +331,10 @@
         left: calc(100% - 60px);
     }   
 } 
+
+.tcSymobolContainer>.page-footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}

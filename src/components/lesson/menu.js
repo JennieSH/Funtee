@@ -13,9 +13,8 @@ class LessonMenu extends React.Component{
     }
   }
   handleRead(){  
-    // new Audio("data:audio/wav;base64," + this.props.lesson.lessonTTS ).play(); // text to speech
-    // this.props.readTTS(this.props.audio) // for data of firebase
-    new Audio( "data:audio/wav;base64," + this.props.audio).play(); // for data from firebase
+    new Audio("data:audio/wav;base64," + this.props.lesson.lessonTTS ).play(); // text to speech
+    // new Audio( "data:audio/wav;base64," + this.props.audio).play(); // for data from firebase
   }
   handleRecord(){
     if ( this.state.isBlocked ){

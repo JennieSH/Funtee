@@ -8,6 +8,7 @@ import Header from "../components/common/header";
 import WritingBoard from "../components/symbol/writingBoard";
 import TcSymbolContent from "../components/symbol/content";
 import Loading from "../components/common/loading";
+import Footer from "../components/common/footer";
 import "../css/tcSymbol.css";
 
 class TcSymbol extends React.Component{
@@ -62,7 +63,8 @@ class TcSymbol extends React.Component{
                         <TcSymbolContent symbol={ this.props.learningData.symbol }/>
                         <WritingBoard symbolZhuyin={ this.props.learningData.symbol.svg } index={ this.props.indexPage }/>
                         <div className="symbolPage">{ this.props.learningData? `${this.props.indexPage}/${ symbolArrLength }` : null }</div>                 
-                    </div>                  
+                    </div>  
+                    <Footer/>                
                 </div>
             )
         }

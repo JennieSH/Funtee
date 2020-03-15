@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
-import { lastPage, nextPage, initPage } from "../store/actions/lessonAction";
+import { lastPage, nextPage, initPage, initTTS, textToSpeech } from "../store/actions/lessonAction";
 import { LastPageBtn, NextPageBtn } from "../components/lesson/pageBtn";
 import Content from "../components/lesson/content";
 import Header from "../components/common/header";
@@ -23,10 +23,11 @@ class TcLessonTw extends React.Component{
         nextPage( indexPage, lessonLength, location.pathname, cityId )
     }
     componentDidMount(){
-        const { previousLessonTw, location, initPage } = this.props;
+        const { previousLessonTw, location, initPage, initTTS  } = this.props;
         if ( previousLessonTw !== location.state){
             initPage( location.pathname )
         }
+        initTTS();
     }
     render(){
         const { location, firestore, indexPage } = this.props;
@@ -42,6 +43,9 @@ class TcLessonTw extends React.Component{
             )
         }else{      
             const maxPage=lesson.length; 
+            if (this.props.lessonTTS === null  ){
+                this.props.textToSpeech( lesson[index].chinese )
+            }
             return(
                 <Fragment>
                     <Header/>
@@ -62,7 +66,8 @@ const mapStateToProps = ( state ) => {
     return{
         firestore: state.firestore,
         indexPage: state.lesson.indexPageLessonTw,
-        previousLessonTw: state.lesson.previousLessonTw
+        previousLessonTw: state.lesson.previousLessonTw,
+        lessonTTS: state.lesson.lessonTTS
     }
 }
 const mapDispatchToProps = ( dispatch ) => {
@@ -70,6 +75,8 @@ const mapDispatchToProps = ( dispatch ) => {
         lastPage:  ( indexPage, path ) => dispatch(lastPage( indexPage, path )),
         nextPage:  ( indexPage, maxPage, path, currentLesson ) => dispatch(nextPage( indexPage, maxPage, path, currentLesson )),
         initPage:  ( path ) => dispatch(initPage( path )),
+        initTTS: () => dispatch(initTTS()),
+        textToSpeech: (targetWord ) => dispatch(textToSpeech(targetWord))
     }
 }
 

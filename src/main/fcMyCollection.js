@@ -50,7 +50,7 @@ class FcMyCollection extends React.Component{
                                 </div>     
                                    
                             </div>                   
-                            <Link to="/spelling">
+                            {/* <Link to="/spelling">
                                 <div className="fcCard card">
                                     <div className="card-content spelling">                                
                                         <span className="card-title"> 
@@ -59,7 +59,7 @@ class FcMyCollection extends React.Component{
                                         </span>
                                     </div>                 
                                 </div>
-                            </Link>
+                            </Link> */}
                         </div>  
                         { cards }
                     </div>               

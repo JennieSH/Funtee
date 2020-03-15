@@ -14,8 +14,8 @@ class LessonMenuTw extends React.Component{
   }
 
   handleRead(){  
-    // new Audio("data:audio/wav;base64," + this.props.lesson.lessonTTS ).play(); // text to speech
-    new Audio( "data:audio/wav;base64," + this.props.audio ).play(); // data from firebase
+    new Audio("data:audio/wav;base64," + this.props.lesson.lessonTTS ).play(); // text to speech
+    // new Audio( "data:audio/wav;base64," + this.props.audio ).play(); // data from firebase
   }
   handleRecord(){
     if ( this.state.isBlocked ){

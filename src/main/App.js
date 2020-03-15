@@ -15,17 +15,15 @@ import FcCollection from "./fcCollection";
 import FcMyCollection from "./fcMyCollection";
 import FcCard from "./fcCard";
 import FcMyCard from "./fcMyCard";
-import FC_Spelling from "./fcSpelling";
+// import FC_Spelling from "./fcSpelling";
 import Account from "./account";
-import ResetPassword from "../components/common/auth/resetPassword";
+import ResetPassword from "../components/common/auth/resetPassword"; 
 // test 
 import AudioData from "../components/data/audioData";
 import SymbolData from "../components/data/symbolData";
 import Dictionary from "../components/common/dictionary"
 
-
 class App extends React.Component{
-
     render(){    
         return(              
             <BrowserRouter>  
@@ -46,7 +44,7 @@ class App extends React.Component{
                <Route path="/mycollection" component={ FcMyCollection }/>
                <Route path="/card/:title/:index/:key" component={ FcCard }/>       
                <Route path="/mycard/:index" component={ FcMyCard }/>    
-               <Route path="/spelling" component={ FC_Spelling }/>
+               {/* <Route path="/spelling" component={ FC_Spelling }/> */}
             </BrowserRouter>
         )    
     }

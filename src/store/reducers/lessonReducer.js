@@ -5,13 +5,10 @@ const initState = {
     previousLesson: null,
     previousLessonTw: null,
 
-    isRecording: false,
-    mp3: null,
-    isBlocked: false,
     currentCity:null,
     description:true,
 
-    unitTTS:null
+    lessonTTS:null
     
  };
 
@@ -21,20 +18,25 @@ const lessonReducer = ( state = initState, action ) =>{
         case "GET_TTS":
             return {
                 ...state,
-                unitTTS : action.tts
+                lessonTTS : action.tts
+            }
+        case "INIT_TTS_LESSON":
+            return {
+                ...state,
+                lessonTTS:null
             }
         // symbol page
         case "TO_LAST_PAGE_SYMBOL":
             return {
                 ...state,
                 indexPageSymbol: state.indexPageSymbol-1,
-                unitTTS : null
+                lessonTTS : null
             }
         case "TO_NEXT_PAGE_SYMBOL":
             return {
                 ...state,
                 indexPageSymbol: state.indexPageSymbol+1,
-                unitTTS : null
+                lessonTTS : null
             }
         // lesson page  
         case "INIT_PAGE_LESSON":
@@ -46,14 +48,14 @@ const lessonReducer = ( state = initState, action ) =>{
             return {
                 ...state,
                 indexPageLesson: state.indexPageLesson-1,
-                unitTTS : null
+                lessonTTS : null
             }
         case "TO_NEXT_PAGE_LESSON":
             return {
                 ...state,
                 indexPageLesson: state.indexPageLesson+1,
                 previousLesson: action.currentLesson,
-                unitTTS : null
+                lessonTTS : null
             }
         // lesson tw page  
         case "INIT_PAGE_LESSON_TW":
@@ -65,14 +67,14 @@ const lessonReducer = ( state = initState, action ) =>{
             return {
                 ...state,
                 indexPageLessonTw: state.indexPageLessonTw-1,       
-                unitTTS : null
+                lessonTTS : null
             }
         case "TO_NEXT_PAGE_LESSON_TW":
             return {
                 ...state,
                 indexPageLessonTw: state.indexPageLessonTw+1,
                 previousLessonTw: action.currentLesson,
-                unitTTS : null
+                lessonTTS : null
             }
         // map
         case "GET_CURRENT_CITY":
@@ -96,40 +98,7 @@ const lessonReducer = ( state = initState, action ) =>{
                 description:true
             }
         }
-        // tts
-        case "READ＿TTS":
-            return state;
-        // record -init
-        case "INIT_RECORD":
-            console.log('Permission Granted');
-            return {
-                ...state,
-                isBlocked: false
-            }
-        case "INIT_RECORD_ERR":
-            console.log('Permission Denied');
-            return{
-                ...state,
-                isBlocked: true 
-            }
-        // - start    
-        case "START_RECORD":
-            return{
-                ...state,
-                isRecording: true 
-            }
-        case "START_RECORD_ERR":
-            console.log( "START_RECORD_ERR"+action.err )
-            return state
-        // - stop
-        case "STOP_RECORD":
-            return{
-                ...state,
-                isRecording: false
-            }
-        case "STOP_RECORD_ERR":
-            console.log( "STOP_RECORD_ERR" + action.err )
-            return state
+
 
         default:
             return state;

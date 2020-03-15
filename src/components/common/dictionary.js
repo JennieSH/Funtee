@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { connect } from "react-redux";
 
 import {  firestoreConnect } from "react-redux-firebase"; // r
@@ -110,14 +110,11 @@ class  Dictionary extends React.Component{
 
     }
 
-    
-    
 
     render(){
        
-       
         return(
-            <>
+            <Fragment>
                 <button onClick={ this.getDic.bind(this)}>dic</button>
                 <button onClick={ this.getImg.bind(this)}>img</button>
                 <button onClick={ this.getAudio.bind(this)}>audio</button>
@@ -127,7 +124,7 @@ class  Dictionary extends React.Component{
                         
                 </form>  
                 {/* <button onClick={ this.send.bind(this)}>data</button> */}
-            </> 
+            </Fragment> 
         )
     }
 }

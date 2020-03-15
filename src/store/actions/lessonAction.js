@@ -1,5 +1,3 @@
-
-
 export const textToSpeech = ( targetWord ) =>{
     return( dispatch )=>{
        
@@ -30,7 +28,11 @@ export const textToSpeech = ( targetWord ) =>{
                  })     
     } 
 }
-
+export const initTTS = () => {
+    return ( dispatch ) =>{
+        dispatch({ type: "INIT_TTS_LESSON" }); 
+    }
+}
 export const lastPage = ( indexPage, path )=> {
     return ( dispatch) =>{    
         if( indexPage > 1 ){
