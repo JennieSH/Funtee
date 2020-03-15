@@ -39,7 +39,6 @@ class FcCategory extends React.Component{
         const { auth, bookData, createBookMenu, deleteBookMenu, editBookMenu, currentDeleteBook, currentEditBook } = this.props;
         const uid = auth.uid;
         const userBooks = bookData[ uid ];
-       
         if( !uid ){ return <Redirect to="/signin"/> }
 
         if ( userBooks === undefined){

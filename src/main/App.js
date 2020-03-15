@@ -15,13 +15,13 @@ import FcCollection from "./fcCollection";
 import FcMyCollection from "./fcMyCollection";
 import FcCard from "./fcCard";
 import FcMyCard from "./fcMyCard";
-// import FC_Spelling from "./fcSpelling";
+// import FC_Spelling from "./fcSpelling"; // next version
 import Account from "./account";
 import ResetPassword from "../components/common/auth/resetPassword"; 
-// test 
-import AudioData from "../components/data/audioData";
-import SymbolData from "../components/data/symbolData";
-import Dictionary from "../components/common/dictionary"
+// for test 
+// import AudioData from "../components/data/audioData";
+// import SymbolData from "../components/data/symbolData";
+// import Dictionary from "../components/common/dictionary"
 
 class App extends React.Component{
     render(){    
