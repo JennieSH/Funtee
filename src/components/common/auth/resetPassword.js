@@ -26,7 +26,6 @@ class ResetPassword extends React.Component{
     handlePasswordReset(){
         if (this.state.email === null){
             this.setState({
-                ...this.state,
                 blankemail:true
             })
         }else{
@@ -45,11 +44,11 @@ class ResetPassword extends React.Component{
                     <div className="input-field">                               
                         <label htmlFor="email">Email</label>      
                         <input onChange={ this.handleChange.bind(this) } type="email"id="email" />   
-                        <i className="material-icons grey-text" >mail_outline</i>
+                        <i className="material-icons" >mail_outline</i>
                     </div>
                     { passwordError ? <h4>{passwordError}</h4> : null }
                     { this.state.blankemail ? <h4>Please enter your email</h4> : null }
-                    <button onClick={ this.handlePasswordReset.bind(this) } className="waves-effect waves-light btn  brown lighten-1">Send Email</button>
+                    <button onClick={ this.handlePasswordReset.bind(this) } className="waves-effect waves-light btn">Send Email</button>
                     { passwordDialogBox? <PasswordDialog/> : null }
                 </div>
             </Fragment> 

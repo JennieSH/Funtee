@@ -123,10 +123,10 @@
     margin-left: 15px;
     text-align: end;
     font-size: 12px;
+    color: #bdbdbd;
 }
 
-.authForm .authSignBtn button{
-    
+.authForm .authSignBtn button{ 
     width: 100%;
     height: 50px;
     border-radius: 25px;
@@ -153,10 +153,10 @@
     justify-content: space-between;
     
 }
-.authMobile_Btn>span, .authMobile_Btn>p{
+.authMobileBtn>span, .authMobileBtn>p{
     display: none;
 }
-.authMobile_Btn>button{
+.authMobileBtn>button{
     width: 50vw;
     height: 7vh;
     letter-spacing: 1px;
@@ -164,16 +164,16 @@
     border: none;
     font-weight: bold;
 }
-.authMobile_Btn>button:hover{
+.authMobileBtn>button:hover{
     background-color:  #E6BEAB;
     color: #5d4037
 }
-.authMobile_Btn>button:active{
+.authMobileBtn>button:active{
     background-color:  #E6BEAB;
     color: #5d4037
 }
 .signInBottom{
-    background-color: #77695B;
+    background-color: rgb(122, 109, 96);
     color: #ffffff;
 }
 .signUpBottom{
@@ -193,7 +193,6 @@
     .authBg img{
         height: auto;
         width: 100%;
-  
     } 
     .auth{
         border-radius: 10px;
@@ -301,6 +300,7 @@
     position: absolute;
     right: -1rem;
     bottom: 10px;
+    color:#9e9e9e
 }
 
 .resetContainer>h4{
@@ -310,6 +310,7 @@
 }
 .resetContainer>button{
     margin-top: 1rem;
+    background-color: #8d6e63;
 }
 
 @media screen and (min-width:600px){
@@ -362,11 +363,14 @@
     flex-direction: column;
     justify-content: space-between;
 }   
-.resetContainer>.resetPassword.card span{
+.resetContainer>.resetPassword.card>span{
     text-align: center;
     color:#4e342e;
 }
-
+.resetContainer>.resetPassword.card>button{
+    background-color: #8d6e63;
+    margin: 0 50px;
+}
 
 @media screen and (min-width:600px){
     .resetContainer>.resetPassword.card{
@@ -445,7 +449,14 @@
     width: 120px;
     font-weight: bold;
 }
-
+.signOut.card>div button:nth-child(n+1){
+    color: white;
+    background-color: #8d6e63;
+}
+.signOut.card>div button:nth-child(n+2){
+    color: #8d6e63 ;
+    background-color: #f5f5f5;
+}
 
 @media screen and (min-width:600px){
     .signOut.card{

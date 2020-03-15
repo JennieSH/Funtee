@@ -15,8 +15,8 @@ class SignOutDialog extends React.Component{
                 <div className="signOut card">
                     <span>Do you want to sign out?</span> 
                     <div>
-                        <button onClick={ this.handleSignOut.bind(this) } className="waves-effect waves-light btn  brown lighten-1">YES</button>
-                        <button onClick={ this.handleCloseSignOutDialog.bind(this) } className="waves-effect waves-light btn  grey lighten-4  brown-text text-lighten-1">NO</button>
+                        <button onClick={ this.handleSignOut.bind(this) } className="waves-effect waves-light btn">YES</button>
+                        <button onClick={ this.handleCloseSignOutDialog.bind(this) } className="waves-effect waves-light btn">NO</button>
                     </div>
                 </div>
             </Fragment> 

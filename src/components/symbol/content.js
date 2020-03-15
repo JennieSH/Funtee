@@ -1,97 +1,71 @@
 import React from "react";
 import { connect } from "react-redux";
 import  { FrontSymbol, BackSymbol } from "../symbol/detail";
+import Recorder from 'js-audio-recorder';
 
-import MicRecorder from 'mic-recorder-to-mp3';
-const Mp3Recorder = new MicRecorder({ bitRate: 128 });
-class TC_SymbolContent extends React.Component{
+let recorder ;
+class TcSymbolContent extends React.Component{
 
   constructor(props){
     super(props)
     this.state = {
-      flipSymbol:true,
-      isRecording: false,
-      blobURL: "",
-      isBlocked: false,
+        flipSymbol:true,
+        isBlocked: false,
+        isRecording: false,
       }
     }
 
     handleRead( symbolSrc ){
       new Audio( symbolSrc ).play();
     } 
-    handlePlay( recordSrc ){
-      new Audio( recordSrc ).play();
+    handleRecord (){
+      if ( this.state.isBlocked ){
+        if( this.state.isRecording ){
+            recorder.stop();
+            this.setState({
+                isRecording:false
+            });
+        }else{
+            recorder = new Recorder({
+              ampleBits: 16,
+              sampleRate: 16000,
+              numChannels: 1,
+            })
+            recorder.start().then(() => {
+                this.setState({
+                    isRecording:true
+                });
+            }, (error) => {
+                console.log(`${error.name} : ${error.message}`);
+            });
+        }
+      } 
+    }
+    handlePlay(){
+      recorder.play();
     }
     handleFlipSymbol(){
       this.setState({
-        ...this.state,
         flipSymbol: !this.state.flipSymbol
       })
     }
-
     componentDidMount(){    
-
-      if (navigator.mediaDevices === undefined) {
-        navigator.mediaDevices = {};
-      }      
-      if (navigator.mediaDevices.getUserMedia === undefined) {
-        navigator.mediaDevices.getUserMedia = function(constraints) {
-        // First get ahold of the legacy getUserMedia, if present
-        let getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;         
-        // Some browsers just don't implement it - return a rejected promise with an error
-        // to keep a consistent interface
-        if (!getUserMedia){
-          return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-        }
-        // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-          return new Promise(function(resolve, reject) {
-          getUserMedia.call(navigator, constraints, resolve, reject);
-            });
-        }
-      }
-          
-      navigator.mediaDevices.getUserMedia({ audio: true },
-        () => {
-          console.log('Permission Granted');
-          this.setState({ isBlocked: false });
-        },
-        () => {
-          console.log('Permission Denied');
-          this.setState({ isBlocked: true })
-        },
-      );
-    }
-
-    handleRecord (){
-      if( this.state.isRecording === false){
-        if (this.state.isBlocked) {
-          console.log('Permission Denied');
-        }else {
-          Mp3Recorder
-          .start()
-          .then(() => {
-            this.setState({ isRecording: true });
-            console.log('Permission Granted');
-          }).catch((e) => console.error(e));
-        }
-      }else{
-        Mp3Recorder
-        .stop()
-        .getMp3()
-        .then(([buffer, blob]) => {
-          const blobURL = URL.createObjectURL(blob)
-          this.setState({ blobURL, isRecording: false });
-        }).catch((e) => console.log(e));
-      }
+      Recorder.getPermission().then(() => {
+        this.setState({
+            isBlocked:true
+        });
+      }, (error) => {
+          console.log(`${error.name} : ${error.message}`);
+      });
     }
 
   render(){
     const symbol = this.props.symbol;
     const index = this.props.indexPage-1;
     return(
-      <div className="TC_SymobolContent" id="TC_SymbolContent">      
+      <div className="tcSymbolContent" id="tcSymbolContent">      
         { this.state.flipSymbol? <FrontSymbol symbol={ symbol } index={ index }/> : <BackSymbol symbol={ symbol } index={ index }/> }
-        <div className="TC_SymobolMenu">
+        <div className="tcSymobolMenu">
           <i className="material-icons waves-effect" onClick={ this.handleRead.bind(this, symbol.audio[index]) }>volume_up</i>                                          
           <i className="socket waves-effect" onClick={ this.handleRecord.bind(this) }>
             <div className={`record ${ this.state.isRecording? "active" : null}` }></div>                      
@@ -106,9 +80,8 @@ class TC_SymbolContent extends React.Component{
 
 const mapStateToProps = ( state ) => {
     return{
-        indexPage: state.symbol.indexPage,
-        symbolAudio: state.symbol
+      indexPage: state.lesson.indexPageSymbol
     }
 }
 
-export default connect(mapStateToProps, null)( TC_SymbolContent);
+export default connect( mapStateToProps, null )( TcSymbolContent );

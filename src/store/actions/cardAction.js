@@ -1,13 +1,17 @@
 import firebase from "firebase/app";
 
-
+// Category - init
+export const initBookState = ()=>{
+    return ( dispatch ) => {
+        dispatch ({ type: "INIT_BOOK_STATE" })  
+    }
+}
 // Category - create
 export const toggleCreateBook = ()=>{
     return ( dispatch ) => {
         dispatch ({ type: "TOGGLE_CREATE_BOOK" })
     }
 }
-
 export const createBook = ( uid, data ) =>{ 
     return ( dispatch ) => {
 
@@ -43,13 +47,11 @@ export const toggleDeleteBookIcon = ()=>{
         dispatch ({ type: "TOGGLE_DELETE_BOOK_ICON" })
     }
 }
-
 export const toggleDeleteBook = ()=>{ // Menu
     return ( dispatch ) => {
         dispatch ({ type: "TOGGLE_DELETE_BOOK" })
     }
 }
-
 export const currentDeleteBook = ( uid, bookDocName, id )=>{
     return ( dispatch ) => {
         const  currentDeleteBook = {
@@ -57,7 +59,6 @@ export const currentDeleteBook = ( uid, bookDocName, id )=>{
             bookDocName : bookDocName,
             id: id
         }
-
         dispatch ({ type: "CURRENT_DELETE_BOOK", currentDeleteBook })
     }
 }
@@ -67,18 +68,13 @@ export const deleteBook = ( uid, bookDocName )=>{
         const firestore = firebase.firestore();
         const book = bookDocName.toString();
      
-        firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).delete().then(() => {
-
-            // window.location.href = "/flashcard"
-        })
+        firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).delete()
         .then(()=>{
             dispatch ({ type: "DELETE_BOOK" })
         })
         .catch((err)=>{
             dispatch ({ type: "DELETE_BOOK_ERR", err })
         })
-
-        
     }
 }
 // Category - edit
@@ -92,7 +88,6 @@ export const toggleEditBook = ()=>{ // Menu
         dispatch ({ type: "TOGGLE_EDIT_BOOK" })
     }
 }
-
 export const currentEditBook = ( uid, bookDocName, bookData )=>{
     return ( dispatch ) => {
         const  currentEditBook = {
@@ -100,43 +95,45 @@ export const currentEditBook = ( uid, bookDocName, bookData )=>{
             bookDocName : bookDocName,
             bookData: bookData
         }
-
         dispatch ({ type: "CURRENT_EDIT_BOOK", currentEditBook })
     }
 }
 export const editBook = ( uid, bookDocName, bookEditData )=>{
     return ( dispatch ) => {
-
-        const firestore = firebase.firestore();
-        const book = bookDocName.toString();
-        firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).update({
-            book: bookEditData
-        }).then(() => {
-            dispatch ({ type: "EDIT_BOOK" })
-        }).catch((err)=>{
-            dispatch ({ type: "EDIT_BOOK_ERR", err })
-        })
-        
+        if ( bookEditData.id === null || bookEditData.id.trim() === ""){
+            dispatch ({ type: "EDIT_BOOK_NAME_ERR" })   
+        }else{
+            const firestore = firebase.firestore();
+            const book = bookDocName.toString();
+            firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).update({
+                book: bookEditData
+            }).then(() => {
+                dispatch ({ type: "EDIT_BOOK" })
+            }).catch((err)=>{
+                dispatch ({ type: "EDIT_BOOK_ERR", err })
+            })
+        } 
     }
 }
 
-
-
-
-
+// Collection - init
+export const initCardState = ()=>{
+    return ( dispatch ) => {
+        dispatch ({ type: "INIT_CARD_STATE" })  
+    }
+}
 // Collection - create
 export const toggleCreateCard = ()=>{
     return ( dispatch ) => {
         dispatch ({ type: "TOGGLE_CREATE_CARD" })
     }
 }
-
 export const createCard = ( uid, bookDocName, cardArr, data ) =>{
     return ( dispatch ) => {
 
-        if ( data.front === null ||  data.front.trim() === ""){
+        if ( data.front === null ||  data.front.trim() === "" ){
             dispatch ({ type: "CREATE_CARD_FRONT_ERR" })
-        }else if( data.back === null ||  data.back.trim() === ""){
+        }else if( data.back === null ||  data.back.trim() === "" ){
             dispatch ({ type: "CREATE_CARD_BACK_ERR" })
         }else{
             const firestore = firebase.firestore();
@@ -164,13 +161,11 @@ export const toggleDeleteCardIcon = ()=>{
         dispatch ({ type: "TOGGLE_DELETE_CARD_ICON" })
     }
 }
-
 export const toggleDeleteCard = ()=>{
     return ( dispatch ) => {
         dispatch ({ type: "TOGGLE_DELETE_CARD" })
     }
 }
-
 export const currentDeleteCard = ( uid, bookDocName, card, cardArr, index )=>{
     return ( dispatch ) => {
 
@@ -190,9 +185,6 @@ export const deleteCard = ( currentDeleteCard )=>{
 
         const firestore = firebase.firestore();
         const bookDocName = currentDeleteCard.bookDocName.toString();
-        
-        // const newCardArr = JSON.parse(JSON.stringify(currentDeleteCard.previousCardArr));      
-        // newCardArr.splice( currentDeleteCard.index, 1 )
 
         currentDeleteCard.previousCardArr.splice( currentDeleteCard.index, 1 )
 
@@ -216,7 +208,6 @@ export const toggleEditCard = ()=>{ // Menu
         dispatch ({ type: "TOGGLE_EDIT_CARD" })
     }
 }
-
 export const currentEditCard = ( uid, bookDocName, card, cardArr, index )=>{
     return ( dispatch ) => {
         const  currentEditCard = {
@@ -231,28 +222,25 @@ export const currentEditCard = ( uid, bookDocName, card, cardArr, index )=>{
     }
 }
 export const editCard = ( uid, bookDocName, newCard, previousCardArr, index )=>{
-    return ( dispatch ) => {
-       
+    return ( dispatch ) => {     
         if ( newCard.front === null ||  newCard.front.trim() === ""){
             dispatch ({ type: "EDIT_CARD_FRONT_ERR" })         
         }else if( newCard.back === null ||  newCard.back.trim() === ""){
             dispatch ({ type: "EDIT_CARD_BACK_ERR" })
         }else{
-        const firestore = firebase.firestore();
-        const book = bookDocName.toString();
+            const firestore = firebase.firestore();
+            const book = bookDocName.toString();
 
-        previousCardArr[index]=newCard;
+            previousCardArr[index]=newCard;
 
-        firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).update({
-            cards : previousCardArr
-        }).then(() => {
-            dispatch ({ type: "EDIT_CARD" })
-        }).catch((err)=>{
-            dispatch ({ type: "EDIT_CARD_ERR", err })
-        })
-       
-        }
-        
+            firestore.collection( "Cards" ).doc( uid ).collection( uid ).doc( book ).update({
+                cards : previousCardArr
+            }).then(() => {
+                dispatch ({ type: "EDIT_CARD" })
+            }).catch((err)=>{
+                dispatch ({ type: "EDIT_CARD_ERR", err })
+            })
+        }  
     }
 }
 export const toggleStar = ( cardData, previousCardArr )=> {
@@ -272,8 +260,6 @@ export const toggleStar = ( cardData, previousCardArr )=> {
     }
 }
 
-
-
 // Card
 export const toggleCopyWord = () =>{
     return ( dispatch ) =>{
@@ -285,7 +271,6 @@ export const getCurrentCard = ( currentCard )=> {
         dispatch({ type: "GET_CURRENT_CARD", currentCard });         
     }
 }
-
 export const lastCard = ( indexCard )=> {
     return ( dispatch) =>{     
         if( indexCard > 0 ){
@@ -295,7 +280,6 @@ export const lastCard = ( indexCard )=> {
         }              
     }
 }
-
 export const nextCard = ( indexCard, maxCard ) => {
     return ( dispatch) =>{
         if( indexCard < maxCard-1 ){
@@ -303,6 +287,14 @@ export const nextCard = ( indexCard, maxCard ) => {
         }else{
             dispatch({ type: "TO_NEXT_CARD_ERR" });
         }    
+    }
+}
+
+
+
+export const initTTS = () => {
+    return ( dispatch) =>{
+        dispatch({ type: "INIT_TTS" }); 
     }
 }
 export const textToSpeech = ( targetWords, targetSide ) =>{
@@ -356,7 +348,6 @@ export const resetIndex = ( index ) =>{
         dispatch({ type: "RESET_INDEX" , index })
     }
 }
-
 export const lastMyCard = ( indexCard )=> {
     return ( dispatch) =>{     
         if( indexCard > 0 ){
@@ -366,7 +357,6 @@ export const lastMyCard = ( indexCard )=> {
         }              
     }
 }
-
 export const nextMyCard = ( indexCard, maxCard ) => {
     return ( dispatch) =>{
         if( indexCard < maxCard-1 ){
@@ -376,10 +366,7 @@ export const nextMyCard = ( indexCard, maxCard ) => {
         }    
     }
 }
-
-
-
-export const textToSpeech_My = ( targetWords, targetSide ) =>{
+export const textToSpeechMy = ( targetWords, targetSide ) =>{
    return( dispatch )=>{
         let targetWord;
         if( targetSide?  targetWord = targetWords.front : targetWord = targetWords.back){ // true -front 

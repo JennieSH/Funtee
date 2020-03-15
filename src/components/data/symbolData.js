@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import firebase from "firebase/app";
 import { compose } from "redux";
 import { connect } from "react-redux";
@@ -164,12 +164,12 @@ class SymobolData extends React.Component{
         //     return <div>nothing</div>
         // }
         return(
-            <>
-            <span>nothing</span>
+            <Fragment>
+          
                 {/* <input type="file" id="files" name="files" />
                 <br/> */}
                 {/* <textarea id="base64" rows="5" ></textarea> */}
-            </>
+            </Fragment>
         )
     }
 }   

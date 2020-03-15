@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import {  signUp } from "../../../store/actions/authActions";
-
+import { signUp } from "../../../store/actions/authActions";
 
 class SignUp extends React.Component{
     constructor(props){
@@ -24,7 +23,6 @@ class SignUp extends React.Component{
             [e.currentTarget.name]:e.currentTarget.value
         })
     }
-
     handleSubmit(e){
         e.preventDefault();
         
@@ -36,7 +34,6 @@ class SignUp extends React.Component{
             this.setState({
                 blankName : false,
                 blankEmail : true
-
             })
         }else if ( this.state.password === null){
             this.setState({
@@ -84,10 +81,8 @@ class SignUp extends React.Component{
                         </div>
                        { authError ? <h4>{authError}</h4> : null }
                        <div className="authSignBtn">         
-                            <button className="waves-effect"> SIGN UP</button>
-                           
-                        </div>
-                   
+                            <button className="waves-effect"> SIGN UP</button>       
+                        </div>    
                     </form>
             </Fragment> 
         )

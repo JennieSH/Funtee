@@ -37,7 +37,369 @@
     left: -50vw;
 }
 .auth .authCover{
-    justify-content: center;
+    justify-content: center;.fcCardEach.container{
+        margin-top: 13vh;
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+    }
+    /* card */
+    .fcCardEach>.card{
+        width: 38vh;
+        position: relative;
+        perspective: 1000px;
+        box-shadow: none;
+    }
+    .fcCardEach .frontSide,.fcCardEach .backSide {
+        height: 53vh;
+        width: 100%;  
+        position: absolute;   
+        top:0;
+        left: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        overflow: hidden;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+                    0 3px 1px -2px rgba(0,0,0,0.12),
+                    0 1px 5px 0 rgba(0,0,0,0.2);
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .fcCardEach .frontSide>i, .fcCardEach .backSide>i{
+       font-size: 2.5rem;
+       position: absolute;
+       top: 0.5rem;
+       right: 0.5rem;
+       padding: 0.5rem;
+       border-radius: 50%;
+       cursor: pointer;
+    }
+    .fcCardEach .frontSide>span,.fcCardEach .backSide>span{
+        font-size: 5rem;
+        padding-bottom: 1rem;
+        display: flex;
+    }
+    @media screen and (min-width:768px){
+        .fcCardEach.container{
+            margin-top: 14vh;
+        }
+        /* .fcCardEach>.card{
+            width: 36vh;  
+        }
+        .fcCardEach .frontSide,.fcCardEach .backSide {
+            height: 48vh;
+        } */
+    }
+    @media screen and (min-width:1024px){
+        .fcCardEach.container{
+            margin-top: 12vh;
+        }
+        .fcCardEach>.card{
+            width: 36vh;  
+        }
+        .fcCardEach .frontSide,.fcCardEach .backSide {
+            height: 48vh;
+        }
+        .fcCardEach .frontSide>i, .fcCardEach .backSide>i{
+            font-size: 3rem;
+        }
+        .fcCardEach .frontSide>span,.fcCardEach .backSide>span{
+            font-size: 6rem;
+            padding-bottom: 2rem;
+        }
+    }
+    @media screen and (min-width:1025px){
+        .fcCardEach.container{
+            margin-top: 17vh;
+            flex-direction: row;
+            align-items: flex-start;
+            /* position: relative; */
+        }
+        .fcCardEach>.card{
+            /* width: 300px; */
+        }
+        .fcCardEach .frontSide,.fcCardEach .backSide {
+            /* height: 400px;
+            width: 300px; */
+            left: -25vh;
+        }
+        .fcCardEach .frontSide>i, .fcCardEach .backSide>i{
+            /* font-size: 35px; */
+            /* top:2px;
+            right: 2px; */
+        }
+        .fcCardEach .frontSide>span,.fcCardEach .backSide>span{
+            font-size: 4.5rem;
+        }
+    }
+    @media screen and (min-width:1280px){
+        .fcCardEach.container{
+            margin-top: 20vh;
+            flex-direction: row;
+            align-items: flex-start;
+            position: relative;
+            right: 10vh;
+        }
+        .fcCardEach>.card{
+            width: 300px;
+        }
+        .fcCardEach .frontSide,.fcCardEach .backSide {
+            /* height: 400px;
+            width: 300px;
+            left: -240px; */
+            height: 65vh;
+            width: 50vh;
+        }
+        .fcCardEach .frontSide>i, .fcCardEach .backSide>i{
+            font-size: 2rem;
+            right: 0.2rem;
+            top: 0.2rem;
+        }
+        .fcCardEach .frontSide>span,.fcCardEach .backSide>span{
+            font-size: 4rem;
+        } 
+    }
+    @media screen and (min-width:1920px){
+        .fcCardEach.container{
+            width: 45%;
+            margin-top: 250px;
+        }
+        .fcCardEach .frontSide,.fcCardEach .backSide {
+            height: 480px;
+            width: 360px;
+            left: -340px;
+        }
+    }
+    /* page */
+    .fcCardEach>.page{
+        margin-top: 54vh;
+        font-size: 1.5rem;
+        color: #666666b7;
+    }
+    
+    /* menu */
+    .fcCardEach>.controlMenu{
+        margin-top: 3vh;
+        /* width: 270px; */
+        width: 35vh;
+        display: flex;
+        justify-content: space-between;
+    }
+    .fcCardEach>.controlMenu>i{
+        font-size: 2.2rem;
+        border-radius: 50%;
+        padding: 0.2rem;
+    }
+    
+    .fcCardEach>.controlMenu .socket{
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 100%;
+        border: 2px solid #eceaea;
+        position: relative;  
+    }
+    .fcCardEach>.controlMenu .socket .record{
+        width: 90%;
+        height: 90%;
+        background: red;
+        border-radius: 100%;
+        position: absolute;
+        left: 1.4px;
+        margin: 0 auto;
+        top: 1.4px;   
+        transition: all .3s;
+        transition-timing-function: cubic-bezier(.05,.58,.32,1.35);
+        -webkit-transition: all .3s;
+        -webkit-transition-timing-function: cubic-bezier(.05,.58,.32,1.35); 
+        cursor: pointer
+    }
+    .fcCardEach>.controlMenu .socket .record.active{
+        width: 60%;
+        height: 60%;
+        border-radius: 4px;
+        top: 6px;
+        left: 6.4px;
+    }
+    
+    .fcCardEach>.pageControl{
+        margin-top: 4vh;
+        width: 35vh;
+        /* width: 270px; */
+        display: flex;
+        justify-content: space-around;
+    }
+    .fcCardEach>.pageControl>i{
+        font-size: 2.3rem;
+        border-radius: 50%;
+        padding: 0.3rem;
+        color: white;
+        background-color: rgb(218, 219, 219);
+    }
+    
+    @media screen and (min-width:768px){
+    
+        .fcCardEach>.controlMenu .socket .record{
+            top:1.5px;
+            right: 0px;
+        }
+        .fcCardEach>.controlMenu .socket .record.active{
+            left: 0px;
+        }
+       
+    }
+    
+    @media screen and (min-width:1024px){
+        
+        .fcCardEach>.controlMenu{
+            width: 31vh;
+        }
+    
+       .fcCardEach>.controlMenu .socket{
+            width: 3.5rem;
+            height: 3.5rem;   
+            
+        }
+        .fcCardEach>.controlMenu .socket .record{
+            top:2px;
+            right: 1px;
+        }
+        .fcCardEach>.controlMenu .socket .record.active{
+            top: 10px;
+           
+        }
+        .fcCardEach>.controlMenu>i{
+            font-size: 3rem;
+            
+        }
+        .fcCardEach>.pageControl{
+            width: 30vh;
+        }
+        .fcCardEach>.pageControl>i{
+            font-size: 3.5rem;
+        }
+        .fcCardEach>.page{
+            margin-top: 50vh;
+            font-size: 2rem;
+        }
+        
+    }
+    @media screen and (min-width:1025px){
+    
+            
+        .fcCardEach>.controlMenu{
+            margin-top: 0;
+            width: 40vh;
+            position: absolute;
+            right: 20vh;
+            top: 40vh;
+        }
+    
+       .fcCardEach>.controlMenu .socket{
+            width: 2.3rem;
+            height: 2.3rem;  
+            bottom: 0;
+           
+        }
+        .fcCardEach>.controlMenu .socket .record{
+            top: 2px;
+        }
+        .fcCardEach>.controlMenu .socket .record.active{
+            top: 6px;
+            left: 1px;
+           
+        }
+        .fcCardEach>.controlMenu>i{
+            font-size: 2rem;
+            
+        }
+    
+        .fcCardEach>.pageControl{
+            margin-top: 0px;
+            width: 40vh;
+            position: absolute;
+            top: 28vh;
+            right: 20vh;
+        }
+        .fcCardEach>.pageControl>i{
+            font-size: 2.3rem;
+        }
+        .fcCardEach>.page{
+            position: absolute;
+            top:15vh;
+            right: 36vh;
+            margin-top: 0;
+            font-size: 2rem;
+        }
+       
+      
+     
+    }
+    
+    @media screen and (min-width:1280px){
+    
+        .fcCardEach>.controlMenu{
+            margin-top: 0px;
+            width: 40%;
+            position: absolute;
+            right: -1%;
+            top: 40vh;
+        }
+    
+       /* .fcCardEach>.controlMenu .socket{
+            width: 2.8rem;
+            height: 2.8rem;  
+            bottom: 0;
+           
+        } */
+        /* .fcCardEach>.controlMenu .socket .record{
+            top: 2px;
+        }
+        .fcCardEach>.controlMenu .socket .record.active{
+            top: 8px;
+            left: 1px;
+            
+        } */
+        /* .fcCardEach>.controlMenu>i{
+            font-size: 2rem;
+            
+        } */
+    
+        .fcCardEach>.pageControl{
+            margin-top: 0px;
+            width: 50%;
+            position: absolute;
+            top: 28vh;
+            right: -5vh;
+        }
+        /* .fcCardEach>.pageControl>i{
+            font-size: 2rem;
+        } */
+        .fcCardEach>.page{
+            position: absolute;
+            top:15vh;
+            right: 18%;
+            margin-top: 0;
+            font-size: 2rem;
+        }
+      
+     
+    }
+    
+    @media screen and (min-width:1920px){
+        .fcCardEach>.controlMenu{
+            top: 380px;
+        }
+        .fcCardEach>.pageControl{     
+            top: 270px;  
+        }
+        .fcCardEach>.page{ 
+            top:160px;       
+        }
+    } 
+    
     align-items: center;
     height: 100%;
     width: 100%;

@@ -1,0 +1,265 @@
+.lessonCategoryTw{
+    margin-top: 19vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.lessonCategoryTw>.titleTw{
+    font-size: 32px;
+    position: absolute;
+    top:-7vh;
+    z-index: -1;
+    font-weight: bold;
+    color: #58524b;
+}
+.lessonCategoryTw>.mapTw{
+    height: 650px;
+    width: 340px;
+    background-color: rgba(158, 134, 88, 0);
+    overflow: hidden;
+    cursor: url(../imgs/map.png) 12 42, auto;
+}
+.land{
+    fill: #CCCCCC;
+    fill-opacity: 1;
+    stroke:white;
+    stroke-opacity: 1;
+    stroke-width:0.5;
+}
+.land.active{
+    fill: #746656;
+}
+@media screen and (min-width:768px){
+    .lessonCategoryTw{
+        margin-top: 13vh;
+    }
+    .lessonCategoryTw>.mapTw{
+      height: 720px;
+      width: 400px; 
+    }
+    .lessonCategoryTw>.titleTw{
+        font-size: 2.5rem;
+        letter-spacing: 0.5px;
+        right:  20rem;
+        top:2vh
+    }
+}
+@media screen and (min-width:800px){
+    .lessonCategoryTw>.titleTw{
+        right:  30rem;
+    }
+}
+@media screen and (min-width:1024px){
+    .lessonCategoryTw>.titleTw{
+        font-size: 3.3rem;
+        right:  37rem;
+    }
+    .lessonCategoryTw>.mapTw{
+        height: 1000px;
+        width: 550px;
+    }  
+}
+@media screen and (min-width:1025px){
+    .lessonCategoryTw{
+        margin-top: 11vh;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    .lessonCategoryTw>.titleTw{
+        position: relative;
+        top:15vh;
+        right: 2rem;
+        font-size: 2rem;
+        font-weight: normal;
+    }
+    .lessonCategoryTw>.mapTw{
+       margin-top: 2.8rem;
+       position: absolute;
+       height: 470px;
+       width: 265px;
+       left: 5rem;
+    }
+}
+@media screen and (min-width:1280px){
+    .lessonCategoryTw>.titleTw{
+        right: 2.5rem;
+        top:12.5vh
+    }
+}
+@media screen and (min-width:1366px){
+    .lessonCategoryTw>.titleTw{
+        top:12vh;
+        font-size: 2.3rem;
+    }
+    .lessonCategoryTw .mapTw{
+       height: 510px;
+       width: 280px;
+    }
+}
+@media screen and (min-width:1600px){
+    .lessonCategoryTw>.titleTw{
+        top:11vh;
+        font-size: 2.5rem;
+    }
+    .lessonCategoryTw>.mapTw{
+       height: 630px;
+       width: 350px;
+    }
+}
+@media screen and (min-width:1920px){
+    .lessonCategoryTw>.titleTw{
+        top:17vh;
+        font-size: 3.1rem;
+    }
+    .lessonCategoryTw>.mapTw{
+       height: 845px;
+       width: 470px;
+       margin-top: 1.5rem;
+    }
+}
+/* card */
+.lessonCategoryTw>.cardTw{
+    width: 300px;
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+}
+.lessonCategoryTw>.cardTw>.card-content{
+    padding: 2rem 2rem 1rem 2rem;
+   
+}
+.lessonCategoryTw .cardTw>.card-content>.card-title{
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.3rem;
+    
+}
+.lessonCategoryTw>.cardTw>.card-content>.card-action{
+    padding: 10px 45px 10px 25px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+.lessonCategoryTw>.cardTw>.card-content>.card-action>.back{
+    color: #2196f3;
+}
+.lessonCategoryTw>.cardTw>.card-content>.card-action>.start{
+    color: #ff9800;
+}
+@media screen and (min-width:768px){
+    .lessonCategoryTw>.cardTw{
+        width: 450px;
+    }
+    .lessonCategoryTw>.cardTw>.card-content>.card-title{
+        font-size: 1.8rem;
+        padding-bottom: 0.6rem;
+    }
+    .lessonCategoryTw>.cardTw>.card-content>.card-action{
+        font-size: 1.3rem;
+        padding: 10px 75px 10px 50px;
+    }
+}
+@media screen and (min-width:800px){
+    .lessonCategoryTw>.cardTw{
+        width: 400px;
+    }
+    .lessonCategoryTw>.cardTw>.card-content>.card-title{
+        font-size: 1.7rem;
+    }
+}
+@media screen and (min-width:1024px){
+    .lessonCategoryTw>.cardTw{
+        width: 550px;
+    }
+    .lessonCategoryTw>.cardTw>.card-content>.card-title{
+        font-size: 2.5rem;
+        padding-bottom: 1rem;
+    }
+    .lessonCategoryTw>.cardTw>.card-content>.card-action{
+        font-size: 2rem;
+        padding: 20px 90px 10px 45px;
+    }
+}
+@media screen and (min-width:1025px){
+    .lessonCategoryTw>.cardTw{
+        position: relative;
+        width: 350px;
+        top: 15vh;
+        right: 2vh;
+    }
+    .lessonCategoryTw>.cardTw>.card-content{
+        padding: 1rem;
+    }
+    .lessonCategoryTw>.cardTw>.card-content>.card-title{
+        font-size: 1.3rem;
+        padding-bottom: 0px;
+    }
+    .lessonCategoryTw>.cardTw>.card-content>.card-action{
+        font-size: 1.2rem;
+        padding: 1rem 0 0 0;
+        justify-content: center;
+    }
+    .lessonCategoryTw>.cardTw>.card-content>.card-action>a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating){
+        margin-right: 0;
+    }
+    .lessonCategoryTw>.cardTw>.card-content>.card-action>.back{
+        display: none;
+    }
+    .lessonCategoryTw>.cardTw>.card-image{
+        height: 230px;
+        overflow: hidden;
+        display: flex;
+    }
+    .lessonCategoryTw>.cardTw>.card-image>img{
+        position: relative;    
+        justify-content: flex-start;
+    }
+}
+@media screen and (min-width:1280px){
+    .lessonCategoryTw>.cardTw{
+        width: 365px;
+        top: 15vh;
+        right:4vh;
+    }
+    .lessonCategoryTw>.cardTw>.card-image{
+        height: 255px;
+    }
+}
+@media screen and (min-width:1366px){
+    .lessonCategoryTw>.cardTw{
+        right: 6vh;
+    }
+}
+@media screen and (min-width:1600px){
+    .lessonCategoryTw>.cardTw{
+        width: 410px;
+        right: 4vh;
+    }
+    .lessonCategoryTw>.cardTw>.card-image{
+        height: 275px;
+    }
+}
+@media screen and (min-width:1920px){
+    .lessonCategoryTw>.cardTw{
+        position: relative;
+        width: 570px;
+        top: 20vh;
+        right: 1vh;
+    }
+    .lessonCategoryTw>.cardTw>.card-content{
+        padding: 2rem
+    }
+    .lessonCategoryTw>.cardTw>.card-content>.card-title{
+        font-size: 2rem;
+        padding-bottom: 1rem;
+    }
+    .lessonCategoryTw>.cardTw>.card-content>.card-action{
+        font-size: 1.8rem;
+        padding: 0.5rem 0 0 0;
+    }
+    .lessonCategoryTw>.cardTw>.card-image{    
+        height: 380px;
+    } 
+}

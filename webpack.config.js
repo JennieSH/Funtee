@@ -10,9 +10,9 @@ module.exports = {
     publicPath:"/"    
   },
   devServer: {
-         contentBase: './dist',
-         historyApiFallback: true
-       },
+        contentBase: './dist',
+        historyApiFallback: true
+  },
   module: {
     rules: [
       {

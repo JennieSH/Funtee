@@ -1,0 +1,133 @@
+.tcCategoryContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+  }
+  
+  .tcCategoryContainer>div{
+      height: 370px;
+      width: 300px;
+      background-color: rgb(250, 248, 248);
+      margin-bottom: 40px;
+      border-radius: 5px;
+      box-shadow: 1px 2px 2px rgba(0,0,0,.15);
+      padding: 1rem;
+  }
+  
+  
+  .tcCategoryContainer>div>.tcCategoryBox{
+      width: 100%;
+      height: 100%;
+      border: 2px solid #6d6d6d;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+  }
+  
+  .tcCategoryContainer>div>.tcCategoryBox>.img{
+      height: 120px;
+      width: 120px;
+      border-radius: 50%;
+      margin: 50px 0 30px 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .tcCategoryContainer>div>.tcCategoryBox>.img img{
+      height: 80%;
+      position: relative;
+  }
+  
+  .tcCategoryContainer>div>.tcCategoryBox>span{
+      font-size: 20px;
+      text-align: center;
+      letter-spacing: 1px;
+      line-height: 32px;
+      font-weight: bold;
+  }
+  
+  .tcCategoryContainer>div>.tcCategoryBox>a>button{
+      margin-top: 20px;
+      height: 38px;
+      width: 150px;
+      color: white;
+      border-radius: 30px;
+      background: #BBD2C5;
+      background: -webkit-linear-gradient(to right, #292E49, #536976, rgb(76, 87, 81));
+      background: linear-gradient(to right, rgb(51, 57, 87), #536976, rgb(76, 85, 80));
+      border: none;
+      letter-spacing: 1px;
+      cursor: pointer;
+  }
+  
+  
+  /* .tcCategoryContainer>div>.tcCategoryBox>a>button:hover{
+      width: 180px;
+      transition: all .6s ease-in-out;
+    }
+   */
+   .tcCategoryContainer>div>.tcCategoryBox>a{
+      text-decoration: none;
+      color: #ffffff;
+  }
+  @media screen and (min-width:768px){
+    .tcCategoryContainer>div{
+        width: 55%;
+    }
+    
+  }
+  @media screen and (min-width:1024px){
+    .tcCategoryContainer>div{
+          width: 45%;
+    }  
+  }
+  
+  @media screen and (min-width:1280px){
+  
+    .tcCategoryContainer{
+          margin-top: 130px;
+          flex-direction: row;
+      }
+    .tcCategoryContainer>div{
+          width: 300px;
+          margin: 0 25px 20px 25px;
+          height: 380px;
+          transition: all .6s ease-in-out;
+
+      }
+    .tcCategoryContainer>div:hover{
+          width: 28%;
+          transition: all .6s ease-in-out;
+      }
+    .tcCategoryBox{
+          width: 300px;
+          height: 380px;
+      }
+  }
+  
+  @media screen and (min-width:1920px){
+    .tcCategoryContainer{
+          margin-top: 180px;
+      }
+    .tcCategoryContainer>div{
+        margin: 3vw;
+    }
+    .tcCategoryContainer>div:hover{
+        width: 20%;
+    }
+
+  }
+/* footer */
+.tcCategoryContainer>.page-footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}

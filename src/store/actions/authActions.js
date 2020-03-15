@@ -1,7 +1,5 @@
 import firebase from "firebase/app";
 
-
-
 export const signIn = ( credentials ) => {
     return ( dispatch) =>{
         // const firebase = getFirebase(); // no longer available 
@@ -16,7 +14,7 @@ export const signIn = ( credentials ) => {
     }
 }
 
-export const signIn_Facebook = () => {
+export const signInFacebook = () => {
     return ( dispatch) =>{
         const providerF = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithRedirect(providerF).then((result)=>{
@@ -30,7 +28,7 @@ export const signIn_Facebook = () => {
     }
 }
 
-export const signIn_Google = () => {
+export const signInGoogle = () => {
     return ( dispatch) =>{
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithRedirect(provider).then((result)=>{
@@ -82,7 +80,6 @@ export const toggleSignOut = () =>{
 }
 
 // reset password
-
 export const resetPassword = ( emailAddress ) =>{
     return(( dispatch, getState)=>{
         firebase.auth().sendPasswordResetEmail( emailAddress )

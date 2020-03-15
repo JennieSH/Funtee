@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import SignOutDialog from "../common/auth/signOutDialog";
 import { toggleSignOut } from "../../store/actions/authActions";
+import SignOutDialog from "../common/auth/signOutDialog";
 import "../../css/common.css";
 import "materialize-css";
 class Header extends React.Component{
@@ -14,7 +14,6 @@ class Header extends React.Component{
             this.props.history.push("/signin");
         }
     }
-
     handleSignOut(){
         this.props.toggleSignOut();
     }
@@ -50,12 +49,12 @@ class Header extends React.Component{
                     <div className="container">
                         <Link to="/" className="brand-logo">FUNTEE</Link>
 
-                        <input type="checkbox" id="menu_control"/>
-                        <label htmlFor="menu_control" className="menuBtn">
+                        <input type="checkbox" id="menuControl"/>
+                        <label htmlFor="menuControl" className="menuBtn">
                             <div className="lineContainer">
-                                <span className="line line-first"></span>
-                                <span className="line line-second"></span>
-                                <span className="line line-third"></span>
+                                <span className="line lineFirst"></span>
+                                <span className="line lineSecond"></span>
+                                <span className="line lineThird"></span>
                             </div>  
                         </label>
 
@@ -64,23 +63,23 @@ class Header extends React.Component{
                             <li><Link to="/flashcard" onClick={this.handlePath.bind(this)}>Flash Card</Link></li>
                             <li>{ authSignAction }</li>
                             {/* <li><a>Language</a></li> */}
-                            { auth.uid ?<li><Link to="/" className="web-info btn btn-floating "><span className="white-text ">{ fabName }</span></Link></li> : null}
+                            { auth.uid ?<li><Link to="/" className="webInfo btn btn-floating "><span>{ fabName }</span></Link></li> : null}
                         </ul>     
 
-                        <ul className="sidenav" id="mobile-menu">
+                        <ul className="sidenav" id="mobileMenu">
                             <li className="userName">
                                 <Link to="/" className="btn btn-floating"><span className="fabName">{ fabName }</span></Link>
-                                <span className="brown-text text-darken-3">{name}</span>
+                                <span>{name}</span>
                             </li>             
                             <li>
-                                <Link to="/topics"><i className=" material-icons" >translate</i>
+                                <Link to="/topics"><i className="material-icons" >translate</i>
                                     Learning Chinese
                                 </Link>
                             </li>                            
                             <li>
-                                <Link to="/flashcard" onClick={this.handlePath.bind(this)} ><i className="material-icons" >style</i>
+                                <Link to="/flashcard" onClick={this.handlePath.bind(this)} ><i className="material-icons">style</i>
                                     Flash Card
-                                    { auth.uid? null : <span className="badge grey lighten-2  grey-text ">member only</span> }
+                                    { auth.uid? null : <span className="badge">member only</span> }
                                 </Link>
                             </li>                                                       
                             <li>{ authSignAction }</li>                        

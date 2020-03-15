@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { signIn, signIn_Facebook, signIn_Google } from "../../../store/actions/authActions";
+import { signIn, signInFacebook, signInGoogle } from "../../../store/actions/authActions";
 import facebook from "../../../imgs/facebook.png";
 import google from "../../../imgs/google.png";
 
@@ -10,8 +10,8 @@ class SignIn extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            email:null,
-            password:null,
+            email:"test@funtee.com",
+            password:"123456",
             blankEmail:false,
             blankPassword:false
         }
@@ -41,12 +41,12 @@ class SignIn extends React.Component{
             this.props.signIn(this.state)            
         }
     }
-    FB_Redirect(){
-        this.props.signIn_Facebook()
+    FacebookRedirect(){
+        this.props.signInFacebook()
     }
 
-    GO_Redirect(){
-        this.props.signIn_Google()
+    GoogleRedirect(){
+        this.props.signInGoogle()
     }
 
     render(){
@@ -55,14 +55,14 @@ class SignIn extends React.Component{
             <Fragment>
                 <form onSubmit={ this.handleSubmit.bind(this) } className="authForm"> 
                     <div className="input-field">
-                        <label htmlFor="email">Email</label>
-                        <input onChange={ this.handleChange.bind(this) } type="email"id="email" name="email"/>
+                        <label htmlFor="email"></label>
+                        <input onChange={ this.handleChange.bind(this) } type="email" id="" name="email" defaultValue="test@funtee.com"/>
                         { this.state.blankEmail? <h4>Please enter your Email</h4> : null }
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="password">Password</label>
-                        <input onChange={ this.handleChange.bind(this) } type="password" id="password" name="password"/>
+                        <label htmlFor="password"></label>
+                        <input onChange={ this.handleChange.bind(this) } type="password" id="" name="password" defaultValue="123456"/>
                         { this.state.blankPassword? <h4>Please enter your password</h4> : null }
                     </div>
 
@@ -73,9 +73,9 @@ class SignIn extends React.Component{
                     </div>
 
                     <div className="authMethod">                
-                        <img src={ google } onClick={ this.GO_Redirect.bind(this) }/>
-                        <img src={ facebook }  onClick={ this.FB_Redirect.bind(this) }/>     
-                        <Link to="/resetpassword"><h5 className="right-align grey-text">FORGOT  PASSWORD ></h5></Link>               
+                        <img src={ google } onClick={ this.GoogleRedirect.bind(this) }/>
+                        <img src={ facebook }  onClick={ this.FacebookRedirect.bind(this) }/>     
+                        <Link to="/resetpassword"><h5 className="right-align">FORGOT  PASSWORD ></h5></Link>               
                     </div>
                 </form>
             </Fragment> 
@@ -93,8 +93,8 @@ const mapStateToProps = ( state ) => {
 const mapDispatchToProps = ( dispatch ) => {
     return{
         signIn : (creds) => dispatch(signIn(creds)),
-        signIn_Facebook : () => dispatch(signIn_Facebook()),
-        signIn_Google : () =>dispatch(signIn_Google())
+        signInFacebook : () => dispatch(signInFacebook()),
+        signInGoogle : () =>dispatch(signInGoogle())
     }
 }
 export default connect( mapStateToProps, mapDispatchToProps)( SignIn )

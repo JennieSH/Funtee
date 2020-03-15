@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot for authBtn Component 1`] = `
+Array [
+  <div
+    className="tool card"
+  >
+    <div
+      className="card-image"
+    >
+      <i
+        className="material-icons"
+      >
+        record_voice_over
+      </i>
+    </div>
+    <div
+      className="card-content"
+    >
+      <span
+        className="card-title center "
+      >
+        Text To Speech
+      </span>
+      <p>
+        We provide standard pronunciations in any language
+      </p>
+    </div>
+  </div>,
+  <div
+    className="tool card"
+  >
+    <div
+      className="card-image"
+    >
+      <i
+        className="material-icons"
+      >
+        mic
+      </i>
+    </div>
+    <div
+      className="card-content"
+    >
+      <span
+        className="card-title center "
+      >
+        Record
+      </span>
+      <p>
+        It allows you to record your voice and compare with Google pronunciation quickly.
+      </p>
+    </div>
+  </div>,
+  <div
+    className="tool card"
+  >
+    <div
+      className="card-image"
+    >
+      <i
+        className="material-icons"
+      >
+        edit
+      </i>
+    </div>
+    <div
+      className="card-content"
+    >
+      <span
+        className="card-title center "
+      >
+        Writing Board
+      </span>
+      <p>
+        Writing Board is the best way to learning how to write the correct character.
+      </p>
+    </div>
+  </div>,
+]
+`;

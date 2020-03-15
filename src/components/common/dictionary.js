@@ -1,6 +1,5 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { connect } from "react-redux";
-import { createData } from "../../store/actions/testAction"; //w
 
 import {  firestoreConnect } from "react-redux-firebase"; // r
 import { compose } from "redux";
@@ -111,14 +110,11 @@ class  Dictionary extends React.Component{
 
     }
 
-    
-    
 
     render(){
        
-       
         return(
-            <>
+            <Fragment>
                 <button onClick={ this.getDic.bind(this)}>dic</button>
                 <button onClick={ this.getImg.bind(this)}>img</button>
                 <button onClick={ this.getAudio.bind(this)}>audio</button>
@@ -128,15 +124,10 @@ class  Dictionary extends React.Component{
                         
                 </form>  
                 {/* <button onClick={ this.send.bind(this)}>data</button> */}
-            </> 
+            </Fragment> 
         )
     }
 }
 
-const mapDispatchToProps = (dispatch) =>{
-    return{
-        createData: (data)=>dispatch(createData(data))
-    }
-}
 // export default Dictionary
-export default connect( null, mapDispatchToProps )(Dictionary)
+export default Dictionary

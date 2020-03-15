@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./main/App";
+import App from "./main/app";
 import Loading from "./components/common/loading";
 // redux
 import { createStore, applyMiddleware, compose } from "redux";
@@ -21,7 +21,6 @@ const store = createStore(
     )
 );  
 
-
 const rrfProps = {
     firebase,
     config: firebaseConfig,
@@ -30,14 +29,15 @@ const rrfProps = {
     userProfile: "users", // where profiles are stored in database
     presence: "presence", // where list of online users is stored in database
     sessions: "sessions"
-}
-
+};
 
 function AuthIsLoaded({ children }) {
     const auth = useSelector(state => state.firebase.auth)
     if (!isLoaded(auth)) return <Loading/>
         return children
-}
+};
+
+
 
 ReactDOM.render( 
     <Provider store={store}>
