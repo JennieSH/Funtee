@@ -7,7 +7,7 @@ import Header from "../components/common/header";
 import Loading from "../components/common/loading";
 import Footer from "../components/common/footer";
 import "../css/fcCard.css";
-import { lastMyCard, nextMyCard, toggleCopyWord, textToSpeech_My,  getCurrentMyCard, resetMyIndex } from "../store/actions/cardAction";
+import { lastMyCard, nextMyCard, toggleCopyWord, textToSpeechMy, getCurrentMyCard, resetMyIndex, initTTS } from "../store/actions/cardAction";
 import { LastPageBtn, NextPageBtn } from "../components/lesson/pageBtn";
 import Recorder from 'js-audio-recorder';
 
@@ -69,7 +69,7 @@ class FcMyCard extends React.Component{
     componentDidMount(){
         const clipboard = new ClipboardJS("#copyWord");
         this.props.resetMyIndex(parseInt(this.props.match.params.index))
-
+        this.props.initTTS();
         Recorder.getPermission().then(() => {
             this.setState({
                 isBlocked:true
@@ -80,7 +80,7 @@ class FcMyCard extends React.Component{
     }
 
     render(){
-        const { auth, cards, indexCard, getCurrentMyCard, ttsMyCard, textToSpeech_My, currentSide  } = this.props;
+        const { auth, cards, indexCard, getCurrentMyCard, ttsMyCard, textToSpeechMy, currentSide  } = this.props;
         const uid = auth.uid;
         const userBooks = cards[ uid ];
         const rotation = this.state.flipped ? 180 : 0;
@@ -110,8 +110,8 @@ class FcMyCard extends React.Component{
             getCurrentMyCard( starCardArr[index] , starCardArr.length )
             if ( !starCardArr[index] ){return <Loading/> }
 
-            if (ttsMyCard ===null ){
-                textToSpeech_My( starCardArr[index], currentSide ) 
+            if ( ttsMyCard === null ){
+                textToSpeechMy( starCardArr[index], currentSide );
             }   
             return(      
                 <div className="fcCardEach container">
@@ -164,7 +164,8 @@ const mapDispatchToProps = ( dispatch ) => {
         nextMyCard:  ( indexCard, maxCard  ) => dispatch(nextMyCard( indexCard, maxCard )),
         toggleCopyWord: ()=> dispatch(toggleCopyWord()),
         getCurrentMyCard: ( currentCard, starCardArr ) => dispatch(getCurrentMyCard( currentCard, starCardArr )),
-        textToSpeech_My: ( targetWords, targetSide )=> dispatch(textToSpeech_My( targetWords, targetSide )),
+        initTTS: () => dispatch(initTTS()),
+        textToSpeechMy: ( targetWords, targetSide )=> dispatch( textToSpeechMy( targetWords, targetSide )),
         resetMyIndex: (index)=> dispatch(resetMyIndex(index)), 
         
     }

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { LastPageBtn, NextPageBtn } from "../components/lesson/pageBtn";
-import { lastCard, nextCard, toggleCopyWord, textToSpeech,  getCurrentCard, resetIndex  } from "../store/actions/cardAction";
+import { lastCard, nextCard, toggleCopyWord, textToSpeech,  getCurrentCard, resetIndex, initTTS } from "../store/actions/cardAction";
 import Header from "../components/common/header";
 import Loading from "../components/common/loading";
 import Footer from "../components/common/footer";
@@ -73,7 +73,7 @@ class FcCard extends React.Component{
     componentDidMount(){
         const clipboard = new ClipboardJS("#copyWord");
         this.props.resetIndex(parseInt(this.props.match.params.index))
-
+        this.props.initTTS();
         Recorder.getPermission().then(() => {
             this.setState({
                 isBlocked:true
@@ -84,7 +84,7 @@ class FcCard extends React.Component{
     }
 
     render(){
-        const { auth,  match, indexCard, currentSide, getCurrentCard } = this.props;
+        const { auth,  match, indexCard, currentSide, getCurrentCard, ttsCard, textToSpeech} = this.props;
         const uid = auth.uid;
         const cards = this.props.cards[uid];
         const bookDocName = match.params.title;
@@ -104,9 +104,9 @@ class FcCard extends React.Component{
             const currentBook = cards[ bookDocName ].cards;
             const index = indexCard;
             getCurrentCard( currentBook[index] );
-            
-            if (this.props.ttsCard === null ){
-                this.props.textToSpeech( currentBook[index] , this.props.currentSide );
+            if ( !currentBook[index] ){return <Loading/> }
+            if ( ttsCard === null ){
+                textToSpeech( currentBook[index] , currentSide );
             }
             return(   
                 <div className="fcCardEach container">
@@ -158,6 +158,7 @@ const mapDispatchToProps = ( dispatch ) => {
         nextCard:  ( indexCard, maxCard  ) => dispatch(nextCard( indexCard, maxCard )),
         toggleCopyWord: ()=> dispatch(toggleCopyWord()),
         getCurrentCard: ( currentCard ) => dispatch(getCurrentCard( currentCard )),
+        initTTS: () => dispatch(initTTS()),
         textToSpeech: ( targetWords, targetSide )=> dispatch(textToSpeech( targetWords, targetSide )),
         resetIndex: (index)=> dispatch(resetIndex(index)), 
     }

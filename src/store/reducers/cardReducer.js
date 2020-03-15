@@ -341,6 +341,12 @@ const cardReducer = ( state = initState , action)=>{
                 ttsMyCard:null,
                 ttsCard:null,
             }
+        case "INIT_TTS":
+            return {
+                ...state,
+                ttsMyCard:null,
+                ttsCard:null,
+            }
         case "GET_TTS":
             return {
                 ...state,

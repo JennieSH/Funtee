@@ -45,7 +45,7 @@
    color: #03a9f4;
 }
 .fcCardEach .frontSide>span,.fcCardEach .backSide>span{
-    font-size: 5rem;
+    font-size: 4rem;
     padding-bottom: 1rem;
     display: flex;
 }
@@ -85,7 +85,7 @@
         width: 45vh;
     }
     .fcCardEach .frontSide>span,.fcCardEach .backSide>span{
-        font-size: 4.5rem;
+        font-size: 4rem;
     }
 }
 @media screen and (min-width:1150px){
@@ -104,7 +104,7 @@
         top: 0.2rem;
     }
     .fcCardEach .frontSide>span,.fcCardEach .backSide>span{
-        font-size: 4rem;
+        font-size: 3.5rem;
     } 
 }
 @media screen and (min-width:1600px){

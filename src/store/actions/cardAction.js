@@ -289,6 +289,14 @@ export const nextCard = ( indexCard, maxCard ) => {
         }    
     }
 }
+
+
+
+export const initTTS = () => {
+    return ( dispatch) =>{
+        dispatch({ type: "INIT_TTS" }); 
+    }
+}
 export const textToSpeech = ( targetWords, targetSide ) =>{
     return( dispatch )=>{
          let targetWord;
@@ -358,7 +366,7 @@ export const nextMyCard = ( indexCard, maxCard ) => {
         }    
     }
 }
-export const textToSpeech_My = ( targetWords, targetSide ) =>{
+export const textToSpeechMy = ( targetWords, targetSide ) =>{
    return( dispatch )=>{
         let targetWord;
         if( targetSide?  targetWord = targetWords.front : targetWord = targetWords.back){ // true -front 
