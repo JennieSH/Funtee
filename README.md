@@ -9,7 +9,7 @@ An website for users to learn Mandarin Phonetic Symbols and create their own fla
 
 Here is a working live demo: [https://dawan-bfa08.firebaseapp.com/](https://dawan-bfa08.firebaseapp.com)
 
-Test User : test@gmail.com
+Test User : test@funtee.com
 Password : 123456
 
 ## Table of Content
