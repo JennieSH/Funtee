@@ -1,26 +1,24 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 // Router
-import Homepage from "./homepage";
-import Category from "./category";
-import TcCategory from "./tcCategory";
-import TcSymbol from "./tcSymbol";
-import TcLesson from "./tcLesson";
-import TcLessonTw from "./tcLessonTw";
-import TcLessonCategory from "./tcLessonCategory";
-import TcLessonCategoryTw from "./tcLessonCategoryTw"
+import Homepage from "./Homepage";
+import Category from "./Category";
+import TcCategory from "./TcCategory";
+import TcSymbol from "./TcSymbol";
+import TcLesson from "./TcLesson";
+import TcLessonTw from "./TcLessonTw";
+import TcLessonCategory from "./TcLessonCategory";
+import TcLessonCategoryTw from "./TcLessonCategoryTw"
 
-import FcCategory from "./fcCategory";
-import FcCollection from "./fcCollection";
-import FcMyCollection from "./fcMyCollection";
-import FcCard from "./fcCard";
-import FcMyCard from "./fcMyCard";
-// import FC_Spelling from "./fcSpelling"; // next version
+import FcCategory from "./FcCategory";
+import FcCollection from "./FcCollection";
+import FcMarkCollection from "./FcMarkCollection";
+import FcCard from "./FcCard";
+import FcMarkCard from "./FcMarkCard";
+// import FcSpelling from "./fcSpelling"; // next version
 import Account from "./account";
-import ResetPassword from "../components/common/auth/resetPassword"; 
+import ResetPassword from "../components/common/auth/ResetPassword"; 
 // for test 
-// import AudioData from "../components/data/audioData";
-// import SymbolData from "../components/data/symbolData";
 // import Dictionary from "../components/common/dictionary"
 
 class App extends React.Component{
@@ -41,10 +39,10 @@ class App extends React.Component{
 
                <Route path="/flashcard" component={ FcCategory }/>
                <Route path="/collection/:title" component={ FcCollection }/>
-               <Route path="/mycollection" component={ FcMyCollection }/>
+               <Route path="/markcollection" component={ FcMarkCollection }/>
                <Route path="/card/:title/:index/:key" component={ FcCard }/>       
-               <Route path="/mycard/:index" component={ FcMyCard }/>    
-               {/* <Route path="/spelling" component={ FC_Spelling }/> */}
+               <Route path="/markcard/:index" component={ FcMarkCard }/>    
+               {/* <Route path="/spelling" component={ FcSpelling }/> */}
             </BrowserRouter>
         )    
     }

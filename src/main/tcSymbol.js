@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { lastPage, nextPage } from "../store/actions/lessonAction";
-import { LastPageBtn, NextPageBtn } from "../components/lesson/pageBtn";
-import Header from "../components/common/header";
-import WritingBoard from "../components/symbol/writingBoard";
-import TcSymbolContent from "../components/symbol/content";
-import Loading from "../components/common/loading";
-import Footer from "../components/common/footer";
+import { LastPageBtn, NextPageBtn } from "../components/lesson/PageBtn";
+import Header from "../components/common/Header";
+import WritingBoard from "../components/symbol/WritingBoard";
+import TcSymbolContent from "../components/symbol/Content";
+import Loading from "../components/common/Loading";
+import Footer from "../components/common/Footer";
 import "../css/tcSymbol.css";
 
 class TcSymbol extends React.Component{

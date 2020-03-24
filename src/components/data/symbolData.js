@@ -1,10 +1,12 @@
-import React, {Fragment} from "react";
-import firebase from "firebase/app";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { firestoreConnect } from "react-redux-firebase";
+// for building data for firebase 
 
-class SymobolData extends React.Component{
+// import React, {Fragment} from "react";
+// import firebase from "firebase/app";
+// import { compose } from "redux";
+// import { connect } from "react-redux";
+// import { firestoreConnect } from "react-redux-firebase";
+
+// class SymobolData extends React.Component{
 
 
     
@@ -133,7 +135,7 @@ class SymobolData extends React.Component{
     //     console.log(this.props.firestore.Learning.symobol.data)
     // }
      
-    render(){     
+    // render(){     
        
         // console.log(this.props)
         
@@ -163,16 +165,16 @@ class SymobolData extends React.Component{
         // }else{
         //     return <div>nothing</div>
         // }
-        return(
-            <Fragment>
+//         return(
+//             <Fragment>
           
-                {/* <input type="file" id="files" name="files" />
-                <br/> */}
-                {/* <textarea id="base64" rows="5" ></textarea> */}
-            </Fragment>
-        )
-    }
-}   
+//                 <input type="file" id="files" name="files" />
+//                 <br/> 
+//                 <textarea id="base64" rows="5" ></textarea>
+//             </Fragment>
+//         )
+//     }
+// }   
 
 
 // updating auduo completed
@@ -224,18 +226,18 @@ class SymobolData extends React.Component{
 
 
 
-const mapStateToProps = ( state ) => {
+// const mapStateToProps = ( state ) => {
    
-    return{
-      firestore: state.firestore
-    }
-}
+//     return{
+//       firestore: state.firestore
+//     }
+// }
 
-export default compose( 
-    firestoreConnect(() => [
-      {
-        collection: "Learning"
-      }
-    ]),
-    connect(mapStateToProps)
-)( SymobolData );
+// export default compose( 
+//     firestoreConnect(() => [
+//       {
+//         collection: "Learning"
+//       }
+//     ]),
+//     connect(mapStateToProps)
+// )( SymobolData );

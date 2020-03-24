@@ -2,9 +2,9 @@ import React, { Fragment } from "react";
 import "../css/account.css";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import Header from "../components/common/header";
-import SignIn from "../components/common/auth/signIn";
-import SignUp from "../components/common/auth/signUp";
+import Header from "../components/common/Header";
+import SignIn from "../components/common/auth/SignIn";
+import SignUp from "../components/common/auth/SignUp";
 
 
 class Account extends React.Component{

@@ -120,6 +120,13 @@
     }
 }
 
+@media screen and (min-width:2048px){
+    .fcCardEach .frontSide,.fcCardEach .backSide {
+        height: 50vh;
+        width: 42vh;
+    }
+}
+
 .fcCardEach>.cardControler{
     margin-top: 55vh;
     width: 35vh;

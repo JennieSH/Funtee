@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { lastPage, nextPage, initPage, initTTS, textToSpeech } from "../store/actions/lessonAction";
-import { LastPageBtn, NextPageBtn } from "../components/lesson/pageBtn";
-import Content from "../components/lesson/content";
-import Header from "../components/common/header";
-import LessonMenuTw from "../components/lesson/menuTw";
-import Loading from "../components/common/loading";
+import { LastPageBtn, NextPageBtn } from "../components/lesson/PageBtn";
+import Content from "../components/lesson/Content";
+import Header from "../components/common/Header";
+import LessonMenuTw from "../components/lesson/MenuTw";
+import Loading from "../components/common/Loading";
 import "../css/tcLesson.css";
 
 class TcLessonTw extends React.Component{

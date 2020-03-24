@@ -3,5 +3,6 @@
 /node_modules
 step.txt
 .vscode/
-
+.firebase
+/data
 .env

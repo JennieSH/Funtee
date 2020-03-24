@@ -1,6 +1,6 @@
 import React from "react";
 
-class FC_Spelling extends React.Component{
+class FcSpelling extends React.Component{
     
 
     render() {
@@ -15,4 +15,4 @@ class FC_Spelling extends React.Component{
   }
 
 
-export default FC_Spelling
+export default FcSpelling

@@ -2,10 +2,10 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
-import Loading from "../components/common/loading";
-import Header from "../components/common/header";
-import MapTw from "../components/lesson/mapTw";
-import CardTw from "../components/lesson/cardTw";
+import Loading from "../components/common/Loading";
+import Header from "../components/common/Header";
+import MapTw from "../components/lesson/MapTw";
+import CardTw from "../components/lesson/CardTw";
 import "../css/tcLessonCategoryTw.css";
 
 class TcLessonCategoryTw extends React.Component{   

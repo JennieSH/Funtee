@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { resetPassword } from "../../../store/actions/authActions";
 import "../../../css/account.css";
-import Header from "../header";
-import PasswordDialog from "./passwordDialog";
+import Header from "../Header";
+import PasswordDialog from "./PasswordDialog";
 
 
 class ResetPassword extends React.Component{

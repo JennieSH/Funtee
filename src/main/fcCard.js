@@ -3,11 +3,11 @@ import {  Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
-import { LastPageBtn, NextPageBtn } from "../components/lesson/pageBtn";
+import { LastPageBtn, NextPageBtn } from "../components/lesson/PageBtn";
 import { lastCard, nextCard, toggleCopyWord, textToSpeech,  getCurrentCard, resetIndex, initTTS } from "../store/actions/cardAction";
-import Header from "../components/common/header";
-import Loading from "../components/common/loading";
-import Footer from "../components/common/footer";
+import Header from "../components/common/Header";
+import Loading from "../components/common/Loading";
+import Footer from "../components/common/Footer";
 import Recorder from 'js-audio-recorder';
 import "../css/fcCard.css";
 

@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
-import { Link, Redirect } from "react-router-dom";
+import {  Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
-import Header from "../components/common/header";
-import MyCard from "../components/flashCard/cardMy";
-import Loading from "../components/common/loading";
+import Header from "../components/common/Header";
+import MyCard from "../components/flashCard/CardMy";
+import Loading from "../components/common/Loading";
 import "../css/fcCollection.css";
 
-class FcMyCollection extends React.Component{
+class FcMarkCollection extends React.Component{
     
     render(){
         const { auth, cards,} = this.props;
@@ -90,6 +90,6 @@ export default compose(
             )
         }
     }),
-)( FcMyCollection )
+)( FcMarkCollection )
 
 

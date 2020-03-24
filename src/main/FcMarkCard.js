@@ -3,16 +3,16 @@ import {  Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
-import Header from "../components/common/header";
-import Loading from "../components/common/loading";
-import Footer from "../components/common/footer";
+import Header from "../components/common/Header";
+import Loading from "../components/common/Loading";
+import Footer from "../components/common/Footer";
 import "../css/fcCard.css";
 import { lastMyCard, nextMyCard, toggleCopyWord, textToSpeechMy, getCurrentMyCard, resetMyIndex, initTTS } from "../store/actions/cardAction";
-import { LastPageBtn, NextPageBtn } from "../components/lesson/pageBtn";
+import { LastPageBtn, NextPageBtn } from "../components/lesson/PageBtn";
 import Recorder from 'js-audio-recorder';
 
 let recorder ;
-class FcMyCard extends React.Component{
+class FcMarkCard extends React.Component{
     constructor(props){
         super(props);
         this.state={     
@@ -185,6 +185,6 @@ export default compose(
             )
         }
     })
-)( FcMyCard )
+)( FcMarkCard )
 
 

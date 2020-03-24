@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
-import Header from "../components/common/header";
+import Header from "../components/common/Header";
 import "../css/tcLessonCategory.css";
 
 class TcLessonCategory  extends React.Component{

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import Header from "../components/common/header";
-import Footer from "../components/common/footer";
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
 import "../css/category.css";
-import TcImg from "../imgs/TC_catalog.jpg";
-import FcImg from "../imgs/FC_catalog.jpg";
+import TcImg from "../imgs/TC-category.jpg";
+import FcImg from "../imgs/FC-category.jpg";
 
 class Category extends React.Component{
     render(){
@@ -13,7 +13,7 @@ class Category extends React.Component{
                 <Header/>       
                 <div className="description">
                     <Link to="/topics">
-                        <img src={TcImg} alt="TcLearning"/> 
+                        <img src={ TcImg } alt="TcLearning"/> 
                         <div >
                             <span>Learning Chinese</span>
                         </div>                   
@@ -21,7 +21,7 @@ class Category extends React.Component{
                 </div>
                 <div className="description">
                     <Link to="/flashcard">
-                        <img src={FcImg} alt="FlashCard"/>                           
+                        <img src={ FcImg } alt="FlashCard"/>                           
                         <div>
                             <span>Flash Card</span>
                         </div>                   
