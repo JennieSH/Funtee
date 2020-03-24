@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { toggleCreateCard, toggleDeleteCardIcon, toggleEditCardIcon, initCardState } from "../store/actions/cardAction";
-import Header from "../components/common/header";
-import Card from "../components/flashCard/card";
-import AddCard from "../components/flashCard/addCard";
-import Loading from "../components/common/loading";
-import DelCard from "../components/flashCard/delCard";
-import EditCard from "../components/flashCard/editCard";
+import Header from "../components/common/Header";
+import Card from "../components/flashCard/Card";
+import AddCard from "../components/flashCard/AddCard";
+import Loading from "../components/common/Loading";
+import DelCard from "../components/flashCard/DelCard";
+import EditCard from "../components/flashCard/EditCard";
 import "../css/fcCollection.css";
 
 class FcCollection extends React.Component{

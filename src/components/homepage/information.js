@@ -1,6 +1,6 @@
 import React from "react";
-import flashCard from "../../imgs/HP_flash_card.png";
-import learn from "../../imgs/HP_learn.png";
+import flashCard from "../../imgs/HP-flashCard.png";
+import learn from "../../imgs/HP-learn.png";
 
 
 class Information extends React.Component{

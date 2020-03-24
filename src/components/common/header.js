@@ -2,7 +2,7 @@ import React from "react";
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { toggleSignOut } from "../../store/actions/authActions";
-import SignOutDialog from "../common/auth/signOutDialog";
+import SignOutDialog from "./auth/SignOutDialog";
 import "../../css/common.css";
 import "materialize-css";
 class Header extends React.Component{

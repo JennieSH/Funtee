@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
-import Header from "../components/common/header";
+import Header from "../components/common/Header";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { lastPage, nextPage, initPage, initTTS, textToSpeech } from "../store/actions/lessonAction";
-import { LastPageBtn, NextPageBtn } from "../components/lesson/pageBtn";
-import LessonMenu from "../components/lesson/menu";
-import Content from "../components/lesson/content";
-import Loading from "../components/common/loading";
+import { LastPageBtn, NextPageBtn } from "../components/lesson/PageBtn";
+import LessonMenu from "../components/lesson/Menu";
+import Content from "../components/lesson/Content";
+import Loading from "../components/common/Loading";
 import "../css/tcLesson.css";
 
 class TcLesson extends React.Component{

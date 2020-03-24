@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import  { FrontSymbol, BackSymbol } from "../symbol/detail";
+import  { FrontSymbol, BackSymbol } from "./Detail";
 import Recorder from 'js-audio-recorder';
 
 let recorder ;

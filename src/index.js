@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./main/app";
-import Loading from "./components/common/loading";
+import App from "./main/App";
+import Loading from "./components/common/Loading";
 // redux
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider, useSelector } from 'react-redux';

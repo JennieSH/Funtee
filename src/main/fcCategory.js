@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { toggleCreateBook, toggleDeleteBookIcon, toggleEditBookIcon, initBookState } from "../store/actions/cardAction";
-import Header from "../components/common/header";
-import Footer from "../components/common/footer";
-import Loading from "../components/common/loading";
-import FcBook from "../components/flashCard/book";
-import AddBook from "../components/flashCard/addBook";
-import DelBook from "../components/flashCard/delBook";
-import EditBook from "../components/flashCard/editBook";
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
+import Loading from "../components/common/Loading";
+import FcBook from "../components/flashCard/Book";
+import AddBook from "../components/flashCard/AddBook";
+import DelBook from "../components/flashCard/DelBook";
+import EditBook from "../components/flashCard/EditBook";
 import "../css/fcCategory.css";
 
 class FcCategory extends React.Component{
@@ -64,7 +64,7 @@ class FcCategory extends React.Component{
                     <div className="fcCategory container"> 
 
                         <div className="stickyCard"> 
-                            <Link to="/mycollection">
+                            <Link to="/markcollection">
                                 <div className="fcBook card">
                                     <div className="card-content">
                                         <div className="card-description">                               
@@ -72,7 +72,7 @@ class FcCategory extends React.Component{
                                         </div>                                
                                         <span className="card-title center"> 
                                             <i className="material-icons">star</i>
-                                            My Collection
+                                            Mark Cards
                                         </span>
                                     </div>                 
                                 </div>

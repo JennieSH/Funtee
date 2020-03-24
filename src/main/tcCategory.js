@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
-import Header from "../components/common/header";
-import Footer from "../components/common/footer";
-import symbol from "../imgs/unit-symbol.png";
-import common from "../imgs/unit-common.png";
-import taiwan from "../imgs/unit-taiwan.png";
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
+import symbol from "../imgs/lesson-symbol.png";
+import common from "../imgs/lesson-common.png";
+import taiwan from "../imgs/lesson-taiwan.png";
 import "../css/tcCategory.css";
 class TcCategory extends React.Component{
 

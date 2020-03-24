@@ -19,7 +19,7 @@ class MyCard extends React.Component{
         return(
             <div className="cardContainer">
                 <i className="star material-icons waves-effect" onClick={ this.handleRemoveStar.bind(this)}>star</i>
-                <Link to={`/mycard/${this.props.index}`} >
+                <Link to={`/markcard/${this.props.index}`} >
                         <div className="fcCard card">                       
                             <div className="card-content">                            
                                 <span className="card-title">
